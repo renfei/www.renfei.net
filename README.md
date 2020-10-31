@@ -4,6 +4,7 @@
 [![Actions Status](https://github.com/renfei-net/renfei.net/workflows/CI/badge.svg)](https://github.com/renfei-net/renfei.net/actions)
 [![Actions Status](https://github.com/renfei-net/renfei.net/workflows/Release/badge.svg)](https://github.com/renfei-net/renfei.net/actions)
 [![Build Status](https://api.travis-ci.com/renfei-net/renfei.net.svg?branch=main)](https://travis-ci.com/renfei-net/renfei.net)
+
 此版本是2020年重写版本，代号```thunder```，这个版本有什么故事呢？
 
 在2020年我主要研究了SpringCloud的微服务，但是发现性能下降严重，速度远不比单机应用，所以放弃了使用微服务的想法，想要让页面请求的速度再快一点，就诞生了这个版本。
