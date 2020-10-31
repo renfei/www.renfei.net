@@ -14,12 +14,14 @@ import net.renfei.sdk.utils.Builder;
 import net.renfei.sdk.utils.StringUtils;
 import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.Cacheable;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.core.io.support.ResourcePatternResolver;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.math.BigInteger;
 
 /**
@@ -44,29 +46,12 @@ public class IpService extends BaseService {
 
     public IpService(RenFeiConfig renFeiConfig) throws IOException {
         this.renFeiConfig = renFeiConfig;
-        ResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
-        Resource[] ipv4Resources = resolver.getResources(renFeiConfig.getIpv4DataPath());
-        if (ipv4Resources.length > 0) {
-            Resource resourceV4 = ipv4Resources[0];
-            try {
-                this.ip2LocationV4 = new IP2Location();
-                this.ip2LocationV4.IPDatabasePath = resourceV4.getFile().getPath();
-            } catch (IOException ioe) {
-                log.error(ioe.getMessage(), ioe);
-                this.ip2LocationV4 = null;
-            }
-        }
-        Resource[] ipv6Resources = resolver.getResources(renFeiConfig.getIpv6DataPath());
-        if (ipv6Resources.length > 0) {
-            Resource resourceV6 = ipv6Resources[0];
-            this.ip2LocationV6 = new IP2Location();
-            try {
-                this.ip2LocationV6.IPDatabasePath = resourceV6.getFile().getPath();
-            } catch (IOException ioe) {
-                log.error(ioe.getMessage(), ioe);
-                this.ip2LocationV6 = null;
-            }
-        }
+        ClassPathResource resourceV4 = new ClassPathResource(renFeiConfig.getIpv4DataPath());
+        ClassPathResource resourceV6 = new ClassPathResource(renFeiConfig.getIpv6DataPath());
+        this.ip2LocationV4 = new IP2Location();
+        this.ip2LocationV4.IPDatabasePath = resourceV4.getPath();
+        this.ip2LocationV6 = new IP2Location();
+        this.ip2LocationV6.IPDatabasePath = resourceV6.getPath();
     }
 
     @Cacheable
