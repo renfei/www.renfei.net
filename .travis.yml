@@ -16,7 +16,7 @@ addons:
 
 before_install:
   - sudo mysql -e 'CREATE DATABASE renfei;'
-  - mysql -u root --default-character-set=utf8 winteree < environment/db/renfei.sql
+  - mysql -u root --default-character-set=utf8 renfei < environment/db/renfei.sql
   - mysql_upgrade -u root
   - sudo mysql -e "GRANT ALL PRIVILEGES ON *.* TO root@'%' IDENTIFIED BY '.'; FLUSH PRIVILEGES;"
   - sudo mysql -e "use mysql; update user set authentication_string=PASSWORD('root') where User='root'; update user set plugin='mysql_native_password';FLUSH PRIVILEGES;"
