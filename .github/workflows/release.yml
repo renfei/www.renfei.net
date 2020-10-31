@@ -62,7 +62,7 @@ jobs:
           mkdir src/main/resources/data && \
           cd src/main/resources/data && \
           wget -P ./src/main/resources/data https://cdn.renfei.net/data/IPDATA.BIN && \
-          wget -P ./src/main/resources/data https://cdn.renfei.net/data/data/IPDATA.IPV6.BIN
+          wget -P ./src/main/resources/data https://cdn.renfei.net/data/IPDATA.IPV6.BIN
 
       - name: Build And Push Docker Image
         run: ./build_push.sh "${{ DOCKER_REGISTRY_PASSWORD }}"

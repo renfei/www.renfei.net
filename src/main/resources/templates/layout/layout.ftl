@@ -51,7 +51,7 @@
         <nav class="navbar navbar-expand-lg navbar-dark nav">
             <div class="container-xl">
                 <a class="navbar-brand site-logo-name" href="/">
-                    <img class="align-middle" src="https://cdn.renfei.net/logo/RF_white.svg" height="25" alt="任霏博客"/>
+                    <img class="align-middle" src="https://cdn.renfei.net/Logo/RF_white.svg" height="25" alt="任霏博客"/>
                     <span class="align-middle">${headerVO.siteName!}</span>
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample07XL"
@@ -244,7 +244,7 @@
                     <div class="btn-group" role="group" aria-label="Third group">
                         <button id="wechat-share-box" type="button" class="btn btn-sm btn-outline-dark"
                                 style="border: 0;">
-                            <i class="fab fa-weixin"></i>
+                            <i class="fa fa-weixin"></i>
                             <div class="wechat-share">
                                 <img src="/other/qrcode?content=${sharevo.url}" width="150">
                             </div>
@@ -254,46 +254,46 @@
                         <a href="http://connect.qq.com/widget/shareqq/index.html?url=${sharevo.url}&title=${sharevo.title}&source=RENFEI.NET&desc=${sharevo.describes}&pics=${sharevo.pics}&summary=${sharevo.title}"
                            target="_blank" rel="nofollow noopener" class="btn btn-sm btn-outline-dark"
                            style="border: 0;">
-                            <i class="fab fa-qq"></i>
+                            <i class="fa fa-qq"></i>
                         </a>
                     </div>
                     <div class="btn-group" role="group" aria-label="Third group">
                         <a href="http://www.facebook.com/dialog/feed?app_id=${sharevo.fb_appid}&redirect_uri=${sharevo.url}&link=${sharevo.url}&display=popup"
                            target="_blank" rel="nofollow noopener" class="btn btn-sm btn-outline-dark"
                            style="border: 0;">
-                            <i class="fab fa-facebook-square"></i>
+                            <i class="fa fa-facebook-square"></i>
                         </a>
                     </div>
                     <div class="btn-group" role="group" aria-label="Third group">
                         <a href="https://twitter.com/intent/tweet?text=${sharevo.title}&url=${sharevo.url}"
                            target="_blank"
                            rel="nofollow noopener" class="btn btn-sm btn-outline-dark" style="border: 0;">
-                            <i class="fab fa-twitter"></i>
+                            <i class="fa fa-twitter"></i>
                         </a>
                     </div>
                     <div class="btn-group" role="group" aria-label="Third group">
                         <a href="http://service.weibo.com/share/share.php?appkey=4264535112&url=${sharevo.url}&title=${sharevo.title}&pic=${sharevo.pics}"
                            target="_blank" rel="nofollow noopener" class="btn btn-sm btn-outline-dark"
                            style="border: 0;">
-                            <i class="fab fa-weibo"></i>
+                            <i class="fa fa-weibo"></i>
                         </a>
                     </div>
                     <div class="btn-group" role="group" aria-label="Third group">
                         <a href="https://www.linkedin.com/shareArticle?mini=true&url=${sharevo.url}&title=${sharevo.title}&source=RENFEI.NET"
                            target="_blank" rel="nofollow noopener" class="btn btn-sm btn-outline-dark"
                            style="border: 0;">
-                            <i class="fab fa-linkedin"></i>
+                            <i class="fa fa-linkedin"></i>
                         </a>
                     </div>
                     <div class="btn-group" role="group" aria-label="Third group">
                         <button type="button" class="copyUrlBtn btn btn-sm btn-outline-dark" style="border: 0;">
-                            <i class="fas fa-link"></i>
+                            <i class="fa fa-link"></i>
                         </button>
                     </div>
                     <#if sharevo.views??>
                         <div class="btn-group" role="group" aria-label="Third group">
                             <button type="button" class="btn btn-sm btn-outline-dark" style="border: 0;">
-                                <i class="fas fa-eye"></i> ${sharevo.views}
+                                <i class="fa fa-eye"></i> ${sharevo.views}
                             </button>
                         </div>
                     </#if>

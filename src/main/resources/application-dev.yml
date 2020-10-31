@@ -60,9 +60,9 @@ renfei:
     accessKeyId: <accessKeyId>
     accessKeySecret: <accessKeySecret>
     oss:
-      endpoint: http://oss-cn-beijing.aliyuncs.com
+      endpoint: http://oss-cn-hangzhou.aliyuncs.com
       bucketName: renfei
-      downloadBucketName: download-renfei
+      downloadBucketName: down-renfei
       downloadHost: https://download.renfei.net
     green:
       regionId: cn-beijing

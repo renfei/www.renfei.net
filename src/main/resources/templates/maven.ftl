@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" lang="zh-CN" dir="ltr" prefix="og: http://ogp.me/ns#">
 <@head headVO,title>
-    <link rel="stylesheet" href="/highlight/styles/idea.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.3.2/styles/idea.css">
 </@head>
 <body>
 <@header headerVO>
@@ -130,7 +130,7 @@
     </div>
 </div>
 <@footer footerVO performance_execTimeTotal performance_execCountTotal>
-    <script src="/highlight/highlight.pack.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/highlight.js@10.3.2/lib/index.min.js"></script>
     <script>
         $(function () {
             $("code").each(function () {

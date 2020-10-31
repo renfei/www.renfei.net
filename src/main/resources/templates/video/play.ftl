@@ -6,9 +6,7 @@
     <!DOCTYPE html>
     <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" lang="zh-CN" dir="ltr" prefix="og: http://ogp.me/ns#">
     <@head headVO,title>
-        <link rel="stylesheet" type="text/css" href="//cdn.renfei.net/font/plyr/video.css"/>
-        <link rel="preload" as="font" crossorigin type="font/woff2" href="/plyr/gordita-medium.woff2" />
-        <link rel="preload" as="font" crossorigin type="font/woff2" href="/plyr/gordita-bold.woff2" />
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/plyr@3.6.2/dist/plyr.css"/>
     </@head>
     <body>
     <@header headerVO>
@@ -70,7 +68,7 @@
         <!-- Sharing libary (https://shr.one) -->
         <script src="https://cdn.shr.one/2.0.0-beta.2/shr.js" crossorigin="anonymous"></script>
         <!-- Docs script -->
-        <script src="/plyr/video.js" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/plyr@3.6.2/dist/plyr.min.js" crossorigin="anonymous"></script>
     </@footer>
     </body>
     </html>

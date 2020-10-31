@@ -29,7 +29,7 @@
 
                                     <div class="illustration">
                                         <div class="inner">
-                                            <img src="https://cdn.renfei.net/logo/RF_white.svg" alt="任霏博客"
+                                            <img src="https://cdn.renfei.net/Logo/RF_white.svg" alt="任霏博客"
                                                  style="margin-top: 38px;"/>
                                         </div>
                                     </div>

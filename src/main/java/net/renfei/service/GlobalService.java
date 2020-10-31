@@ -45,7 +45,7 @@ public class GlobalService extends BaseService {
         headVO.setCss(new ArrayList<String>() {
             {
                 this.add("https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css");
-                this.add("/fontawesome/css/all.min.css");
+                this.add("https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css");
                 this.add("/css/bs4.pop.css");
                 this.add("/css/style.css");
             }

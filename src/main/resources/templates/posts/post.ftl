@@ -8,7 +8,7 @@
     <link rel="stylesheet" type="text/css" href="//cdn.renfei.net/css/lightbox.css?v=20200506135243"/>
     <link rel="stylesheet" type="text/css" href="//cdn.renfei.net/css/baguetteBox.min.css"/>
     <#if HighlightJS??>
-        <link rel="stylesheet" href="/highlight/styles/idea.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.3.2/styles/idea.css">
     </#if>
 </@head>
 <body>
@@ -132,7 +132,7 @@
             async></script>
     <script type='text/javascript' charset="UTF-8" src="//cdn.renfei.net/js/baguetteBox.min.js"></script>
 <#if HighlightJS??>
-    <script src="/highlight/highlight.pack.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/highlight.js@10.3.2/lib/index.min.js"></script>
     <script>
         $(function () {
             $("code").each(function () {
