@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="net.renfei.repository.DownloadDOMapper">
+  <resultMap id="BaseResultMap" type="net.renfei.repository.entity.DownloadDO">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="disable_area" jdbcType="VARCHAR" property="disableArea" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="icon" jdbcType="VARCHAR" property="icon" />
+    <result column="size" jdbcType="VARCHAR" property="size" />
+    <result column="created" jdbcType="TIMESTAMP" property="created" />
+    <result column="hash" jdbcType="VARCHAR" property="hash" />
+    <result column="file_name" jdbcType="VARCHAR" property="fileName" />
+    <result column="bucket" jdbcType="VARCHAR" property="bucket" />
+    <result column="file_path" jdbcType="VARCHAR" property="filePath" />
+    <result column="baidu_yun_pan_url" jdbcType="VARCHAR" property="baiduYunPanUrl" />
+    <result column="baidu_yun_pan_code" jdbcType="VARCHAR" property="baiduYunPanCode" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, disable_area, name, icon, size, created, hash, file_name, bucket, file_path, 
+    baidu_yun_pan_url, baidu_yun_pan_code
+  </sql>
+  <select id="selectByExample" parameterType="net.renfei.repository.entity.DownloadDOExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from t_download
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_download
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from t_download
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="net.renfei.repository.entity.DownloadDOExample">
+    delete from t_download
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="net.renfei.repository.entity.DownloadDO">
+    insert into t_download (id, disable_area, name, 
+      icon, size, created, 
+      hash, file_name, bucket, 
+      file_path, baidu_yun_pan_url, baidu_yun_pan_code
+      )
+    values (#{id,jdbcType=BIGINT}, #{disableArea,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
+      #{icon,jdbcType=VARCHAR}, #{size,jdbcType=VARCHAR}, #{created,jdbcType=TIMESTAMP}, 
+      #{hash,jdbcType=VARCHAR}, #{fileName,jdbcType=VARCHAR}, #{bucket,jdbcType=VARCHAR}, 
+      #{filePath,jdbcType=VARCHAR}, #{baiduYunPanUrl,jdbcType=VARCHAR}, #{baiduYunPanCode,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="net.renfei.repository.entity.DownloadDO">
+    insert into t_download
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="disableArea != null">
+        disable_area,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="icon != null">
+        icon,
+      </if>
+      <if test="size != null">
+        size,
+      </if>
+      <if test="created != null">
+        created,
+      </if>
+      <if test="hash != null">
+        hash,
+      </if>
+      <if test="fileName != null">
+        file_name,
+      </if>
+      <if test="bucket != null">
+        bucket,
+      </if>
+      <if test="filePath != null">
+        file_path,
+      </if>
+      <if test="baiduYunPanUrl != null">
+        baidu_yun_pan_url,
+      </if>
+      <if test="baiduYunPanCode != null">
+        baidu_yun_pan_code,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="disableArea != null">
+        #{disableArea,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="icon != null">
+        #{icon,jdbcType=VARCHAR},
+      </if>
+      <if test="size != null">
+        #{size,jdbcType=VARCHAR},
+      </if>
+      <if test="created != null">
+        #{created,jdbcType=TIMESTAMP},
+      </if>
+      <if test="hash != null">
+        #{hash,jdbcType=VARCHAR},
+      </if>
+      <if test="fileName != null">
+        #{fileName,jdbcType=VARCHAR},
+      </if>
+      <if test="bucket != null">
+        #{bucket,jdbcType=VARCHAR},
+      </if>
+      <if test="filePath != null">
+        #{filePath,jdbcType=VARCHAR},
+      </if>
+      <if test="baiduYunPanUrl != null">
+        #{baiduYunPanUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="baiduYunPanCode != null">
+        #{baiduYunPanCode,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="net.renfei.repository.entity.DownloadDOExample" resultType="java.lang.Long">
+    select count(*) from t_download
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update t_download
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=BIGINT},
+      </if>
+      <if test="record.disableArea != null">
+        disable_area = #{record.disableArea,jdbcType=VARCHAR},
+      </if>
+      <if test="record.name != null">
+        name = #{record.name,jdbcType=VARCHAR},
+      </if>
+      <if test="record.icon != null">
+        icon = #{record.icon,jdbcType=VARCHAR},
+      </if>
+      <if test="record.size != null">
+        size = #{record.size,jdbcType=VARCHAR},
+      </if>
+      <if test="record.created != null">
+        created = #{record.created,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.hash != null">
+        hash = #{record.hash,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fileName != null">
+        file_name = #{record.fileName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bucket != null">
+        bucket = #{record.bucket,jdbcType=VARCHAR},
+      </if>
+      <if test="record.filePath != null">
+        file_path = #{record.filePath,jdbcType=VARCHAR},
+      </if>
+      <if test="record.baiduYunPanUrl != null">
+        baidu_yun_pan_url = #{record.baiduYunPanUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.baiduYunPanCode != null">
+        baidu_yun_pan_code = #{record.baiduYunPanCode,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update t_download
+    set id = #{record.id,jdbcType=BIGINT},
+      disable_area = #{record.disableArea,jdbcType=VARCHAR},
+      name = #{record.name,jdbcType=VARCHAR},
+      icon = #{record.icon,jdbcType=VARCHAR},
+      size = #{record.size,jdbcType=VARCHAR},
+      created = #{record.created,jdbcType=TIMESTAMP},
+      hash = #{record.hash,jdbcType=VARCHAR},
+      file_name = #{record.fileName,jdbcType=VARCHAR},
+      bucket = #{record.bucket,jdbcType=VARCHAR},
+      file_path = #{record.filePath,jdbcType=VARCHAR},
+      baidu_yun_pan_url = #{record.baiduYunPanUrl,jdbcType=VARCHAR},
+      baidu_yun_pan_code = #{record.baiduYunPanCode,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="net.renfei.repository.entity.DownloadDO">
+    update t_download
+    <set>
+      <if test="disableArea != null">
+        disable_area = #{disableArea,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="icon != null">
+        icon = #{icon,jdbcType=VARCHAR},
+      </if>
+      <if test="size != null">
+        size = #{size,jdbcType=VARCHAR},
+      </if>
+      <if test="created != null">
+        created = #{created,jdbcType=TIMESTAMP},
+      </if>
+      <if test="hash != null">
+        hash = #{hash,jdbcType=VARCHAR},
+      </if>
+      <if test="fileName != null">
+        file_name = #{fileName,jdbcType=VARCHAR},
+      </if>
+      <if test="bucket != null">
+        bucket = #{bucket,jdbcType=VARCHAR},
+      </if>
+      <if test="filePath != null">
+        file_path = #{filePath,jdbcType=VARCHAR},
+      </if>
+      <if test="baiduYunPanUrl != null">
+        baidu_yun_pan_url = #{baiduYunPanUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="baiduYunPanCode != null">
+        baidu_yun_pan_code = #{baiduYunPanCode,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="net.renfei.repository.entity.DownloadDO">
+    update t_download
+    set disable_area = #{disableArea,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      icon = #{icon,jdbcType=VARCHAR},
+      size = #{size,jdbcType=VARCHAR},
+      created = #{created,jdbcType=TIMESTAMP},
+      hash = #{hash,jdbcType=VARCHAR},
+      file_name = #{fileName,jdbcType=VARCHAR},
+      bucket = #{bucket,jdbcType=VARCHAR},
+      file_path = #{filePath,jdbcType=VARCHAR},
+      baidu_yun_pan_url = #{baiduYunPanUrl,jdbcType=VARCHAR},
+      baidu_yun_pan_code = #{baiduYunPanCode,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

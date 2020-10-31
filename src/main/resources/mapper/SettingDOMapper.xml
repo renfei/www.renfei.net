@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="net.renfei.repository.SettingDOMapper">
+  <resultMap id="BaseResultMap" type="net.renfei.repository.entity.SettingDO">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="keys" jdbcType="VARCHAR" property="keys" />
+    <result column="orders" jdbcType="INTEGER" property="orders" />
+    <result column="extend" jdbcType="VARCHAR" property="extend" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="net.renfei.repository.entity.SettingDO">
+    <result column="values" jdbcType="LONGVARCHAR" property="values" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, `KEYS`, orders, extend
+  </sql>
+  <sql id="Blob_Column_List">
+    `VALUES`
+  </sql>
+  <select id="selectByExampleWithBLOBs" parameterType="net.renfei.repository.entity.SettingDOExample" resultMap="ResultMapWithBLOBs">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from t_setting
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" parameterType="net.renfei.repository.entity.SettingDOExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from t_setting
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from t_setting
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from t_setting
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="net.renfei.repository.entity.SettingDOExample">
+    delete from t_setting
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="net.renfei.repository.entity.SettingDO">
+    insert into t_setting (id, `KEYS`, orders,
+      extend, `VALUES`)
+    values (#{id,jdbcType=BIGINT}, #{keys,jdbcType=VARCHAR}, #{orders,jdbcType=INTEGER}, 
+      #{extend,jdbcType=VARCHAR}, #{values,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="net.renfei.repository.entity.SettingDO">
+    insert into t_setting
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="keys != null">
+        `KEYS`,
+      </if>
+      <if test="orders != null">
+        orders,
+      </if>
+      <if test="extend != null">
+        extend,
+      </if>
+      <if test="values != null">
+        `VALUES`,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="keys != null">
+        #{keys,jdbcType=VARCHAR},
+      </if>
+      <if test="orders != null">
+        #{orders,jdbcType=INTEGER},
+      </if>
+      <if test="extend != null">
+        #{extend,jdbcType=VARCHAR},
+      </if>
+      <if test="values != null">
+        #{values,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="net.renfei.repository.entity.SettingDOExample" resultType="java.lang.Long">
+    select count(*) from t_setting
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update t_setting
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=BIGINT},
+      </if>
+      <if test="record.keys != null">
+        `KEYS` = #{record.keys,jdbcType=VARCHAR},
+      </if>
+      <if test="record.orders != null">
+        orders = #{record.orders,jdbcType=INTEGER},
+      </if>
+      <if test="record.extend != null">
+        extend = #{record.extend,jdbcType=VARCHAR},
+      </if>
+      <if test="record.values != null">
+        `VALUES` = #{record.values,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map">
+    update t_setting
+    set id = #{record.id,jdbcType=BIGINT},
+      `KEYS` = #{record.keys,jdbcType=VARCHAR},
+      orders = #{record.orders,jdbcType=INTEGER},
+      extend = #{record.extend,jdbcType=VARCHAR},
+      `VALUES` = #{record.values,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update t_setting
+    set id = #{record.id,jdbcType=BIGINT},
+      `KEYS` = #{record.keys,jdbcType=VARCHAR},
+      orders = #{record.orders,jdbcType=INTEGER},
+      extend = #{record.extend,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="net.renfei.repository.entity.SettingDO">
+    update t_setting
+    <set>
+      <if test="keys != null">
+        `KEYS` = #{keys,jdbcType=VARCHAR},
+      </if>
+      <if test="orders != null">
+        orders = #{orders,jdbcType=INTEGER},
+      </if>
+      <if test="extend != null">
+        extend = #{extend,jdbcType=VARCHAR},
+      </if>
+      <if test="values != null">
+        `VALUES` = #{values,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="net.renfei.repository.entity.SettingDO">
+    update t_setting
+    set `KEYS` = #{keys,jdbcType=VARCHAR},
+      orders = #{orders,jdbcType=INTEGER},
+      extend = #{extend,jdbcType=VARCHAR},
+      `VALUES` = #{values,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="net.renfei.repository.entity.SettingDO">
+    update t_setting
+    set `KEYS` = #{keys,jdbcType=VARCHAR},
+      orders = #{orders,jdbcType=INTEGER},
+      extend = #{extend,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

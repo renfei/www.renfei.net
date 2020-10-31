@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="net.renfei.repository.MenuDOMapper">
+  <resultMap id="BaseResultMap" type="net.renfei.repository.entity.MenuDO">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="pid" jdbcType="BIGINT" property="pid" />
+    <result column="is_new_win" jdbcType="BIT" property="isNewWin" />
+    <result column="is_enable" jdbcType="BIT" property="isEnable" />
+    <result column="menu_type" jdbcType="INTEGER" property="menuType" />
+    <result column="order_number" jdbcType="INTEGER" property="orderNumber" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="net.renfei.repository.entity.MenuDOWithBLOBs">
+    <result column="menu_text" jdbcType="LONGVARCHAR" property="menuText" />
+    <result column="menu_link" jdbcType="LONGVARCHAR" property="menuLink" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, pid, is_new_win, is_enable, menu_type, order_number
+  </sql>
+  <sql id="Blob_Column_List">
+    menu_text, menu_link
+  </sql>
+  <select id="selectByExampleWithBLOBs" parameterType="net.renfei.repository.entity.MenuDOExample" resultMap="ResultMapWithBLOBs">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from t_menu
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" parameterType="net.renfei.repository.entity.MenuDOExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from t_menu
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from t_menu
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from t_menu
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="net.renfei.repository.entity.MenuDOExample">
+    delete from t_menu
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="net.renfei.repository.entity.MenuDOWithBLOBs">
+    insert into t_menu (id, pid, is_new_win, 
+      is_enable, menu_type, order_number, 
+      menu_text, menu_link)
+    values (#{id,jdbcType=BIGINT}, #{pid,jdbcType=BIGINT}, #{isNewWin,jdbcType=BIT}, 
+      #{isEnable,jdbcType=BIT}, #{menuType,jdbcType=INTEGER}, #{orderNumber,jdbcType=INTEGER}, 
+      #{menuText,jdbcType=LONGVARCHAR}, #{menuLink,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="net.renfei.repository.entity.MenuDOWithBLOBs">
+    insert into t_menu
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="pid != null">
+        pid,
+      </if>
+      <if test="isNewWin != null">
+        is_new_win,
+      </if>
+      <if test="isEnable != null">
+        is_enable,
+      </if>
+      <if test="menuType != null">
+        menu_type,
+      </if>
+      <if test="orderNumber != null">
+        order_number,
+      </if>
+      <if test="menuText != null">
+        menu_text,
+      </if>
+      <if test="menuLink != null">
+        menu_link,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="pid != null">
+        #{pid,jdbcType=BIGINT},
+      </if>
+      <if test="isNewWin != null">
+        #{isNewWin,jdbcType=BIT},
+      </if>
+      <if test="isEnable != null">
+        #{isEnable,jdbcType=BIT},
+      </if>
+      <if test="menuType != null">
+        #{menuType,jdbcType=INTEGER},
+      </if>
+      <if test="orderNumber != null">
+        #{orderNumber,jdbcType=INTEGER},
+      </if>
+      <if test="menuText != null">
+        #{menuText,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="menuLink != null">
+        #{menuLink,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="net.renfei.repository.entity.MenuDOExample" resultType="java.lang.Long">
+    select count(*) from t_menu
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update t_menu
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=BIGINT},
+      </if>
+      <if test="record.pid != null">
+        pid = #{record.pid,jdbcType=BIGINT},
+      </if>
+      <if test="record.isNewWin != null">
+        is_new_win = #{record.isNewWin,jdbcType=BIT},
+      </if>
+      <if test="record.isEnable != null">
+        is_enable = #{record.isEnable,jdbcType=BIT},
+      </if>
+      <if test="record.menuType != null">
+        menu_type = #{record.menuType,jdbcType=INTEGER},
+      </if>
+      <if test="record.orderNumber != null">
+        order_number = #{record.orderNumber,jdbcType=INTEGER},
+      </if>
+      <if test="record.menuText != null">
+        menu_text = #{record.menuText,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="record.menuLink != null">
+        menu_link = #{record.menuLink,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map">
+    update t_menu
+    set id = #{record.id,jdbcType=BIGINT},
+      pid = #{record.pid,jdbcType=BIGINT},
+      is_new_win = #{record.isNewWin,jdbcType=BIT},
+      is_enable = #{record.isEnable,jdbcType=BIT},
+      menu_type = #{record.menuType,jdbcType=INTEGER},
+      order_number = #{record.orderNumber,jdbcType=INTEGER},
+      menu_text = #{record.menuText,jdbcType=LONGVARCHAR},
+      menu_link = #{record.menuLink,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update t_menu
+    set id = #{record.id,jdbcType=BIGINT},
+      pid = #{record.pid,jdbcType=BIGINT},
+      is_new_win = #{record.isNewWin,jdbcType=BIT},
+      is_enable = #{record.isEnable,jdbcType=BIT},
+      menu_type = #{record.menuType,jdbcType=INTEGER},
+      order_number = #{record.orderNumber,jdbcType=INTEGER}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="net.renfei.repository.entity.MenuDOWithBLOBs">
+    update t_menu
+    <set>
+      <if test="pid != null">
+        pid = #{pid,jdbcType=BIGINT},
+      </if>
+      <if test="isNewWin != null">
+        is_new_win = #{isNewWin,jdbcType=BIT},
+      </if>
+      <if test="isEnable != null">
+        is_enable = #{isEnable,jdbcType=BIT},
+      </if>
+      <if test="menuType != null">
+        menu_type = #{menuType,jdbcType=INTEGER},
+      </if>
+      <if test="orderNumber != null">
+        order_number = #{orderNumber,jdbcType=INTEGER},
+      </if>
+      <if test="menuText != null">
+        menu_text = #{menuText,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="menuLink != null">
+        menu_link = #{menuLink,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="net.renfei.repository.entity.MenuDOWithBLOBs">
+    update t_menu
+    set pid = #{pid,jdbcType=BIGINT},
+      is_new_win = #{isNewWin,jdbcType=BIT},
+      is_enable = #{isEnable,jdbcType=BIT},
+      menu_type = #{menuType,jdbcType=INTEGER},
+      order_number = #{orderNumber,jdbcType=INTEGER},
+      menu_text = #{menuText,jdbcType=LONGVARCHAR},
+      menu_link = #{menuLink,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="net.renfei.repository.entity.MenuDO">
+    update t_menu
+    set pid = #{pid,jdbcType=BIGINT},
+      is_new_win = #{isNewWin,jdbcType=BIT},
+      is_enable = #{isEnable,jdbcType=BIT},
+      menu_type = #{menuType,jdbcType=INTEGER},
+      order_number = #{orderNumber,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="net.renfei.repository.WeiboDOMapper">
+  <resultMap id="BaseResultMap" type="net.renfei.repository.entity.WeiboDO">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="content" jdbcType="VARCHAR" property="content" />
+    <result column="img_id" jdbcType="BIGINT" property="imgId" />
+    <result column="release_time" jdbcType="TIMESTAMP" property="releaseTime" />
+    <result column="views" jdbcType="BIGINT" property="views" />
+    <result column="thumbs_up" jdbcType="BIGINT" property="thumbsUp" />
+    <result column="thumbs_down" jdbcType="BIGINT" property="thumbsDown" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, content, img_id, release_time, views, thumbs_up, thumbs_down
+  </sql>
+  <select id="selectByExample" parameterType="net.renfei.repository.entity.WeiboDOExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from t_weibo
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_weibo
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from t_weibo
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="net.renfei.repository.entity.WeiboDOExample">
+    delete from t_weibo
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="net.renfei.repository.entity.WeiboDO">
+    insert into t_weibo (id, content, img_id, 
+      release_time, views, thumbs_up, 
+      thumbs_down)
+    values (#{id,jdbcType=BIGINT}, #{content,jdbcType=VARCHAR}, #{imgId,jdbcType=BIGINT}, 
+      #{releaseTime,jdbcType=TIMESTAMP}, #{views,jdbcType=BIGINT}, #{thumbsUp,jdbcType=BIGINT}, 
+      #{thumbsDown,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" parameterType="net.renfei.repository.entity.WeiboDO">
+    insert into t_weibo
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="content != null">
+        content,
+      </if>
+      <if test="imgId != null">
+        img_id,
+      </if>
+      <if test="releaseTime != null">
+        release_time,
+      </if>
+      <if test="views != null">
+        views,
+      </if>
+      <if test="thumbsUp != null">
+        thumbs_up,
+      </if>
+      <if test="thumbsDown != null">
+        thumbs_down,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="content != null">
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="imgId != null">
+        #{imgId,jdbcType=BIGINT},
+      </if>
+      <if test="releaseTime != null">
+        #{releaseTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="views != null">
+        #{views,jdbcType=BIGINT},
+      </if>
+      <if test="thumbsUp != null">
+        #{thumbsUp,jdbcType=BIGINT},
+      </if>
+      <if test="thumbsDown != null">
+        #{thumbsDown,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="net.renfei.repository.entity.WeiboDOExample" resultType="java.lang.Long">
+    select count(*) from t_weibo
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update t_weibo
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=BIGINT},
+      </if>
+      <if test="record.content != null">
+        content = #{record.content,jdbcType=VARCHAR},
+      </if>
+      <if test="record.imgId != null">
+        img_id = #{record.imgId,jdbcType=BIGINT},
+      </if>
+      <if test="record.releaseTime != null">
+        release_time = #{record.releaseTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.views != null">
+        views = #{record.views,jdbcType=BIGINT},
+      </if>
+      <if test="record.thumbsUp != null">
+        thumbs_up = #{record.thumbsUp,jdbcType=BIGINT},
+      </if>
+      <if test="record.thumbsDown != null">
+        thumbs_down = #{record.thumbsDown,jdbcType=BIGINT},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update t_weibo
+    set id = #{record.id,jdbcType=BIGINT},
+      content = #{record.content,jdbcType=VARCHAR},
+      img_id = #{record.imgId,jdbcType=BIGINT},
+      release_time = #{record.releaseTime,jdbcType=TIMESTAMP},
+      views = #{record.views,jdbcType=BIGINT},
+      thumbs_up = #{record.thumbsUp,jdbcType=BIGINT},
+      thumbs_down = #{record.thumbsDown,jdbcType=BIGINT}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="net.renfei.repository.entity.WeiboDO">
+    update t_weibo
+    <set>
+      <if test="content != null">
+        content = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="imgId != null">
+        img_id = #{imgId,jdbcType=BIGINT},
+      </if>
+      <if test="releaseTime != null">
+        release_time = #{releaseTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="views != null">
+        views = #{views,jdbcType=BIGINT},
+      </if>
+      <if test="thumbsUp != null">
+        thumbs_up = #{thumbsUp,jdbcType=BIGINT},
+      </if>
+      <if test="thumbsDown != null">
+        thumbs_down = #{thumbsDown,jdbcType=BIGINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="net.renfei.repository.entity.WeiboDO">
+    update t_weibo
+    set content = #{content,jdbcType=VARCHAR},
+      img_id = #{imgId,jdbcType=BIGINT},
+      release_time = #{releaseTime,jdbcType=TIMESTAMP},
+      views = #{views,jdbcType=BIGINT},
+      thumbs_up = #{thumbsUp,jdbcType=BIGINT},
+      thumbs_down = #{thumbsDown,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

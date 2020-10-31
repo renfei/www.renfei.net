@@ -1,0 +1,78 @@
+#############################################
+#            应用配置文件（开发环境）           #
+#    https://www.renfei.net 极速版           #
+#    author: RenFei(i@renfei.net)           #
+#    Copyright © 2020 RENFEI.NET            #
+#############################################
+
+# Spring ####################################
+spring:
+  ## 数据库配置
+  datasource:
+    url: jdbc:mysql://127.0.0.1/renfei?characterEncoding=utf-8&useSSL=false
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: root
+  elasticsearch:
+    rest:
+      uris: http://localhost:9200
+  ## Redis 配置
+  redis:
+    ## Redis数据库索引（默认为0）
+    database: 0
+    host: 127.0.0.1
+    port: 6379
+    password:
+  mail:
+    host: <host>
+    port: 465
+    username: no-reply@renfei.net
+    password: <password>
+    protocol: smtp
+    default-encoding: UTF-8
+    reply-to: i@renfei.net
+    properties:
+      mail.smtp.localhost: renfei.net
+      mail.smtp.auth: true
+      mail.smtp.starttls.enable: true
+      mail.smtp.starttls.required: true
+      mail.smtp.socketFactory.port: 465
+      mail.smtp.socketFactory.class: javax.net.ssl.SSLSocketFactory
+      mail.smtp.socketFactory.fallback: false
+    jndi-name: mail/Session
+  freemarker:
+    cache: false
+    settings:
+      template_update_delay: 0
+# 自定义配置 #####################################
+renfei:
+  version: @project.version@
+  siteName: 任霏博客
+  domain: http://localhost:8099
+  staticDomain: cdn.renfei.net
+  ipv4DataPath: data/IPDATA.BIN
+  ipv6DataPath: data/IPDATA.IPV6.BIN
+  buildTime: @buildtimestamp@
+  dataCahe:
+    ## 设置缓存有效期 秒，2小时
+    expireTime: 7200
+  aliyun:
+    accessKeyId: <accessKeyId>
+    accessKeySecret: <accessKeySecret>
+    oss:
+      endpoint: http://oss-cn-beijing.aliyuncs.com
+      bucketName: renfei
+      downloadBucketName: download-renfei
+      downloadHost: https://download.renfei.net
+    green:
+      regionId: cn-beijing
+  baidu:
+    tongji: <tongji>
+  google:
+    analytics: UA-141370164-1
+    ads: google.com, pub-8859756463807757, DIRECT, f08c47fec0942fa0
+  weChat:
+    appId: <appId>
+    appSecret: <appSecret>
+    token: <token>
+    encodingAESKey: <encodingAESKey>

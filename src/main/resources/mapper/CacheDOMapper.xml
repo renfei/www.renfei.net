@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="net.renfei.repository.CacheDOMapper">
+  <resultMap id="BaseResultMap" type="net.renfei.repository.entity.CacheDO">
+    <id column="uuid" jdbcType="CHAR" property="uuid" />
+    <result column="cache_key" jdbcType="VARCHAR" property="cacheKey" />
+    <result column="expires" jdbcType="TIMESTAMP" property="expires" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="net.renfei.repository.entity.CacheDO">
+    <result column="cache_value" jdbcType="LONGVARCHAR" property="cacheValue" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    uuid, cache_key, expires
+  </sql>
+  <sql id="Blob_Column_List">
+    cache_value
+  </sql>
+  <select id="selectByExampleWithBLOBs" parameterType="net.renfei.repository.entity.CacheDOExample" resultMap="ResultMapWithBLOBs">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from t_cache
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" parameterType="net.renfei.repository.entity.CacheDOExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from t_cache
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from t_cache
+    where uuid = #{uuid,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from t_cache
+    where uuid = #{uuid,jdbcType=CHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="net.renfei.repository.entity.CacheDOExample">
+    delete from t_cache
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="net.renfei.repository.entity.CacheDO">
+    insert into t_cache (uuid, cache_key, expires, 
+      cache_value)
+    values (#{uuid,jdbcType=CHAR}, #{cacheKey,jdbcType=VARCHAR}, #{expires,jdbcType=TIMESTAMP}, 
+      #{cacheValue,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="net.renfei.repository.entity.CacheDO">
+    insert into t_cache
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="uuid != null">
+        uuid,
+      </if>
+      <if test="cacheKey != null">
+        cache_key,
+      </if>
+      <if test="expires != null">
+        expires,
+      </if>
+      <if test="cacheValue != null">
+        cache_value,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="uuid != null">
+        #{uuid,jdbcType=CHAR},
+      </if>
+      <if test="cacheKey != null">
+        #{cacheKey,jdbcType=VARCHAR},
+      </if>
+      <if test="expires != null">
+        #{expires,jdbcType=TIMESTAMP},
+      </if>
+      <if test="cacheValue != null">
+        #{cacheValue,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="net.renfei.repository.entity.CacheDOExample" resultType="java.lang.Long">
+    select count(*) from t_cache
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update t_cache
+    <set>
+      <if test="record.uuid != null">
+        uuid = #{record.uuid,jdbcType=CHAR},
+      </if>
+      <if test="record.cacheKey != null">
+        cache_key = #{record.cacheKey,jdbcType=VARCHAR},
+      </if>
+      <if test="record.expires != null">
+        expires = #{record.expires,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.cacheValue != null">
+        cache_value = #{record.cacheValue,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map">
+    update t_cache
+    set uuid = #{record.uuid,jdbcType=CHAR},
+      cache_key = #{record.cacheKey,jdbcType=VARCHAR},
+      expires = #{record.expires,jdbcType=TIMESTAMP},
+      cache_value = #{record.cacheValue,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update t_cache
+    set uuid = #{record.uuid,jdbcType=CHAR},
+      cache_key = #{record.cacheKey,jdbcType=VARCHAR},
+      expires = #{record.expires,jdbcType=TIMESTAMP}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="net.renfei.repository.entity.CacheDO">
+    update t_cache
+    <set>
+      <if test="cacheKey != null">
+        cache_key = #{cacheKey,jdbcType=VARCHAR},
+      </if>
+      <if test="expires != null">
+        expires = #{expires,jdbcType=TIMESTAMP},
+      </if>
+      <if test="cacheValue != null">
+        cache_value = #{cacheValue,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where uuid = #{uuid,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="net.renfei.repository.entity.CacheDO">
+    update t_cache
+    set cache_key = #{cacheKey,jdbcType=VARCHAR},
+      expires = #{expires,jdbcType=TIMESTAMP},
+      cache_value = #{cacheValue,jdbcType=LONGVARCHAR}
+    where uuid = #{uuid,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="net.renfei.repository.entity.CacheDO">
+    update t_cache
+    set cache_key = #{cacheKey,jdbcType=VARCHAR},
+      expires = #{expires,jdbcType=TIMESTAMP}
+    where uuid = #{uuid,jdbcType=CHAR}
+  </update>
+</mapper>

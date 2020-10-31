@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <!--参数配置-->
+    <properties resource="generator.properties"/>
+    <!--驱动jar-->
+    <classPathEntry location="${classPathEntry}"/>
+
+    <context id="OracleTables" targetRuntime="MyBatis3">
+        <commentGenerator>
+            <property name="suppressDate" value="true"/>
+            <property name="suppressAllComments" value="true" />
+        </commentGenerator>
+        <jdbcConnection driverClass="${driverClass}" connectionURL="${connectionURL}" userId="${userId}"
+                        password="${password}">
+        </jdbcConnection>
+
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+
+        <javaModelGenerator targetPackage="${modelTargetPackage}" targetProject="src/main/java">
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+
+        <sqlMapGenerator targetPackage="${sqlMapTargetPackage}" targetProject="src/main/resources">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+
+        <javaClientGenerator type="XMLMAPPER" targetPackage="${javaClientTargetPackage}" targetProject="src/main/java">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+
+<!--        <table tableName="t_menu" domainObjectName="MenuDO"></table>-->
+<!--        <table tableName="t_link" domainObjectName="LinkDO"></table>-->
+<!--        <table tableName="t_setting" domainObjectName="SettingDO"></table>-->
+<!--        <table tableName="t_posts" domainObjectName="PostsDO"></table>-->
+<!--        <table tableName="t_tag" domainObjectName="TagDO"></table>-->
+<!--        <table tableName="t_tag_relation" domainObjectName="TagRelationDO"></table>-->
+<!--        <table tableName="t_posts_extra" domainObjectName="PostsExtraDO"></table>-->
+<!--        <table tableName="t_download" domainObjectName="DownloadDO"></table>-->
+<!--        <table tableName="t_category" domainObjectName="CategoryDO"></table>-->
+<!--        <table tableName="t_comments" domainObjectName="CommentsDO"></table>-->
+<!--        <table tableName="t_cache" domainObjectName="CacheDO"></table>-->
+<!--        <table tableName="t_type" domainObjectName="TypeDO"></table>-->
+<!--        <table tableName="t_video" domainObjectName="VideoDO"></table>-->
+<!--        <table tableName="t_video_source" domainObjectName="VideoSourceDO"></table>-->
+<!--        <table tableName="t_video_track" domainObjectName="VideoTrackDO"></table>-->
+<!--        <table tableName="t_weibo" domainObjectName="WeiboDO"></table>-->
+<!--        <table tableName="t_photo" domainObjectName="PhotoDO"></table>-->
+<!--        <table tableName="t_photo_img" domainObjectName="PhotoImgDO"></table>-->
+<!--        <table tableName="t_short_url" domainObjectName="ShortUrl"></table>-->
+<!--        <table tableName="t_wechat_keyword" domainObjectName="WechatKeywordDO"></table>-->
+<!--        <table tableName="t_page" domainObjectName="PageDO"></table>-->
+    </context>
+</generatorConfiguration>

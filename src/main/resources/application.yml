@@ -1,0 +1,81 @@
+#############################################
+#               应用配置文件                  #
+#    https://www.renfei.net 极速版           #
+#    author: RenFei(i@renfei.net)           #
+#    Copyright © 2020 RENFEI.NET            #
+#############################################
+
+# Server ####################################
+server:
+  port: 8099
+
+# Spring ####################################
+spring:
+  profiles:
+    ## 运行环境配置
+    active: @activatedProperties@
+  ## 数据库配置
+  datasource:
+    ## druid 配置
+    druid:
+      initial-size: 5
+      max-active: 20
+      min-idle: 1
+      filter:
+        config:
+          enabled: false
+        stat:
+          ## 慢SQL打印
+          log-slow-sql: true
+          slow-sql-millis: 5
+        wall:
+          ## SQL防注入
+          enabled: true
+          db-type: mariadb
+          config:
+            delete-allow: false
+            drop-table-allow: false
+      filters: config,stat,slf4j
+      test-on-borrow: true
+      test-on-return: true
+      test-while-idle: true
+  ## Redis 配置
+  redis:
+    lettuce:
+      pool:
+        ## 连接池最大连接数（使用负值表示没有限制）
+        max-active: 20
+        ## 连接池最大阻塞等待时间（使用负值表示没有限制）
+        max-wait: 10000
+        ## 连接池中的最大空闲连接
+        max-idle: 10
+        ## 连接池中的最小空闲连接
+        min-idle: 0
+    ## 连接超时时间（毫秒）
+    timeout: 1200
+  ## freemarker 配置
+  freemarker:
+    template-loader-path: classpath:/templates
+    charset: UTF-8
+    check-template-location: true
+    content-type: text/html
+    expose-request-attributes: true
+    expose-session-attributes: true
+    request-context-attribute: request
+    suffix: .ftl
+  ## jackson 配置
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: Asia/Shanghai
+
+# MyBatis ###################################
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  configuration:
+    ## 开启驼峰命名
+    map-underscore-to-camel-case: true
+pagehelper:
+  helperDialect: mysql
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql

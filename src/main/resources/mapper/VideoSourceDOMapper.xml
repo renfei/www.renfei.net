@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="net.renfei.repository.VideoSourceDOMapper">
+  <resultMap id="BaseResultMap" type="net.renfei.repository.entity.VideoSourceDO">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="video_id" jdbcType="BIGINT" property="videoId" />
+    <result column="video_size" jdbcType="INTEGER" property="videoSize" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="net.renfei.repository.entity.VideoSourceDOWithBLOBs">
+    <result column="video_type" jdbcType="LONGVARCHAR" property="videoType" />
+    <result column="video_src" jdbcType="LONGVARCHAR" property="videoSrc" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, video_id, video_size
+  </sql>
+  <sql id="Blob_Column_List">
+    video_type, video_src
+  </sql>
+  <select id="selectByExampleWithBLOBs" parameterType="net.renfei.repository.entity.VideoSourceDOExample" resultMap="ResultMapWithBLOBs">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from t_video_source
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" parameterType="net.renfei.repository.entity.VideoSourceDOExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from t_video_source
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from t_video_source
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from t_video_source
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="net.renfei.repository.entity.VideoSourceDOExample">
+    delete from t_video_source
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="net.renfei.repository.entity.VideoSourceDOWithBLOBs">
+    insert into t_video_source (id, video_id, video_size, 
+      video_type, video_src)
+    values (#{id,jdbcType=BIGINT}, #{videoId,jdbcType=BIGINT}, #{videoSize,jdbcType=INTEGER}, 
+      #{videoType,jdbcType=LONGVARCHAR}, #{videoSrc,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="net.renfei.repository.entity.VideoSourceDOWithBLOBs">
+    insert into t_video_source
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="videoId != null">
+        video_id,
+      </if>
+      <if test="videoSize != null">
+        video_size,
+      </if>
+      <if test="videoType != null">
+        video_type,
+      </if>
+      <if test="videoSrc != null">
+        video_src,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="videoId != null">
+        #{videoId,jdbcType=BIGINT},
+      </if>
+      <if test="videoSize != null">
+        #{videoSize,jdbcType=INTEGER},
+      </if>
+      <if test="videoType != null">
+        #{videoType,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="videoSrc != null">
+        #{videoSrc,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="net.renfei.repository.entity.VideoSourceDOExample" resultType="java.lang.Long">
+    select count(*) from t_video_source
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update t_video_source
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=BIGINT},
+      </if>
+      <if test="record.videoId != null">
+        video_id = #{record.videoId,jdbcType=BIGINT},
+      </if>
+      <if test="record.videoSize != null">
+        video_size = #{record.videoSize,jdbcType=INTEGER},
+      </if>
+      <if test="record.videoType != null">
+        video_type = #{record.videoType,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="record.videoSrc != null">
+        video_src = #{record.videoSrc,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map">
+    update t_video_source
+    set id = #{record.id,jdbcType=BIGINT},
+      video_id = #{record.videoId,jdbcType=BIGINT},
+      video_size = #{record.videoSize,jdbcType=INTEGER},
+      video_type = #{record.videoType,jdbcType=LONGVARCHAR},
+      video_src = #{record.videoSrc,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update t_video_source
+    set id = #{record.id,jdbcType=BIGINT},
+      video_id = #{record.videoId,jdbcType=BIGINT},
+      video_size = #{record.videoSize,jdbcType=INTEGER}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="net.renfei.repository.entity.VideoSourceDOWithBLOBs">
+    update t_video_source
+    <set>
+      <if test="videoId != null">
+        video_id = #{videoId,jdbcType=BIGINT},
+      </if>
+      <if test="videoSize != null">
+        video_size = #{videoSize,jdbcType=INTEGER},
+      </if>
+      <if test="videoType != null">
+        video_type = #{videoType,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="videoSrc != null">
+        video_src = #{videoSrc,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="net.renfei.repository.entity.VideoSourceDOWithBLOBs">
+    update t_video_source
+    set video_id = #{videoId,jdbcType=BIGINT},
+      video_size = #{videoSize,jdbcType=INTEGER},
+      video_type = #{videoType,jdbcType=LONGVARCHAR},
+      video_src = #{videoSrc,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="net.renfei.repository.entity.VideoSourceDO">
+    update t_video_source
+    set video_id = #{videoId,jdbcType=BIGINT},
+      video_size = #{videoSize,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
