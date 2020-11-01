@@ -46,8 +46,8 @@ public class GlobalService extends BaseService {
             {
                 this.add("https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css");
                 this.add("https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css");
-                this.add("https://cdn.renfei.net/thunder/css/bs4.pop.css");
-                this.add("https://cdn.renfei.net/thunder/css/style.css");
+                this.add("https://cdn.renfei.net/thunder/css/bs4.pop.css?ver=" + renFeiConfig.getBuildTime());
+                this.add("https://cdn.renfei.net/thunder/css/style.css?ver=" + renFeiConfig.getBuildTime());
             }
         });
         return headVO;
@@ -101,8 +101,8 @@ public class GlobalService extends BaseService {
                 this.add("https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js");
                 this.add("https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js");
                 this.add("https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js");
-                this.add("https://cdn.renfei.net/thunder/js/bs4.pop.js");
-                this.add("https://cdn.renfei.net/thunder/js/main.js");
+                this.add("https://cdn.renfei.net/thunder/js/bs4.pop.js?ver=" + renFeiConfig.getBuildTime());
+                this.add("https://cdn.renfei.net/thunder/js/main.js?ver=" + renFeiConfig.getBuildTime());
                 this.add("https://www.googletagmanager.com/gtag/js?id=" + renFeiConfig.getGoogle().getAnalytics());
                 this.add("https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js");
             }
