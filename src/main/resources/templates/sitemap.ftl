@@ -1,6 +1,6 @@
 <@compress single_line=true>
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="http://localhost:8099/sitemap.xsl"?>
+<?xml-stylesheet type="text/xsl" href="https://www.renfei.net/sitemap.xsl"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <#if data??>
         <#list data as info>

@@ -53,7 +53,7 @@ public class PostsController extends BaseController {
     public ModelAndView getPostList(ModelAndView mv,
                                     @RequestParam(value = "page", required = false) String page) {
         ListData<PostsDOWithBLOBs> postsDOWithBLOBsListData = postService.getAllPost(page, "15");
-        mv.addObject("title", "Home");
+        mv.addObject("title", "任霏博客 - " + renFeiConfig.getSiteName());
         mv.addObject("catTitle", "全部文档");
         mv.addObject("lists", postsDOWithBLOBsListData.getData());
         mv.addObject("PostSidebar", postService.getPostSidebar());

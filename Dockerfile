@@ -9,6 +9,9 @@ RUN set -ex; \
 	if ! which dnsutils; then \
     	apt-get install -y --no-install-recommends dnsutils; \
     fi; \
+    if ! which ntp; then \
+            apt-get install -y --no-install-recommends ntp; \
+    fi; \
     if ! which whois; then \
         apt-get install -y --no-install-recommends whois; \
     fi; \

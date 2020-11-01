@@ -4,6 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import net.renfei.base.BaseService;
 import net.renfei.sdk.comm.StateCode;
 import net.renfei.sdk.entity.APIResult;
+import net.renfei.sdk.utils.BeanUtils;
 import net.renfei.sdk.utils.StringUtils;
 import org.springframework.stereotype.Service;
 
@@ -46,7 +47,28 @@ public class DomainNameService extends BaseService {
     public APIResult<String> execWhois(String domain) {
         if (StringUtils.isDomain(domain)) {
             try {
-                return new APIResult(execCmdService.execCmd("whois " + domain.trim()));
+                String result = execCmdService.execCmd("whois -I -H " + domain.trim());
+                StringBuilder whoisInfo = new StringBuilder();
+                if (!BeanUtils.isEmpty(result)) {
+                    String[] infos = result.split("\n");
+                    boolean start = false;
+                    for (String info : infos
+                    ) {
+                        if (info.startsWith("   ")) {
+                            info = info.replace("   ", "");
+                        }
+                        if (info.startsWith("Domain Name")) {
+                            start = true;
+                        }
+                        if (info.startsWith(">>> ")) {
+                            start = false;
+                        }
+                        if (start) {
+                            whoisInfo.append(info).append("\n");
+                        }
+                    }
+                }
+                return new APIResult(whoisInfo.toString());
             } catch (IOException e) {
                 log.error(e.getMessage(), e);
                 return APIResult.builder()

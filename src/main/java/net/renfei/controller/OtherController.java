@@ -9,6 +9,7 @@ import net.renfei.sdk.comm.StateCode;
 import net.renfei.sdk.entity.APIResult;
 import net.renfei.sdk.utils.BeanUtils;
 import net.renfei.sdk.utils.DateUtils;
+import net.renfei.sdk.utils.GoogleAuthenticator;
 import net.renfei.service.*;
 import net.renfei.service.aliyun.AliyunOSS;
 import org.springframework.stereotype.Controller;
@@ -35,15 +36,19 @@ import java.util.Map;
 public class OtherController extends BaseController {
     private final AliyunOSS aliyunOSS;
     private final CacheService cacheService;
+    private final SearchService searchService;
 
     protected OtherController(RenFeiConfig renFeiConfig,
                               GlobalService globalService,
                               PaginationService paginationService,
                               CommentsService commentsService,
-                              AliyunOSS aliyunOSS, CacheService cacheService) {
+                              AliyunOSS aliyunOSS,
+                              CacheService cacheService,
+                              SearchService searchService) {
         super(renFeiConfig, globalService, commentsService, paginationService);
         this.aliyunOSS = aliyunOSS;
         this.cacheService = cacheService;
+        this.searchService = searchService;
     }
 
     /**
@@ -151,6 +156,20 @@ public class OtherController extends BaseController {
             return APIResult.builder()
                     .code(StateCode.Failure)
                     .message("授权码不存在或者已过期，请重新获取")
+                    .build();
+        }
+    }
+
+    @GetMapping("cleanSearchEngine")
+    @ResponseBody
+    public APIResult cleanSearchEngine(@RequestParam("totp") String totp) {
+        if (GoogleAuthenticator.authcode(totp, renFeiConfig.getTotpSecret())) {
+            searchService.deleteAll();
+            return APIResult.success();
+        } else {
+            return APIResult.builder()
+                    .code(StateCode.Unauthorized)
+                    .message(StateCode.Unauthorized.getDescribe())
                     .build();
         }
     }

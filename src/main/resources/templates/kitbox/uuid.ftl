@@ -67,12 +67,14 @@
                                     <footer>接口详细参数请参考接口文档</footer>
                                 </blockquote>
                             </div>
-                            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8859756463807757"
-                                 data-ad-slot="3646319863" data-ad-format="auto"
-                                 data-full-width-responsive="true"></ins>
-                            <script>
-                                (adsbygoogle = window.adsbygoogle || []).push({});
-                            </script>
+                            <div class="d-none d-sm-block">
+                                <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8859756463807757"
+                                     data-ad-slot="3646319863" data-ad-format="auto"
+                                     data-full-width-responsive="true"></ins>
+                                <script>
+                                    (adsbygoogle = window.adsbygoogle || []).push({});
+                                </script>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -108,7 +110,7 @@
                     timeout: 60000,
                     dataType: 'json',
                     success: function (data, textStatus, jqXHR) {
-                        if (data.code===200) {
+                        if (data.code === 200) {
                             var str = "";
                             for (var i = 0; i < data.data.length; i++) {
                                 str += data.data[i] + "\n";
@@ -116,12 +118,12 @@
                             $("#data").val(str);
                         } else {
                             $("#data").val("Error.\n" + data.message);
-                            msg(data.message,"error");
+                            msg(data.message, "error");
                         }
                     },
                     error: function (xhr, textStatus) {
                         $("#data").val("Error.\n" + xhr.responseText);
-                        msg(xhr.responseText,"error");
+                        msg(xhr.responseText, "error");
                     }
                 })
             }

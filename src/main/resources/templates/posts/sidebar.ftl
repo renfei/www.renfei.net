@@ -18,7 +18,7 @@
         <#if sidebarVO.postSidebars?? && (sidebarVO.postSidebars?size > 0)>
             <#list sidebarVO.postSidebars as postSidebar>
                 <#if postSidebar.title == "标签云">
-                    <div class="list-group mb-1">
+                    <div class="list-group mb-2">
                         <a class="list-group-item list-group-item-action active">
                             ${postSidebar.title!}
                         </a>
@@ -36,7 +36,7 @@
                         </#if>
                     </div>
                 <#else>
-                    <div class="list-group mb-1">
+                    <div class="list-group mb-2">
                         <a class="list-group-item list-group-item-action active">
                             ${postSidebar.title!}
                         </a>
@@ -49,11 +49,13 @@
                     </div>
                 </#if>
                 <#if postSidebar_index ==0 || postSidebar_index == 1>
-                    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8859756463807757"
-                         data-ad-slot="4995060553" data-ad-format="auto" data-full-width-responsive="true"></ins>
-                    <script>
-                        (adsbygoogle = window.adsbygoogle || []).push({});
-                    </script>
+                    <div class="d-none d-sm-block mb-2">
+                        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8859756463807757"
+                             data-ad-slot="4995060553" data-ad-format="auto" data-full-width-responsive="true"></ins>
+                        <script>
+                            (adsbygoogle = window.adsbygoogle || []).push({});
+                        </script>
+                    </div>
                 </#if>
             </#list>
         </#if>

@@ -57,12 +57,5 @@ jobs:
           git clone https://cd-robot:${{ CD_ROBOT_TOKEN }}@github.com/Private-Repository/config.renfei.net.git && \
           cp ./config.renfei.net/application-prod.yml ./src/main/resources/
 
-      - name: Downlaod IP Database
-        run: |
-          mkdir src/main/resources/data && \
-          cd src/main/resources/data && \
-          wget -P ./src/main/resources/data https://cdn.renfei.net/data/IPDATA.BIN && \
-          wget -P ./src/main/resources/data https://cdn.renfei.net/data/IPDATA.IPV6.BIN
-
       - name: Build And Push Docker Image
         run: ./build_push.sh "${{ DOCKER_REGISTRY_PASSWORD }}"

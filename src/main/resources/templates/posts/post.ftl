@@ -69,11 +69,13 @@
                     </#if>
                 </div>
             </div>
-            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8859756463807757"
-                 data-ad-slot="3646319863" data-ad-format="auto" data-full-width-responsive="true"></ins>
-            <script>
-                (adsbygoogle = window.adsbygoogle || []).push({});
-            </script>
+            <div class="d-none d-sm-block mb-2">
+                <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8859756463807757"
+                     data-ad-slot="3646319863" data-ad-format="auto" data-full-width-responsive="true"></ins>
+                <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
             <div class="row py-2">
                 <div class="col-12">
                     <div class="card" style="width: 100%;">
@@ -127,6 +129,7 @@
 <@footer footerVO performance_execTimeTotal performance_execCountTotal>
     <script type="application/ld+json">
             ${jsonld}
+
     </script>
     <script type='text/javascript' charset="UTF-8" src="//cdn.renfei.net/js/lightbox.min.js?v=20200506135243"
             async></script>

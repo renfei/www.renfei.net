@@ -25,7 +25,8 @@
                                     <label for="staticEmail" class="col-sm-2 col-form-label">URL:</label>
                                     <div class="col-sm-10">
                                         <div class="input-group mb-2 mr-sm-2">
-                                            <input type="text" class="form-control" value="http://www.renfei.net/" id="quantityNumber">
+                                            <input type="text" class="form-control" value="http://www.renfei.net/"
+                                                   id="quantityNumber">
                                             <div class="input-group-prepend">
                                                 <div class="btn btn-primary" onclick="generate()">16进制加密</div>
                                             </div>
@@ -48,12 +49,14 @@
                                     </blockquote>
                                 </div>
                             </div>
-                            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8859756463807757"
-                                 data-ad-slot="3646319863" data-ad-format="auto"
-                                 data-full-width-responsive="true"></ins>
-                            <script>
-                                (adsbygoogle = window.adsbygoogle || []).push({});
-                            </script>
+                            <div class="d-none d-sm-block">
+                                <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8859756463807757"
+                                     data-ad-slot="3646319863" data-ad-format="auto"
+                                     data-full-width-responsive="true"></ins>
+                                <script>
+                                    (adsbygoogle = window.adsbygoogle || []).push({});
+                                </script>
+                            </div>
                         </div>
                     </div>
                 </div>

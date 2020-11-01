@@ -44,14 +44,16 @@ public class IpService extends BaseService {
     private IP2Location ip2LocationV6;
     protected final RenFeiConfig renFeiConfig;
 
-    public IpService(RenFeiConfig renFeiConfig) throws IOException {
+    public IpService(RenFeiConfig renFeiConfig) {
         this.renFeiConfig = renFeiConfig;
-        ClassPathResource resourceV4 = new ClassPathResource(renFeiConfig.getIpv4DataPath());
-        ClassPathResource resourceV6 = new ClassPathResource(renFeiConfig.getIpv6DataPath());
-        this.ip2LocationV4 = new IP2Location();
-        this.ip2LocationV4.IPDatabasePath = resourceV4.getPath();
-        this.ip2LocationV6 = new IP2Location();
-        this.ip2LocationV6.IPDatabasePath = resourceV6.getPath();
+        if (!BeanUtils.isEmpty(renFeiConfig.getIpv4DataPath())) {
+            this.ip2LocationV4 = new IP2Location();
+            this.ip2LocationV4.IPDatabasePath = renFeiConfig.getIpv4DataPath();
+        }
+        if (!BeanUtils.isEmpty(renFeiConfig.getIpv6DataPath())) {
+            this.ip2LocationV6 = new IP2Location();
+            this.ip2LocationV6.IPDatabasePath = renFeiConfig.getIpv6DataPath();
+        }
     }
 
     @Cacheable

@@ -50,9 +50,10 @@ renfei:
   siteName: 任霏博客
   domain: http://localhost:8099
   staticDomain: cdn.renfei.net
-  ipv4DataPath: data/IPDATA.BIN
-  ipv6DataPath: data/IPDATA.IPV6.BIN
+  ipv4DataPath: /opt/RenFeiNet/IPDATA.BIN
+  ipv6DataPath: /opt/RenFeiNet/IPDATA.IPV6.BIN
   buildTime: @buildtimestamp@
+  totpSecret: <totpSecret>
   dataCahe:
     ## 设置缓存有效期 秒，2小时
     expireTime: 7200

@@ -22,6 +22,7 @@ public class RenFeiConfig {
     private String ipv4DataPath;
     private String ipv6DataPath;
     private String buildTime;
+    private String totpSecret;
     private Aliyun aliyun;
     private Baidu baidu;
     private Google google;
