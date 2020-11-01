@@ -3,7 +3,7 @@
     <!DOCTYPE html>
     <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" lang="zh-CN" dir="ltr" prefix="og: http://ogp.me/ns#">
     <@head headVO,title>
-        <link href="/css/timeline.css" rel="stylesheet" type="text/css"/>
+        <link href="https://cdn.renfei.net/thunder/css/timeline.css" rel="stylesheet" type="text/css"/>
     </@head>
     <body>
     <@header headerVO>
@@ -65,7 +65,7 @@
         <div class="row mt-5">
             <div class="col-md-4">
                 <div class="card mb-2">
-                    <img src="/img/renfei.net.jpg" class="card-img-top"
+                    <img src="https://cdn.renfei.net/thunder/img/renfei.net.jpg" class="card-img-top"
                          alt="任霏的个人博客">
                     <div class="card-body">
                         <h5 class="card-title">任霏的个人博客</h5>

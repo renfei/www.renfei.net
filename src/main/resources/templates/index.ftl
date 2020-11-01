@@ -63,7 +63,7 @@
                                     </div>
 
                                     <div class="illustration">
-                                        <img src="/img/developer_toolkit_icon.png" alt="开发工具箱"
+                                        <img src="https://cdn.renfei.net/thunder/img/developer_toolkit_icon.png" alt="开发工具箱"
                                              style="margin-top: 38px;"/>
                                     </div>
                                 </div>
@@ -95,7 +95,7 @@
                                     </div>
 
                                     <div class="illustration">
-                                        <img src="/img/maven-logo-black-on-white.png" alt="Maven仓库"
+                                        <img src="https://cdn.renfei.net/thunder/img/maven-logo-black-on-white.png" alt="Maven仓库"
                                              style="margin-top: 38px;"/>
                                     </div>
                                 </div>
@@ -288,9 +288,9 @@
         </div>
     </div>
     <@footer footerVO performance_execTimeTotal performance_execCountTotal>
-        <script src="/js/gsap-latest-beta.min.js"></script>
-        <script src="/js/CSSRulePlugin3.min.js"></script>
-        <script src="/js/banner.js"></script>
+        <script src="https://cdn.renfei.net/thunder/js/gsap-latest-beta.min.js"></script>
+        <script src="https://cdn.renfei.net/thunder/js/CSSRulePlugin3.min.js"></script>
+        <script src="https://cdn.renfei.net/thunder/js/banner.js"></script>
         <script type="application/ld+json">
             {
                 "@context": "http://schema.org/",

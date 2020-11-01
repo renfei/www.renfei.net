@@ -593,7 +593,7 @@ body {
     background-color: rgb(199,198,193);
 }
 .developer-toolkit-banner .developer-toolkit-banner-left{
-    background-image: url("/img/developer_toolkit.jpg");
+    background-image: url("https://cdn.renfei.net/thunder/img/developer_toolkit.jpg");
     background-position: center center;
     background-size: contain;
     background-repeat: no-repeat;
@@ -603,7 +603,7 @@ body {
     background-color: #f2f2f2;
 }
 .maven-banner .maven-banner-left{
-    background-image: url("/img/maven-logo-black-on-white.png");
+    background-image: url("https://cdn.renfei.net/thunder/img/maven-logo-black-on-white.png");
     background-position: center center;
     background-size: contain;
     background-repeat: no-repeat;
