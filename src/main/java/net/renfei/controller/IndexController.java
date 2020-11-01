@@ -3,6 +3,7 @@ package net.renfei.controller;
 import lombok.extern.slf4j.Slf4j;
 import net.renfei.base.BaseController;
 import net.renfei.config.RenFeiConfig;
+import net.renfei.entity.FooterVO;
 import net.renfei.entity.OGprotocol;
 import net.renfei.entity.SiteMapXml;
 import net.renfei.service.*;
@@ -20,6 +21,7 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 /**
  * <p>Title: IndexController</p>
@@ -54,6 +56,10 @@ public class IndexController extends BaseController {
     public ModelAndView index(ModelAndView mv) {
         mv.addObject("posts", postService.getAllPost("1", "15").getData());
         mv.addObject("title", "任霏博客 - The RenFei Blog");
+        Map<String, Object> models = mv.getModel();
+        FooterVO footerVO = (FooterVO) models.get(FOOTER_KEY);
+        footerVO.setShowFriendlyLink(true);
+        mv.addObject(FOOTER_KEY, footerVO);
         OGprotocol opg = new OGprotocol();
         opg.setType("blog");
         opg.setAuthor("任霏");

@@ -94,6 +94,7 @@ public class GlobalService extends BaseService {
         FooterVO footerVO = new FooterVO();
         footerVO.setVersion(renFeiConfig.getVersion());
         footerVO.setBuildTime(renFeiConfig.getBuildTime());
+        footerVO.setShowFriendlyLink(null);
         footerVO.setJss(new ArrayList<String>() {
             {
                 this.add("https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js");

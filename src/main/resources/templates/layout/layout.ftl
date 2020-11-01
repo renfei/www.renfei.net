@@ -106,7 +106,8 @@
                                     <option value="kitbox">工具箱</option>
                                 </select>
                             </div>
-                            <input type="text" class="form-control form-control-sm btn-dark" placeholder="搜索一下，发现更多" name="w"
+                            <input type="text" class="form-control form-control-sm btn-dark" placeholder="搜索一下，发现更多"
+                                   name="w"
                                    aria-label="搜索一下，发现更多" aria-describedby="button-search">
                             <div class="input-group-append">
                                 <button class="btn btn-dark btn-sm" type="submit" id="button-search">搜索</button>
@@ -146,25 +147,27 @@
                         </div>
                     </#list>
                 </div>
-                <div class="row" style="margin-top: 20px;">
-                    <div class="col-12 text-left">
-                        <ul class="footer-menu-ul">
-                            <li class="float-left">
-                                <a href="javascipt:void(0)">
-                                    <small class="text-muted small">友情链接：</small>
-                                </a>
-                            </li>
-                            <#list footerVO.friendlyLink! as friendlyLink>
+                <#if footerVO.showFriendlyLink??>
+                    <div class="row" style="margin-top: 20px;">
+                        <div class="col-12 text-left">
+                            <ul class="footer-menu-ul">
                                 <li class="float-left">
-                                    <a href="${friendlyLink.href!}" target="${friendlyLink.target!}"
-                                       rel="${friendlyLink.rel!}" style="${friendlyLink.style!}">
-                                        <small class="text-muted small">${friendlyLink.text!}</small>
+                                    <a href="javascipt:void(0)">
+                                        <small class="text-muted small">友情链接：</small>
                                     </a>
                                 </li>
-                            </#list>
-                        </ul>
+                                <#list footerVO.friendlyLink! as friendlyLink>
+                                    <li class="float-left">
+                                        <a href="${friendlyLink.href!}" target="${friendlyLink.target!}"
+                                           rel="${friendlyLink.rel!}" style="${friendlyLink.style!}">
+                                            <small class="text-muted small">${friendlyLink.text!}</small>
+                                        </a>
+                                    </li>
+                                </#list>
+                            </ul>
+                        </div>
                     </div>
-                </div>
+                </#if>
                 <div class="row" style="margin-top: 10px;">
                     <div class="col-12 text-right">
                         <ul class="footer-menu-ul">

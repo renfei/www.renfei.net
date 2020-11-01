@@ -15,6 +15,7 @@ public class FooterVO {
     private List<String> jss;
     private String jsText;
     private List<LinkVO> smallMenu;
+    private Boolean showFriendlyLink;
     private List<LinkVO> friendlyLink;
     private List<FooterMenuVO> footerMenus;
     private String version;
