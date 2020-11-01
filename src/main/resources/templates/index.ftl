@@ -9,7 +9,7 @@
     <@header headerVO>
 
     </@header>
-    <div style="background-color: #000000;">
+    <div class="d-none d-sm-block" style="background-color: #000000;">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12" style="padding-left: 0;padding-right: 0;">

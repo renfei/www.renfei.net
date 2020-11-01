@@ -90,7 +90,7 @@
 
             function generate() {
                 $.ajax({
-                    url: 'http://ip.renfei.net',
+                    url: 'https://ip.renfei.net',
                     type: 'GET',
                     async: true,
                     timeout: 60000,
