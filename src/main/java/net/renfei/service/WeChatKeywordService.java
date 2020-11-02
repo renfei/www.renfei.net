@@ -2,6 +2,7 @@ package net.renfei.service;
 
 import com.alibaba.fastjson.JSON;
 import net.renfei.base.BaseService;
+import net.renfei.config.RenFeiConfig;
 import net.renfei.entity.ListData;
 import net.renfei.entity.SearchItem;
 import net.renfei.repository.WechatKeywordDOMapper;
@@ -22,15 +23,18 @@ import java.util.List;
 
 @Service
 public class WeChatKeywordService extends BaseService {
+    private final RenFeiConfig renFeiConfig;
     private final CacheService cacheService;
     private final SearchService searchService;
     private final DownloadService downloadService;
     private final WechatKeywordDOMapper wechatKeywordDOMapper;
 
-    public WeChatKeywordService(CacheService cacheService,
+    public WeChatKeywordService(RenFeiConfig renFeiConfig,
+                                CacheService cacheService,
                                 SearchService searchService,
                                 DownloadService downloadService,
                                 WechatKeywordDOMapper wechatKeywordDOMapper) {
+        this.renFeiConfig = renFeiConfig;
         this.cacheService = cacheService;
         this.searchService = searchService;
         this.downloadService = downloadService;
@@ -97,7 +101,8 @@ public class WeChatKeywordService extends BaseService {
                 String desc = StringUtils.delHtmlTags(content);
                 articlesItem.setDescription(sub(desc));
                 articlesItem.setPicUrl(indexDO.getImage());
-                articlesItem.setUrl(indexDO.getUrl());
+                // articlesItem.setUrl(indexDO.getUrl());
+                articlesItem.setUrl(renFeiConfig.getDomain() + "/search?type=all&w=" + content);
                 item.add(articlesItem);
             }
             newsMessage.setArticles(item);
