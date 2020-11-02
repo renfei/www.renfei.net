@@ -3,6 +3,7 @@ package net.renfei.controller.api;
 import com.alibaba.fastjson.JSON;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import lombok.extern.slf4j.Slf4j;
 import net.renfei.base.BaseController;
 import net.renfei.config.RenFeiConfig;
 import net.renfei.entity.IpInfoDTO;
@@ -26,6 +27,7 @@ import java.util.UUID;
  *
  * @author RenFei(i @ renfei.net)
  */
+@Slf4j
 @RestController
 @Api(value = "开放接口", tags = "开放接口")
 @RequestMapping("/api")
@@ -125,17 +127,25 @@ public class APIController extends BaseController {
         freemarker.cache.StringTemplateLoader templateLoader = new freemarker.cache.StringTemplateLoader();
         configuration.setTemplateLoader(templateLoader);
         configuration.setDefaultEncoding("UTF-8");
+        APIResult<String> apiResult;
         try {
             freemarker.template.Template template = new freemarker.template.Template("freemarkerTest", ftl, configuration);
             StringWriter stringWriter = new StringWriter();
             Object object = JSON.parseObject(beanJson, Object.class);
             template.process(object, stringWriter);
-            return new APIResult(stringWriter.toString());
+            apiResult = APIResult.builder()
+                    .code(StateCode.OK)
+                    .message("")
+                    .data(stringWriter.toString())
+                    .build();
         } catch (Exception ex) {
-            return APIResult.builder()
+            log.debug(ex.getMessage());
+            apiResult = APIResult.builder()
                     .code(StateCode.Error)
-                    .message(ex.getMessage())
+                    .message("")
+                    .data(ex.getMessage())
                     .build();
         }
+        return apiResult;
     }
 }
