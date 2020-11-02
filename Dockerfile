@@ -21,6 +21,6 @@ RUN mkdir -p /opt/RenFeiNet/log;
 
 COPY target/RENFEI.NET.jar /app/
 
-ENTRYPOINT ["java","-Xms128M","-Xmx512M","-XX:+UseCompressedOops","-XX:+UseConcMarkSweepGC","-XX:SoftRefLRUPolicyMSPerMB=50","-Dfile.encoding=UTF-8","-Xverify:none","-jar","/app/RENFEI.NET.jar"]
+ENTRYPOINT ["java","-Xms128M","-Xmx512M","-XX:+UseCompressedOops","-XX:+UseConcMarkSweepGC","-XX:SoftRefLRUPolicyMSPerMB=50","-Dfile.encoding=UTF-8","-Xverify:none","-Ddruid.mysql.usePingMethod=false","-jar","/app/RENFEI.NET.jar"]
 
 EXPOSE 8099
