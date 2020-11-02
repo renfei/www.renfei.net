@@ -142,7 +142,7 @@ public class APIController extends BaseController {
             log.debug(ex.getMessage());
             apiResult = APIResult.builder()
                     .code(StateCode.Error)
-                    .message("")
+                    .message(ex.getMessage())
                     .data(ex.getMessage())
                     .build();
         }

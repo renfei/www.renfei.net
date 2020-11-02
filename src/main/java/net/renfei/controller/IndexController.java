@@ -95,6 +95,12 @@ public class IndexController extends BaseController {
     }
 
     @ResponseBody
+    @RequestMapping(value = "HealthCheck", produces = "text/plain")
+    public String HealthCheck() {
+        return "0";
+    }
+
+    @ResponseBody
     @RequestMapping(value = "ads.txt", produces = "text/plain")
     public String getGoogleAds() throws NoHandlerFoundException {
         String ads;

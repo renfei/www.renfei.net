@@ -15,13 +15,16 @@ RUN set -ex; \
     if ! which whois; then \
         apt-get install -y --no-install-recommends whois; \
     fi; \
+    if ! which curl; then \
+    		apt-get install -y --no-install-recommends curl; \
+    fi; \
     rm -rf /var/lib/apt/lists/*
 
 RUN mkdir -p /opt/RenFeiNet/log;
 
 COPY target/RENFEI.NET.jar /app/
 
-HEALTHCHECK --start-period=30s --interval=5m --timeout=10s CMD curl -f http://127.0.0.1:8099/ || exit 1
+HEALTHCHECK --interval=10s --timeout=3s CMD curl -f http://localhost:8099/HealthCheck || exit 1
 
 ENTRYPOINT ["java","-Xms128M","-Xmx512M","-XX:+UseCompressedOops","-XX:+UseConcMarkSweepGC","-XX:SoftRefLRUPolicyMSPerMB=50","-Dfile.encoding=UTF-8","-Xverify:none","-Ddruid.mysql.usePingMethod=false","-jar","/app/RENFEI.NET.jar"]
 
