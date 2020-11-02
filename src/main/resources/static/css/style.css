@@ -576,7 +576,7 @@ body {
     background: linear-gradient(to bottom, #eaeaea 0%, #fafafa 100%);
 }
 .about-banner .about-img{
-    background-image: url(/img/renfei.png);
+    background-image: url(https://cdn.renfei.net/thunder/img/renfei.png);
     height: 400px;
     background-repeat: no-repeat;
     background-position: right bottom;
