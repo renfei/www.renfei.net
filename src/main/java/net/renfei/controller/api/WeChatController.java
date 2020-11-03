@@ -1,8 +1,12 @@
 package net.renfei.controller.api;
 
 import lombok.extern.slf4j.Slf4j;
+import net.renfei.annotation.SystemLog;
 import net.renfei.base.BaseController;
 import net.renfei.config.RenFeiConfig;
+import net.renfei.entity.LogLevel;
+import net.renfei.entity.LogModule;
+import net.renfei.entity.LogType;
 import net.renfei.sdk.utils.WeChatUtils;
 import net.renfei.service.CommentsService;
 import net.renfei.service.GlobalService;
@@ -40,17 +44,18 @@ public class WeChatController extends BaseController {
     /**
      * 验证消息是否来自微信官方服务器
      *
-     * @param signature   微信加密签名
-     * @param echostr     随机字符串
-     * @param timestamp   时间戳
-     * @param nonce       随机数
+     * @param signature 微信加密签名
+     * @param echostr   随机字符串
+     * @param timestamp 时间戳
+     * @param nonce     随机数
      * @return
      */
     @GetMapping("access")
-    public String checkWxMsg(@RequestParam("signature")  String signature,
-                             @RequestParam("timestamp")  String timestamp,
-                             @RequestParam("nonce")  String nonce,
-                             @RequestParam("echostr")  String echostr) {
+    @SystemLog(logLevel = LogLevel.INFO, logModule = LogModule.WECHAT, logType = LogType.GET, logDesc = "验证消息是否来自微信官方服务器")
+    public String checkWxMsg(@RequestParam("signature") String signature,
+                             @RequestParam("timestamp") String timestamp,
+                             @RequestParam("nonce") String nonce,
+                             @RequestParam("echostr") String echostr) {
         WeChatUtils weChatUtils = new WeChatUtils();
         //判断加密后的字符串是否与微信的签名一致
         if (weChatUtils.checkWeChat(signature, echostr, timestamp, nonce, renFeiConfig.getWeChat().getToken())) {
@@ -62,6 +67,7 @@ public class WeChatController extends BaseController {
     }
 
     @PostMapping("access")
+    @SystemLog(logLevel = LogLevel.INFO, logModule = LogModule.WECHAT, logType = LogType.GET, logDesc = "来自微信公众号的消息")
     public String getWeiXinMessage(HttpServletRequest request, HttpServletResponse response) throws UnsupportedEncodingException {
         // 微信服务器POST消息时用的是UTF-8编码，在接收时也要用同样的编码，否则中文会乱码；
         request.setCharacterEncoding("UTF-8");

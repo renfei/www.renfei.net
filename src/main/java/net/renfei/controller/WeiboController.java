@@ -1,10 +1,9 @@
 package net.renfei.controller;
 
+import net.renfei.annotation.SystemLog;
 import net.renfei.base.BaseController;
 import net.renfei.config.RenFeiConfig;
-import net.renfei.entity.OGprotocol;
-import net.renfei.entity.WeiboDOS;
-import net.renfei.entity.WeiboDTO;
+import net.renfei.entity.*;
 import net.renfei.repository.entity.WeiboDO;
 import net.renfei.service.*;
 import org.springframework.beans.BeanUtils;
@@ -39,6 +38,7 @@ public class WeiboController extends BaseController {
     }
 
     @RequestMapping("")
+    @SystemLog(logLevel = LogLevel.INFO, logModule = LogModule.CMS, logType = LogType.GET, logDesc = "获取微博列表页面")
     public ModelAndView weibo(@RequestParam(value = "page", required = false) String page,
                               ModelAndView mv) {
         WeiboDTO weiboDTO = weiboService.getAllPosts(page, "10");
@@ -51,6 +51,7 @@ public class WeiboController extends BaseController {
     }
 
     @RequestMapping("{id}")
+    @SystemLog(logLevel = LogLevel.INFO, logModule = LogModule.CMS, logType = LogType.GET, logDesc = "获取微博详情页面")
     public ModelAndView getPostsByID(@PathVariable("id") String id, ModelAndView mv) throws NoHandlerFoundException {
         WeiboDO weiboDO = weiboService.getWeiboById(id, true);
         if (weiboDO == null) {

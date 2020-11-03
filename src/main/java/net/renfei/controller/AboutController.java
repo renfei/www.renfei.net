@@ -1,8 +1,12 @@
 package net.renfei.controller;
 
 import lombok.extern.slf4j.Slf4j;
+import net.renfei.annotation.SystemLog;
 import net.renfei.base.BaseController;
 import net.renfei.config.RenFeiConfig;
+import net.renfei.entity.LogLevel;
+import net.renfei.entity.LogModule;
+import net.renfei.entity.LogType;
 import net.renfei.service.CommentsService;
 import net.renfei.service.GlobalService;
 import net.renfei.service.PaginationService;
@@ -33,6 +37,7 @@ public class AboutController extends BaseController {
     }
 
     @RequestMapping("")
+    @SystemLog(logLevel = LogLevel.INFO, logModule = LogModule.CMS, logType = LogType.GET, logDesc = "获取关于页面")
     public ModelAndView getAbout(ModelAndView mv) {
         mv.addObject("title", "关于任霏 - " + renFeiConfig.getSiteName());
         setHead(mv, "任霏，软件开发工程师。一只90后程序猿，大学是 C#.NET 专业毕业，后自学 Java 进行技术转型。你现在看到的这个网站就是我从后端到前端完整的手写的。",

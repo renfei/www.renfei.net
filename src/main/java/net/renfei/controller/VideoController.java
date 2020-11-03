@@ -1,10 +1,9 @@
 package net.renfei.controller;
 
+import net.renfei.annotation.SystemLog;
 import net.renfei.base.BaseController;
 import net.renfei.config.RenFeiConfig;
-import net.renfei.entity.ShareVO;
-import net.renfei.entity.VideoDTO;
-import net.renfei.entity.VideoListDTO;
+import net.renfei.entity.*;
 import net.renfei.repository.entity.VideoDOWithBLOBs;
 import net.renfei.service.*;
 import org.springframework.beans.BeanUtils;
@@ -42,6 +41,7 @@ public class VideoController extends BaseController {
     }
 
     @RequestMapping("")
+    @SystemLog(logLevel = LogLevel.INFO, logModule = LogModule.CMS, logType = LogType.GET, logDesc = "获取视频列表页面")
     public ModelAndView getAllVideoList(@RequestParam(value = "page", required = false) String page,
                                         ModelAndView mv) {
         VideoListDTO videoListDTO = videoService.getAllVideo(page, "10");
@@ -61,6 +61,7 @@ public class VideoController extends BaseController {
     }
 
     @RequestMapping("{id}")
+    @SystemLog(logLevel = LogLevel.INFO, logModule = LogModule.CMS, logType = LogType.GET, logDesc = "获取视频详情页面")
     public ModelAndView playVideo(@PathVariable("id") String id, ModelAndView mv) throws NoHandlerFoundException {
         VideoDTO videoDTO = videoService.getVideoDTOByID(id);
         if (videoDTO != null) {

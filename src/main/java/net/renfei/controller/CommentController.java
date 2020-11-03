@@ -1,11 +1,10 @@
 package net.renfei.controller;
 
 import lombok.extern.slf4j.Slf4j;
+import net.renfei.annotation.SystemLog;
 import net.renfei.base.BaseController;
 import net.renfei.config.RenFeiConfig;
-import net.renfei.entity.CommentDTO;
-import net.renfei.entity.CommentVO;
-import net.renfei.entity.IpInfoDTO;
+import net.renfei.entity.*;
 import net.renfei.sdk.comm.StateCode;
 import net.renfei.sdk.entity.APIResult;
 import net.renfei.sdk.utils.IpUtils;
@@ -50,6 +49,7 @@ public class CommentController extends BaseController {
      * @return
      */
     @PostMapping("{typeid}/{id}")
+    @SystemLog(logLevel = LogLevel.INFO, logModule = LogModule.OPENAPI, logType = LogType.ADD, logDesc = "进行评论")
     public APIResult submitComments(@PathVariable("typeid") String typeid,
                                     @PathVariable("id") String id,
                                     CommentVO comment) {

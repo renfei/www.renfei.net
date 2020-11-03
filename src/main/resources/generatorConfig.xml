@@ -56,5 +56,6 @@
 <!--        <table tableName="t_short_url" domainObjectName="ShortUrl"></table>-->
 <!--        <table tableName="t_wechat_keyword" domainObjectName="WechatKeywordDO"></table>-->
 <!--        <table tableName="t_page" domainObjectName="PageDO"></table>-->
+<!--        <table tableName="t_system_log" domainObjectName="SystemLog"></table>-->
     </context>
 </generatorConfiguration>

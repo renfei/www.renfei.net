@@ -1,7 +1,11 @@
 package net.renfei.controller;
 
+import net.renfei.annotation.SystemLog;
 import net.renfei.base.BaseController;
 import net.renfei.config.RenFeiConfig;
+import net.renfei.entity.LogLevel;
+import net.renfei.entity.LogModule;
+import net.renfei.entity.LogType;
 import net.renfei.service.CommentsService;
 import net.renfei.service.GlobalService;
 import net.renfei.service.PaginationService;
@@ -29,6 +33,7 @@ public class MavenController extends BaseController {
     }
 
     @RequestMapping("")
+    @SystemLog(logLevel = LogLevel.INFO, logModule = LogModule.CMS, logType = LogType.GET, logDesc = "获取Maven公共代理仓库页面")
     public ModelAndView kitbox(ModelAndView mv) {
         mv.addObject("title", "Maven公共代理仓库 - " + renFeiConfig.getSiteName());
         mv.setViewName("maven");

@@ -1,11 +1,10 @@
 package net.renfei.controller;
 
 import lombok.extern.slf4j.Slf4j;
+import net.renfei.annotation.SystemLog;
 import net.renfei.base.BaseController;
 import net.renfei.config.RenFeiConfig;
-import net.renfei.entity.ListData;
-import net.renfei.entity.OGprotocol;
-import net.renfei.entity.ShareVO;
+import net.renfei.entity.*;
 import net.renfei.repository.entity.PostsDOWithBLOBs;
 import net.renfei.repository.entity.TagDO;
 import net.renfei.repository.entity.TagRelationDO;
@@ -50,6 +49,7 @@ public class PostsController extends BaseController {
     }
 
     @RequestMapping("")
+    @SystemLog(logLevel = LogLevel.INFO, logModule = LogModule.CMS, logType = LogType.GET, logDesc = "获取文章列表页面")
     public ModelAndView getPostList(ModelAndView mv,
                                     @RequestParam(value = "page", required = false) String page) {
         ListData<PostsDOWithBLOBs> postsDOWithBLOBsListData = postService.getAllPost(page, "15");
@@ -72,6 +72,7 @@ public class PostsController extends BaseController {
      * @return
      */
     @RequestMapping("tag/{enName}")
+    @SystemLog(logLevel = LogLevel.INFO, logModule = LogModule.CMS, logType = LogType.GET, logDesc = "获取文章标签列表页面")
     public ModelAndView getAllPostsListByTag(@RequestParam(value = "page", required = false) String page,
                                              @PathVariable("enName") String enName,
                                              ModelAndView mv) throws NoHandlerFoundException {
@@ -99,6 +100,7 @@ public class PostsController extends BaseController {
     }
 
     @RequestMapping("{id}")
+    @SystemLog(logLevel = LogLevel.INFO, logModule = LogModule.CMS, logType = LogType.GET, logDesc = "获取文章详情页面")
     public ModelAndView getPostInfo(ModelAndView mv,
                                     @PathVariable("id") String id) throws NoHandlerFoundException {
         long postId = 0;

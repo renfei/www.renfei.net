@@ -1,9 +1,9 @@
 package net.renfei.controller;
 
+import net.renfei.annotation.SystemLog;
 import net.renfei.base.BaseController;
 import net.renfei.config.RenFeiConfig;
-import net.renfei.entity.PageVO;
-import net.renfei.entity.ShareVO;
+import net.renfei.entity.*;
 import net.renfei.repository.entity.PageDOWithBLOBs;
 import net.renfei.service.CommentsService;
 import net.renfei.service.GlobalService;
@@ -37,6 +37,7 @@ public class PageController extends BaseController {
     }
 
     @RequestMapping("{id}")
+    @SystemLog(logLevel = LogLevel.INFO, logModule = LogModule.CMS, logType = LogType.GET, logDesc = "获取动态页面")
     public ModelAndView getPage(@PathVariable("id") String id, ModelAndView mv) throws NoHandlerFoundException {
         PageDOWithBLOBs pageDTO = pageService.getPageByID(id);
         if (pageDTO != null) {

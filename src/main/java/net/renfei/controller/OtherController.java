@@ -2,8 +2,12 @@ package net.renfei.controller;
 
 import com.alibaba.fastjson.JSON;
 import lombok.extern.slf4j.Slf4j;
+import net.renfei.annotation.SystemLog;
 import net.renfei.base.BaseController;
 import net.renfei.config.RenFeiConfig;
+import net.renfei.entity.LogLevel;
+import net.renfei.entity.LogModule;
+import net.renfei.entity.LogType;
 import net.renfei.repository.entity.DownloadDO;
 import net.renfei.sdk.comm.StateCode;
 import net.renfei.sdk.entity.APIResult;
@@ -19,6 +23,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
+import java.nio.charset.StandardCharsets;
 import java.util.Base64;
 import java.util.Date;
 import java.util.HashMap;
@@ -59,6 +64,7 @@ public class OtherController extends BaseController {
      * @return
      */
     @RequestMapping("urlredirect")
+    @SystemLog(logLevel = LogLevel.INFO, logModule = LogModule.CMS, logType = LogType.GET, logDesc = "获取链接重定向页面")
     public ModelAndView urlredirect(String url, ModelAndView mv) {
         if (BeanUtils.isEmpty(url)) {
             return new ModelAndView("redirect:/");
@@ -66,7 +72,7 @@ public class OtherController extends BaseController {
         try {
             byte[] asBytes = Base64.getDecoder().decode(url);
             mv.addObject("siteName", renFeiConfig.getSiteName());
-            String uri = new String(asBytes, "utf-8");
+            String uri = new String(asBytes, StandardCharsets.UTF_8);
             if (!uri.startsWith("http://") && !uri.startsWith("https://")) {
                 uri = "http://" + uri;
             }
@@ -84,6 +90,7 @@ public class OtherController extends BaseController {
     }
 
     @GetMapping("qrcode")
+    @SystemLog(logLevel = LogLevel.INFO, logModule = LogModule.CMS, logType = LogType.GET, logDesc = "获取二维码图片")
     public void qrcode(@RequestParam("content") String content,
                        @RequestParam(value = "size", required = false) String size,
                        HttpServletResponse response) throws Exception {
@@ -92,7 +99,7 @@ public class OtherController extends BaseController {
         if (!ObjectUtils.isEmpty(size)) {
             int qrCodeSize;
             try {
-                qrCodeSize = Integer.valueOf(size);
+                qrCodeSize = Integer.parseInt(size);
                 qrCodeService = new QRCodeService(qrCodeSize);
             } catch (NumberFormatException nfe) {
                 qrCodeService = new QRCodeService();
@@ -123,7 +130,8 @@ public class OtherController extends BaseController {
      */
     @ResponseBody
     @GetMapping("JiSuDownloadLink")
-    public APIResult getJiSuDownloadLink(String code) {
+    @SystemLog(logLevel = LogLevel.INFO, logModule = LogModule.OPENAPI, logType = LogType.GET, logDesc = "获取极速下载链接")
+    public APIResult<Map<String, String>> getJiSuDownloadLink(String code) {
         String json = cacheService.get(code);
         if (json != null && json.length() > 0) {
             try {
@@ -139,7 +147,7 @@ public class OtherController extends BaseController {
                     Map<String, String> map = new HashMap<>();
                     map.put("jisulink", link);
                     map.put("expires", DateUtils.formatDate(expires, "yyyy-MM-dd HH:mm:ss"));
-                    return new APIResult(map);
+                    return new APIResult<>(map);
                 } else {
                     return APIResult.builder()
                             .code(StateCode.Failure)
@@ -162,6 +170,7 @@ public class OtherController extends BaseController {
 
     @GetMapping("cleanSearchEngine")
     @ResponseBody
+    @SystemLog(logLevel = LogLevel.INFO, logModule = LogModule.API, logType = LogType.DELETE, logDesc = "清空站内搜索引擎")
     public APIResult cleanSearchEngine(@RequestParam("totp") String totp) {
         if (GoogleAuthenticator.authcode(totp, renFeiConfig.getTotpSecret())) {
             searchService.deleteAll();

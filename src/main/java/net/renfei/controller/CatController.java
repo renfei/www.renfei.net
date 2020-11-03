@@ -1,5 +1,6 @@
 package net.renfei.controller;
 
+import net.renfei.annotation.SystemLog;
 import net.renfei.base.BaseController;
 import net.renfei.config.RenFeiConfig;
 import net.renfei.entity.*;
@@ -47,6 +48,7 @@ public class CatController extends BaseController {
     }
 
     @RequestMapping("{typeName}/{enName}")
+    @SystemLog(logLevel = LogLevel.INFO, logModule = LogModule.CMS, logType = LogType.GET, logDesc = "获取分类页面")
     public ModelAndView getList(
             @PathVariable(value = "typeName") String typeName,
             @PathVariable(value = "enName") String enName,
