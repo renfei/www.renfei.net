@@ -6,15 +6,10 @@ import net.renfei.base.BaseController;
 import net.renfei.config.RenFeiConfig;
 import net.renfei.entity.*;
 import net.renfei.sdk.utils.BeanUtils;
-import net.renfei.service.CommentsService;
-import net.renfei.service.GlobalService;
-import net.renfei.service.PaginationService;
-import net.renfei.service.SearchService;
+import net.renfei.service.*;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.text.DecimalFormat;
@@ -29,15 +24,18 @@ import java.text.DecimalFormat;
 @Controller
 @RequestMapping("/search")
 public class SearchController extends BaseController {
+    private final LogService logService;
     private final SearchService searchService;
 
     protected SearchController(RenFeiConfig renFeiConfig,
                                GlobalService globalService,
                                SearchService searchService,
                                CommentsService commentsService,
-                               PaginationService paginationService) {
+                               PaginationService paginationService,
+                               LogService logService) {
         super(renFeiConfig, globalService, commentsService, paginationService);
         this.searchService = searchService;
+        this.logService = logService;
     }
 
     @RequestMapping("")
@@ -89,6 +87,7 @@ public class SearchController extends BaseController {
             DecimalFormat df = new DecimalFormat("######0.000000");
             mv.addObject("searchTime", df.format(timed));
             setPagination(mv, page, searchItemListData.getTotal(), "/search?type=" + type + "&w=" + query + "&p=");
+            logService.log(LogLevel.INFO, LogModule.SEARCH, LogType.GET, query, request);
         }
         mv.setViewName("search");
         return mv;

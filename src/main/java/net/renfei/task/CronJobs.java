@@ -23,12 +23,9 @@ import java.util.List;
 public class CronJobs {
     private final PostService postService;
     private final SearchService searchService;
-    private final AggregateService aggregateService;
 
     public CronJobs(PostService postService,
-                    SearchService searchService,
-                    AggregateService aggregateService) {
-        this.aggregateService = aggregateService;
+                    SearchService searchService) {
         this.postService = postService;
         this.searchService = searchService;
     }
@@ -49,32 +46,8 @@ public class CronJobs {
     @Scheduled(cron = "0 30 3 * * ? ")
     public void executeUpdateSearchEngine() {
         log.info("== UpdateSearchEngineJob >>>>");
-        List<SearchItem> searchItemAll = aggregateService.getAllDataBySearchItem();
-        // 开始查询搜索引擎里的数据
-        List<SearchItem> notInSearchEngine = new ArrayList<>();
-        for (SearchItem searchItem : searchItemAll
-        ) {
-            // 检查数据是否在搜索引擎中
-            ListData<SearchItem> searchItemListData =
-                    searchService.search(TypeEnum.valueOf(searchItem.getType()), searchItem.getOriginalId(), "1", "999");
-            if (BeanUtils.isEmpty(searchItemListData) &&
-                    searchItemListData.getTotal() == 0 &&
-                    BeanUtils.isEmpty(searchItemListData.getData())) {
-                notInSearchEngine.add(searchItem);
-            }
-        }
-        if (notInSearchEngine.size() > 0) {
-            searchService.save(notInSearchEngine);
-        }
-        log.info("== UpdateSearchEngineJob <<<<");
-    }
-
-    /**
-     * 每个月25号凌晨1点重建全部搜索引擎的数据
-     */
-    @Scheduled(cron = "0 0 1 25 * ? ")
-    public void executeClearSearchEngine() {
         searchService.deleteAll();
         searchService.index();
+        log.info("== UpdateSearchEngineJob <<<<");
     }
 }

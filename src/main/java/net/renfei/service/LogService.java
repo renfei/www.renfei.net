@@ -3,6 +3,9 @@ package net.renfei.service;
 import com.alibaba.fastjson.JSON;
 import net.renfei.annotation.SystemLog;
 import net.renfei.base.BaseService;
+import net.renfei.entity.LogLevel;
+import net.renfei.entity.LogModule;
+import net.renfei.entity.LogType;
 import net.renfei.repository.SystemLogMapper;
 import net.renfei.repository.entity.SystemLogWithBLOBs;
 import net.renfei.sdk.utils.IpUtils;
@@ -30,12 +33,28 @@ public class LogService extends BaseService {
     }
 
     @Async
-    public void insert(SystemLogWithBLOBs systemLog) {
-        systemLogMapper.insertSelective(systemLog);
+    public void log(LogLevel level, LogModule module, LogType type, String desc, HttpServletRequest request) {
+        SystemLogWithBLOBs systemLog = new SystemLogWithBLOBs();
+        systemLog.setLogLevel(level.toString());
+        systemLog.setLogModel(module.toString());
+        systemLog.setLogType(type.toString());
+        systemLog.setLogDesc(desc);
+        if (request != null) {
+            // 请求的参数
+            Map<String, String> rtnMap = converMap(request.getParameterMap());
+            // 将参数所在的数组转换成json
+            String params = JSON.toJSONString(rtnMap);
+            systemLog.setRequParam(params);
+            systemLog.setRequIp(IpUtils.getIpAddress(request));
+            systemLog.setRequAgent(request.getHeader("User-Agent"));
+            systemLog.setRequUri(request.getRequestURI());
+        }
+        systemLog.setLogTime(new Date());
+        this.insert(systemLog);
     }
 
     @Async
-    public void insert(String className,String methodName,SystemLog logAnnotation, Object keys,HttpServletRequest request) {
+    public void insert(String className, String methodName, SystemLog logAnnotation, Object keys, HttpServletRequest request) {
         SystemLogWithBLOBs systemLog = new SystemLogWithBLOBs();
         if (logAnnotation != null) {
             String logLevel = logAnnotation.logLevel().toString();
@@ -61,6 +80,11 @@ public class LogService extends BaseService {
         systemLog.setRequUri(request.getRequestURI());
         systemLog.setLogTime(new Date());
         this.insert(systemLog);
+    }
+
+    @Async
+    public void insert(SystemLogWithBLOBs systemLog) {
+        systemLogMapper.insertSelective(systemLog);
     }
 
     /**
