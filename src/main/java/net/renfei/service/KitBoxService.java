@@ -98,6 +98,11 @@ public class KitBoxService extends BaseService {
                 .with(KitBoxMenus::setLinks, new ArrayList<LinkVO>() {
                     {
                         this.add(Builder.of(LinkVO::new)
+                                .with(LinkVO::setHref, "/kitbox/randomPassword")
+                                .with(LinkVO::setRel, "根据所选的字符及密码长度，随机密码一键生成")
+                                .with(LinkVO::setText, "随机密码生成工具")
+                                .build());
+                        this.add(Builder.of(LinkVO::new)
                                 .with(LinkVO::setHref, "/kitbox/md5")
                                 .with(LinkVO::setRel, "MD5加密,对字符串进行MD5计算得出MD5加密字符串")
                                 .with(LinkVO::setText, "MD5加密工具")

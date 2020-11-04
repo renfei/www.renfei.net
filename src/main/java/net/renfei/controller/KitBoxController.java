@@ -138,6 +138,17 @@ public class KitBoxController extends BaseController {
         return mv;
     }
 
+    @RequestMapping("randomPassword")
+    @SystemLog(logLevel = LogLevel.INFO, logModule = LogModule.CMS, logType = LogType.GET, logDesc = "获取随机密码生成工具页面")
+    public ModelAndView randomPassword(ModelAndView mv) {
+        mv.addObject("title", "随机密码生成工具 - 开发者工具箱 - " + renFeiConfig.getSiteName());
+        setHead(mv, "用户可根据自身需要选择生成密码所包含的字符以及密码长度，随机密码一键生成，简单易用，生成安全、随机的密码以保证网络账号的安全。",
+                "随机,密码,生成");
+        mv.setViewName("kitbox/randomPassword");
+        setKitBoxMenus(mv, ENCRYPTION_TOOL);
+        return mv;
+    }
+
     @RequestMapping("md5")
     @SystemLog(logLevel = LogLevel.INFO, logModule = LogModule.CMS, logType = LogType.GET, logDesc = "获取MD5在线加密工具页面")
     public ModelAndView md5Tools(ModelAndView mv) {
