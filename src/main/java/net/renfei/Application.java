@@ -9,6 +9,7 @@ import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+import springfox.documentation.oas.annotations.EnableOpenApi;
 
 import java.util.TimeZone;
 
@@ -19,6 +20,7 @@ import java.util.TimeZone;
  */
 @EnableAsync
 @EnableCaching
+@EnableOpenApi
 @EnableScheduling
 @SpringBootApplication
 @EnableTransactionManagement

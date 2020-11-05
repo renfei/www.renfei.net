@@ -15,16 +15,16 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @Configuration
 @EnableSwagger2
-public class Swagger2Config implements WebMvcConfigurer {
+public class Swagger3Config implements WebMvcConfigurer {
     private final RenFeiConfig renFeiConfig;
 
-    public Swagger2Config(RenFeiConfig renFeiConfig) {
+    public Swagger3Config(RenFeiConfig renFeiConfig) {
         this.renFeiConfig = renFeiConfig;
     }
 
     @Bean
     public Docket createRestApi() {
-        return new Docket(DocumentationType.SWAGGER_2)
+        return new Docket(DocumentationType.OAS_30)
                 .apiInfo(apiInfo())
                 .select()
                 .apis(RequestHandlerSelectors.basePackage("net.renfei.controller.api"))
@@ -42,15 +42,4 @@ public class Swagger2Config implements WebMvcConfigurer {
                 .version(renFeiConfig.getVersion())
                 .build();
     }
-
-    /**
-     * swagger-ui.html路径映射，浏览器中使用/api-docs访问
-     *
-     * @param registry
-     */
-    @Override
-    public void addViewControllers(ViewControllerRegistry registry) {
-        registry.addRedirectViewController("/api/open/docs", "/swagger-ui.html");
-    }
-
 }
