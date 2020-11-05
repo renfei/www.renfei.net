@@ -131,7 +131,7 @@
                     }
                 });
                 clipboard.on('success', function (e) {
-                    msg("复制链接成功！", "success");
+                    msg("复制成功！", "success");
                 });
                 clipboard.on('error', function (e) {
                     msg("当前浏览器不支持此功能，请手动复制。", "error");
