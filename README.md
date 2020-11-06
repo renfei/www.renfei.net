@@ -1,9 +1,9 @@
 ![RenFei.Net Social Banner](https://cdn.renfei.net/thunder/renfei.net.jpg)
 
 ## RENFEI.NET ```thunder```
-[![Actions Status](https://github.com/renfei-net/renfei.net/workflows/CI/badge.svg)](https://github.com/renfei-net/renfei.net/actions)
-[![Actions Status](https://github.com/renfei-net/renfei.net/workflows/Release/badge.svg)](https://github.com/renfei-net/renfei.net/actions)
-[![Build Status](https://api.travis-ci.com/renfei-net/renfei.net.svg?branch=main)](https://travis-ci.com/renfei-net/renfei.net)
+[![Actions Status](https://github.com/renfei/www.renfei.net/workflows/CI/badge.svg)](https://github.com/renfei/www.renfei.net/actions)
+[![Actions Status](https://github.com/renfei/www.renfei.net/workflows/Release/badge.svg)](https://github.com/renfei/www.renfei.net/actions)
+[![Build Status](https://api.travis-ci.com/renfei/www.renfei.net.svg?branch=main)](https://travis-ci.com/renfei/www.renfei.net)
 
 此版本是2020年重写版本，代号```thunder```，这个版本有什么故事呢？
 

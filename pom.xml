@@ -24,15 +24,15 @@
 
     <issueManagement>
         <system>GitHub Issues</system>
-        <url>https://github.com/renfei-net/renfei.net/issues</url>
+        <url>https://github.com/renfei/www.renfei.net/issues</url>
     </issueManagement>
 
     <inceptionYear>2020</inceptionYear>
 
     <scm>
-        <connection>scm:git:git://github.com/renfei-net/renfei.net.git</connection>
-        <developerConnection>scm:git:git@github.com:renfei-net/renfei.net.git</developerConnection>
-        <url>https://github.com/renfei-net/renfei.net</url>
+        <connection>scm:git:git://github.com/renfei/www.renfei.net.git</connection>
+        <developerConnection>scm:git:git@github.com:renfei/www.renfei.net.git</developerConnection>
+        <url>https://github.com/renfei/www.renfei.net</url>
     </scm>
 
     <developers>

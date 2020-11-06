@@ -75,7 +75,7 @@
                                         <p>
                                             让编程更简单和有趣。我从开源社区学习得到各种技术知识，同时也将我学到的分享出去。感谢热衷于分享的极客们。
                                         </p>
-                                        <a href="https://github.com/renfei-net" target="_blank" rel="nofollow noopener">Github</a>
+                                        <a href="https://github.com/renfei" target="_blank" rel="nofollow noopener">Github</a>
                                     </div>
 
                                     <div class="illustration">

@@ -46,7 +46,7 @@
             </div>
             <div class="col-md-6">
                 E-mail: <a href="mailto:i@renfei.net">i@renfei.net</a> <br>
-                GitHub:<a href="https://github.com/renfei-net" target="_blank" rel="nofollow noopener">GitHub</a> <br>
+                GitHub:<a href="https://github.com/renfei" target="_blank" rel="nofollow noopener">GitHub</a> <br>
                 Facebook:<a href="https://www.facebook.com/renfeii" target="_blank" rel="nofollow noopener">任霏</a> <br>
                 Twitter:<a href="https://twitter.com/renfeii" target="_blank" rel="nofollow noopener">@renfeii</a> <br>
                 Sina Weibo:<a href="https://weibo.com/5214619228" target="_blank" rel="nofollow noopener">任霏博客网</a> <br>
@@ -71,7 +71,7 @@
                         <h5 class="card-title">任霏的个人博客</h5>
                         <p class="card-text">
                             收集开发中常用的代码工具。虽然程序员们都热衷于重复的"造轮子"，但这样是不对的，如果代码有问题你应该尝试去修复，而不是重新再造一个轮子出来。所以我收集开发中常用的工具代码，以方便在各个项目中重新利用它们。这个工具包被我所有的项目所使用。</p>
-                        <a href="https://github.com/renfei-net/renfei.net" class="btn btn-primary stretched-link"
+                        <a href="https://github.com/renfei/www.renfei.net" class="btn btn-primary stretched-link"
                            target="_blank" rel="nofollow noopener">查看代码</a>
                     </div>
                 </div>
@@ -84,7 +84,7 @@
                         <h5 class="card-title">RenFei SDK For Java</h5>
                         <p class="card-text">
                             收集开发中常用的代码工具。虽然程序员们都热衷于重复的"造轮子"，但这样是不对的，如果代码有问题你应该尝试去修复，而不是重新再造一个轮子出来。所以我收集开发中常用的工具代码，以方便在各个项目中重新利用它们。这个工具包被我所有的项目所使用。</p>
-                        <a href="https://github.com/renfei-net/renfei-java-sdk" class="btn btn-primary stretched-link"
+                        <a href="https://github.com/renfei/renfei-java-sdk" class="btn btn-primary stretched-link"
                            target="_blank" rel="nofollow noopener">查看代码</a>
                     </div>
                 </div>
@@ -98,7 +98,7 @@
                         <p class="card-text">
                             WinterEE是基于SpringCloud的开发脚手架，Spring的名字是代表了传统J2EE的“冬天”之后新的开始成为春天；WinterEE还需要开发者二次开发，我们希望把冬天留给WinterEE来完成，所以取冬天“Winter”，同时对Spring致敬；而
                             EE 是对 J2EE 的致敬。</p>
-                        <a href="https://github.com/renfei-net/WinterEE" class="btn btn-primary stretched-link"
+                        <a href="https://github.com/renfei/WinterEE" class="btn btn-primary stretched-link"
                            target="_blank" rel="nofollow noopener">查看代码</a>
                     </div>
                 </div>
@@ -110,7 +110,7 @@
                         <p class="card-text">
                             该项目是对 Google API
                             的实现，可以将网站新页面提交给Google搜索引擎，类似国内的百度站长工具提交功能，由于Google的API比较复杂，不能直接简单的POST提交，所以我将代码共享出来，方便需要的站长直接使用或者参考。</p>
-                        <a href="https://github.com/renfei-net/GoogleIndexing" class="btn btn-primary stretched-link"
+                        <a href="https://github.com/renfei/GoogleIndexing" class="btn btn-primary stretched-link"
                            target="_blank" rel="nofollow noopener">查看代码</a>
                     </div>
                 </div>
@@ -121,7 +121,7 @@
                         <h5 class="card-title">gitignore</h5>
                         <p class="card-text">
                             我们每个Git项目中都需要一个“.gitignore”文件，这个文件的作用就是告诉Git哪些文件不需要添加到版本管理中。比如Java工程项目中的target文件夹是编译后的文件，并不是源代码文件，所以我们需要让Git忽略这个文件夹。这个仓库中维护的就是常见的忽略策略配置。</p>
-                        <a href="https://github.com/renfei-net/gitignore" class="btn btn-primary stretched-link"
+                        <a href="https://github.com/renfei/gitignore" class="btn btn-primary stretched-link"
                            target="_blank" rel="nofollow noopener">查看代码</a>
                     </div>
                 </div>
@@ -132,7 +132,7 @@
                         <h5 class="card-title">DOPro (DevOps Protocol)</h5>
                         <p class="card-text">
                             受到阿里巴巴的《Java编程手册》的启发，在运维和使用基础环境的时候，也应当有所约定，就诞生了本仓库，欢迎大家一起来维护条目。</p>
-                        <a href="https://github.com/renfei-net/DOPro" class="btn btn-primary stretched-link"
+                        <a href="https://github.com/renfei/DOPro" class="btn btn-primary stretched-link"
                            target="_blank" rel="nofollow noopener">查看代码</a>
                     </div>
                 </div>
