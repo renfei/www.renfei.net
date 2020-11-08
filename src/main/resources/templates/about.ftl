@@ -47,6 +47,7 @@
             <div class="col-md-6">
                 E-mail: <a href="mailto:i@renfei.net">i@renfei.net</a> <br>
                 GitHub:<a href="https://github.com/renfei" target="_blank" rel="nofollow noopener">GitHub</a> <br>
+                GitHub:<a href="https://gitlab.com/renfei" target="_blank" rel="nofollow noopener">GitLab</a> <br>
                 Facebook:<a href="https://www.facebook.com/renfeii" target="_blank" rel="nofollow noopener">任霏</a> <br>
                 Twitter:<a href="https://twitter.com/renfeii" target="_blank" rel="nofollow noopener">@renfeii</a> <br>
                 Sina Weibo:<a href="https://weibo.com/5214619228" target="_blank" rel="nofollow noopener">任霏博客网</a> <br>

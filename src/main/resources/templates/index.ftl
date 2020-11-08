@@ -76,6 +76,7 @@
                                             让编程更简单和有趣。我从开源社区学习得到各种技术知识，同时也将我学到的分享出去。感谢热衷于分享的极客们。
                                         </p>
                                         <a href="https://github.com/renfei" target="_blank" rel="nofollow noopener">Github</a>
+                                        <a href="https://gitlab.com/renfei" target="_blank" rel="nofollow noopener">Gitlab</a>
                                     </div>
 
                                     <div class="illustration">
@@ -314,7 +315,8 @@
                         "name": "任霏",
                         "url": "https://www.renfei.net",
                         "sameAs": [
-                            "https://github.com/NeilRen",
+                            "https://github.com/renfei",
+                            "https://gitlab.com/renfei",
                             "https://www.facebook.com/renfeii",
                             "https://twitter.com/renfeii",
                             "https://www.youtube.com/channel/UCPsjiVvFMS7piLgC-RHBWxg"
