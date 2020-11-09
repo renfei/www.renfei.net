@@ -42,9 +42,9 @@
 
                             <div>
                                 <blockquote style="font-size: 14px;">
-                                    <p>IP查询接口服务已经开放。更多开放接口服务，请参考<a href="/swagger-ui.html" target="_blank">开放接口文档</a>。
+                                    <p>IP查询接口服务已经开放。更多开放接口服务，请参考<a href="https://www.renfei.net/swagger-ui/index.html#/%E5%BC%80%E6%94%BE%E6%8E%A5%E5%8F%A3/getDomainWhoisUsingGET" target="_blank">开放接口文档</a>。
                                     </p>
-                                    <p>此工具使用的接口是：https://www.renfei.net/api/dns/dig/{domain}</p>
+                                    <p>此工具使用的接口是：https://www.renfei.net/api/dns/whois/{domain}</p>
                                     <footer>{domain} - 更换为需要查询的域名，使用 GET 请求。</footer>
                                 </blockquote>
                             </div>

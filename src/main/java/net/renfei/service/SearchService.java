@@ -1,17 +1,18 @@
 package net.renfei.service;
 
 import net.renfei.base.BaseService;
-import net.renfei.entity.ListData;
-import net.renfei.entity.SearchItem;
-import net.renfei.entity.TypeEnum;
+import net.renfei.entity.*;
 import net.renfei.sdk.utils.BeanUtils;
 import net.renfei.sdk.utils.NumberUtils;
+import org.elasticsearch.action.admin.indices.analyze.AnalyzeAction;
+import org.elasticsearch.action.admin.indices.analyze.AnalyzeRequestBuilder;
+import org.elasticsearch.client.RequestOptions;
+import org.elasticsearch.client.RestHighLevelClient;
+import org.elasticsearch.client.indices.AnalyzeRequest;
+import org.elasticsearch.client.indices.AnalyzeResponse;
 import org.elasticsearch.index.query.BoolQueryBuilder;
 import org.elasticsearch.index.query.QueryBuilder;
 import org.elasticsearch.index.query.QueryBuilders;
-import org.elasticsearch.search.fetch.subphase.highlight.HighlightBuilder;
-import org.elasticsearch.search.sort.SortBuilders;
-import org.elasticsearch.search.sort.SortOrder;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.elasticsearch.core.ElasticsearchRestTemplate;
 import org.springframework.data.elasticsearch.core.IndexOperations;
@@ -22,6 +23,7 @@ import org.springframework.data.elasticsearch.core.query.NativeSearchQuery;
 import org.springframework.data.elasticsearch.core.query.NativeSearchQueryBuilder;
 import org.springframework.stereotype.Service;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -36,23 +38,57 @@ import static net.renfei.entity.SearchItem.INDEX_COORDINATES;
  */
 @Service
 public class SearchService extends BaseService {
+    private final LogService logService;
     private final AggregateService aggregateService;
+    private final RestHighLevelClient restHighLevelClient;
     private final ElasticsearchRestTemplate elasticsearchRestTemplate;
 
-    public SearchService(AggregateService aggregateService,
+    public SearchService(LogService logService,
+                         AggregateService aggregateService,
+                         RestHighLevelClient restHighLevelClient,
                          ElasticsearchRestTemplate elasticsearchRestTemplate) {
+        this.logService = logService;
         this.aggregateService = aggregateService;
+        this.restHighLevelClient = restHighLevelClient;
         this.elasticsearchRestTemplate = elasticsearchRestTemplate;
     }
 
+    /**
+     * 搜索
+     *
+     * @param word  搜索词
+     * @param pages 页码
+     * @param rows  每页容量
+     * @return
+     */
     public ListData<SearchItem> search(String word, String pages, String rows) {
         return search(null, null, null, word, pages, rows);
     }
 
+    /**
+     * 搜索
+     *
+     * @param type  类型
+     * @param word  搜索词
+     * @param pages 页码
+     * @param rows  每页容量
+     * @return
+     */
     public ListData<SearchItem> search(TypeEnum type, String word, String pages, String rows) {
         return search(type, null, null, word, pages, rows);
     }
 
+    /**
+     * 搜索
+     *
+     * @param type      类型
+     * @param startDate 开始时间
+     * @param endDate   结束时间
+     * @param word      搜索词
+     * @param pages     页码
+     * @param rows      每页容量
+     * @return
+     */
     public ListData<SearchItem> search(TypeEnum type, Date startDate, Date endDate, String word, String pages, String rows) {
         BoolQueryBuilder queryBuilder = QueryBuilders.boolQuery();
         if (!BeanUtils.isEmpty(word)) {
@@ -60,6 +96,7 @@ public class SearchService extends BaseService {
                     .should(QueryBuilders.matchQuery("title", word))
                     .should(QueryBuilders.matchQuery("content", word));
             queryBuilder.must(wordBuilder);
+            logService.log(LogLevel.INFO, LogModule.SEARCH, LogType.GET, word, null);
         }
         if (type != null) {
             queryBuilder.must(QueryBuilders.termQuery("type", type.getName()));
@@ -112,6 +149,28 @@ public class SearchService extends BaseService {
     }
 
     /**
+     * IK分词
+     *
+     * @param word
+     * @return
+     * @throws IOException
+     */
+    public List<IkAnalyzeVO> getIkAnalyzeTerms(String word) throws IOException {
+        AnalyzeRequest request = AnalyzeRequest.withIndexAnalyzer(INDEX_COORDINATES, "ik_max_word", word);
+        AnalyzeResponse analyze = restHighLevelClient.indices().analyze(request, RequestOptions.DEFAULT);
+        List<AnalyzeResponse.AnalyzeToken> tokenList = analyze.getTokens();
+        // 循环赋值
+        List<IkAnalyzeVO> searchTermList = new ArrayList<>();
+        tokenList.forEach(ikToken -> {
+            IkAnalyzeVO ikAnalyzeVO = new IkAnalyzeVO();
+            ikAnalyzeVO.setWord(ikToken.getTerm());
+            ikAnalyzeVO.setType(ikToken.getType());
+            searchTermList.add(ikAnalyzeVO);
+        });
+        return searchTermList;
+    }
+
+    /**
      * 创建索引库，如果不存在触发全量同步
      */
     public void index() {
@@ -131,11 +190,6 @@ public class SearchService extends BaseService {
             List<SearchItem> searchItemAll = aggregateService.getAllDataBySearchItem();
             this.save(searchItemAll);
         }
-    }
-
-    public void save(SearchItem searchItem) {
-        index();
-        elasticsearchRestTemplate.save(searchItem);
     }
 
     public void save(List<SearchItem> searchItem) {

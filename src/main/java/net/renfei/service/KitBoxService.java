@@ -89,6 +89,11 @@ public class KitBoxService extends BaseService {
                                 .with(LinkVO::setRel, "百度团队的UEditor在线文本编辑器演示与体验")
                                 .with(LinkVO::setText, "UEditor富文本在线编辑器")
                                 .build());
+                        this.add(Builder.of(LinkVO::new)
+                                .with(LinkVO::setHref, "/kitbox/wordIkAnalyze")
+                                .with(LinkVO::setRel, "IK Analyzer 在线分词工具与API开放接口服务")
+                                .with(LinkVO::setText, "IK 在线分词工具与API")
+                                .build());
                     }
                 })
                 .build());

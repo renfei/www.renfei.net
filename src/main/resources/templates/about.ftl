@@ -156,6 +156,22 @@
                         </div>
                         <div class="timeline-event p-2">
                             <div class="timeline-heading">
+                                <h4>获得Github用户名：renfei</h4>
+                            </div>
+                            <div class="timeline-body">
+                                <p>经过无数次与GitHub的联系和尝试，终于在今天获得了惦记了好几年的用户名：https://github.com/renfei</p>
+                            </div>
+                            <div class="timeline-footer">
+                                <p class="text-right">2020-11-6</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-point timeline-point-success">
+                            <i class="fa fa-money"></i>
+                        </div>
+                        <div class="timeline-event p-2">
+                            <div class="timeline-heading">
                                 <h4>年度更新：全部重写</h4>
                             </div>
                             <div class="timeline-body">
@@ -164,7 +180,7 @@
                                     争取能以最快的速度响应页面请求。增加ElasticSearch搜索引擎为站内搜索服务。增加redis缓存提高响应速度。</p>
                             </div>
                             <div class="timeline-footer">
-                                <p class="text-right">2020-11-28</p>
+                                <p class="text-right">2020-10-28</p>
                             </div>
                         </div>
                     </div>

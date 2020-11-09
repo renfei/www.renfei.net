@@ -138,6 +138,17 @@ public class KitBoxController extends BaseController {
         return mv;
     }
 
+    @RequestMapping("wordIkAnalyze")
+    @SystemLog(logLevel = LogLevel.INFO, logModule = LogModule.CMS, logType = LogType.GET, logDesc = "获取在线分词工具与API接口页面")
+    public ModelAndView wordIkAnalyze(ModelAndView mv) {
+        mv.addObject("title", "在线分词工具与API接口(IK Analyze) - 开发者工具箱 - " + renFeiConfig.getSiteName());
+        setHead(mv, "在线分词工具与API接口(IK Analyze)，提供免费的在线文字分词与切词API接口服务，基于IKAnalyzer同时提供了对Lucene的默认优化实现。",
+                "分词,切词,中文,ik,analyze,api,接口,在线");
+        mv.setViewName("kitbox/wordIkAnalyze");
+        setKitBoxMenus(mv, DEVELOPMENT_TOOL);
+        return mv;
+    }
+
     @RequestMapping("randomPassword")
     @SystemLog(logLevel = LogLevel.INFO, logModule = LogModule.CMS, logType = LogType.GET, logDesc = "获取随机密码生成工具页面")
     public ModelAndView randomPassword(ModelAndView mv) {

@@ -189,7 +189,7 @@
                             </form>
                             <div>
                                 <blockquote style="font-size: 14px;">
-                                    <p>IP查询接口服务已经开放。更多开放接口服务，请参考<a href="/swagger-ui.html" target="_blank">开放接口文档</a>。
+                                    <p>IP查询接口服务已经开放。更多开放接口服务，请参考<a href="https://www.renfei.net/swagger-ui/index.html#/%E5%BC%80%E6%94%BE%E6%8E%A5%E5%8F%A3/queryIpInfoUsingGET_1" target="_blank">开放接口文档</a>。
                                     </p>
                                     <p>此工具使用的接口是：https://www.renfei.net/api/ip/{ip}</p>
                                     <footer>{ip} - 更换为需要查询的IP地址，使用 GET 请求。</footer>

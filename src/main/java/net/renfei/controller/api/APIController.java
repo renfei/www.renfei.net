@@ -7,10 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 import net.renfei.annotation.SystemLog;
 import net.renfei.base.BaseController;
 import net.renfei.config.RenFeiConfig;
-import net.renfei.entity.IpInfoDTO;
-import net.renfei.entity.LogLevel;
-import net.renfei.entity.LogModule;
-import net.renfei.entity.LogType;
+import net.renfei.entity.*;
 import net.renfei.exception.BusinessException;
 import net.renfei.sdk.comm.StateCode;
 import net.renfei.sdk.entity.APIResult;
@@ -37,6 +34,7 @@ import java.util.UUID;
 @RequestMapping("/api")
 public class APIController extends BaseController {
     private final IpService ipService;
+    private final SearchService searchService;
     private final DomainNameService domainNameService;
 
     protected APIController(GlobalService globalService,
@@ -44,9 +42,10 @@ public class APIController extends BaseController {
                             RenFeiConfig renFeiConfig,
                             CommentsService commentsService,
                             PaginationService paginationService,
-                            DomainNameService domainNameService) {
+                            SearchService searchService, DomainNameService domainNameService) {
         super(renFeiConfig, globalService, commentsService, paginationService);
         this.ipService = ipService;
+        this.searchService = searchService;
         this.domainNameService = domainNameService;
     }
 
@@ -157,5 +156,26 @@ public class APIController extends BaseController {
                     .build();
         }
         return apiResult;
+    }
+
+    @PostMapping("wordIkAnalyze")
+    @ApiOperation(value = "中文分词工具API", notes = "中文分词工具API", tags = "开放接口")
+    @SystemLog(logLevel = LogLevel.INFO, logModule = LogModule.OPENAPI, logType = LogType.GET, logDesc = "IK分词工具API")
+    public APIResult<List<IkAnalyzeVO>> getWordIkAnalyze(@RequestBody String word) {
+        if (BeanUtils.isEmpty(word)) {
+            return APIResult.builder()
+                    .code(StateCode.Failure)
+                    .message("待分词内容为空，请检查入参。")
+                    .build();
+        }
+        try {
+            return new APIResult<>(searchService.getIkAnalyzeTerms(word));
+        } catch (Exception exception) {
+            return APIResult.builder()
+                    .code(StateCode.Error)
+                    .message("中文分词服务暂时不可用，请稍后再试。")
+                    .build();
+        }
+
     }
 }
