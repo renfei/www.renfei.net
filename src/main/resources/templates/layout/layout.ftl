@@ -137,7 +137,7 @@
                             <ul>
                                 <#list footerMenus.links! as link>
                                     <li>
-                                        <a href="${link.href!}" target="${link.target!}" rel="${link.rel!}"
+                                        <a href="${link.href!}" target="${link.target!}" rel="nofollow noopener"
                                            style="${link.style!}">
                                             ${link.text!}
                                         </a>
@@ -159,7 +159,7 @@
                                 <#list footerVO.friendlyLink! as friendlyLink>
                                     <li class="float-left">
                                         <a href="${friendlyLink.href!}" target="${friendlyLink.target!}"
-                                           rel="${friendlyLink.rel!}" style="${friendlyLink.style!}">
+                                           rel="noopener" style="${friendlyLink.style!}">
                                             <small class="text-muted small">${friendlyLink.text!}</small>
                                         </a>
                                     </li>
@@ -173,7 +173,7 @@
                         <ul class="footer-menu-ul">
                             <#list footerVO.smallMenu! as smallMenu>
                                 <li class="float-right">
-                                    <a href="${smallMenu.href!}" target="${smallMenu.target!}" rel="${smallMenu.rel!}"
+                                    <a href="${smallMenu.href!}" target="${smallMenu.target!}" rel="nofollow noopener"
                                        style="${smallMenu.style!}">
                                         <small class="text-muted small">${smallMenu.text!}</small>
                                     </a>
