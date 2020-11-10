@@ -70,14 +70,18 @@ public class LogService extends BaseService {
         // 请求方法
         systemLog.setRequMethod(methodName);
         // 请求的参数
-        Map<String, String> rtnMap = converMap(request.getParameterMap());
-        // 将参数所在的数组转换成json
-        String params = JSON.toJSONString(rtnMap);
-        systemLog.setRequParam(params);
-        systemLog.setRespParam(JSON.toJSONString(keys));
-        systemLog.setRequIp(IpUtils.getIpAddress(request));
-        systemLog.setRequAgent(request.getHeader("User-Agent"));
-        systemLog.setRequUri(request.getRequestURI());
+        if (request != null) {
+            Map<String, String> rtnMap = converMap(request.getParameterMap());
+            // 将参数所在的数组转换成json
+            String params = JSON.toJSONString(rtnMap);
+            systemLog.setRequParam(params);
+            systemLog.setRequIp(IpUtils.getIpAddress(request));
+            systemLog.setRequAgent(request.getHeader("User-Agent"));
+            systemLog.setRequUri(request.getRequestURI());
+        }
+        if (keys != null) {
+            systemLog.setRespParam(JSON.toJSONString(keys));
+        }
         systemLog.setLogTime(new Date());
         this.insert(systemLog);
     }
