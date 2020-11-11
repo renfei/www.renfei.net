@@ -12,7 +12,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletResponse;
 import java.text.DecimalFormat;
+import java.util.List;
 
 /**
  * <p>Title: SearchController</p>
@@ -90,6 +92,17 @@ public class SearchController extends BaseController {
             logService.log(LogLevel.INFO, LogModule.SEARCH, LogType.GET, query, request);
         }
         mv.setViewName("search");
+        return mv;
+    }
+
+    @RequestMapping(value = "search.xml")
+    @SystemLog(logLevel = LogLevel.INFO, logModule = LogModule.CMS, logType = LogType.GET, logDesc = "获取sitemap.xml")
+    public ModelAndView getSearchXml(ModelAndView mv, HttpServletResponse response) {
+        mv.addObject("siteName", renFeiConfig.getSiteName());
+        mv.addObject("domain", renFeiConfig.getDomain());
+        response.setHeader("content-type", "application/xml;charset=UTF-8");
+        response.setContentType("application/xml;charset=UTF-8");
+        mv.setViewName("searchxml");
         return mv;
     }
 }
