@@ -29,7 +29,7 @@
                             <div class="row no-gutters">
                                 <div class="col-xl-4">
                                     <img src="${post.featuredImage!}?x-oss-process=style/992.558"
-                                         class="card-img" alt="${post.title}">
+                                         class="card-img" alt="${post.title}" width="992px" height="558px" style="width: 100%;height: auto;">
                                 </div>
                                 <div class="col-xl-8">
                                     <div class="card-body" style="padding: 0.2rem 1.25rem;">

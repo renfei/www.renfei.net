@@ -20,7 +20,7 @@
                     <#list photoList as photo>
                         <div class="col-md-4">
                             <div class="card mb-2">
-                                <img src="${photo.featuredImage}?x-oss-process=style/992.558" class="card-img-top" alt="${photo.title}">
+                                <img src="${photo.featuredImage}?x-oss-process=style/992.558" class="card-img-top" width="992px" height="558px" style="width: 100%;height: auto;" alt="${photo.title}">
                                 <div class="card-body">
                                     <h5 class="card-title">
                                         <a href="/photo/${photo.id?c}" class="stretched-link" style="color: #000000;">${photo.title}</a>

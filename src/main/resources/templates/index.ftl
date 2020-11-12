@@ -29,8 +29,8 @@
 
                                     <div class="illustration">
                                         <div class="inner">
-                                            <img src="https://cdn.renfei.net/Logo/RF_white.svg" alt="任霏博客"
-                                                 style="margin-top: 38px;"/>
+                                            <img src="https://cdn.renfei.net/Logo/RF_white.svg" alt="任霏博客" width="150px" height="150px"
+                                                 style="margin-top: 38px;width: 100%;height: auto;"/>
                                         </div>
                                     </div>
                                 </div>
@@ -138,7 +138,7 @@
                                     <div class="row no-gutters">
                                         <div class="col-md-8">
                                             <img src="${post.featuredImage!}?x-oss-process=style/992.558"
-                                                 class="card-img" alt="${post.title}">
+                                                 class="card-img" alt="${post.title}" width="992px" height="558px" style="width: 100%;height: auto;">
                                         </div>
                                         <div class="col-md-4">
                                             <div class="card-body">
@@ -178,7 +178,7 @@
                             <div class="col-sm-6 col-card">
                                 <div class="card">
                                     <img src="${post.featuredImage!}?x-oss-process=style/992.558"
-                                         class="card-img" alt="${post.title}">
+                                         class="card-img" alt="${post.title}" width="992px" height="558px" style="width: 100%;height: auto;">
                                     <div class="card-body">
                                         <a class="stretched-link" href="/posts/${post.id?c}" style="color: #000000;">
                                             <h5 class="card-title">
@@ -213,7 +213,7 @@
                             <div class="col-md-4 col-sm-6 col-card">
                                 <div class="card">
                                     <img src="${post.featuredImage!}?x-oss-process=style/992.558"
-                                         class="card-img" alt="${post.title}">
+                                         class="card-img" alt="${post.title}" width="992px" height="558px" style="width: 100%;height: auto;">
                                     <div class="card-body">
                                         <a class="stretched-link" href="/posts/${post.id?c}" style="color: #000000;">
                                             <h5 class="card-title">
@@ -256,7 +256,7 @@
                                     <div class="row no-gutters">
                                         <div class="col-3 col-md-5 col-lg-3">
                                             <img src="${post.featuredImage!}?x-oss-process=style/200_200"
-                                                 class="card-img" alt="${post.title}">
+                                                 class="card-img" alt="${post.title}" width="200px" height="200px" style="width: 100%;height: auto;">
                                         </div>
                                         <div class="col-9 col-md-7 col-lg-9">
                                             <div class="card-body">
