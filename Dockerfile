@@ -24,8 +24,6 @@ RUN mkdir -p /opt/RenFeiNet/log;
 
 COPY target/RENFEI.NET.jar /app/
 
-HEALTHCHECK --interval=10s --timeout=3s CMD curl -f http://localhost:8099/HealthCheck || exit 1
-
-ENTRYPOINT ["java","-XX:+PrintGCDetails","-Xms128M","-Xmx256M","-XX:+UseCompressedOops","-XX:+UseConcMarkSweepGC","-XX:SoftRefLRUPolicyMSPerMB=50","-Dfile.encoding=UTF-8","-Xverify:none","-Ddruid.mysql.usePingMethod=false","-jar","/app/RENFEI.NET.jar"]
+ENTRYPOINT ["java","-Xms128M","-Xmx256M","-XX:+UseCompressedOops","-XX:+UseConcMarkSweepGC","-XX:SoftRefLRUPolicyMSPerMB=50","-Dfile.encoding=UTF-8","-Xverify:none","-Ddruid.mysql.usePingMethod=false","-jar","/app/RENFEI.NET.jar"]
 
 EXPOSE 8099

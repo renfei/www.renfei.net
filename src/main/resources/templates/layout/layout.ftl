@@ -10,6 +10,7 @@
             <meta name="copyright" content="CopyRight RENFEI.NET, All Rights Reserved."/>
             <meta http-equiv="Content-Language" content="zh-CN"/>
             <meta name="renderer" content="webkit">
+            <meta name="theme-color" content="#333333"/>
             <link rel="dns-prefetch" href="//www.renfei.net">
             <link rel="dns-prefetch" href="//cdn.jsdelivr.net">
             <link rel="dns-prefetch" href="//hm.baidu.com">
@@ -38,6 +39,7 @@
             <meta property="fb:app_id" content="205704373959112"/>
             <meta property="fb:pages" content="108842630700746"/>
             <link id="favicon" rel="shortcut icon" href="https://cdn.renfei.net/favicon.ico" type="image/x-icon"/>
+            <link rel="apple-touch-icon" href="https://cdn.renfei.net/Logo/logo_192.png">
             <link rel="search" type="application/opensearchdescription+xml" href="https://www.renfei.net/search/search.xml" title="任霏博客"/>
             <#list headVO.css! as css>
                 <link href="${css}" rel="stylesheet" type="text/css"/>

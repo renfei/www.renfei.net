@@ -38,7 +38,7 @@
         <div class="col-xl-9 col-lg-9 col-md-8">
             <div id="post-content">
                 <#if post.featuredImage??>
-                    <img src="${post.featuredImage!}" alt="${post.title!}"
+                    <img src="${post.featuredImage!}" alt="${post.title!}" width="850px" height="400px"
                          class="img-fluid shadow mb-5 bg-white rounded"/>
                 </#if>
                 <#if downloadDO??>

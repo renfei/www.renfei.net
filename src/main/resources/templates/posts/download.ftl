@@ -3,35 +3,42 @@
         <div class="card mb-3">
             <div class="row no-gutters">
                 <div class="col-md-4">
-                    <img src="${downloadfile.icon}" class="img-responsive" alt="${downloadfile.name}">
+                    <img src="${downloadfile.icon}" width="249px" height="246px" style="width: 100%;height:auto;"
+                         class="img-responsive" alt="${downloadfile.name}">
                 </div>
                 <div class="col-md-8">
                     <div class="card-body">
                         <h5 class="card-title">${downloadfile.name!"暂无"}</h5>
-                        <p class="card-text mb-0"><small class="text-muted">${downloadfile.created?string("yyyy-MM-dd HH:mm:ss")!"Unknown"}</small></p>
+                        <p class="card-text mb-0"><small
+                                    class="text-muted">${downloadfile.created?string("yyyy-MM-dd HH:mm:ss")!"Unknown"}</small>
+                        </p>
                         <form>
                             <div class="form-group row mb-0">
                                 <label class="col-md-2 col-form-label">Name</label>
                                 <div class="col-md-10">
-                                    <label class="col-form-label" style="font-weight: 300;">${downloadfile.name!"暂无"}</label>
+                                    <label class="col-form-label"
+                                           style="font-weight: 300;">${downloadfile.name!"暂无"}</label>
                                 </div>
                             </div>
                             <div class="form-group row mb-0">
                                 <label class="col-md-2 col-form-label">Size</label>
                                 <div class="col-md-10">
-                                    <label class="col-form-label" style="font-weight: 300;">${downloadfile.size!"暂无"}</label>
+                                    <label class="col-form-label"
+                                           style="font-weight: 300;">${downloadfile.size!"暂无"}</label>
                                 </div>
                             </div>
                             <div class="form-group row mb-0">
                                 <label class="col-md-2 col-form-label">Hash</label>
                                 <div class="col-md-10">
-                                    <label class="col-form-label" style="font-weight: 300;">${downloadfile.hash!"暂无"}</label>
+                                    <label class="col-form-label"
+                                           style="font-weight: 300;">${downloadfile.hash!"暂无"}</label>
                                 </div>
                             </div>
                             <div class="form-group row mb-0">
                                 <label class="col-md-2 col-form-label">Files</label>
                                 <div class="col-md-10">
-                                    <label class="col-form-label" style="font-weight: 300;">${downloadfile.fileName!"暂无"}</label>
+                                    <label class="col-form-label"
+                                           style="font-weight: 300;">${downloadfile.fileName!"暂无"}</label>
                                 </div>
                             </div>
                         </form>
@@ -102,8 +109,8 @@
                         <div class="col-md-7">
                             <#if downloadfile.filePath??>
                                 <a class="btn btn-primary" href="javascript:void(0);"
-                                        id="downloadfile_jisu_btn"
-                                        onclick="getJiSuDownloadLink()">获取极速下载连接
+                                   id="downloadfile_jisu_btn"
+                                   onclick="getJiSuDownloadLink()">获取极速下载连接
                                 </a>
                             </#if>
                         </div>
@@ -122,9 +129,8 @@
                         <div class="col-md-10">
                             <div class="row wechatcard">
                                 <div class="col-xs-4 col-md-3" style="padding: 0;">
-                                    <img
-                                            src="https://cdn.renfei.net/images/wechat.jpg"
-                                            width="100%">
+                                    <img src="https://cdn.renfei.net/images/WechatQR.png"
+                                         width="500px" height="500px" style="width: 100%;height: auto;">
                                 </div>
                                 <div class="col-xs-8 col-md-9" style="font-size: 14px;">
                                     <div class="wechatcard_title"><strong class="wecharcolor">

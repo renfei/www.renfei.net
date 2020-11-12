@@ -49,6 +49,8 @@ public class LogAspect {
     public void saveSystemLog(JoinPoint joinPoint, Object keys) {
         // 获取RequestAttributes
         RequestAttributes requestAttributes = RequestContextHolder.getRequestAttributes();
+        //设置子线程共享
+        RequestContextHolder.setRequestAttributes(requestAttributes,true);
         // 从获取RequestAttributes中获取HttpServletRequest的信息
         assert requestAttributes != null;
         HttpServletRequest request = (HttpServletRequest) requestAttributes
