@@ -7,7 +7,7 @@
 <@head headVO,title>
     <link rel="stylesheet" type="text/css" href="//cdn.renfei.net/css/lightbox.css?v=20200506135243"/>
     <#if HighlightJS??>
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.3.2/styles/idea.css">
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.3.2/build/styles/atom-one-dark.min.css">
     </#if>
 </@head>
 <body>
@@ -133,7 +133,7 @@
     <script type='text/javascript' charset="UTF-8" src="//cdn.renfei.net/js/lightbox.min.js?v=20200506135243"
             async></script>
 <#if HighlightJS??>
-    <script src="https://cdn.jsdelivr.net/npm/highlight.js@10.3.2/lib/index.min.js"></script>
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.3.2/build/highlight.min.js"></script>
     <script>
         $(function () {
             $("code").each(function () {
