@@ -90,7 +90,7 @@ public class GlobalService extends BaseService {
     }
 
     @Cacheable
-    public FooterVO getGlobalFooter() {
+    public FooterVO getGlobalFooter(boolean isDesktop) {
         FooterVO footerVO = new FooterVO();
         footerVO.setVersion(renFeiConfig.getVersion());
         footerVO.setBuildTime(renFeiConfig.getBuildTime());
@@ -104,7 +104,9 @@ public class GlobalService extends BaseService {
                 this.add("https://cdn.renfei.net/thunder/js/bs4.pop.js?ver=" + renFeiConfig.getBuildTime());
                 this.add("https://cdn.renfei.net/thunder/js/main.js?ver=" + renFeiConfig.getBuildTime());
                 this.add("https://www.googletagmanager.com/gtag/js?id=" + renFeiConfig.getGoogle().getAnalytics());
-                this.add("https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js");
+                if (isDesktop) {
+                    this.add("https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js");
+                }
             }
         });
         // 页脚菜单

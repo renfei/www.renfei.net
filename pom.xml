@@ -10,7 +10,7 @@
     </parent>
     <groupId>net.renfei</groupId>
     <artifactId>thunder</artifactId>
-    <version>1.0.15</version>
+    <version>1.0.17</version>
     <name>thunder</name>
     <url>https://www.renfei.net</url>
     <description>www.renfei.net</description>
@@ -221,6 +221,11 @@
             <groupId>com.aliyun.oss</groupId>
             <artifactId>aliyun-sdk-oss</artifactId>
             <version>${aliyun.oss.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>eu.bitwalker</groupId>
+            <artifactId>UserAgentUtils</artifactId>
+            <version>1.21</version>
         </dependency>
     </dependencies>
 

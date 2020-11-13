@@ -6,7 +6,6 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" lang="zh-CN" dir="ltr" prefix="og: http://ogp.me/ns#">
 <@head headVO,title>
     <link rel="stylesheet" type="text/css" href="//cdn.renfei.net/css/lightbox.css?v=20200506135243"/>
-    <link rel="stylesheet" type="text/css" href="//cdn.renfei.net/css/baguetteBox.min.css"/>
     <#if HighlightJS??>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.3.2/styles/idea.css">
     </#if>
@@ -133,7 +132,6 @@
     </script>
     <script type='text/javascript' charset="UTF-8" src="//cdn.renfei.net/js/lightbox.min.js?v=20200506135243"
             async></script>
-    <script type='text/javascript' charset="UTF-8" src="//cdn.renfei.net/js/baguetteBox.min.js"></script>
 <#if HighlightJS??>
     <script src="https://cdn.jsdelivr.net/npm/highlight.js@10.3.2/lib/index.min.js"></script>
     <script>
@@ -149,10 +147,9 @@
         $(function () {
             $(".renfei-content img").each(function () {
                 $(this).attr('class', "img-fluid shadow mb-5 bg-white rounded mx-auto d-block");
-                var strA = "<a class=\"lightbox\" href='" + this.src + "' style='position: initial;'></a>";
+                var strA = "<a class=\"lightbox\" href='" + this.src + "' style='position: initial;' data-lightbox=\"example-set\"></a>";
                 $(this).wrapAll(strA);
             });
-            baguetteBox.run('.renfei-content');
         });
     </script>
 </@footer>

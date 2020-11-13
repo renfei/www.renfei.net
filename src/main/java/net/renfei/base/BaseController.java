@@ -1,5 +1,6 @@
 package net.renfei.base;
 
+import eu.bitwalker.useragentutils.*;
 import net.renfei.config.RenFeiConfig;
 import net.renfei.entity.CommentDTO;
 import net.renfei.entity.CommentVO;
@@ -20,6 +21,8 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+
+import static eu.bitwalker.useragentutils.DeviceType.COMPUTER;
 
 /**
  * <p>Title: BaseController</p>
@@ -66,7 +69,13 @@ public abstract class BaseController {
     public void modelAttribute(ModelAndView mv) {
         mv.addObject(HEAD_KEY, globalService.getGlobalHead());
         mv.addObject(HEADER_KEY, globalService.getGlobalHeader());
-        mv.addObject(FOOTER_KEY, globalService.getGlobalFooter());
+        String agent= request.getHeader("user-agent");
+        UserAgent userAgent = UserAgent.parseUserAgentString(agent);
+        // 操作系统信息
+        OperatingSystem operatingSystem = userAgent.getOperatingSystem();
+        // 设备类型
+        DeviceType deviceType = operatingSystem.getDeviceType();
+        mv.addObject(FOOTER_KEY, globalService.getGlobalFooter(COMPUTER.equals(deviceType)));
     }
 
     protected void setHead(ModelAndView mv, String description) {

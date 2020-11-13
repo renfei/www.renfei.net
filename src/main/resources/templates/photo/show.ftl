@@ -4,7 +4,6 @@
     <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" lang="zh-CN" dir="ltr" prefix="og: http://ogp.me/ns#">
     <@head headVO,title>
         <link rel="stylesheet" type="text/css" href="//cdn.renfei.net/css/lightbox.css?v=20200506135243"/>
-        <link rel="stylesheet" type="text/css" href="//cdn.renfei.net/css/baguetteBox.min.css"/>
     </@head>
     <body>
     <@header headerVO>
@@ -51,12 +50,6 @@
     <@footer footerVO performance_execTimeTotal performance_execCountTotal>
         <script type='text/javascript' charset="UTF-8" src="//cdn.renfei.net/js/lightbox.min.js?v=20200506135243"
                 async></script>
-        <script type='text/javascript' charset="UTF-8" src="//cdn.renfei.net/js/baguetteBox.min.js"></script>
-        <script>
-            $(function () {
-                baguetteBox.run('.photos-content');
-            });
-        </script>
     </@footer>
     </body>
     </html>
