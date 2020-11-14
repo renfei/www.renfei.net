@@ -139,7 +139,7 @@
                                     <#if downloadfile.filePath??>
                                         <div>
                                             使用微信扫描二维码关注公众号，回复【
-                                            <span class="wechatcard_red">
+                                            <span class="wechatcard_red" style="color:red;font-weight: 800;">
                                             ${'极速下载'+downloadfile.id?c}
                                             </span>
                                             】，获得极速下载授权码。
