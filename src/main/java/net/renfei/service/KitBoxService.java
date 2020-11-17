@@ -85,6 +85,11 @@ public class KitBoxService extends BaseService {
                                 .with(LinkVO::setText, "FreeMarker在线测试工具")
                                 .build());
                         this.add(Builder.of(LinkVO::new)
+                                .with(LinkVO::setHref, "/kitbox/byteUnitConversion")
+                                .with(LinkVO::setRel, "计算机字节(Byte)单位之间的转换换算工具")
+                                .with(LinkVO::setText, "字节(Byte)单位转换工具")
+                                .build());
+                        this.add(Builder.of(LinkVO::new)
                                 .with(LinkVO::setHref, "/kitbox/ueditor")
                                 .with(LinkVO::setRel, "百度团队的UEditor在线文本编辑器演示与体验")
                                 .with(LinkVO::setText, "UEditor富文本在线编辑器")

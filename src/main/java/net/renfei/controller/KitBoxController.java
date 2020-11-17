@@ -127,6 +127,17 @@ public class KitBoxController extends BaseController {
         return mv;
     }
 
+    @RequestMapping("byteUnitConversion")
+    @SystemLog(logLevel = LogLevel.INFO, logModule = LogModule.CMS, logType = LogType.GET, logDesc = "获取FreeMarker(FTL)在线测试工具页面")
+    public ModelAndView byteUnitConversion(ModelAndView mv) {
+        setHead(mv, "计算机字节(Byte)单位之间的转换换算工具：bit、Byte、KB、MB、GB、TB、PB、EB之间的转换计算工具",
+                "字节,单位,比特,转换,换算,工具,bit,Byte,KB,MB,GB,TB,PB,EB");
+        mv.addObject("title", "字节(Byte)单位转换换算工具 - 开发者工具箱 - " + renFeiConfig.getSiteName());
+        setKitBoxMenus(mv, DEVELOPMENT_TOOL);
+        mv.setViewName("kitbox/byteUnitConversion");
+        return mv;
+    }
+
     @RequestMapping("ueditor")
     @SystemLog(logLevel = LogLevel.INFO, logModule = LogModule.CMS, logType = LogType.GET, logDesc = "获取 UEditor 富文本在线编辑器页面")
     public ModelAndView ueditor(ModelAndView mv) {
