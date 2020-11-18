@@ -1,4 +1,4 @@
-FROM ubuntu:focal
+FROM ubuntu:18.04
 MAINTAINER RenFei <i@renfei.net>
 
 RUN set -ex; \
