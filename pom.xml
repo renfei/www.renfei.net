@@ -10,7 +10,7 @@
     </parent>
     <groupId>net.renfei</groupId>
     <artifactId>thunder</artifactId>
-    <version>1.0.19</version>
+    <version>1.0.20</version>
     <name>thunder</name>
     <url>https://www.renfei.net</url>
     <description>www.renfei.net</description>
@@ -76,7 +76,7 @@
         <druid.version>1.2.2</druid.version>
         <pagehelper.version>1.3.0</pagehelper.version>
         <swagger.version>3.0.0</swagger.version>
-        <mybatis.version>2.1.3</mybatis.version>
+        <mybatis.version>2.1.4</mybatis.version>
         <commons-io.version>2.8.0</commons-io.version>
         <zxing.version>3.4.1</zxing.version>
         <aliyun.core.version>4.5.14</aliyun.core.version>

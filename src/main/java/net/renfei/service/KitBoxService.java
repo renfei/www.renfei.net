@@ -85,6 +85,11 @@ public class KitBoxService extends BaseService {
                                 .with(LinkVO::setText, "FreeMarker在线测试工具")
                                 .build());
                         this.add(Builder.of(LinkVO::new)
+                                .with(LinkVO::setHref, "/kitbox/strHumpLineConvert")
+                                .with(LinkVO::setRel, "下划线与驼峰命名风格的相互转换工具")
+                                .with(LinkVO::setText, "下划线驼峰命名互转工具")
+                                .build());
+                        this.add(Builder.of(LinkVO::new)
                                 .with(LinkVO::setHref, "/kitbox/byteUnitConversion")
                                 .with(LinkVO::setRel, "计算机字节(Byte)单位之间的转换换算工具")
                                 .with(LinkVO::setText, "字节(Byte)单位转换工具")
@@ -98,6 +103,11 @@ public class KitBoxService extends BaseService {
                                 .with(LinkVO::setHref, "/kitbox/wordIkAnalyze")
                                 .with(LinkVO::setRel, "IK Analyzer 在线分词工具与API开放接口服务")
                                 .with(LinkVO::setText, "IK 在线分词工具与API")
+                                .build());
+                        this.add(Builder.of(LinkVO::new)
+                                .with(LinkVO::setHref, "/kitbox/portNumberList")
+                                .with(LinkVO::setRel, "计算机 TCP/UDP 端口号注册列表大全")
+                                .with(LinkVO::setText, "端口号注册列表")
                                 .build());
                     }
                 })

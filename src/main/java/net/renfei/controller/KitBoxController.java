@@ -127,8 +127,19 @@ public class KitBoxController extends BaseController {
         return mv;
     }
 
+    @RequestMapping("strHumpLineConvert")
+    @SystemLog(logLevel = LogLevel.INFO, logModule = LogModule.CMS, logType = LogType.GET, logDesc = "获取下划线驼峰命名互转工具页面")
+    public ModelAndView strHumpLineConvert(ModelAndView mv) {
+        setHead(mv, "下划线(Line)与驼峰(Hump)命名风格的相互转换工具，例如：test_test/testTest的相互转换",
+                "驼峰,下划线,命名,风格,转换,互转,在线,工具,Hump,line");
+        mv.addObject("title", "下划线驼峰命名互转工具 - 开发者工具箱 - " + renFeiConfig.getSiteName());
+        setKitBoxMenus(mv, DEVELOPMENT_TOOL);
+        mv.setViewName("kitbox/strHumpLineConvert");
+        return mv;
+    }
+
     @RequestMapping("byteUnitConversion")
-    @SystemLog(logLevel = LogLevel.INFO, logModule = LogModule.CMS, logType = LogType.GET, logDesc = "获取FreeMarker(FTL)在线测试工具页面")
+    @SystemLog(logLevel = LogLevel.INFO, logModule = LogModule.CMS, logType = LogType.GET, logDesc = "获取字节(Byte)单位转换换算工具页面")
     public ModelAndView byteUnitConversion(ModelAndView mv) {
         setHead(mv, "计算机字节(Byte)单位之间的转换换算工具：bit、Byte、KB、MB、GB、TB、PB、EB之间的转换计算工具",
                 "字节,单位,比特,转换,换算,工具,bit,Byte,KB,MB,GB,TB,PB,EB");
@@ -156,6 +167,17 @@ public class KitBoxController extends BaseController {
         setHead(mv, "在线分词工具与API接口(IK Analyze)，提供免费的在线文字分词与切词API接口服务，基于IKAnalyzer同时提供了对Lucene的默认优化实现。",
                 "分词,切词,中文,ik,analyze,api,接口,在线");
         mv.setViewName("kitbox/wordIkAnalyze");
+        setKitBoxMenus(mv, DEVELOPMENT_TOOL);
+        return mv;
+    }
+
+    @RequestMapping("portNumberList")
+    @SystemLog(logLevel = LogLevel.INFO, logModule = LogModule.CMS, logType = LogType.GET, logDesc = "获取计算机 TCP/UDP 端口号注册列表大全页面")
+    public ModelAndView portNumberList(ModelAndView mv) {
+        mv.addObject("title", "计算机 TCP/UDP 端口号注册列表大全 - 开发者工具箱 - " + renFeiConfig.getSiteName());
+        setHead(mv, "计算机之间依照互联网传输层TCP/IP协议的协议通信，不同的协议都对应不同的端口。并且，利用数据报文的UDP也不一定和TCP采用相同的端口号码。",
+                "tcp,udp,port,端口,计算机,注册,列表,大全");
+        mv.setViewName("kitbox/portNumberList");
         setKitBoxMenus(mv, DEVELOPMENT_TOOL);
         return mv;
     }
