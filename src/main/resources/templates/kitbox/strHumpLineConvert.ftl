@@ -24,8 +24,8 @@
                             <div class="col-md-12">
                                 <form>
                                     <div class="form-group">
-                                        <label>带转换的内容</label>
-                                        <textarea id="content"  class="form-control" rows="8"></textarea>
+                                        <label>待转换的内容</label>
+                                        <textarea id="content" class="form-control" rows="8"></textarea>
                                     </div>
                                 </form>
                             </div>
@@ -52,10 +52,10 @@
                         </div>
                         <div>
                             <blockquote style="font-size: 14px;">
-                                <p>在「FreeMarker (ftl) Code」中填写FreeMarker代码；在「JavaBean (JSON)
-                                    Code」中填写入参对象的JSON字符串；「Result」将返回FreeMarker引擎的运行结果。
+                                <p>
+                                    骆驼式命名法（Camel-Case）又称驼峰式命名法，是电脑程式编写时的一套命名规则（惯例）。正如它的名称CamelCase所表示的那样，是指混合使用大小写字母来构成变量和函数的名字。程序员们为了自己的代码能更容易的在同行之间交流，所以多采取统一的可读性比较好的命名方式。
                                 </p>
-                                <footer>只支持自带函数方法，不支持自定义函数方法</footer>
+                                <p>下划线命名法是随着C语言的出现流行起来的，在UNIX/LIUNX这样的环境，以及GNU代码中使用非常普遍。</p>
                             </blockquote>
                         </div>
                         <div class="d-none d-sm-block">
@@ -79,7 +79,7 @@
 
             function toHump() {
                 let content = $("#content").val();
-                $("#data").val(content.replace(/\_(\w)/g, function(all, letter){
+                $("#data").val(content.replace(/\_(\w)/g, function (all, letter) {
                     return letter.toUpperCase();
                 }));
             }
