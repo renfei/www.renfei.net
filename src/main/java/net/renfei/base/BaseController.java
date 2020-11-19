@@ -69,13 +69,7 @@ public abstract class BaseController {
     public void modelAttribute(ModelAndView mv) {
         mv.addObject(HEAD_KEY, globalService.getGlobalHead());
         mv.addObject(HEADER_KEY, globalService.getGlobalHeader());
-        String agent= request.getHeader("user-agent");
-        UserAgent userAgent = UserAgent.parseUserAgentString(agent);
-        // 操作系统信息
-        OperatingSystem operatingSystem = userAgent.getOperatingSystem();
-        // 设备类型
-        DeviceType deviceType = operatingSystem.getDeviceType();
-        mv.addObject(FOOTER_KEY, globalService.getGlobalFooter(COMPUTER.equals(deviceType)));
+        mv.addObject(FOOTER_KEY, globalService.getGlobalFooter());
     }
 
     protected void setHead(ModelAndView mv, String description) {
