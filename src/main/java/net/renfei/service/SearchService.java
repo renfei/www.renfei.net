@@ -1,11 +1,13 @@
 package net.renfei.service;
 
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
 import net.renfei.base.BaseService;
 import net.renfei.entity.*;
+import net.renfei.repository.CustomMapper;
+import net.renfei.repository.entity.HotSearch;
 import net.renfei.sdk.utils.BeanUtils;
 import net.renfei.sdk.utils.NumberUtils;
-import org.elasticsearch.action.admin.indices.analyze.AnalyzeAction;
-import org.elasticsearch.action.admin.indices.analyze.AnalyzeRequestBuilder;
 import org.elasticsearch.client.RequestOptions;
 import org.elasticsearch.client.RestHighLevelClient;
 import org.elasticsearch.client.indices.AnalyzeRequest;
@@ -13,6 +15,8 @@ import org.elasticsearch.client.indices.AnalyzeResponse;
 import org.elasticsearch.index.query.BoolQueryBuilder;
 import org.elasticsearch.index.query.QueryBuilder;
 import org.elasticsearch.index.query.QueryBuilders;
+import org.springframework.cache.annotation.CacheConfig;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.elasticsearch.core.ElasticsearchRestTemplate;
 import org.springframework.data.elasticsearch.core.IndexOperations;
@@ -37,17 +41,21 @@ import static net.renfei.entity.SearchItem.INDEX_COORDINATES;
  * @author RenFei(i @ renfei.net)
  */
 @Service
+@CacheConfig(cacheNames = "SearchService")
 public class SearchService extends BaseService {
     private final LogService logService;
+    private final CustomMapper customMapper;
     private final AggregateService aggregateService;
     private final RestHighLevelClient restHighLevelClient;
     private final ElasticsearchRestTemplate elasticsearchRestTemplate;
 
     public SearchService(LogService logService,
+                         CustomMapper customMapper,
                          AggregateService aggregateService,
                          RestHighLevelClient restHighLevelClient,
                          ElasticsearchRestTemplate elasticsearchRestTemplate) {
         this.logService = logService;
+        this.customMapper = customMapper;
         this.aggregateService = aggregateService;
         this.restHighLevelClient = restHighLevelClient;
         this.elasticsearchRestTemplate = elasticsearchRestTemplate;
@@ -203,5 +211,17 @@ public class SearchService extends BaseService {
             // 已经存在，删除
             indexOperations.delete();
         }
+    }
+
+    /**
+     * 获取热搜列表
+     *
+     * @return
+     */
+    @Cacheable
+    public List<HotSearch> getHotSearchList() {
+        Page<HotSearch> page = PageHelper.startPage(1, 15);
+        customMapper.getHotSearchList();
+        return page.getResult();
     }
 }

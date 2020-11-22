@@ -15,6 +15,7 @@ import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.RequestAttributes;
 import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import java.lang.reflect.Method;
@@ -47,15 +48,11 @@ public class LogAspect {
 
     @AfterReturning(value = "logPointCut()", returning = "keys")
     public void saveSystemLog(JoinPoint joinPoint, Object keys) {
-        // 获取RequestAttributes
-        RequestAttributes requestAttributes = RequestContextHolder.getRequestAttributes();
+        ServletRequestAttributes servletRequestAttributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
         //设置子线程共享
-        RequestContextHolder.setRequestAttributes(requestAttributes,true);
-        // 从获取RequestAttributes中获取HttpServletRequest的信息
-        assert requestAttributes != null;
-        HttpServletRequest request = (HttpServletRequest) requestAttributes
-                .resolveReference(RequestAttributes.REFERENCE_REQUEST);
-        assert request != null;
+        RequestContextHolder.setRequestAttributes(servletRequestAttributes, true);
+        assert servletRequestAttributes != null;
+        HttpServletRequest request = servletRequestAttributes.getRequest();
         try {
             // 从切面织入点处通过反射机制获取织入点处的方法
             MethodSignature signature = (MethodSignature) joinPoint.getSignature();

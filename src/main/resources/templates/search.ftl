@@ -81,7 +81,7 @@
                     </div>
                 </div>
                 <div class="col-xl-3 col-lg-3 col-md-4">
-                    <div class="card" style="margin-bottom: 1rem;">
+                    <div class="card mb-3" style="margin-bottom: 1rem;">
                         <div class="card-body">
                             <h5 class="card-title" style="font-size: 18px;">关注任霏博客</h5>
                             <h6 class="card-subtitle mb-2 text-muted">扫码关注「任霏博客」微信订阅号</h6>
@@ -95,6 +95,23 @@
                                 Twitter：<a href="https://twitter.com/renfeii" target="_blank" rel="nofollow noopener">@renfeii</a><br/>
                                 Facebook:<a href="https://www.facebook.com/renfeii" target="_blank"
                                             rel="nofollow noopener">任霏</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card" style="margin-bottom: 1rem;">
+                        <div class="card-body">
+                            <h5 class="card-title" style="font-size: 18px;">搜索热榜</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">搜索词来自网友历史搜索自动产生，不代表本站立场。</h6>
+                            <div class="text-center">
+                                <ol class="list-unstyled text-left">
+                                    <#if hotSearchList?? && (hotSearchList?size > 0)>
+                                        <#list hotSearchList as list>
+                                            <li style="white-space: nowrap;overflow: hidden;">
+                                                <a href="/search?type=all&w=${list.word?html}" title="${list.word?html}">${list.word?html}</a>
+                                            </li>
+                                        </#list>
+                                    </#if>
+                                </ol>
                             </div>
                         </div>
                     </div>

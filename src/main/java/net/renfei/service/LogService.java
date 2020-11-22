@@ -1,6 +1,7 @@
 package net.renfei.service;
 
 import com.alibaba.fastjson.JSON;
+import lombok.extern.slf4j.Slf4j;
 import net.renfei.annotation.SystemLog;
 import net.renfei.base.BaseService;
 import net.renfei.entity.LogLevel;
@@ -24,6 +25,7 @@ import java.util.Map;
  * @author RenFei(i @ renfei.net)
  * @date : 2020-11-03 21:44
  */
+@Slf4j
 @Service
 public class LogService extends BaseService {
     private final SystemLogMapper systemLogMapper;
@@ -41,13 +43,17 @@ public class LogService extends BaseService {
         systemLog.setLogDesc(desc);
         if (request != null) {
             // 请求的参数
-            Map<String, String> rtnMap = converMap(request.getParameterMap());
-            // 将参数所在的数组转换成json
-            String params = JSON.toJSONString(rtnMap);
-            systemLog.setRequParam(params);
-            systemLog.setRequIp(IpUtils.getIpAddress(request));
-            systemLog.setRequAgent(request.getHeader("User-Agent"));
-            systemLog.setRequUri(request.getRequestURI());
+            try {
+                Map<String, String> rtnMap = converMap(request.getParameterMap());
+                // 将参数所在的数组转换成json
+                String params = JSON.toJSONString(rtnMap);
+                systemLog.setRequParam(params);
+                systemLog.setRequIp(IpUtils.getIpAddress(request));
+                systemLog.setRequAgent(request.getHeader("User-Agent"));
+                systemLog.setRequUri(request.getRequestURI());
+            } catch (Exception exception) {
+                log.error(exception.getMessage(), exception);
+            }
         }
         systemLog.setLogTime(new Date());
         this.insert(systemLog);
@@ -96,7 +102,7 @@ public class LogService extends BaseService {
      *
      * @param paramMap request获取的参数数组
      */
-    private Map<String, String> converMap(Map<String, String[]> paramMap) {
+    public static Map<String, String> converMap(Map<String, String[]> paramMap) {
         Map<String, String> rtnMap = new HashMap<String, String>();
         for (String key : paramMap.keySet()) {
             rtnMap.put(key, paramMap.get(key)[0]);

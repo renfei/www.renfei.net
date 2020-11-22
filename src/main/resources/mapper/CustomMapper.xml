@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="net.renfei.repository.CustomMapper">
+    <select id="getHotSearchList" resultType="net.renfei.repository.entity.HotSearch">
+        SELECT
+            log_desc AS word,
+            COUNT( 1 ) AS cont 
+        FROM
+            t_system_log 
+        WHERE
+            log_model = 'SEARCH' 
+            AND requ_param IS NOT NULL 
+            AND requ_uri = '/search' 
+        GROUP BY
+            word 
+        ORDER BY
+            cont DESC 
+    </select>
+</mapper>

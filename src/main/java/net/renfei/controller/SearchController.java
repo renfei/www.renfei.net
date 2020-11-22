@@ -10,8 +10,11 @@ import net.renfei.service.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.text.DecimalFormat;
 import java.util.List;
@@ -89,6 +92,12 @@ public class SearchController extends BaseController {
             DecimalFormat df = new DecimalFormat("######0.000000");
             mv.addObject("searchTime", df.format(timed));
             setPagination(mv, page, searchItemListData.getTotal(), "/search?type=" + type + "&w=" + query + "&p=");
+            mv.addObject("hotSearchList",searchService.getHotSearchList());
+            ServletRequestAttributes servletRequestAttributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
+            //设置子线程共享
+            RequestContextHolder.setRequestAttributes(servletRequestAttributes, true);
+            assert servletRequestAttributes != null;
+            HttpServletRequest request = servletRequestAttributes.getRequest();
             logService.log(LogLevel.INFO, LogModule.SEARCH, LogType.GET, query, request);
         }
         mv.setViewName("search");
