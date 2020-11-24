@@ -107,6 +107,9 @@ public class SiteMapService extends BaseService {
         if (categoryDTOS != null && categoryDTOS.size() > 0) {
             for (CategoryDTO cat : categoryDTOS
             ) {
+                if ("page".equals(cat.getEnName().toLowerCase())) {
+                    continue;
+                }
                 siteMapXmls.add(new SiteMapXml(renFeiConfig.getDomain() + "/cat" + cat.getUriPath() + "/" + cat.getEnName(), Changefreq.daily, "0.8", postDate));
             }
         }

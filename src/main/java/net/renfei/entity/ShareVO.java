@@ -38,7 +38,7 @@ public class ShareVO {
 
     public String getPics() {
         if(pics==null){
-            return "https://cdn.renfei.net/logo/ogimage.png";
+            return "https://cdn.renfei.net/Logo/ogimage.png";
         }
         return pics;
     }

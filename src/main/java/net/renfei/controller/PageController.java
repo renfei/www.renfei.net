@@ -49,7 +49,7 @@ public class PageController extends BaseController {
             shareVO.setTitle(pageVO.getTitle());
             shareVO.setUrl(renFeiConfig.getDomain() + "/page/" + pageVO.getId());
             shareVO.setDescribes(pageVO.getDescribes());
-            shareVO.setPics("https://cdn.renfei.net/logo/ogimage.png");
+            shareVO.setPics("https://cdn.renfei.net/Logo/ogimage.png");
             mv.addObject("title", shareVO.getTitle());
             mv.addObject("sharevo", shareVO);
         } else {

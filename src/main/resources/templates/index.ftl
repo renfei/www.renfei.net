@@ -298,7 +298,7 @@
                 "@graph": [
                     {
                         "@type": "Organization",
-                        "logo": "https://cdn.renfei.net/logo/logo_112.png",
+                        "logo": "https://cdn.renfei.net/Logo/logo_112.png",
                         "url": "https://www.renfei.net"
                     },
                     {

@@ -47,7 +47,7 @@ public class OGprotocol {
     }
 
     public String getImage() {
-        return image == null ? "https://cdn.renfei.net/logo/ogimage.png" : image;
+        return image == null ? "https://cdn.renfei.net/Logo/ogimage.png" : image;
     }
 
     public void setImage(String image) {

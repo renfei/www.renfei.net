@@ -29,7 +29,7 @@ public class JsonLdService extends BaseService {
         sb.append("\"@graph\": [");
         sb.append("{");
         sb.append("\"@type\": \"Organization\",");
-        sb.append("\"logo\": \"https://cdn.renfei.net/logo/logo_112.png\",");
+        sb.append("\"logo\": \"https://cdn.renfei.net/Logo/logo_112.png\",");
         sb.append("\"url\": \"https://www.renfei.net\"");
         sb.append("},");
         sb.append("{");
@@ -65,7 +65,7 @@ public class JsonLdService extends BaseService {
         sb.append("\"dateModified\":\"" + sdf.format(postsDTO.getReleaseTime()) + "\",");
         sb.append("\"datePublished\":\"" + sdf.format(postsDTO.getReleaseTime()) + "\",");
         sb.append("\"headline\":\"" + postsDTO.getTitle().replace("\"", "") + "\",");
-        sb.append("\"image\":\"" + (postsDTO.getFeaturedImage() == null ? "https://cdn.renfei.net/logo/ogimage.png" : postsDTO.getFeaturedImage()) + "\",");
+        sb.append("\"image\":\"" + (postsDTO.getFeaturedImage() == null ? "https://cdn.renfei.net/Logo/ogimage.png" : postsDTO.getFeaturedImage()) + "\",");
         sb.append("\"author\":{");
         sb.append("\"@type\": \"Person\",");
         sb.append("\"name\": \"" + (postsDTO.getSourceName() == null ? "任霏" : postsDTO.getSourceName()) + "\"");
@@ -75,7 +75,7 @@ public class JsonLdService extends BaseService {
         sb.append("\"name\": \"任霏博客\",");
         sb.append("\"logo\": {");
         sb.append("\"@type\": \"ImageObject\",");
-        sb.append("\"url\": \"https://cdn.renfei.net/logo/logo_112.png\"");
+        sb.append("\"url\": \"https://cdn.renfei.net/Logo/logo_112.png\"");
         sb.append("}");
         sb.append("},");
         sb.append("\"description\": \"" + postsDTO.getDescribes() + "\",");
@@ -105,7 +105,7 @@ public class JsonLdService extends BaseService {
 //        sb.append("\"dateModified\":\"" + sdf.format(weiboDOS.getReleaseTime()) + "\",");
 //        sb.append("\"datePublished\":\"" + sdf.format(weiboDOS.getReleaseTime()) + "\",");
 //        sb.append("\"headline\":\"" + getTitle(weiboDOS.getContent()) + "\",");
-//        sb.append("\"image\":\"" + (weiboDOS.getImg() == null ? "https://cdn.renfei.net/logo/ogimage.png" : weiboDOS.getImg()) + "\",");
+//        sb.append("\"image\":\"" + (weiboDOS.getImg() == null ? "https://cdn.renfei.net/Logo/ogimage.png" : weiboDOS.getImg()) + "\",");
 //        sb.append("\"author\":{");
 //        sb.append("\"@type\": \"Person\",");
 //        sb.append("\"name\": \"任霏\"");
@@ -115,7 +115,7 @@ public class JsonLdService extends BaseService {
 //        sb.append("\"name\": \"任霏博客\",");
 //        sb.append("\"logo\": {");
 //        sb.append("\"@type\": \"ImageObject\",");
-//        sb.append("\"url\": \"https://cdn.renfei.net/logo/logo_112.png\"");
+//        sb.append("\"url\": \"https://cdn.renfei.net/Logo/logo_112.png\"");
 //        sb.append("}");
 //        sb.append("},");
 //        sb.append("\"description\": \"" + weiboDOS.getContent() + "\",");
