@@ -10,7 +10,7 @@
 
     </@header>
     <div class="container pt-4 pb-4" style="font-size: 14px;">
-        <h3>${queryTitle!"站内搜索"?html}</h3>
+        <h3>${(queryTitle!"站内搜索")?html}</h3>
         <hr>
         <#if query??>
             <div class="row" style="min-height: 400px;">
@@ -86,7 +86,8 @@
                             <h5 class="card-title" style="font-size: 18px;">关注任霏博客</h5>
                             <h6 class="card-subtitle mb-2 text-muted">扫码关注「任霏博客」微信订阅号</h6>
                             <div class="text-center">
-                                <img src="https://cdn.renfei.net/images/WechatQR.png" class="img-fluid" width="500px" height="500px"
+                                <img src="https://cdn.renfei.net/images/WechatQR.png" class="img-fluid" width="500px"
+                                     height="500px"
                                      style="max-width: 140px;height:auto;margin: auto;"/>
                             </div>
                             <div style="font-size: 12px;" class="mt-2">
@@ -107,7 +108,8 @@
                                     <#if hotSearchList?? && (hotSearchList?size > 0)>
                                         <#list hotSearchList as list>
                                             <li style="white-space: nowrap;overflow: hidden;">
-                                                <a href="/search?type=all&w=${list.word?html}" title="${list.word?html}">${list.word?html}</a>
+                                                <a href="/search?type=all&w=${list.word?html}"
+                                                   title="${list.word?html}">${list.word?html}</a>
                                             </li>
                                         </#list>
                                     </#if>
