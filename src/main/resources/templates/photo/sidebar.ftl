@@ -1,4 +1,5 @@
-<#macro sidebar>
+<#include "../layout/layout.ftl"/>
+<#macro sidebar active>
     <div class="card" style="margin-bottom: 1rem;">
         <div class="card-body">
             <h5 class="card-title" style="font-size: 18px;">关注任霏博客</h5>
@@ -15,11 +16,7 @@
         </div>
     </div>
     <div class="d-none d-sm-block">
-        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8859756463807757"
-             data-ad-slot="4995060553" data-ad-format="auto" data-full-width-responsive="true"></ins>
-        <script>
-            (adsbygoogle = window.adsbygoogle || []).push({});
-        </script>
+        <@adsense "4995060553" active></@adsense>
     </div>
     <#nested>
 </#macro>

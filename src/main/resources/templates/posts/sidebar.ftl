@@ -50,11 +50,7 @@
                 </#if>
                 <#if postSidebar_index ==0 || postSidebar_index == 1>
                     <div class="d-none d-sm-block mb-2">
-                        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8859756463807757"
-                             data-ad-slot="4995060553" data-ad-format="auto" data-full-width-responsive="true"></ins>
-                        <script>
-                            (adsbygoogle = window.adsbygoogle || []).push({});
-                        </script>
+                        <@adsense "4995060553" active></@adsense>
                     </div>
                 </#if>
             </#list>

@@ -44,7 +44,7 @@
             <@paginationLayout paginationList></@paginationLayout>
         </div>
         <div class="col-md-3 col-sm-5">
-            <@sidebar></@sidebar>
+            <@sidebar active></@sidebar>
         </div>
     </div>
 </div>

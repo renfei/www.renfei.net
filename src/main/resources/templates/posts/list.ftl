@@ -17,11 +17,7 @@
         <div class="row">
             <div class="col-xl-9 col-lg-9 col-md-8">
                 <div class="d-none d-sm-block mb-3">
-                    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8859756463807757"
-                         data-ad-slot="6116570539" data-ad-format="auto" data-full-width-responsive="true"></ins>
-                    <script>
-                        (adsbygoogle = window.adsbygoogle || []).push({});
-                    </script>
+                    <@adsense "6116570539" active></@adsense>
                 </div>
                 <#if lists?? && (lists?size>0)>
                     <#list lists as post>
@@ -57,11 +53,7 @@
                     </#list>
                 </#if>
                 <div class="d-none d-sm-block mb-3">
-                    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8859756463807757"
-                         data-ad-slot="3646319863" data-ad-format="auto" data-full-width-responsive="true"></ins>
-                    <script>
-                        (adsbygoogle = window.adsbygoogle || []).push({});
-                    </script>
+                    <@adsense "3646319863" active></@adsense>
                 </div>
                 <@paginationLayout paginationList></@paginationLayout>
             </div>

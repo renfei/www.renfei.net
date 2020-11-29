@@ -69,11 +69,7 @@
                 </div>
             </div>
             <div class="d-none d-sm-block mb-2">
-                <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8859756463807757"
-                     data-ad-slot="3646319863" data-ad-format="auto" data-full-width-responsive="true"></ins>
-                <script>
-                    (adsbygoogle = window.adsbygoogle || []).push({});
-                </script>
+                <@adsense "3646319863" active></@adsense>
             </div>
             <div class="row py-2">
                 <div class="col-12">

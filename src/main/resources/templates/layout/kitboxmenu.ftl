@@ -1,4 +1,5 @@
-<#macro KitBoxMenu KitBoxMenus>
+<#include "../layout/layout.ftl"/>
+<#macro KitBoxMenu KitBoxMenus active>
     <div class="accordion" id="KitBoxMenus">
         <#if KitBoxMenus?? && (KitBoxMenus?size>0)>
             <#list KitBoxMenus as menu>
@@ -29,6 +30,7 @@
             </#list>
         </#if>
         <div class="d-none d-sm-block mt-3">
+            <@adsense "4995060553" active></@adsense>
             <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8859756463807757"
                  data-ad-slot="6567996671" data-ad-format="auto" data-full-width-responsive="true"></ins>
             <script>

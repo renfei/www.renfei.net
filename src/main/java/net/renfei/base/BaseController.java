@@ -2,10 +2,7 @@ package net.renfei.base;
 
 import eu.bitwalker.useragentutils.*;
 import net.renfei.config.RenFeiConfig;
-import net.renfei.entity.CommentDTO;
-import net.renfei.entity.CommentVO;
-import net.renfei.entity.HeadVO;
-import net.renfei.entity.OGprotocol;
+import net.renfei.entity.*;
 import net.renfei.service.CommentsService;
 import net.renfei.service.GlobalService;
 import net.renfei.service.PaginationService;
@@ -21,6 +18,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.IntStream;
 
 import static eu.bitwalker.useragentutils.DeviceType.COMPUTER;
 
@@ -34,6 +32,7 @@ public abstract class BaseController {
     protected static final String HEAD_KEY = "headVO";
     protected static final String HEADER_KEY = "headerVO";
     protected static final String FOOTER_KEY = "footerVO";
+    protected static final String ACTIVE_KEY = "active";
     protected final RenFeiConfig renFeiConfig;
     protected final GlobalService globalService;
     protected final CommentsService commentsService;
@@ -69,7 +68,17 @@ public abstract class BaseController {
     public void modelAttribute(ModelAndView mv) {
         mv.addObject(HEAD_KEY, globalService.getGlobalHead());
         mv.addObject(HEADER_KEY, globalService.getGlobalHeader());
-        mv.addObject(FOOTER_KEY, globalService.getGlobalFooter());
+        FooterVO footerVO = globalService.getGlobalFooter();
+        if (!"prod".equals(renFeiConfig.getActive())) {
+            // 非生产环境，移除谷歌广告
+            List<String> jss = footerVO.getJss();
+            IntStream.range(0, jss.size()).filter(i ->
+                    jss.get(i).contains("adsbygoogle.js")).
+                    boxed().findFirst().map(i -> jss.remove((int) i));
+
+        }
+        mv.addObject(FOOTER_KEY, footerVO);
+        mv.addObject(ACTIVE_KEY, renFeiConfig.getActive());
     }
 
     protected void setHead(ModelAndView mv, String description) {

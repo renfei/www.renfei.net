@@ -46,6 +46,7 @@ spring:
       template_update_delay: 0
 # 自定义配置 #####################################
 renfei:
+  active: dev
   version: @project.version@
   siteName: 任霏博客
   domain: http://localhost:8099
@@ -77,3 +78,5 @@ renfei:
     appSecret: <appSecret>
     token: <token>
     encodingAESKey: <encodingAESKey>
+  jwt:
+    secret: <secret>

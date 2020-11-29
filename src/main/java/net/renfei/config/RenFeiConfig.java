@@ -15,6 +15,7 @@ import org.springframework.stereotype.Component;
 @ConfigurationProperties(prefix = "renfei")
 public class RenFeiConfig {
     private String version;
+    private String active;
     private String siteName;
     private String domain;
     private String staticDomain;
@@ -27,6 +28,7 @@ public class RenFeiConfig {
     private Baidu baidu;
     private Google google;
     private WeChat weChat;
+    private Jwt jwt;
 
     @Data
     public static class DataCahe {
@@ -71,5 +73,10 @@ public class RenFeiConfig {
         private String appSecret;
         private String token;
         private String encodingAESKey;
+    }
+
+    @Data
+    public static class Jwt{
+        private String secret;
     }
 }

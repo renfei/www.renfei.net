@@ -12,7 +12,7 @@
     <div class="container" style="padding-top: 50px;">
         <div class="row">
             <div class="col-sm-3 col-md-3">
-                <@KitBoxMenu KitBoxMenus></@KitBoxMenu>
+                <@KitBoxMenu KitBoxMenus active></@KitBoxMenu>
             </div>
             <div class="col-sm-9 col-md-9">
                 <div class="card">
@@ -195,12 +195,7 @@
                                     <footer>{ip} - 更换为需要查询的IP地址，使用 GET 请求。</footer>
                                 </blockquote>
                             </div>
-                            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8859756463807757"
-                                 data-ad-slot="3646319863" data-ad-format="auto"
-                                 data-full-width-responsive="true"></ins>
-                            <script>
-                                (adsbygoogle = window.adsbygoogle || []).push({});
-                            </script>
+                            <@adsense "3646319863" active></@adsense>
                         </div>
                     </div>
                 </div>

@@ -15,7 +15,7 @@
     <div class="container" style="padding-top: 50px;">
         <div class="row">
             <div class="col-sm-3 col-md-3">
-                <@KitBoxMenu KitBoxMenus></@KitBoxMenu>
+                <@KitBoxMenu KitBoxMenus active></@KitBoxMenu>
             </div>
             <div class="col-sm-9 col-md-9">
                 <div class="card">
