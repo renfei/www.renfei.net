@@ -59,6 +59,25 @@ public class CategoryService extends BaseService {
 
     }
 
+    @Cacheable
+    public CategoryDTO getCategoryById(Long id) {
+        CategoryDOExample categoryDOExample = new CategoryDOExample();
+        categoryDOExample.createCriteria()
+                .andIdEqualTo(id);
+        CategoryDO categoryDO = ListUtils.getOne(categoryDOMapper.selectByExampleWithBLOBs(categoryDOExample));
+        if (categoryDO != null) {
+            CategoryDTO categoryDTO = new CategoryDTO();
+            BeanUtils.copyProperties(categoryDO, categoryDTO);
+            TypeDO typeDO = typeService.getTypeByID(categoryDTO.getTypeId());
+            categoryDTO.setTypeName(typeDO.getTypeName());
+            categoryDTO.setUriPath(typeDO.getUriPath());
+            return categoryDTO;
+        } else {
+            return null;
+        }
+
+    }
+
     public List<CategoryDTO> getAllCategory() {
         CategoryDOExample categoryDOExample = new CategoryDOExample();
         categoryDOExample.createCriteria();

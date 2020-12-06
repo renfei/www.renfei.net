@@ -6,7 +6,6 @@ import net.renfei.base.BaseController;
 import net.renfei.config.RenFeiConfig;
 import net.renfei.entity.*;
 import net.renfei.service.*;
-import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Controller;
@@ -16,8 +15,6 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.NoHandlerFoundException;
 
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
-import java.nio.charset.StandardCharsets;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -31,24 +28,23 @@ import java.util.Map;
 @Slf4j
 @Controller
 public class IndexController extends BaseController {
-    @Value("classpath:xml/sitemap.xsl")
-    private Resource siteMapXslXml;
     private final RenFeiConfig renFeiConfig;
     private final PostService postService;
+    private final FeedService feedService;
     private final SiteMapService siteMapService;
-    private final PaginationService paginationService;
 
     public IndexController(PostService postService,
                            RenFeiConfig renFeiConfig,
                            GlobalService globalService,
+                           FeedService feedService,
                            SiteMapService siteMapService,
                            CommentsService commentsService,
                            PaginationService paginationService) {
         super(renFeiConfig, globalService, commentsService, paginationService);
         this.renFeiConfig = renFeiConfig;
         this.postService = postService;
+        this.feedService = feedService;
         this.siteMapService = siteMapService;
-        this.paginationService = paginationService;
     }
 
     @RequestMapping("/")
@@ -129,6 +125,16 @@ public class IndexController extends BaseController {
         response.setHeader("content-type", "application/octet-stream;charset=UTF-8");
         response.setContentType("application/octet-stream;charset=UTF-8");
         mv.setViewName("sitemapxsl");
+        return mv;
+    }
+
+    @RequestMapping(value = "feed")
+    @SystemLog(logLevel = LogLevel.INFO, logModule = LogModule.CMS, logType = LogType.GET, logDesc = "获取Feed")
+    public ModelAndView getFeed(ModelAndView mv, HttpServletResponse response) {
+        mv.addObject("feed", feedService.getFeed());
+        response.setHeader("content-type", "text/xml;charset=UTF-8");
+        response.setContentType("text/xml;charset=UTF-8");
+        mv.setViewName("feed");
         return mv;
     }
 }
