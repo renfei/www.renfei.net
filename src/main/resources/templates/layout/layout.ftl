@@ -4,7 +4,11 @@
             <meta charset="utf-8">
             <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
             <title>${title!?html}</title>
-            <meta name="description" content="${headVO.description!}">
+            <#if (headVO.description)?length lt 150>
+                <meta name="description" content="${headVO.description!}">
+            <#else>
+                <meta name="description" content="${(headVO.description)?substring(0,150)}...">
+            </#if>
             <meta name="keywords" content="${headVO.keywords!}">
             <meta name="author" content="任霏,i@renfei.net"/>
             <meta name="copyright" content="CopyRight RENFEI.NET, All Rights Reserved."/>
