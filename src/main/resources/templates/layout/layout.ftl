@@ -4,9 +4,9 @@
             <meta charset="utf-8">
             <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
             <title>${title!?html}</title>
-            <#if (headVO.description)?length lt 150>
+            <#if headVO.description?? && ((headVO.description)?length lt 150)>
                 <meta name="description" content="${headVO.description!}">
-            <#else>
+            <#elseif headVO.description??>
                 <meta name="description" content="${(headVO.description)?substring(0,150)}...">
             </#if>
             <meta name="keywords" content="${headVO.keywords!}">
