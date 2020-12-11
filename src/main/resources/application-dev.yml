@@ -71,7 +71,7 @@ renfei:
   baidu:
     tongji: <tongji>
   google:
-    analytics: UA-141370164-1
+    analytics: <analytics>
     ads: google.com, pub-8859756463807757, DIRECT, f08c47fec0942fa0
   weChat:
     appId: <appId>
