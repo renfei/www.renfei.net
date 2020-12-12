@@ -30,11 +30,11 @@ public class Swagger3Config implements WebMvcConfigurer {
     }
 
     private ApiInfo apiInfo() {
-        Contact contact = new Contact("RenFei.Net", "http://www.renfei.net/", "i@renfei.net");
+        Contact contact = new Contact("RenFei.Net", "https://www.renfei.net/", "i@renfei.net");
         return new ApiInfoBuilder()
                 .title("RENFEI.NET 开放接口")
                 .description("RenFei.NET Open API")
-                .termsOfServiceUrl("http://www.renfei.net/")
+                .termsOfServiceUrl("https://www.renfei.net/")
                 .contact(contact)
                 .version(renFeiConfig.getVersion())
                 .build();
