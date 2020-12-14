@@ -7,7 +7,8 @@
 <@head headVO,title>
     <link rel="stylesheet" type="text/css" href="//cdn.renfei.net/css/lightbox.css?v=20200506135243"/>
     <#if HighlightJS??>
-        <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.3.2/build/styles/atom-one-dark.min.css">
+        <link rel="stylesheet"
+              href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.3.2/build/styles/atom-one-dark.min.css">
     </#if>
 </@head>
 <body>
@@ -54,15 +55,17 @@
                     <#if post.isOriginal>
                         <blockquote class="blockquote"
                                     style="font-size: 12px;color: #86868b;line-height: 1.33337;font-weight: 400;">
+                            商业用途请联系作者获得授权。<br>
                             版权声明：本文为博主「${post.sourceName!}」原创文章，遵循 <a
-                                    href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank"
-                                    rel="nofollow noopener">CC 4.0 BY-SA</a> 版权协议，转载请附上原文出处链接及本声明。<br>
+                                    href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank"
+                                    rel="nofollow noopener">CC BY-NC-SA 4.0</a> 版权协议，转载请附上原文出处链接及本声明。<br>
                             原文链接：<a href="https://www.renfei.net/posts/${post.id?c}">https://www.renfei.net/posts/${post.id?c}</a>
                         </blockquote>
                     <#else>
                         <blockquote class="blockquote"
                                     style="font-size: 12px;color: #86868b;line-height: 1.33337;font-weight: 400;">
-                            版权声明：本文转载「${post.sourceName!}」的文章。<br>
+                            商业用途请联系作者获得授权。<br>
+                            版权声明：本文转载自「${post.sourceName!}」，版权归原所有者。<br>
                             原文链接：<a href="${post.sourceUrl!}" rel="nofollow noopener">${post.sourceUrl!}</a>
                         </blockquote>
                     </#if>
@@ -124,7 +127,6 @@
 <@footer footerVO performance_execTimeTotal performance_execCountTotal>
     <script type="application/ld+json">
             ${jsonld}
-
     </script>
     <script type='text/javascript' charset="UTF-8" src="//cdn.renfei.net/js/lightbox.min.js?v=20200506135243"
             async></script>
@@ -147,6 +149,11 @@
                 $(this).wrapAll(strA);
             });
         });
+        <#if post.isOriginal>
+        document.addEventListener('copy', function (e) {
+            setClipboardText(e, "https://www.renfei.net/posts/${post.id?c}");
+        });
+        </#if>
     </script>
 </@footer>
 </body>
