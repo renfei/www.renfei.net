@@ -164,20 +164,22 @@ public class GlobalService extends BaseService {
         }
 
         // jsText
-        String jsText = "var _hmt = _hmt || [];\n" +
-                "(function() {\n" +
-                "  var hm = document.createElement(\"script\");\n" +
-                "  var analytics_bd = '" + renFeiConfig.getBaidu().getTongji() + "';\n" +
+        String jsText = "var _hmt = _hmt || [];\n"
+                + "(function() {\n"
+                + "  var hm = document.createElement(\"script\");\n"
+                + "  var analytics_bd = '" + renFeiConfig.getBaidu().getTongji() + "';\n"
                 // 为了防止爬虫扫描到统计代码的key，将URL地址打碎成数组
                 // 原地址：hm.src = https://hm.baidu.com/hm.js?<key>
-                "  hm.src = ['ht','t','ps',':/','/h','m','.','ba','i','d','u.c','o','m/','h','m','.j','s?',analytics_bd].join('');\n" +
-                "  var s = document.getElementsByTagName(\"script\")[0]; \n" +
-                "  s.parentNode.insertBefore(hm, s);\n" +
-                "})();\n";
-        jsText += "window.dataLayer = window.dataLayer || [];\n" +
-                "    function gtag(){dataLayer.push(arguments);}\n" +
-                "    gtag('js', new Date());\n" +
-                "    gtag('config', '" + renFeiConfig.getGoogle().getAnalytics() + "');\n";
+                + "  hm.src = ['ht','t','ps',':/','/h','m','.','ba','i','d','u.c','o','m/','h','m','.j','s?',analytics_bd].join('');\n"
+                + "  var s = document.getElementsByTagName(\"script\")[0]; \n"
+                + "  s.parentNode.insertBefore(hm, s);\n"
+                + "})();\n";
+        jsText += "window.dataLayer = window.dataLayer || [];\n"
+                + "    function gtag(){dataLayer.push(arguments);}\n"
+                + "    gtag('js', new Date());\n"
+                + "    gtag('config', '" + renFeiConfig.getGoogle().getAnalytics() + "');\n";
+        jsText += "<script defer src='https://static.cloudflareinsights.com/beacon.min.js' "
+                + "data-cf-beacon='{\"token\": \"d178d32bc6ed4d9dadc5daac1579c605\"}'></script>\n";
         footerVO.setJsText(jsText);
         return footerVO;
     }
