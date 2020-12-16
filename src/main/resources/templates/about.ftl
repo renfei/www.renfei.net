@@ -152,7 +152,7 @@
                     </span>
                     <div class="timeline-item">
                         <div class="timeline-point timeline-point-success">
-                            <i class="fa fa-money"></i>
+                            <i class="fab fa-money"></i>
                         </div>
                         <div class="timeline-event p-2">
                             <div class="timeline-heading">
@@ -168,7 +168,7 @@
                     </div>
                     <div class="timeline-item">
                         <div class="timeline-point timeline-point-success">
-                            <i class="fa fa-money"></i>
+                            <i class="fab fa-money"></i>
                         </div>
                         <div class="timeline-event p-2">
                             <div class="timeline-heading">
@@ -189,7 +189,7 @@
                     </span>
                     <div class="timeline-item">
                         <div class="timeline-point timeline-point-success">
-                            <i class="fa fa-money"></i>
+                            <i class="fab fa-money"></i>
                         </div>
                         <div class="timeline-event p-2">
                             <div class="timeline-heading">
@@ -205,7 +205,7 @@
                     </div>
                     <div class="timeline-item">
                         <div class="timeline-point timeline-point-success">
-                            <i class="fa fa-money"></i>
+                            <i class="fab fa-money"></i>
                         </div>
                         <div class="timeline-event p-2">
                             <div class="timeline-heading">
@@ -224,7 +224,7 @@
                     </span>
                     <div class="timeline-item">
                         <div class="timeline-point timeline-point-success">
-                            <i class="fa fa-money"></i>
+                            <i class="fab fa-money"></i>
                         </div>
                         <div class="timeline-event p-2">
                             <div class="timeline-heading">
@@ -240,7 +240,7 @@
                     </div>
                     <div class="timeline-item">
                         <div class="timeline-point timeline-point-success">
-                            <i class="fa fa-money"></i>
+                            <i class="fab fa-money"></i>
                         </div>
                         <div class="timeline-event p-2">
                             <div class="timeline-heading">
@@ -256,7 +256,7 @@
                     </div>
                     <div class="timeline-item">
                         <div class="timeline-point timeline-point-success">
-                            <i class="fa fa-money"></i>
+                            <i class="fab fa-money"></i>
                         </div>
                         <div class="timeline-event p-2">
                             <div class="timeline-heading">
@@ -272,7 +272,7 @@
                     </div>
                     <div class="timeline-item">
                         <div class="timeline-point timeline-point-success">
-                            <i class="fa fa-money"></i>
+                            <i class="fab fa-money"></i>
                         </div>
                         <div class="timeline-event p-2">
                             <div class="timeline-heading">
@@ -291,7 +291,7 @@
                     </span>
                     <div class="timeline-item">
                         <div class="timeline-point timeline-point-success">
-                            <i class="fa fa-money"></i>
+                            <i class="fab fa-money"></i>
                         </div>
                         <div class="timeline-event p-2">
                             <div class="timeline-heading">
@@ -307,7 +307,7 @@
                     </div>
                     <div class="timeline-item">
                         <div class="timeline-point timeline-point-success">
-                            <i class="fa fa-money"></i>
+                            <i class="fab fa-money"></i>
                         </div>
                         <div class="timeline-event p-2">
                             <div class="timeline-heading">
@@ -323,7 +323,7 @@
                     </div>
                     <div class="timeline-item">
                         <div class="timeline-point timeline-point-success">
-                            <i class="fa fa-money"></i>
+                            <i class="fab fa-money"></i>
                         </div>
                         <div class="timeline-event p-2">
                             <div class="timeline-heading">
@@ -342,7 +342,7 @@
                     </span>
                     <div class="timeline-item">
                         <div class="timeline-point timeline-point-success">
-                            <i class="fa fa-money"></i>
+                            <i class="fab fa-money"></i>
                         </div>
                         <div class="timeline-event p-2">
                             <div class="timeline-heading">
@@ -358,7 +358,7 @@
                     </div>
                     <div class="timeline-item">
                         <div class="timeline-point timeline-point-success">
-                            <i class="fa fa-money"></i>
+                            <i class="fab fa-money"></i>
                         </div>
                         <div class="timeline-event p-2">
                             <div class="timeline-heading">
@@ -377,7 +377,7 @@
                     </span>
                     <div class="timeline-item">
                         <div class="timeline-point timeline-point-success">
-                            <i class="fa fa-money"></i>
+                            <i class="fab fa-money"></i>
                         </div>
                         <div class="timeline-event p-2">
                             <div class="timeline-heading">
@@ -393,7 +393,7 @@
                     </div>
                     <div class="timeline-item">
                         <div class="timeline-point timeline-point-success">
-                            <i class="fa fa-money"></i>
+                            <i class="fab fa-money"></i>
                         </div>
                         <div class="timeline-event p-2">
                             <div class="timeline-heading">
@@ -409,7 +409,7 @@
                     </div>
                     <div class="timeline-item">
                         <div class="timeline-point timeline-point-success">
-                            <i class="fa fa-money"></i>
+                            <i class="fab fa-money"></i>
                         </div>
                         <div class="timeline-event p-2">
                             <div class="timeline-heading">
@@ -425,7 +425,7 @@
                     </div>
                     <div class="timeline-item">
                         <div class="timeline-point timeline-point-success">
-                            <i class="fa fa-money"></i>
+                            <i class="fab fa-money"></i>
                         </div>
                         <div class="timeline-event p-2">
                             <div class="timeline-heading">
@@ -441,7 +441,7 @@
                     </div>
                     <div class="timeline-item">
                         <div class="timeline-point timeline-point-success">
-                            <i class="fa fa-money"></i>
+                            <i class="fab fa-money"></i>
                         </div>
                         <div class="timeline-event p-2">
                             <div class="timeline-heading">
@@ -460,7 +460,7 @@
                     </span>
                     <div class="timeline-item">
                         <div class="timeline-point timeline-point-success">
-                            <i class="fa fa-money"></i>
+                            <i class="fab fa-money"></i>
                         </div>
                         <div class="timeline-event p-2">
                             <div class="timeline-heading">
@@ -476,7 +476,7 @@
                     </div>
                     <div class="timeline-item">
                         <div class="timeline-point timeline-point-success">
-                            <i class="fa fa-money"></i>
+                            <i class="fab fa-money"></i>
                         </div>
                         <div class="timeline-event p-2">
                             <div class="timeline-heading">
@@ -495,7 +495,7 @@
                     </span>
                     <div class="timeline-item">
                         <div class="timeline-point timeline-point-success">
-                            <i class="fa fa-money"></i>
+                            <i class="fab fa-money"></i>
                         </div>
                         <div class="timeline-event p-2">
                             <div class="timeline-heading">
@@ -511,7 +511,7 @@
                     </div>
                     <div class="timeline-item">
                         <div class="timeline-point timeline-point-success">
-                            <i class="fa fa-money"></i>
+                            <i class="fab fa-money"></i>
                         </div>
                         <div class="timeline-event p-2">
                             <div class="timeline-heading">

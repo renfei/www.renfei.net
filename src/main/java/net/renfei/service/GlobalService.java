@@ -44,10 +44,10 @@ public class GlobalService extends BaseService {
         HeadVO headVO = new HeadVO();
         headVO.setCss(new ArrayList<String>() {
             {
-                this.add("https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css");
-                this.add("https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css");
-                this.add("https://cdn.renfei.net/thunder/css/bs4.pop.css?ver=" + renFeiConfig.getBuildTime());
-                this.add("https://cdn.renfei.net/thunder/css/style.css?ver=" + renFeiConfig.getBuildTime());
+                this.add("https://" + renFeiConfig.getStaticDomain() + "/thunder/bootstrap/css/bootstrap.min.css");
+                this.add("https://" + renFeiConfig.getStaticDomain() + "/thunder/fontawesome/css/all.min.css");
+                this.add("https://" + renFeiConfig.getStaticDomain() + "/thunder/css/bs4.pop.css?ver=" + renFeiConfig.getBuildTime());
+                this.add("https://" + renFeiConfig.getStaticDomain() + "/thunder/css/style.css?ver=" + renFeiConfig.getBuildTime());
             }
         });
         return headVO;
@@ -97,12 +97,12 @@ public class GlobalService extends BaseService {
         footerVO.setShowFriendlyLink(null);
         footerVO.setJss(new ArrayList<String>() {
             {
-                this.add("https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js");
-                this.add("https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js");
-                this.add("https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js");
-                this.add("https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js");
-                this.add("https://cdn.renfei.net/thunder/js/bs4.pop.js?ver=" + renFeiConfig.getBuildTime());
-                this.add("https://cdn.renfei.net/thunder/js/main.js?ver=" + renFeiConfig.getBuildTime());
+                this.add("https://" + renFeiConfig.getStaticDomain() + "/thunder/js/jquery-3.5.1.min.js");
+                this.add("https://" + renFeiConfig.getStaticDomain() + "/thunder/js/popper.min.js");
+                this.add("https://" + renFeiConfig.getStaticDomain() + "/thunder/bootstrap/js/bootstrap.min.js");
+                this.add("https://" + renFeiConfig.getStaticDomain() + "/thunder/js/clipboard.min.js");
+                this.add("https://" + renFeiConfig.getStaticDomain() + "/thunder/js/bs4.pop.js?ver=" + renFeiConfig.getBuildTime());
+                this.add("https://" + renFeiConfig.getStaticDomain() + "/thunder/js/main.js?ver=" + renFeiConfig.getBuildTime());
                 this.add("https://www.googletagmanager.com/gtag/js?id=" + renFeiConfig.getGoogle().getAnalytics());
                 this.add("https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js");
             }
@@ -178,8 +178,8 @@ public class GlobalService extends BaseService {
                 + "    function gtag(){dataLayer.push(arguments);}\n"
                 + "    gtag('js', new Date());\n"
                 + "    gtag('config', '" + renFeiConfig.getGoogle().getAnalytics() + "');\n";
-        jsText += "<script defer src='https://static.cloudflareinsights.com/beacon.min.js' "
-                + "data-cf-beacon='{\"token\": \"d178d32bc6ed4d9dadc5daac1579c605\"}'></script>\n";
+        jsText += "</script>\n<script defer src='https://static.cloudflareinsights.com/beacon.min.js' "
+                + "data-cf-beacon='{\"token\": \"d178d32bc6ed4d9dadc5daac1579c605\"}'>";
         footerVO.setJsText(jsText);
         return footerVO;
     }

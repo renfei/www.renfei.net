@@ -89,7 +89,7 @@
                     </p>
                     <a href="javascript:replyTo('${comment.author!?html}','${comment.id}')">
                     <span class="mb-2 mt-2 text-muted" style="display: block;">
-                        <i class="fa fa-reply"></i>回复
+                        <i class="fab fa-reply"></i>回复
                     </span>
                     </a>
                     <#if comment.child?? && (comment.child?size > 0)>
