@@ -149,11 +149,15 @@ public class AccountService extends BaseService {
                         script2 += strings[2].replace("\" reload=\"1\"></script>", "");
                     }
                     script = script2;
+                } else {
+                    log.warn("根据UserName：{}，论坛登录脚本为空。", account.getUserName());
                 }
                 accountDTO.setUcScript(script);
             } catch (Exception exception) {
                 log.error(exception.getMessage(), exception);
             }
+        } else {
+            log.warn("根据UserName：{}，未找到论坛用户，所以没有论坛登录脚本。", account.getUserName());
         }
         return accountDTO;
     }
