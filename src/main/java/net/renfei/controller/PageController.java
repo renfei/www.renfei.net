@@ -37,7 +37,6 @@ public class PageController extends BaseController {
     }
 
     @RequestMapping("{id}")
-    @SystemLog(logLevel = LogLevel.INFO, logModule = LogModule.CMS, logType = LogType.GET, logDesc = "获取动态页面")
     public ModelAndView getPage(@PathVariable("id") String id, ModelAndView mv) throws NoHandlerFoundException {
         PageDOWithBLOBs pageDTO = pageService.getPageByID(id);
         if (pageDTO != null) {

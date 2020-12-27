@@ -53,6 +53,9 @@ spring:
         min-idle: 0
     ## 连接超时时间（毫秒）
     timeout: 1200
+  ## Session 存储位置配置
+  session:
+    store-type: redis
   ## freemarker 配置
   freemarker:
     template-loader-path: classpath:/templates

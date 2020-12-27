@@ -15,4 +15,5 @@ public class HeaderVO {
     private String siteName;
     private List<LinkVO> menus;
     private String notice;
+    private AccountDTO account;
 }

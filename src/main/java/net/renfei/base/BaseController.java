@@ -3,6 +3,7 @@ package net.renfei.base;
 import eu.bitwalker.useragentutils.*;
 import net.renfei.config.RenFeiConfig;
 import net.renfei.entity.*;
+import net.renfei.sdk.utils.BeanUtils;
 import net.renfei.service.CommentsService;
 import net.renfei.service.GlobalService;
 import net.renfei.service.PaginationService;
@@ -15,6 +16,8 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.NoHandlerFoundException;
 
 import javax.servlet.http.HttpServletRequest;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -33,6 +36,7 @@ public abstract class BaseController {
     protected static final String HEADER_KEY = "headerVO";
     protected static final String FOOTER_KEY = "footerVO";
     protected static final String ACTIVE_KEY = "active";
+    protected static final String SESSION_KEY = "accountSession";
     protected final RenFeiConfig renFeiConfig;
     protected final GlobalService globalService;
     protected final CommentsService commentsService;
@@ -67,7 +71,9 @@ public abstract class BaseController {
     @ModelAttribute
     public void modelAttribute(ModelAndView mv) {
         mv.addObject(HEAD_KEY, globalService.getGlobalHead());
-        mv.addObject(HEADER_KEY, globalService.getGlobalHeader());
+        HeaderVO headerVO = globalService.getGlobalHeader();
+        headerVO.setAccount(getUser());
+        mv.addObject(HEADER_KEY, headerVO);
         FooterVO footerVO = globalService.getGlobalFooter();
         if (!"prod".equals(renFeiConfig.getActive())) {
             // 非生产环境，移除谷歌广告
@@ -131,6 +137,40 @@ public abstract class BaseController {
         mv.addObject("commentsTypeId", typeid);
         mv.addObject("commentsObjId", id);
         mv.addObject("commentsVO", commentVOS);
+    }
+
+    protected AccountDTO getUser() {
+        Object session = request.getSession().getAttribute(SESSION_KEY);
+        if (session instanceof AccountDTO) {
+            return (AccountDTO) session;
+        }
+        return null;
+    }
+
+    protected void updateUser(AccountDTO accountDTO) {
+        request.getSession().setAttribute(SESSION_KEY, accountDTO);
+    }
+
+    protected ModelAndView checkSigned() {
+        if (getUser() == null) {
+            return new ModelAndView("redirect:/auth/signIn?callback=" + String.valueOf(request.getRequestURL()));
+        }
+        return null;
+    }
+
+    protected String getCallBack(String callback) {
+        if (!BeanUtils.isEmpty(callback)) {
+            try {
+                URL url = new URL(callback);
+                String host = url.getHost();
+                if (host.endsWith(".renfei.net")) {
+                    return callback;
+                }
+            } catch (MalformedURLException ignored) {
+                return "";
+            }
+        }
+        return "";
     }
 
     private HeadVO getHead(ModelAndView mv) {

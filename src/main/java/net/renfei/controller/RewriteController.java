@@ -32,7 +32,6 @@ public class RewriteController extends BaseController {
     }
 
     @RequestMapping("/article/{path}")
-    @SystemLog(logLevel = LogLevel.INFO, logModule = LogModule.CMS, logType = LogType.GET, logDesc = "获取旧地址进行重定向页面")
     public ModelAndView getOldArticle(@PathVariable("path") String path) {
         RedirectView red = new RedirectView("/posts/" + path, true);
         red.setStatusCode(HttpStatus.MOVED_PERMANENTLY);
@@ -40,7 +39,6 @@ public class RewriteController extends BaseController {
     }
 
     @RequestMapping("/toolkit/{path}")
-    @SystemLog(logLevel = LogLevel.INFO, logModule = LogModule.CMS, logType = LogType.GET, logDesc = "获取旧地址进行重定向页面")
     public ModelAndView getOldToolkit(@PathVariable("path") String path) {
         RedirectView red = new RedirectView("/kitbox/" + path, true);
         red.setStatusCode(HttpStatus.MOVED_PERMANENTLY);
@@ -48,7 +46,6 @@ public class RewriteController extends BaseController {
     }
 
     @RequestMapping("/toolkit/{path1}/{path2}")
-    @SystemLog(logLevel = LogLevel.INFO, logModule = LogModule.CMS, logType = LogType.GET, logDesc = "获取旧地址进行重定向页面")
     public ModelAndView getOldToolkit(@PathVariable("path1") String path1, @PathVariable("path2") String path2) {
         RedirectView red = new RedirectView("/kitbox/" + path1 + "/" + path2, true);
         red.setStatusCode(HttpStatus.MOVED_PERMANENTLY);
