@@ -57,5 +57,15 @@
 <!--        <table tableName="t_wechat_keyword" domainObjectName="WechatKeywordDO"></table>-->
 <!--        <table tableName="t_page" domainObjectName="PageDO"></table>-->
 <!--        <table tableName="t_system_log" domainObjectName="SystemLog"></table>-->
+<!--        <table tableName="t_secret_key" domainObjectName="SecretKeyDO"></table>-->
+<!--        <table tableName="t_account" domainObjectName="AccountDO"></table>-->
+<!--        <table tableName="t_verification_code" domainObjectName="VerificationCodeDO"></table>-->
+<!--        <table tableName="t_account_keep_name" domainObjectName="AccountKeepNameDO"></table>-->
+
+        <!--Discu-->
+<!--        <table tableName="bbs_ucenter_members" domainObjectName="DiscuzUcenterMembersDO"></table>-->
+<!--        <table tableName="bbs_common_member" domainObjectName="DiscuzCommonMemberDO"></table>-->
+<!--        <table tableName="bbs_common_member_count" domainObjectName="DiscuzCommonMemberCountDO"></table>-->
+<!--        <table tableName="bbs_common_usergroup" domainObjectName="DiscuzCommonUsergroupDO"></table>-->
     </context>
 </generatorConfiguration>

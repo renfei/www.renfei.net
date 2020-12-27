@@ -47,7 +47,6 @@ public class KitBoxController extends BaseController {
     }
 
     @RequestMapping("")
-    @SystemLog(logLevel = LogLevel.INFO, logModule = LogModule.CMS, logType = LogType.GET, logDesc = "获取开发者工具箱页面")
     public ModelAndView kitbox(ModelAndView mv) {
         mv.addObject("title", "开发者工具箱 - " + renFeiConfig.getSiteName());
         setHead(mv, "免费的开发者与站长工具箱小工具，包含网络工具、加解密工具、测试工具等，工欲善其事，必先利其器。",
@@ -58,7 +57,6 @@ public class KitBoxController extends BaseController {
     }
 
     @RequestMapping("ip")
-    @SystemLog(logLevel = LogLevel.INFO, logModule = LogModule.CMS, logType = LogType.GET, logDesc = "获取IP地址信息查询工具页面")
     public ModelAndView ip(ModelAndView mv) {
         String ip = IpUtils.getIpAddress(request);
         IpInfoDTO ipInfoDTO = ipService.query(ip);
@@ -73,7 +71,6 @@ public class KitBoxController extends BaseController {
     }
 
     @RequestMapping("digtrace")
-    @SystemLog(logLevel = LogLevel.INFO, logModule = LogModule.CMS, logType = LogType.GET, logDesc = "获取域名解析信息查询工具页面")
     public ModelAndView getDigTrace(ModelAndView mv) {
         setHead(mv, "域名解析信息查询工具，开放服务接口实现dig+trace域名解析过程查询",
                 "域名,解析,信息,查询,工具,Dig,trace,DNS");
@@ -84,7 +81,6 @@ public class KitBoxController extends BaseController {
     }
 
     @RequestMapping("whois")
-    @SystemLog(logLevel = LogLevel.INFO, logModule = LogModule.CMS, logType = LogType.GET, logDesc = "获取域名Whois信息查询工具页面")
     public ModelAndView getWhois(ModelAndView mv) {
         setHead(mv, "域名Whois信息查询工具，查询域名是否已经被注册，以及注册域名的详细信息的数据库（如域名所有人、域名注册商、域名注册日期和过期日期等）。通过域名Whois服务器查询，可以查询域名归属者联系方式，以及注册和到期时间。",
                 "域名,whois,信息,查询,工具");
@@ -95,7 +91,6 @@ public class KitBoxController extends BaseController {
     }
 
     @RequestMapping("getmyip")
-    @SystemLog(logLevel = LogLevel.INFO, logModule = LogModule.CMS, logType = LogType.GET, logDesc = "获取公网IP获取工具页面")
     public ModelAndView getmyip(ModelAndView mv) {
         setHead(mv, "公网IP获取工具支持Linux、Windows、API",
                 "IP,公网,出口,地址,工具");
@@ -106,7 +101,6 @@ public class KitBoxController extends BaseController {
     }
 
     @RequestMapping({"uuid", "guid", "UUID", "GUID"})
-    @SystemLog(logLevel = LogLevel.INFO, logModule = LogModule.CMS, logType = LogType.GET, logDesc = "获取在线批量生成 UUID/GUID 工具页面")
     public ModelAndView getUUID(ModelAndView mv) {
         setHead(mv, "在线批量生成 UUID/GUID 工具",
                 "UUID,GUID,在线,批量,生成,工具");
@@ -117,7 +111,6 @@ public class KitBoxController extends BaseController {
     }
 
     @RequestMapping({"freemarkerTest", "FtlTest"})
-    @SystemLog(logLevel = LogLevel.INFO, logModule = LogModule.CMS, logType = LogType.GET, logDesc = "获取FreeMarker(FTL)在线测试工具页面")
     public ModelAndView freemarkerTest(ModelAndView mv) {
         setHead(mv, "FreeMarker(FTL)在线测试工具",
                 "FreeMarker,ftl,在线,测试,工具");
@@ -128,7 +121,6 @@ public class KitBoxController extends BaseController {
     }
 
     @RequestMapping("strHumpLineConvert")
-    @SystemLog(logLevel = LogLevel.INFO, logModule = LogModule.CMS, logType = LogType.GET, logDesc = "获取下划线驼峰命名互转工具页面")
     public ModelAndView strHumpLineConvert(ModelAndView mv) {
         setHead(mv, "下划线(Line)与驼峰(Hump)命名风格的相互转换工具，例如：test_test/testTest的相互转换",
                 "驼峰,下划线,命名,风格,转换,互转,在线,工具,Hump,line");
@@ -139,7 +131,6 @@ public class KitBoxController extends BaseController {
     }
 
     @RequestMapping("byteUnitConversion")
-    @SystemLog(logLevel = LogLevel.INFO, logModule = LogModule.CMS, logType = LogType.GET, logDesc = "获取字节(Byte)单位转换换算工具页面")
     public ModelAndView byteUnitConversion(ModelAndView mv) {
         setHead(mv, "计算机字节(Byte)单位之间的转换换算工具：bit、Byte、KB、MB、GB、TB、PB、EB之间的转换计算工具",
                 "字节,单位,比特,转换,换算,工具,bit,Byte,KB,MB,GB,TB,PB,EB");
@@ -150,7 +141,6 @@ public class KitBoxController extends BaseController {
     }
 
     @RequestMapping("ueditor")
-    @SystemLog(logLevel = LogLevel.INFO, logModule = LogModule.CMS, logType = LogType.GET, logDesc = "获取 UEditor 富文本在线编辑器页面")
     public ModelAndView ueditor(ModelAndView mv) {
         mv.addObject("title", "UEditor 富文本在线编辑器 - 开发者工具箱 - " + renFeiConfig.getSiteName());
         setHead(mv, "UEditor是由百度web前端研发部开发所见即所得富文本web编辑器，具有轻量，可定制，注重用户体验等特点，开源基于MIT协议，允许自由使用和修改代码。",
@@ -161,7 +151,6 @@ public class KitBoxController extends BaseController {
     }
 
     @RequestMapping("wordIkAnalyze")
-    @SystemLog(logLevel = LogLevel.INFO, logModule = LogModule.CMS, logType = LogType.GET, logDesc = "获取在线分词工具与API接口页面")
     public ModelAndView wordIkAnalyze(ModelAndView mv) {
         mv.addObject("title", "在线分词工具与API接口(IK Analyze) - 开发者工具箱 - " + renFeiConfig.getSiteName());
         setHead(mv, "在线分词工具与API接口(IK Analyze)，提供免费的在线文字分词与切词API接口服务，基于IKAnalyzer同时提供了对Lucene的默认优化实现。",
@@ -172,7 +161,6 @@ public class KitBoxController extends BaseController {
     }
 
     @RequestMapping("portNumberList")
-    @SystemLog(logLevel = LogLevel.INFO, logModule = LogModule.CMS, logType = LogType.GET, logDesc = "获取计算机 TCP/UDP 端口号注册列表大全页面")
     public ModelAndView portNumberList(ModelAndView mv) {
         mv.addObject("title", "计算机 TCP/UDP 端口号注册列表大全 - 开发者工具箱 - " + renFeiConfig.getSiteName());
         setHead(mv, "计算机之间依照互联网传输层TCP/IP协议的协议通信，不同的协议都对应不同的端口。并且，利用数据报文的UDP也不一定和TCP采用相同的端口号码。",
@@ -183,7 +171,6 @@ public class KitBoxController extends BaseController {
     }
 
     @RequestMapping("randomPassword")
-    @SystemLog(logLevel = LogLevel.INFO, logModule = LogModule.CMS, logType = LogType.GET, logDesc = "获取随机密码生成工具页面")
     public ModelAndView randomPassword(ModelAndView mv) {
         mv.addObject("title", "随机密码生成工具 - 开发者工具箱 - " + renFeiConfig.getSiteName());
         setHead(mv, "用户可根据自身需要选择生成密码所包含的字符以及密码长度，随机密码一键生成，简单易用，生成安全、随机的密码以保证网络账号的安全。",
@@ -194,7 +181,6 @@ public class KitBoxController extends BaseController {
     }
 
     @RequestMapping("md5")
-    @SystemLog(logLevel = LogLevel.INFO, logModule = LogModule.CMS, logType = LogType.GET, logDesc = "获取MD5在线加密工具页面")
     public ModelAndView md5Tools(ModelAndView mv) {
         mv.addObject("title", "MD5在线加密工具 - 开发者工具箱 - " + renFeiConfig.getSiteName());
         setHead(mv, "MD5在线加密工具，对字符串进行MD5计算得出MD5加密字符串",
@@ -205,7 +191,6 @@ public class KitBoxController extends BaseController {
     }
 
     @RequestMapping("sha1")
-    @SystemLog(logLevel = LogLevel.INFO, logModule = LogModule.CMS, logType = LogType.GET, logDesc = "获取SHA-1在线加密工具页面")
     public ModelAndView sha1Tools(ModelAndView mv) {
         mv.addObject("title", "SHA-1在线加密工具 - 开发者工具箱 - " + renFeiConfig.getSiteName());
         setHead(mv, "SHA-1 散列函数加密算法输出的散列值为40位十六进制数字串，可用于验证信息的一致性，防止被篡改。本页面的 SHA-1 在线加密工具可对字符串进行 SHA-1 加密，并可转换散列值中字母的大小写。",
@@ -216,7 +201,6 @@ public class KitBoxController extends BaseController {
     }
 
     @RequestMapping("sha256")
-    @SystemLog(logLevel = LogLevel.INFO, logModule = LogModule.CMS, logType = LogType.GET, logDesc = "获取SHA-256在线加密工具页面")
     public ModelAndView sha256Tools(ModelAndView mv) {
         mv.addObject("title", "SHA-256在线加密工具 - 开发者工具箱 - " + renFeiConfig.getSiteName());
         setHead(mv, "SHA-256 散列函数加密算法输出的散列值可用于验证信息的一致性，防止被篡改。本页面的 SHA-256 在线加密工具可对字符串进行 SHA-256 加密，并可转换散列值中字母的大小写。",
@@ -227,7 +211,6 @@ public class KitBoxController extends BaseController {
     }
 
     @RequestMapping("sha512")
-    @SystemLog(logLevel = LogLevel.INFO, logModule = LogModule.CMS, logType = LogType.GET, logDesc = "获取SHA-512在线加密工具页面")
     public ModelAndView sha512Tools(ModelAndView mv) {
         mv.addObject("title", "SHA-512在线加密工具 - 开发者工具箱 - " + renFeiConfig.getSiteName());
         setHead(mv, "SHA-512 散列函数加密算法输出的散列值可用于验证信息的一致性，防止被篡改。本页面的 SHA-512 在线加密工具可对字符串进行 SHA-512 加密，并可转换散列值中字母的大小写。",
@@ -238,7 +221,6 @@ public class KitBoxController extends BaseController {
     }
 
     @RequestMapping("url16")
-    @SystemLog(logLevel = LogLevel.INFO, logModule = LogModule.CMS, logType = LogType.GET, logDesc = "获取URL网址16进制加密工具页面")
     public ModelAndView url16Tools(ModelAndView mv) {
         mv.addObject("title", "URL网址16进制加密工具 - 开发者工具箱 - " + renFeiConfig.getSiteName());
         setHead(mv, "RL编码形式表示的ASCII字符(十六进制格式)。把URL网址转换成16进制代码形式,加密后可直接复制到地址栏访问。",
@@ -249,7 +231,6 @@ public class KitBoxController extends BaseController {
     }
 
     @RequestMapping({"qrcode", "QRCode"})
-    @SystemLog(logLevel = LogLevel.INFO, logModule = LogModule.CMS, logType = LogType.GET, logDesc = "获取二维码在线生成工具页面")
     public ModelAndView qrCode(ModelAndView mv) {
         mv.addObject("title", "二维码在线生成工具 - 开发者工具箱 - " + renFeiConfig.getSiteName());
         setHead(mv, "二维码在线生成工具",
@@ -260,7 +241,6 @@ public class KitBoxController extends BaseController {
     }
 
     @RequestMapping({"ShortUrl", "ShortURL"})
-    @SystemLog(logLevel = LogLevel.INFO, logModule = LogModule.CMS, logType = LogType.GET, logDesc = "获取短网址在线生成工具页面")
     public ModelAndView shortUrl(ModelAndView mv) {
         mv.addObject("title", "短网址在线生成工具 - 开发者工具箱 - " + renFeiConfig.getSiteName());
         setHead(mv, "短网址在线生成工具",

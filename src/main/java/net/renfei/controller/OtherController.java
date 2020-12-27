@@ -64,7 +64,6 @@ public class OtherController extends BaseController {
      * @return
      */
     @RequestMapping("urlredirect")
-    @SystemLog(logLevel = LogLevel.INFO, logModule = LogModule.CMS, logType = LogType.GET, logDesc = "获取链接重定向页面")
     public ModelAndView urlredirect(String url, ModelAndView mv) {
         if (BeanUtils.isEmpty(url)) {
             return new ModelAndView("redirect:/");
@@ -90,7 +89,6 @@ public class OtherController extends BaseController {
     }
 
     @GetMapping("qrcode")
-    @SystemLog(logLevel = LogLevel.INFO, logModule = LogModule.CMS, logType = LogType.GET, logDesc = "获取二维码图片")
     public void qrcode(@RequestParam("content") String content,
                        @RequestParam(value = "size", required = false) String size,
                        HttpServletResponse response) throws Exception {

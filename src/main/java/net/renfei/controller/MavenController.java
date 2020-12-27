@@ -33,7 +33,6 @@ public class MavenController extends BaseController {
     }
 
     @RequestMapping("")
-    @SystemLog(logLevel = LogLevel.INFO, logModule = LogModule.CMS, logType = LogType.GET, logDesc = "获取Maven公共代理仓库页面")
     public ModelAndView kitbox(ModelAndView mv) {
         mv.addObject("title", "Maven公共代理仓库 - " + renFeiConfig.getSiteName());
         mv.setViewName("maven");

@@ -48,7 +48,6 @@ public class IndexController extends BaseController {
     }
 
     @RequestMapping("/")
-    @SystemLog(logLevel = LogLevel.INFO, logModule = LogModule.CMS, logType = LogType.GET, logDesc = "获取首页")
     public ModelAndView index(ModelAndView mv) {
         mv.addObject("posts", postService.getAllPost("1", "15").getData());
         mv.addObject("title", "任霏博客 - The RenFei Blog");
@@ -75,7 +74,6 @@ public class IndexController extends BaseController {
 
     @ResponseBody
     @RequestMapping(value = "robots.txt", produces = "text/plain")
-    @SystemLog(logLevel = LogLevel.INFO, logModule = LogModule.CMS, logType = LogType.GET, logDesc = "获取robots.txt")
     public String getRobotsTxt() {
         String robots = "#\n" +
                 "# robots.txt for RENFEI.NET\n" +
@@ -99,7 +97,6 @@ public class IndexController extends BaseController {
 
     @ResponseBody
     @RequestMapping(value = "ads.txt", produces = "text/plain")
-    @SystemLog(logLevel = LogLevel.INFO, logModule = LogModule.CMS, logType = LogType.GET, logDesc = "获取ads.txt")
     public String getGoogleAds() throws NoHandlerFoundException {
         String ads;
         ads = renFeiConfig.getGoogle().getAds();
@@ -110,7 +107,6 @@ public class IndexController extends BaseController {
     }
 
     @RequestMapping(value = "sitemap.xml")
-    @SystemLog(logLevel = LogLevel.INFO, logModule = LogModule.CMS, logType = LogType.GET, logDesc = "获取sitemap.xml")
     public ModelAndView getSiteMapXml(ModelAndView mv, HttpServletResponse response) {
         List<SiteMapXml> siteMapXmls = siteMapService.getSiteMaps();
         mv.addObject("data", siteMapXmls);
@@ -129,7 +125,6 @@ public class IndexController extends BaseController {
     }
 
     @RequestMapping(value = "feed")
-    @SystemLog(logLevel = LogLevel.INFO, logModule = LogModule.CMS, logType = LogType.GET, logDesc = "获取Feed")
     public ModelAndView getFeed(ModelAndView mv, HttpServletResponse response) {
         mv.addObject("feed", feedService.getFeed());
         response.setHeader("content-type", "text/xml;charset=UTF-8");

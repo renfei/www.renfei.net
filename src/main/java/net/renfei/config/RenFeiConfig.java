@@ -29,6 +29,7 @@ public class RenFeiConfig {
     private Google google;
     private WeChat weChat;
     private Jwt jwt;
+    private UCenter uCenter;
 
     @Data
     public static class DataCahe {
@@ -41,6 +42,7 @@ public class RenFeiConfig {
         private String accessKeySecret;
         private Oss oss;
         private Green green;
+        private Sms sms;
 
         @Data
         public static class Oss {
@@ -51,24 +53,38 @@ public class RenFeiConfig {
         }
 
         @Data
-        public static class Green{
+        public static class Green {
             private String regionId;
+        }
+
+        @Data
+        public static class Sms {
+            private String regionId;
+            private String signName;
+            private String templateCode;
         }
     }
 
     @Data
-    public static class Baidu{
+    public static class Baidu {
         private String tongji;
     }
 
     @Data
-    public static class Google{
+    public static class Google {
         private String analytics;
         private String ads;
+        private ReCAPTCHA reCAPTCHA;
+
+        @Data
+        public static class ReCAPTCHA {
+            private String clientKey;
+            private String serverKey;
+        }
     }
 
     @Data
-    public static class WeChat{
+    public static class WeChat {
         private String appId;
         private String appSecret;
         private String token;
@@ -76,7 +92,15 @@ public class RenFeiConfig {
     }
 
     @Data
-    public static class Jwt{
+    public static class Jwt {
         private String secret;
+    }
+
+    @Data
+    public static class UCenter {
+        private String api;
+        private String key;
+        private String appId;
+        private String connect;
     }
 }

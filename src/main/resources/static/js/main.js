@@ -80,6 +80,9 @@ function comment(typeid, id) {
                 msg("提交失败！" + data.message, "error");
             }
         },
+        beforeSend: function (xhr) {
+            xhr.setRequestHeader($("meta[name='_csrf_header']").attr("content"), $("meta[name='_csrf']").attr("content"));
+        },
         error: function (xhr, textStatus) {
             msg("Error - 错误:" + xhr.responseText, "error");
         }
@@ -114,6 +117,9 @@ function getJiSuDownloadLink() {
                 msg(data.message, "error");
             }
             $("#downloadfile_jisu_btn").html(downloadfile_jisu_btn);
+        },
+        beforeSend: function (xhr) {
+            xhr.setRequestHeader($("meta[name='_csrf_header']").attr("content"), $("meta[name='_csrf']").attr("content"));
         },
         error: function (xhr, textStatus) {
             $("#downloadfile_jisu_btn").html(downloadfile_jisu_btn);
@@ -153,6 +159,187 @@ function setClipboardText(event, link) {
     } else if (window.clipboardData) {
         return window.clipboardData.setData("text", textData);
     }
+}
+
+function setStore(name, content) {
+    if (window.localStorage) {
+        window.localStorage.setItem(name, content);
+    } else {
+        msg("此浏览器不支持「LocalStorage」技术,请更换浏览器尝试", "error");
+    }
+}
+
+// 获取 localstorage 中的值,判断用户是否登录
+function getStore(name) {
+    if (window.localStorage) {
+        return window.localStorage.getItem(name);
+    } else {
+        msg("此浏览器不支持「LocalStorage」技术,请更换浏览器尝试", "error");
+    }
+}
+
+function removeStore(name) {
+    if (window.localStorage) {
+        window.localStorage.removeItem(name);
+    } else {
+        msg("此浏览器不支持「LocalStorage」技术,请更换浏览器尝试", "error");
+    }
+}
+
+// 生成秘钥对
+function generateKey() {
+    let keySize = 1024;
+    let crypt = new JSEncrypt({default_key_size: keySize});
+    crypt.getKey();
+    setStore('ClientPublicKey', crypt.getPublicKey().replace("-----BEGIN PUBLIC KEY-----\n", "").replace("\n-----END PUBLIC KEY-----", ""));
+    setStore('ClientPrivateKey', crypt.getPrivateKey().replace("-----BEGIN PRIVATE KEY-----\n", "").replace("\n-----END PRIVATE KEY-----", ""));
+}
+
+// 获取客户端公钥
+function getClientPublicKey() {
+    let key = getStore("ClientPublicKey");
+    if (key === null || key === undefined) {
+        generateKey();
+    }
+    return getStore("ClientPublicKey");
+}
+
+// 获取AES秘钥
+function getAESKey() {
+    let key = getStore("aesKey");
+    let keys = {};
+    // 如果Store里没有那么就去申请
+    if (key === null || key === undefined) {
+        let ok = false;
+        let reportPublicKeyVO = {};
+        // 获取服务器端公钥
+        $.ajax({
+            url: '/auth/secretKey',
+            type: 'GET',
+            async: false,
+            data: {},
+            timeout: 20000,
+            dataType: 'json',
+            success: function (data, textStatus) {
+                if (data.code !== 200) {
+                    msg("申请加密公钥服务发生错误", "error");
+                } else {
+                    let serverPublicKey = data.data;
+                    let serverPublicKeyId = data.message;
+                    // 使用服务器端公钥加密客户端公钥，注意服务器端公钥是2048，客户端公钥是1024
+                    let jse = new JSEncrypt();
+                    jse.setPublicKey(serverPublicKey);
+                    let clientEncryptPublicKey = jse.encrypt(getClientPublicKey());
+                    reportPublicKeyVO.secretKeyId = serverPublicKeyId;
+                    reportPublicKeyVO.publicKey = clientEncryptPublicKey;
+                    ok = true;
+                }
+            },
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader($("meta[name='_csrf_header']").attr("content"), $("meta[name='_csrf']").attr("content"));
+            },
+            error: function (xhr, textStatus, errorThrown) {
+                msg("请求发生了异常，请联系管理员", "error");
+                console.log('错误', xhr.responseText);
+                console.log(xhr);
+                console.log(textStatus);
+            }
+        });
+        if (ok) {
+            // 将加密好的客户端公钥上报给服务器
+            $.ajax({
+                url: '/auth/secretKey',
+                type: 'POST',
+                async: false,
+                data: JSON.stringify(reportPublicKeyVO),
+                contentType: 'application/json;charset=UTF-8',
+                timeout: 20000,
+                dataType: 'json',
+                success: function (serverRes, textStatus) {
+                    if (serverRes.code !== 200) {
+                        msg("上报公钥服务发生错误", "error");
+                    } else {
+                        // 用客户端私钥解密服务器返回的AES秘钥
+                        let jse = new JSEncrypt();
+                        jse.setPrivateKey('-----BEGIN PRIVATE KEY-----\n' +
+                            getStore("ClientPrivateKey") +
+                            '\n-----END PRIVATE KEY-----\n');
+                        let aesKey = jse.decrypt(serverRes.data.aeskey);
+                        let keys = {};
+                        keys.aesKey = aesKey;
+                        keys.aesKeyId = serverRes.data.keyid;
+                        // 存储下来 AES 秘钥，现在这个秘钥全世界只有你知和我知，不要公开，不要在网络上明文传输
+                        setStore("aesKey", aesKey);
+                        setStore("aesKeyId", serverRes.data.keyid);
+                        return keys;
+                    }
+                },
+                beforeSend: function (xhr) {
+                    xhr.setRequestHeader($("meta[name='_csrf_header']").attr("content"), $("meta[name='_csrf']").attr("content"));
+                },
+                error: function (xhr, textStatus, errorThrown) {
+                    msg("请求发生了异常，请联系管理员", "error");
+                    console.log('错误', xhr.responseText);
+                    console.log(xhr);
+                    console.log(textStatus);
+                }
+            });
+        }
+    } else {
+        keys.aesKey = getStore("aesKey");
+        keys.aesKeyId = getStore("aesKeyId");
+        return keys;
+    }
+}
+
+//加密
+function aesencrypt(word) {
+    getAESKey();
+    let aesKey = getAESKey().aesKey;
+    let key = CryptoJS.enc.Utf8.parse(aesKey);
+    let iv = CryptoJS.enc.Utf8.parse(aesKey);
+    let srcs = CryptoJS.enc.Utf8.parse(word);
+    let encrypted = CryptoJS.AES.encrypt(srcs, key, {
+        iv: iv,
+        mode: CryptoJS.mode.ECB,
+        padding: CryptoJS.pad.Pkcs7
+    });
+    return CryptoJS.enc.Base64.stringify(encrypted.ciphertext);
+}
+
+function signOut() {
+    let callback = window.location.href;
+    window.location.href = "/auth/signOut?callback=" + callback;
+}
+
+function signInFun() {
+    let callback = window.location.href;
+    window.location.href = "/auth/signIn?callback=" + callback;
+}
+
+function loadJS(url, callback) {
+    var script = document.createElement('script'),
+        fn = callback || function () {
+        };
+    script.type = 'text/javascript';
+
+    //IE
+    if (script.readyState) {
+        script.onreadystatechange = function () {
+            if (script.readyState === 'loaded' || script.readyState === 'complete') {
+                script.onreadystatechange = null;
+                fn();
+            }
+        };
+    } else {
+        //其他浏览器
+        script.onload = function () {
+            fn();
+        };
+    }
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+
 }
 
 $(function () {

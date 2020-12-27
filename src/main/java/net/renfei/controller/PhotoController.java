@@ -31,7 +31,6 @@ public class PhotoController extends BaseController {
     }
 
     @RequestMapping("")
-    @SystemLog(logLevel = LogLevel.INFO, logModule = LogModule.CMS, logType = LogType.GET, logDesc = "获取相册列表页面")
     public ModelAndView getAllPhotoList(@RequestParam(value = "page", required = false) String page,
                                         ModelAndView mv) {
         setHead(mv, "任霏的网络相册");
@@ -44,7 +43,6 @@ public class PhotoController extends BaseController {
     }
 
     @RequestMapping("{id}")
-    @SystemLog(logLevel = LogLevel.INFO, logModule = LogModule.CMS, logType = LogType.GET, logDesc = "获取相册详情页面")
     public ModelAndView getPhotoById(@PathVariable("id") String id, ModelAndView mv) throws NoHandlerFoundException {
         PhotoDOWithBLOBs photoDTO = photoService.getPhotoById(id);
         PhotoImgDTO photoImgDTO = photoService.getPhotoImgByPhotoId(id);

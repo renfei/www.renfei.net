@@ -44,7 +44,6 @@ public class SearchController extends BaseController {
     }
 
     @RequestMapping("")
-    @SystemLog(logLevel = LogLevel.INFO, logModule = LogModule.CMS, logType = LogType.GET, logDesc = "获取站内搜索页面")
     public ModelAndView search(ModelAndView mv,
                                @RequestParam(value = "type", required = false) String type,
                                @RequestParam(value = "w", required = false) String query,
@@ -105,7 +104,6 @@ public class SearchController extends BaseController {
     }
 
     @RequestMapping(value = "search.xml")
-    @SystemLog(logLevel = LogLevel.INFO, logModule = LogModule.CMS, logType = LogType.GET, logDesc = "获取sitemap.xml")
     public ModelAndView getSearchXml(ModelAndView mv, HttpServletResponse response) {
         mv.addObject("siteName", renFeiConfig.getSiteName());
         mv.addObject("domain", renFeiConfig.getDomain());

@@ -41,7 +41,6 @@ public class VideoController extends BaseController {
     }
 
     @RequestMapping("")
-    @SystemLog(logLevel = LogLevel.INFO, logModule = LogModule.CMS, logType = LogType.GET, logDesc = "获取视频列表页面")
     public ModelAndView getAllVideoList(@RequestParam(value = "page", required = false) String page,
                                         ModelAndView mv) {
         VideoListDTO videoListDTO = videoService.getAllVideo(page, "10");
@@ -61,7 +60,6 @@ public class VideoController extends BaseController {
     }
 
     @RequestMapping("{id}")
-    @SystemLog(logLevel = LogLevel.INFO, logModule = LogModule.CMS, logType = LogType.GET, logDesc = "获取视频详情页面")
     public ModelAndView playVideo(@PathVariable("id") String id, ModelAndView mv) throws NoHandlerFoundException {
         VideoDTO videoDTO = videoService.getVideoDTOByID(id);
         if (videoDTO != null) {

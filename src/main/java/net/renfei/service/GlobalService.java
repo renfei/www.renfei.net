@@ -102,7 +102,11 @@ public class GlobalService extends BaseService {
                 this.add("https://" + renFeiConfig.getStaticDomain() + "/thunder/bootstrap/js/bootstrap.min.js");
                 this.add("https://" + renFeiConfig.getStaticDomain() + "/thunder/js/clipboard.min.js");
                 this.add("https://" + renFeiConfig.getStaticDomain() + "/thunder/js/bs4.pop.js?ver=" + renFeiConfig.getBuildTime());
-                this.add("https://" + renFeiConfig.getStaticDomain() + "/thunder/js/main.js?ver=" + renFeiConfig.getBuildTime());
+                if ("dev".equals(renFeiConfig.getActive())) {
+                    this.add("/js/main.js?ver=" + renFeiConfig.getBuildTime());
+                } else {
+                    this.add("https://" + renFeiConfig.getStaticDomain() + "/thunder/js/main.js?ver=" + renFeiConfig.getBuildTime());
+                }
                 this.add("https://www.googletagmanager.com/gtag/js?id=" + renFeiConfig.getGoogle().getAnalytics());
                 this.add("https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js");
             }
@@ -178,8 +182,6 @@ public class GlobalService extends BaseService {
                 + "    function gtag(){dataLayer.push(arguments);}\n"
                 + "    gtag('js', new Date());\n"
                 + "    gtag('config', '" + renFeiConfig.getGoogle().getAnalytics() + "');\n";
-        jsText += "</script>\n<script defer src='https://static.cloudflareinsights.com/beacon.min.js' "
-                + "data-cf-beacon='{\"token\": \"d178d32bc6ed4d9dadc5daac1579c605\"}'>";
         footerVO.setJsText(jsText);
         return footerVO;
     }

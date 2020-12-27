@@ -74,6 +74,10 @@ renfei:
       downloadHost: https://download.renfei.net
     green:
       regionId: cn-beijing
+    sms:
+      regionId: cn-hangzhou
+      signName: 任霏博客
+      templateCode: SMS_205876298
   baidu:
     tongji: <tongji>
   google:
@@ -89,3 +93,8 @@ renfei:
     encodingAESKey: <encodingAESKey>
   jwt:
     secret: <secret>
+  uCenter:
+    api: https://bbs.renfei.net/uc_server
+    key: <key>
+    appId: 3
+    connect:
