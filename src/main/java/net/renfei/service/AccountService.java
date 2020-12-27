@@ -261,7 +261,7 @@ public class AccountService extends BaseService {
         }
         // 发送激活邮件
         verificationCodeService.sendVerificationCode(true, DateUtils.nextHours(2),
-                account.getEmail(), "SIGN_UP", account, "http://" + renFeiConfig.getDomain() + "/auth/activation");
+                account.getEmail(), "SIGN_UP", account, renFeiConfig.getDomain() + "/auth/signUp/activation");
     }
 
     /**

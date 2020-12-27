@@ -153,6 +153,7 @@
             signInVo.userName = $("#username").val();
             signInVo.password = aesencrypt($("#password").val());
             signInVo.keyUuid = getStore("aesKeyId");
+            signInVo.tOtp = $("#tOtp").val();
             signInVo.useVerCode = useVerCode;
             if (signInVo.userName === "") {
                 errorMsg("请填写用户名，您可以使用用户名、邮箱地址、手机号码。");
