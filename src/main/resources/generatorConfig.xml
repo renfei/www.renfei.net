@@ -67,5 +67,9 @@
 <!--        <table tableName="bbs_common_member" domainObjectName="DiscuzCommonMemberDO"></table>-->
 <!--        <table tableName="bbs_common_member_count" domainObjectName="DiscuzCommonMemberCountDO"></table>-->
 <!--        <table tableName="bbs_common_usergroup" domainObjectName="DiscuzCommonUsergroupDO"></table>-->
+<!--        <table tableName="bbs_common_member_field_forum" domainObjectName="DiscuzCommonMemberFieldForumDO"></table>-->
+<!--        <table tableName="bbs_common_member_field_home" domainObjectName="DiscuzCommonMemberFieldHomeDO"></table>-->
+<!--        <table tableName="bbs_common_member_profile" domainObjectName="DiscuzCommonMemberProfileDO"></table>-->
+<!--        <table tableName="bbs_common_member_status" domainObjectName="DiscuzCommonMemberStatusDO"></table>-->
     </context>
 </generatorConfiguration>

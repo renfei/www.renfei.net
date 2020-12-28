@@ -3,9 +3,8 @@ package net.renfei.service;
 import lombok.extern.slf4j.Slf4j;
 import net.renfei.base.BaseService;
 import net.renfei.config.RenFeiConfig;
-import net.renfei.discuz.repository.DiscuzUcenterMembersDOMapper;
-import net.renfei.discuz.repository.entity.DiscuzUcenterMembersDO;
-import net.renfei.discuz.repository.entity.DiscuzUcenterMembersDOExample;
+import net.renfei.discuz.repository.*;
+import net.renfei.discuz.repository.entity.*;
 import net.renfei.discuz.ucenter.client.Client;
 import net.renfei.entity.AccountDTO;
 import net.renfei.entity.SignInVO;
@@ -38,19 +37,37 @@ public class AccountService extends BaseService {
     private final AccountDOMapper accountMapper;
     private final AccountKeepNameDOMapper accountKeepNameMapper;
     private final VerificationCodeService verificationCodeService;
+    private final DiscuzCommonMemberDOMapper discuzCommonMemberDOMapper;
     private final DiscuzUcenterMembersDOMapper discuzUcenterMembersMapper;
+    private final DiscuzCommonMemberCountDOMapper discuzCommonMemberCountDOMapper;
+    private final DiscuzCommonMemberStatusDOMapper discuzCommonMemberStatusDOMapper;
+    private final DiscuzCommonMemberProfileDOMapper discuzCommonMemberProfileDOMapper;
+    private final DiscuzCommonMemberFieldHomeDOMapper discuzCommonMemberFieldHomeDOMapper;
+    private final DiscuzCommonMemberFieldForumDOMapper discuzCommonMemberFieldForumDOMapper;
     private final Pattern specialPattern = Pattern.compile("[ _`~!@#$%^&*()+=|{}':;',\\[\\].<>/?~！@#￥%……&*（）——+|{}【】‘；：”“’。，、？]|\n|\r|\t");
 
     public AccountService(RenFeiConfig renFeiConfig,
                           AccountDOMapper accountMapper,
                           AccountKeepNameDOMapper accountKeepNameMapper,
                           VerificationCodeService verificationCodeService,
-                          DiscuzUcenterMembersDOMapper discuzUcenterMembersMapper) {
+                          DiscuzCommonMemberDOMapper discuzCommonMemberDOMapper,
+                          DiscuzUcenterMembersDOMapper discuzUcenterMembersMapper,
+                          DiscuzCommonMemberCountDOMapper discuzCommonMemberCountDOMapper,
+                          DiscuzCommonMemberStatusDOMapper discuzCommonMemberStatusDOMapper,
+                          DiscuzCommonMemberProfileDOMapper discuzCommonMemberProfileDOMapper,
+                          DiscuzCommonMemberFieldHomeDOMapper discuzCommonMemberFieldHomeDOMapper,
+                          DiscuzCommonMemberFieldForumDOMapper discuzCommonMemberFieldForumDOMapper) {
         this.renFeiConfig = renFeiConfig;
         this.accountMapper = accountMapper;
         this.accountKeepNameMapper = accountKeepNameMapper;
         this.verificationCodeService = verificationCodeService;
+        this.discuzCommonMemberDOMapper = discuzCommonMemberDOMapper;
         this.discuzUcenterMembersMapper = discuzUcenterMembersMapper;
+        this.discuzCommonMemberCountDOMapper = discuzCommonMemberCountDOMapper;
+        this.discuzCommonMemberStatusDOMapper = discuzCommonMemberStatusDOMapper;
+        this.discuzCommonMemberProfileDOMapper = discuzCommonMemberProfileDOMapper;
+        this.discuzCommonMemberFieldHomeDOMapper = discuzCommonMemberFieldHomeDOMapper;
+        this.discuzCommonMemberFieldForumDOMapper = discuzCommonMemberFieldForumDOMapper;
     }
 
     /**
@@ -263,6 +280,39 @@ public class AccountService extends BaseService {
                             renFeiConfig.getUCenter().getAppId(),
                             renFeiConfig.getUCenter().getConnect());
             client.ucUserRegister(account.getUserName(), UUID.randomUUID().toString(), account.getEmail());
+            // 向Discuz表里插入用户
+            DiscuzUcenterMembersDOExample discuzUcenterMembersExample = new DiscuzUcenterMembersDOExample();
+            discuzUcenterMembersExample.createCriteria().andUsernameEqualTo(account.getUserName());
+            DiscuzUcenterMembersDO discuzUcenterMembers = ListUtils.getOne(discuzUcenterMembersMapper.selectByExample(discuzUcenterMembersExample));
+            if (discuzUcenterMembers != null) {
+                DiscuzCommonMemberDO commonMemberDO = new DiscuzCommonMemberDO();
+                commonMemberDO.setUid(discuzUcenterMembers.getUid());
+                commonMemberDO.setEmail(signUpVO.getEmail().trim().toLowerCase());
+                commonMemberDO.setUsername(signUpVO.getUserName().trim().toLowerCase());
+                commonMemberDO.setGroupid((short) 10);
+                commonMemberDO.setRegdate((int) System.currentTimeMillis());
+                commonMemberDO.setTimeoffset("9999");
+                discuzCommonMemberDOMapper.insertSelective(commonMemberDO);
+                DiscuzCommonMemberCountDO commonMemberCountDO = new DiscuzCommonMemberCountDO();
+                commonMemberCountDO.setUid(discuzUcenterMembers.getUid());
+                discuzCommonMemberCountDOMapper.insertSelective(commonMemberCountDO);
+                DiscuzCommonMemberFieldForumDOWithBLOBs commonMemberFieldForumDO = new DiscuzCommonMemberFieldForumDOWithBLOBs();
+                commonMemberFieldForumDO.setUid(discuzUcenterMembers.getUid());
+                discuzCommonMemberFieldForumDOMapper.insertSelective(commonMemberFieldForumDO);
+                DiscuzCommonMemberFieldHomeDOWithBLOBs commonMemberFieldHomeDO = new DiscuzCommonMemberFieldHomeDOWithBLOBs();
+                commonMemberFieldHomeDO.setUid(discuzUcenterMembers.getUid());
+                discuzCommonMemberFieldHomeDOMapper.insertSelective(commonMemberFieldHomeDO);
+                DiscuzCommonMemberProfileDOWithBLOBs commonMemberProfileDO = new DiscuzCommonMemberProfileDOWithBLOBs();
+                commonMemberProfileDO.setUid(discuzUcenterMembers.getUid());
+                discuzCommonMemberProfileDOMapper.insertSelective(commonMemberProfileDO);
+                DiscuzCommonMemberStatusDO commonMemberStatusDO = new DiscuzCommonMemberStatusDO();
+                commonMemberStatusDO.setUid(discuzUcenterMembers.getUid());
+                commonMemberStatusDO.setRegip(IpUtils.getIpAddress(request));
+                commonMemberStatusDO.setLastip(IpUtils.getIpAddress(request));
+                commonMemberStatusDO.setLastvisit((int) System.currentTimeMillis());
+                commonMemberStatusDO.setLastactivity((int) System.currentTimeMillis());
+                discuzCommonMemberStatusDOMapper.insertSelective(commonMemberStatusDO);
+            }
         } catch (Exception exception) {
             log.error(exception.getMessage(), exception);
         }
