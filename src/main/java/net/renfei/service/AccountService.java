@@ -140,6 +140,7 @@ public class AccountService extends BaseService {
                                 renFeiConfig.getUCenter().getAppId(),
                                 renFeiConfig.getUCenter().getConnect());
                 String script = client.ucUserSynlogin(discuzUcenterMembers.getUid());
+                log.info("uc script:{}", script);
                 if (!BeanUtils.isEmpty(script)) {
                     String[] strings = script.split("src=\"");
                     String script2 = "";
@@ -147,6 +148,8 @@ public class AccountService extends BaseService {
                         script2 += strings[1].replace("\" reload=\"1\"></script><script type=\"text/javascript\" ", "");
                         script2 += "|";
                         script2 += strings[2].replace("\" reload=\"1\"></script>", "");
+                    } else {
+                        log.warn("strings.length != 3,script:{}", script);
                     }
                     script = script2;
                 } else {
