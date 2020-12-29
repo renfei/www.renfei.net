@@ -290,7 +290,7 @@ public class AccountService extends BaseService {
                 commonMemberDO.setEmail(signUpVO.getEmail().trim().toLowerCase());
                 commonMemberDO.setUsername(signUpVO.getUserName().trim().toLowerCase());
                 commonMemberDO.setGroupid((short) 10);
-                commonMemberDO.setRegdate((int) System.currentTimeMillis());
+                commonMemberDO.setRegdate(DateUtils.getUnixTimestamp());
                 commonMemberDO.setTimeoffset("9999");
                 discuzCommonMemberDOMapper.insertSelective(commonMemberDO);
                 DiscuzCommonMemberCountDO commonMemberCountDO = new DiscuzCommonMemberCountDO();
@@ -309,8 +309,8 @@ public class AccountService extends BaseService {
                 commonMemberStatusDO.setUid(discuzUcenterMembers.getUid());
                 commonMemberStatusDO.setRegip(IpUtils.getIpAddress(request));
                 commonMemberStatusDO.setLastip(IpUtils.getIpAddress(request));
-                commonMemberStatusDO.setLastvisit((int) System.currentTimeMillis());
-                commonMemberStatusDO.setLastactivity((int) System.currentTimeMillis());
+                commonMemberStatusDO.setLastvisit(DateUtils.getUnixTimestamp());
+                commonMemberStatusDO.setLastactivity(DateUtils.getUnixTimestamp());
                 discuzCommonMemberStatusDOMapper.insertSelective(commonMemberStatusDO);
             }
         } catch (Exception exception) {
