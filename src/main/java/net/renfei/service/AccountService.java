@@ -101,7 +101,7 @@ public class AccountService extends BaseService {
         if (account.getStateCode() < 1) {
             // 发送激活邮件
             verificationCodeService.sendVerificationCode(true, DateUtils.nextHours(2),
-                    account.getEmail(), "SIGN_UP", account, "http://" + renFeiConfig.getDomain() + "/auth/activation");
+                    account.getEmail(), "SIGN_UP", account, renFeiConfig.getDomain() + "/auth/activation");
             throw new ServiceException("当前账户邮箱未激活，我们已经为您发送了一封激活邮件");
         } else if (StringUtils.isChinaPhone(signInVO.getUserName()) && account.getStateCode() < 2) {
             // 邮件登陆，那状态码必须大于等于1，1邮箱验证；2手机验证；3邮箱和手机都验证
@@ -165,6 +165,8 @@ public class AccountService extends BaseService {
                         script2 += strings[1].replace("\" reload=\"1\"></script><script type=\"text/javascript\" ", "");
                         script2 += "|";
                         script2 += strings[2].replace("\" reload=\"1\"></script>", "");
+                    } else if (strings.length == 2) {
+                        script2 += strings[1].replace("\" reload=\"1\"></script>", "");
                     } else {
                         log.warn("strings.length != 3,script:{}", script);
                     }
@@ -298,6 +300,7 @@ public class AccountService extends BaseService {
                 discuzCommonMemberCountDOMapper.insertSelective(commonMemberCountDO);
                 DiscuzCommonMemberFieldForumDOWithBLOBs commonMemberFieldForumDO = new DiscuzCommonMemberFieldForumDOWithBLOBs();
                 commonMemberFieldForumDO.setUid(discuzUcenterMembers.getUid());
+                commonMemberFieldForumDO.setMedals("");
                 discuzCommonMemberFieldForumDOMapper.insertSelective(commonMemberFieldForumDO);
                 DiscuzCommonMemberFieldHomeDOWithBLOBs commonMemberFieldHomeDO = new DiscuzCommonMemberFieldHomeDOWithBLOBs();
                 commonMemberFieldHomeDO.setUid(discuzUcenterMembers.getUid());

@@ -91,6 +91,14 @@
                                 }
                             });
                         });
+                    } else if (ucScripts.length === 1) {
+                        loadJS(ucScripts[0], function () {
+                            if (oauthCallback === "") {
+                                window.location.href = "/";
+                            } else {
+                                window.location.href = oauthCallback;
+                            }
+                        });
                     } else {
                         if (oauthCallback === "") {
                             window.location.href = "/";
@@ -197,6 +205,14 @@
                                                     window.location.href = oauthCallback;
                                                 }
                                             });
+                                        });
+                                    } else if (datas.length === 1) {
+                                        loadJS(datas[0], function () {
+                                            if (oauthCallback === "") {
+                                                window.location.href = "/";
+                                            } else {
+                                                window.location.href = oauthCallback;
+                                            }
                                         });
                                     } else {
                                         if (oauthCallback === "") {
