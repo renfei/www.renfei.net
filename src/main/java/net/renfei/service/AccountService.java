@@ -170,7 +170,8 @@ public class AccountService extends BaseService {
                     } else {
                         log.warn("strings.length != 3,script:{}", script);
                     }
-                    script = script2;
+                    // 将http转为https
+                    script = script2.replace("http://","https://");
                 } else {
                     log.warn("根据UserName：{}，论坛登录脚本为空。", account.getUserName());
                 }
