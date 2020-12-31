@@ -69,7 +69,7 @@
             <small class="text-muted">相互学习,资源共享</small>
         </div>
         <div class="row mt-5">
-            <div class="col-md-4">
+            <div class="col-md-3 col-sm-6">
                 <div class="card mb-2">
                     <img src="https://cdn.renfei.net/qrcode/qqqun.png" class="card-img-top"
                          alt="任霏的QQ群-开发者交流">
@@ -83,7 +83,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-3 col-sm-6">
                 <div class="card mb-2">
                     <img src="https://cdn.renfei.net/qrcode/wequn.png?code=${.now?string["HHmmssSSS"]}"
                          class="card-img-top"
@@ -96,7 +96,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-3 col-sm-6">
                 <div class="card mb-2">
                     <img src="https://cdn.renfei.net/qrcode/wecom.png" class="card-img-top"
                          alt="任霏的微信私聊">
@@ -105,6 +105,18 @@
                         <p class="card-text">
                             如果您希望单独通过微信和我私聊，请扫描上方二维码添加我为好友，发起微信私聊。</p>
                         <a href="JavaScript:msg('请使用微信扫描二维码')" class="btn btn-primary stretched-link">扫码添加</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <div class="card mb-2">
+                    <img src="https://cdn.renfei.net/images/WechatQR.png" class="card-img-top"
+                         alt="任霏的微信公众号">
+                    <div class="card-body">
+                        <h5 class="card-title">微信公众号</h5>
+                        <p class="card-text">
+                            任霏博客的微信公众号（订阅号）随时随地关注IT资讯，我一直在等你。</p>
+                        <a href="JavaScript:msg('请使用微信扫描二维码')" class="btn btn-primary stretched-link">扫码关注</a>
                     </div>
                 </div>
             </div>
@@ -181,10 +193,10 @@
             <div class="col-md-4">
                 <div class="card mb-2">
                     <div class="card-body">
-                        <h5 class="card-title">DOPro (DevOps Protocol)</h5>
+                        <h5 class="card-title">discuz-ucenter-api-for-java</h5>
                         <p class="card-text">
-                            受到阿里巴巴的《Java编程手册》的启发，在运维和使用基础环境的时候，也应当有所约定，就诞生了本仓库，欢迎大家一起来维护条目。</p>
-                        <a href="https://github.com/renfei/DOPro" class="btn btn-primary stretched-link"
+                            最完美的Discuz UCenter的JAVA API接口，简单易用，完全免费！可实现Java程序与PHP程序Discuz!论坛的UCenter打通，实现用户同步登录登出，将旧项目代码改为现代Maven构建的SpringBoot兼容版本。</p>
+                        <a href="https://github.com/renfei/discuz-ucenter-api-for-java" class="btn btn-primary stretched-link"
                            target="_blank" rel="nofollow noopener">查看代码</a>
                     </div>
                 </div>
