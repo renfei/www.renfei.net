@@ -138,7 +138,7 @@
             </div>
         </#if>
         <#if headerVO.account??>
-            <nav class="navbar navbar-expand-lg navbar-light bg-light nav">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light nav" style="z-index: 1;">
                 <div class="container-xl">
                     <div class="navbar-collapse"
                          style="display: -ms-flexbox!important;display: flex!important;-ms-flex-preferred-size: auto;flex-basis: auto;">
@@ -162,7 +162,7 @@
                 </div>
             </nav>
         <#else>
-            <nav class="navbar navbar-expand-lg navbar-light bg-light nav">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light nav" style="z-index: 1;">
                 <div class="container-xl">
                     <div class="navbar-collapse"
                          style="display: -ms-flexbox!important;display: flex!important;-ms-flex-preferred-size: auto;flex-basis: auto;">

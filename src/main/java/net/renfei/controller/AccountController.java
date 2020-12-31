@@ -18,6 +18,7 @@ import net.renfei.sdk.utils.PasswordUtils;
 import net.renfei.sdk.utils.StringUtils;
 import net.renfei.service.*;
 import org.springframework.beans.BeanUtils;
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -215,11 +216,13 @@ public class AccountController extends BaseController {
                     .message("只支持中国大陆的手机号码")
                     .build();
         }
-        if (accountDTO.getPhone().trim().toLowerCase().equals(newPhone)) {
-            return APIResult.builder()
-                    .code(StateCode.Failure)
-                    .message("新的手机号码不能跟旧的手机号码一样")
-                    .build();
+        if (!net.renfei.sdk.utils.BeanUtils.isEmpty(accountDTO.getPhone())) {
+            if (accountDTO.getPhone().trim().toLowerCase().equals(newPhone)) {
+                return APIResult.builder()
+                        .code(StateCode.Failure)
+                        .message("新的手机号码不能跟旧的手机号码一样")
+                        .build();
+            }
         }
         VerificationCodeDO verificationCodeDO =
                 verificationCodeService.verificationCode(verCode, newPhone, "UPDATE_PHONE");
@@ -233,7 +236,7 @@ public class AccountController extends BaseController {
         if (accountService.getAccountByPhone(newPhone) != null) {
             return APIResult.builder()
                     .code(StateCode.Failure)
-                    .message("新的电子邮箱地址已经被占用")
+                    .message("新的手机号已经被占用")
                     .build();
         }
         accountDTO.setPhone(newPhone);
