@@ -2,14 +2,13 @@ package net.renfei.service;
 
 import lombok.extern.slf4j.Slf4j;
 import net.renfei.base.BaseService;
-import net.renfei.discuz.repository.DiscuzCommonMemberCountDOMapper;
-import net.renfei.discuz.repository.DiscuzCommonMemberDOMapper;
-import net.renfei.discuz.repository.DiscuzCommonUsergroupDOMapper;
-import net.renfei.discuz.repository.DiscuzUcenterMembersDOMapper;
+import net.renfei.discuz.repository.*;
 import net.renfei.discuz.repository.entity.*;
 import net.renfei.entity.DiscuzInfo;
 import net.renfei.sdk.utils.ListUtils;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * <p>Title: DiscuzService</p>
@@ -23,15 +22,18 @@ public class DiscuzService extends BaseService {
     private final DiscuzCommonMemberDOMapper memberMapper;
     private final DiscuzUcenterMembersDOMapper membersMapper;
     private final DiscuzCommonUsergroupDOMapper userGroupMapper;
+    private final DiscuzForumPostDOMapper discuzForumPostMapper;
     private final DiscuzCommonMemberCountDOMapper memberCountMapper;
 
     public DiscuzService(DiscuzCommonMemberDOMapper memberMapper,
                          DiscuzUcenterMembersDOMapper membersMapper,
                          DiscuzCommonUsergroupDOMapper userGroupMapper,
+                         DiscuzForumPostDOMapper discuzForumPostMapper,
                          DiscuzCommonMemberCountDOMapper memberCountMapper) {
         this.memberMapper = memberMapper;
         this.membersMapper = membersMapper;
         this.userGroupMapper = userGroupMapper;
+        this.discuzForumPostMapper = discuzForumPostMapper;
         this.memberCountMapper = memberCountMapper;
     }
 
@@ -70,6 +72,19 @@ public class DiscuzService extends BaseService {
             return discuzInfo;
         } catch (Exception exception) {
             log.error(exception.getMessage(), exception);
+            return null;
+        }
+    }
+
+    public List<DiscuzForumPostDO> getAllPost() {
+        DiscuzForumPostDOExample example = new DiscuzForumPostDOExample();
+        example.createCriteria()
+                .andFirstEqualTo(true)
+                .andInvisibleEqualTo(false)
+                .andStatusGreaterThanOrEqualTo(0);
+        try {
+            return discuzForumPostMapper.selectByExampleWithBLOBs(example);
+        } catch (Exception exception) {
             return null;
         }
     }

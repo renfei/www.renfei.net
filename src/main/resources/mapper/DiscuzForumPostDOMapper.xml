@@ -1,0 +1,624 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="net.renfei.discuz.repository.DiscuzForumPostDOMapper">
+  <resultMap id="BaseResultMap" type="net.renfei.discuz.repository.entity.DiscuzForumPostDO">
+    <id column="tid" jdbcType="INTEGER" property="tid" />
+    <id column="position" jdbcType="INTEGER" property="position" />
+    <result column="pid" jdbcType="INTEGER" property="pid" />
+    <result column="fid" jdbcType="INTEGER" property="fid" />
+    <result column="first" jdbcType="BIT" property="first" />
+    <result column="author" jdbcType="VARCHAR" property="author" />
+    <result column="authorid" jdbcType="INTEGER" property="authorid" />
+    <result column="subject" jdbcType="VARCHAR" property="subject" />
+    <result column="dateline" jdbcType="INTEGER" property="dateline" />
+    <result column="useip" jdbcType="VARCHAR" property="useip" />
+    <result column="port" jdbcType="SMALLINT" property="port" />
+    <result column="invisible" jdbcType="BIT" property="invisible" />
+    <result column="anonymous" jdbcType="BIT" property="anonymous" />
+    <result column="usesig" jdbcType="BIT" property="usesig" />
+    <result column="htmlon" jdbcType="BIT" property="htmlon" />
+    <result column="bbcodeoff" jdbcType="BIT" property="bbcodeoff" />
+    <result column="smileyoff" jdbcType="BIT" property="smileyoff" />
+    <result column="parseurloff" jdbcType="BIT" property="parseurloff" />
+    <result column="attachment" jdbcType="BIT" property="attachment" />
+    <result column="rate" jdbcType="SMALLINT" property="rate" />
+    <result column="ratetimes" jdbcType="TINYINT" property="ratetimes" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="tags" jdbcType="VARCHAR" property="tags" />
+    <result column="comment" jdbcType="BIT" property="comment" />
+    <result column="replycredit" jdbcType="INTEGER" property="replycredit" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="net.renfei.discuz.repository.entity.DiscuzForumPostDO">
+    <result column="message" jdbcType="LONGVARCHAR" property="message" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    tid, position, pid, fid, first, author, authorid, subject, dateline, useip, port, 
+    invisible, anonymous, usesig, htmlon, bbcodeoff, smileyoff, parseurloff, attachment, 
+    rate, ratetimes, status, tags, comment, replycredit
+  </sql>
+  <sql id="Blob_Column_List">
+    message
+  </sql>
+  <select id="selectByExampleWithBLOBs" parameterType="net.renfei.discuz.repository.entity.DiscuzForumPostDOExample" resultMap="ResultMapWithBLOBs">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from bbs_forum_post
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" parameterType="net.renfei.discuz.repository.entity.DiscuzForumPostDOExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from bbs_forum_post
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="net.renfei.discuz.repository.entity.DiscuzForumPostDOKey" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from bbs_forum_post
+    where tid = #{tid,jdbcType=INTEGER}
+      and position = #{position,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="net.renfei.discuz.repository.entity.DiscuzForumPostDOKey">
+    delete from bbs_forum_post
+    where tid = #{tid,jdbcType=INTEGER}
+      and position = #{position,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="net.renfei.discuz.repository.entity.DiscuzForumPostDOExample">
+    delete from bbs_forum_post
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="net.renfei.discuz.repository.entity.DiscuzForumPostDO">
+    insert into bbs_forum_post (tid, position, pid, 
+      fid, first, author, authorid, 
+      subject, dateline, useip, 
+      port, invisible, anonymous, 
+      usesig, htmlon, bbcodeoff, smileyoff, 
+      parseurloff, attachment, rate, 
+      ratetimes, status, tags, 
+      comment, replycredit, message
+      )
+    values (#{tid,jdbcType=INTEGER}, #{position,jdbcType=INTEGER}, #{pid,jdbcType=INTEGER}, 
+      #{fid,jdbcType=INTEGER}, #{first,jdbcType=BIT}, #{author,jdbcType=VARCHAR}, #{authorid,jdbcType=INTEGER}, 
+      #{subject,jdbcType=VARCHAR}, #{dateline,jdbcType=INTEGER}, #{useip,jdbcType=VARCHAR}, 
+      #{port,jdbcType=SMALLINT}, #{invisible,jdbcType=BIT}, #{anonymous,jdbcType=BIT}, 
+      #{usesig,jdbcType=BIT}, #{htmlon,jdbcType=BIT}, #{bbcodeoff,jdbcType=BIT}, #{smileyoff,jdbcType=BIT}, 
+      #{parseurloff,jdbcType=BIT}, #{attachment,jdbcType=BIT}, #{rate,jdbcType=SMALLINT}, 
+      #{ratetimes,jdbcType=TINYINT}, #{status,jdbcType=INTEGER}, #{tags,jdbcType=VARCHAR}, 
+      #{comment,jdbcType=BIT}, #{replycredit,jdbcType=INTEGER}, #{message,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="net.renfei.discuz.repository.entity.DiscuzForumPostDO">
+    insert into bbs_forum_post
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="tid != null">
+        tid,
+      </if>
+      <if test="position != null">
+        position,
+      </if>
+      <if test="pid != null">
+        pid,
+      </if>
+      <if test="fid != null">
+        fid,
+      </if>
+      <if test="first != null">
+        first,
+      </if>
+      <if test="author != null">
+        author,
+      </if>
+      <if test="authorid != null">
+        authorid,
+      </if>
+      <if test="subject != null">
+        subject,
+      </if>
+      <if test="dateline != null">
+        dateline,
+      </if>
+      <if test="useip != null">
+        useip,
+      </if>
+      <if test="port != null">
+        port,
+      </if>
+      <if test="invisible != null">
+        invisible,
+      </if>
+      <if test="anonymous != null">
+        anonymous,
+      </if>
+      <if test="usesig != null">
+        usesig,
+      </if>
+      <if test="htmlon != null">
+        htmlon,
+      </if>
+      <if test="bbcodeoff != null">
+        bbcodeoff,
+      </if>
+      <if test="smileyoff != null">
+        smileyoff,
+      </if>
+      <if test="parseurloff != null">
+        parseurloff,
+      </if>
+      <if test="attachment != null">
+        attachment,
+      </if>
+      <if test="rate != null">
+        rate,
+      </if>
+      <if test="ratetimes != null">
+        ratetimes,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="tags != null">
+        tags,
+      </if>
+      <if test="comment != null">
+        comment,
+      </if>
+      <if test="replycredit != null">
+        replycredit,
+      </if>
+      <if test="message != null">
+        message,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="tid != null">
+        #{tid,jdbcType=INTEGER},
+      </if>
+      <if test="position != null">
+        #{position,jdbcType=INTEGER},
+      </if>
+      <if test="pid != null">
+        #{pid,jdbcType=INTEGER},
+      </if>
+      <if test="fid != null">
+        #{fid,jdbcType=INTEGER},
+      </if>
+      <if test="first != null">
+        #{first,jdbcType=BIT},
+      </if>
+      <if test="author != null">
+        #{author,jdbcType=VARCHAR},
+      </if>
+      <if test="authorid != null">
+        #{authorid,jdbcType=INTEGER},
+      </if>
+      <if test="subject != null">
+        #{subject,jdbcType=VARCHAR},
+      </if>
+      <if test="dateline != null">
+        #{dateline,jdbcType=INTEGER},
+      </if>
+      <if test="useip != null">
+        #{useip,jdbcType=VARCHAR},
+      </if>
+      <if test="port != null">
+        #{port,jdbcType=SMALLINT},
+      </if>
+      <if test="invisible != null">
+        #{invisible,jdbcType=BIT},
+      </if>
+      <if test="anonymous != null">
+        #{anonymous,jdbcType=BIT},
+      </if>
+      <if test="usesig != null">
+        #{usesig,jdbcType=BIT},
+      </if>
+      <if test="htmlon != null">
+        #{htmlon,jdbcType=BIT},
+      </if>
+      <if test="bbcodeoff != null">
+        #{bbcodeoff,jdbcType=BIT},
+      </if>
+      <if test="smileyoff != null">
+        #{smileyoff,jdbcType=BIT},
+      </if>
+      <if test="parseurloff != null">
+        #{parseurloff,jdbcType=BIT},
+      </if>
+      <if test="attachment != null">
+        #{attachment,jdbcType=BIT},
+      </if>
+      <if test="rate != null">
+        #{rate,jdbcType=SMALLINT},
+      </if>
+      <if test="ratetimes != null">
+        #{ratetimes,jdbcType=TINYINT},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="tags != null">
+        #{tags,jdbcType=VARCHAR},
+      </if>
+      <if test="comment != null">
+        #{comment,jdbcType=BIT},
+      </if>
+      <if test="replycredit != null">
+        #{replycredit,jdbcType=INTEGER},
+      </if>
+      <if test="message != null">
+        #{message,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="net.renfei.discuz.repository.entity.DiscuzForumPostDOExample" resultType="java.lang.Long">
+    select count(*) from bbs_forum_post
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update bbs_forum_post
+    <set>
+      <if test="record.tid != null">
+        tid = #{record.tid,jdbcType=INTEGER},
+      </if>
+      <if test="record.position != null">
+        position = #{record.position,jdbcType=INTEGER},
+      </if>
+      <if test="record.pid != null">
+        pid = #{record.pid,jdbcType=INTEGER},
+      </if>
+      <if test="record.fid != null">
+        fid = #{record.fid,jdbcType=INTEGER},
+      </if>
+      <if test="record.first != null">
+        first = #{record.first,jdbcType=BIT},
+      </if>
+      <if test="record.author != null">
+        author = #{record.author,jdbcType=VARCHAR},
+      </if>
+      <if test="record.authorid != null">
+        authorid = #{record.authorid,jdbcType=INTEGER},
+      </if>
+      <if test="record.subject != null">
+        subject = #{record.subject,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dateline != null">
+        dateline = #{record.dateline,jdbcType=INTEGER},
+      </if>
+      <if test="record.useip != null">
+        useip = #{record.useip,jdbcType=VARCHAR},
+      </if>
+      <if test="record.port != null">
+        port = #{record.port,jdbcType=SMALLINT},
+      </if>
+      <if test="record.invisible != null">
+        invisible = #{record.invisible,jdbcType=BIT},
+      </if>
+      <if test="record.anonymous != null">
+        anonymous = #{record.anonymous,jdbcType=BIT},
+      </if>
+      <if test="record.usesig != null">
+        usesig = #{record.usesig,jdbcType=BIT},
+      </if>
+      <if test="record.htmlon != null">
+        htmlon = #{record.htmlon,jdbcType=BIT},
+      </if>
+      <if test="record.bbcodeoff != null">
+        bbcodeoff = #{record.bbcodeoff,jdbcType=BIT},
+      </if>
+      <if test="record.smileyoff != null">
+        smileyoff = #{record.smileyoff,jdbcType=BIT},
+      </if>
+      <if test="record.parseurloff != null">
+        parseurloff = #{record.parseurloff,jdbcType=BIT},
+      </if>
+      <if test="record.attachment != null">
+        attachment = #{record.attachment,jdbcType=BIT},
+      </if>
+      <if test="record.rate != null">
+        rate = #{record.rate,jdbcType=SMALLINT},
+      </if>
+      <if test="record.ratetimes != null">
+        ratetimes = #{record.ratetimes,jdbcType=TINYINT},
+      </if>
+      <if test="record.status != null">
+        status = #{record.status,jdbcType=INTEGER},
+      </if>
+      <if test="record.tags != null">
+        tags = #{record.tags,jdbcType=VARCHAR},
+      </if>
+      <if test="record.comment != null">
+        comment = #{record.comment,jdbcType=BIT},
+      </if>
+      <if test="record.replycredit != null">
+        replycredit = #{record.replycredit,jdbcType=INTEGER},
+      </if>
+      <if test="record.message != null">
+        message = #{record.message,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map">
+    update bbs_forum_post
+    set tid = #{record.tid,jdbcType=INTEGER},
+      position = #{record.position,jdbcType=INTEGER},
+      pid = #{record.pid,jdbcType=INTEGER},
+      fid = #{record.fid,jdbcType=INTEGER},
+      first = #{record.first,jdbcType=BIT},
+      author = #{record.author,jdbcType=VARCHAR},
+      authorid = #{record.authorid,jdbcType=INTEGER},
+      subject = #{record.subject,jdbcType=VARCHAR},
+      dateline = #{record.dateline,jdbcType=INTEGER},
+      useip = #{record.useip,jdbcType=VARCHAR},
+      port = #{record.port,jdbcType=SMALLINT},
+      invisible = #{record.invisible,jdbcType=BIT},
+      anonymous = #{record.anonymous,jdbcType=BIT},
+      usesig = #{record.usesig,jdbcType=BIT},
+      htmlon = #{record.htmlon,jdbcType=BIT},
+      bbcodeoff = #{record.bbcodeoff,jdbcType=BIT},
+      smileyoff = #{record.smileyoff,jdbcType=BIT},
+      parseurloff = #{record.parseurloff,jdbcType=BIT},
+      attachment = #{record.attachment,jdbcType=BIT},
+      rate = #{record.rate,jdbcType=SMALLINT},
+      ratetimes = #{record.ratetimes,jdbcType=TINYINT},
+      status = #{record.status,jdbcType=INTEGER},
+      tags = #{record.tags,jdbcType=VARCHAR},
+      comment = #{record.comment,jdbcType=BIT},
+      replycredit = #{record.replycredit,jdbcType=INTEGER},
+      message = #{record.message,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update bbs_forum_post
+    set tid = #{record.tid,jdbcType=INTEGER},
+      position = #{record.position,jdbcType=INTEGER},
+      pid = #{record.pid,jdbcType=INTEGER},
+      fid = #{record.fid,jdbcType=INTEGER},
+      first = #{record.first,jdbcType=BIT},
+      author = #{record.author,jdbcType=VARCHAR},
+      authorid = #{record.authorid,jdbcType=INTEGER},
+      subject = #{record.subject,jdbcType=VARCHAR},
+      dateline = #{record.dateline,jdbcType=INTEGER},
+      useip = #{record.useip,jdbcType=VARCHAR},
+      port = #{record.port,jdbcType=SMALLINT},
+      invisible = #{record.invisible,jdbcType=BIT},
+      anonymous = #{record.anonymous,jdbcType=BIT},
+      usesig = #{record.usesig,jdbcType=BIT},
+      htmlon = #{record.htmlon,jdbcType=BIT},
+      bbcodeoff = #{record.bbcodeoff,jdbcType=BIT},
+      smileyoff = #{record.smileyoff,jdbcType=BIT},
+      parseurloff = #{record.parseurloff,jdbcType=BIT},
+      attachment = #{record.attachment,jdbcType=BIT},
+      rate = #{record.rate,jdbcType=SMALLINT},
+      ratetimes = #{record.ratetimes,jdbcType=TINYINT},
+      status = #{record.status,jdbcType=INTEGER},
+      tags = #{record.tags,jdbcType=VARCHAR},
+      comment = #{record.comment,jdbcType=BIT},
+      replycredit = #{record.replycredit,jdbcType=INTEGER}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="net.renfei.discuz.repository.entity.DiscuzForumPostDO">
+    update bbs_forum_post
+    <set>
+      <if test="pid != null">
+        pid = #{pid,jdbcType=INTEGER},
+      </if>
+      <if test="fid != null">
+        fid = #{fid,jdbcType=INTEGER},
+      </if>
+      <if test="first != null">
+        first = #{first,jdbcType=BIT},
+      </if>
+      <if test="author != null">
+        author = #{author,jdbcType=VARCHAR},
+      </if>
+      <if test="authorid != null">
+        authorid = #{authorid,jdbcType=INTEGER},
+      </if>
+      <if test="subject != null">
+        subject = #{subject,jdbcType=VARCHAR},
+      </if>
+      <if test="dateline != null">
+        dateline = #{dateline,jdbcType=INTEGER},
+      </if>
+      <if test="useip != null">
+        useip = #{useip,jdbcType=VARCHAR},
+      </if>
+      <if test="port != null">
+        port = #{port,jdbcType=SMALLINT},
+      </if>
+      <if test="invisible != null">
+        invisible = #{invisible,jdbcType=BIT},
+      </if>
+      <if test="anonymous != null">
+        anonymous = #{anonymous,jdbcType=BIT},
+      </if>
+      <if test="usesig != null">
+        usesig = #{usesig,jdbcType=BIT},
+      </if>
+      <if test="htmlon != null">
+        htmlon = #{htmlon,jdbcType=BIT},
+      </if>
+      <if test="bbcodeoff != null">
+        bbcodeoff = #{bbcodeoff,jdbcType=BIT},
+      </if>
+      <if test="smileyoff != null">
+        smileyoff = #{smileyoff,jdbcType=BIT},
+      </if>
+      <if test="parseurloff != null">
+        parseurloff = #{parseurloff,jdbcType=BIT},
+      </if>
+      <if test="attachment != null">
+        attachment = #{attachment,jdbcType=BIT},
+      </if>
+      <if test="rate != null">
+        rate = #{rate,jdbcType=SMALLINT},
+      </if>
+      <if test="ratetimes != null">
+        ratetimes = #{ratetimes,jdbcType=TINYINT},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="tags != null">
+        tags = #{tags,jdbcType=VARCHAR},
+      </if>
+      <if test="comment != null">
+        comment = #{comment,jdbcType=BIT},
+      </if>
+      <if test="replycredit != null">
+        replycredit = #{replycredit,jdbcType=INTEGER},
+      </if>
+      <if test="message != null">
+        message = #{message,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where tid = #{tid,jdbcType=INTEGER}
+      and position = #{position,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="net.renfei.discuz.repository.entity.DiscuzForumPostDO">
+    update bbs_forum_post
+    set pid = #{pid,jdbcType=INTEGER},
+      fid = #{fid,jdbcType=INTEGER},
+      first = #{first,jdbcType=BIT},
+      author = #{author,jdbcType=VARCHAR},
+      authorid = #{authorid,jdbcType=INTEGER},
+      subject = #{subject,jdbcType=VARCHAR},
+      dateline = #{dateline,jdbcType=INTEGER},
+      useip = #{useip,jdbcType=VARCHAR},
+      port = #{port,jdbcType=SMALLINT},
+      invisible = #{invisible,jdbcType=BIT},
+      anonymous = #{anonymous,jdbcType=BIT},
+      usesig = #{usesig,jdbcType=BIT},
+      htmlon = #{htmlon,jdbcType=BIT},
+      bbcodeoff = #{bbcodeoff,jdbcType=BIT},
+      smileyoff = #{smileyoff,jdbcType=BIT},
+      parseurloff = #{parseurloff,jdbcType=BIT},
+      attachment = #{attachment,jdbcType=BIT},
+      rate = #{rate,jdbcType=SMALLINT},
+      ratetimes = #{ratetimes,jdbcType=TINYINT},
+      status = #{status,jdbcType=INTEGER},
+      tags = #{tags,jdbcType=VARCHAR},
+      comment = #{comment,jdbcType=BIT},
+      replycredit = #{replycredit,jdbcType=INTEGER},
+      message = #{message,jdbcType=LONGVARCHAR}
+    where tid = #{tid,jdbcType=INTEGER}
+      and position = #{position,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="net.renfei.discuz.repository.entity.DiscuzForumPostDO">
+    update bbs_forum_post
+    set pid = #{pid,jdbcType=INTEGER},
+      fid = #{fid,jdbcType=INTEGER},
+      first = #{first,jdbcType=BIT},
+      author = #{author,jdbcType=VARCHAR},
+      authorid = #{authorid,jdbcType=INTEGER},
+      subject = #{subject,jdbcType=VARCHAR},
+      dateline = #{dateline,jdbcType=INTEGER},
+      useip = #{useip,jdbcType=VARCHAR},
+      port = #{port,jdbcType=SMALLINT},
+      invisible = #{invisible,jdbcType=BIT},
+      anonymous = #{anonymous,jdbcType=BIT},
+      usesig = #{usesig,jdbcType=BIT},
+      htmlon = #{htmlon,jdbcType=BIT},
+      bbcodeoff = #{bbcodeoff,jdbcType=BIT},
+      smileyoff = #{smileyoff,jdbcType=BIT},
+      parseurloff = #{parseurloff,jdbcType=BIT},
+      attachment = #{attachment,jdbcType=BIT},
+      rate = #{rate,jdbcType=SMALLINT},
+      ratetimes = #{ratetimes,jdbcType=TINYINT},
+      status = #{status,jdbcType=INTEGER},
+      tags = #{tags,jdbcType=VARCHAR},
+      comment = #{comment,jdbcType=BIT},
+      replycredit = #{replycredit,jdbcType=INTEGER}
+    where tid = #{tid,jdbcType=INTEGER}
+      and position = #{position,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -13,7 +13,8 @@ public enum TypeEnum {
     PHOTO(4L, "PHOTO", "/photo"),
     MOVIE(5L, "MOVIE", "/movie"),
     WEIBO(6L, "WEIBO", "/weibo"),
-    KITBOX(7L, "KITBOX", "/kitbox");
+    KITBOX(7L, "KITBOX", "/kitbox"),
+    DISCUZ(-1L, "DISCUZ", "https://bbs.renfei.net");
     private Long id;
     private String name;
     private String url;

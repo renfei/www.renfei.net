@@ -137,49 +137,49 @@
                 ${headerVO.notice!}
             </div>
         </#if>
-<#--        <#if headerVO.account??>-->
-<#--            <nav class="navbar navbar-expand-lg navbar-light bg-light nav">-->
-<#--                <div class="container-xl">-->
-<#--                    <div class="navbar-collapse"-->
-<#--                         style="display: -ms-flexbox!important;display: flex!important;-ms-flex-preferred-size: auto;flex-basis: auto;">-->
-<#--                        <ul class="navbar-nav ml-auto" style="-ms-flex-direction: row;flex-direction: row;">-->
-<#--                            <li class="nav-item dropdown">-->
-<#--                                <a class="nav-link dropdown-toggle" href="" style=""-->
-<#--                                   data-toggle="dropdown"-->
-<#--                                   style="font-size: 14px;padding-right: .5rem;padding-left: .5rem;"-->
-<#--                                   aria-expanded="false">${headerVO.account.userName!}</a>-->
-<#--                                <div class="dropdown-menu">-->
-<#--                                    <a class="dropdown-item" href="/account/manage" style="">-->
-<#--                                        管理账户-->
-<#--                                    </a>-->
-<#--                                    <a class="dropdown-item" href="JavaScript:signOut()" style="">-->
-<#--                                        登 出-->
-<#--                                    </a>-->
-<#--                                </div>-->
-<#--                            </li>-->
-<#--                        </ul>-->
-<#--                    </div>-->
-<#--                </div>-->
-<#--            </nav>-->
-<#--        <#else>-->
-<#--            <nav class="navbar navbar-expand-lg navbar-light bg-light nav">-->
-<#--                <div class="container-xl">-->
-<#--                    <div class="navbar-collapse"-->
-<#--                         style="display: -ms-flexbox!important;display: flex!important;-ms-flex-preferred-size: auto;flex-basis: auto;">-->
-<#--                        <ul class="navbar-nav ml-auto" style="-ms-flex-direction: row;flex-direction: row;">-->
-<#--                            <li class="nav-item">-->
-<#--                                <a class="nav-link" href="JavaScript:signInFun()"-->
-<#--                                   style="font-size: 14px;padding-right: .5rem;padding-left: .5rem;">登录</a>-->
-<#--                            </li>-->
-<#--                            <li class="nav-item">-->
-<#--                                <a class="nav-link" href="/auth/signUp"-->
-<#--                                   style="font-size: 14px;padding-right: .5rem;padding-left: .5rem;">注册</a>-->
-<#--                            </li>-->
-<#--                        </ul>-->
-<#--                    </div>-->
-<#--                </div>-->
-<#--            </nav>-->
-<#--        </#if>-->
+        <#if headerVO.account??>
+            <nav class="navbar navbar-expand-lg navbar-light bg-light nav">
+                <div class="container-xl">
+                    <div class="navbar-collapse"
+                         style="display: -ms-flexbox!important;display: flex!important;-ms-flex-preferred-size: auto;flex-basis: auto;">
+                        <ul class="navbar-nav ml-auto" style="-ms-flex-direction: row;flex-direction: row;">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="" style=""
+                                   data-toggle="dropdown"
+                                   style="font-size: 14px;padding-right: .5rem;padding-left: .5rem;"
+                                   aria-expanded="false">${headerVO.account.userName!}</a>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="/account/manage" style="">
+                                        管理账户
+                                    </a>
+                                    <a class="dropdown-item" href="JavaScript:signOut()" style="">
+                                        登 出
+                                    </a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        <#else>
+            <nav class="navbar navbar-expand-lg navbar-light bg-light nav">
+                <div class="container-xl">
+                    <div class="navbar-collapse"
+                         style="display: -ms-flexbox!important;display: flex!important;-ms-flex-preferred-size: auto;flex-basis: auto;">
+                        <ul class="navbar-nav ml-auto" style="-ms-flex-direction: row;flex-direction: row;">
+                            <li class="nav-item">
+                                <a class="nav-link" href="JavaScript:signInFun()"
+                                   style="font-size: 14px;padding-right: .5rem;padding-left: .5rem;">登录</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/auth/signUp"
+                                   style="font-size: 14px;padding-right: .5rem;padding-left: .5rem;">注册</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </#if>
         <#nested>
         <input type="hidden" id="_paste" value="">
     </@compress>

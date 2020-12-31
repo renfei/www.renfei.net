@@ -1,6 +1,7 @@
 package net.renfei.service;
 
 import net.renfei.config.RenFeiConfig;
+import net.renfei.discuz.repository.entity.DiscuzForumPostDO;
 import net.renfei.entity.*;
 import net.renfei.repository.entity.*;
 import net.renfei.sdk.utils.BeanUtils;
@@ -27,14 +28,12 @@ public class AggregateService {
     private final PhotoService photoService;
     private final WeiboService weiboService;
     private final KitBoxService kitBoxService;
+    private final DiscuzService discuzService;
 
-    public AggregateService(PostService postService,
-                            PageService pageService,
-                            RenFeiConfig renFeiConfig,
-                            VideoService videoService,
-                            PhotoService photoService,
-                            WeiboService weiboService,
-                            KitBoxService kitBoxService) {
+    public AggregateService(PostService postService, PageService pageService,
+                            RenFeiConfig renFeiConfig, VideoService videoService,
+                            PhotoService photoService, WeiboService weiboService,
+                            KitBoxService kitBoxService, DiscuzService discuzService) {
         this.postService = postService;
         this.pageService = pageService;
         this.renFeiConfig = renFeiConfig;
@@ -42,6 +41,7 @@ public class AggregateService {
         this.photoService = photoService;
         this.weiboService = weiboService;
         this.kitBoxService = kitBoxService;
+        this.discuzService = discuzService;
     }
 
     public List<SearchItem> getAllDataBySearchItem() {
@@ -153,7 +153,24 @@ public class AggregateService {
                 }
             }
         }
-        // == KitBox <<<<
+        // == KitBox <<<< Discuz >>>>
+        List<DiscuzForumPostDO> discuzForumPostList = discuzService.getAllPost();
+        if (!BeanUtils.isEmpty(discuzForumPostList)) {
+            for (DiscuzForumPostDO post : discuzForumPostList
+            ) {
+                SearchItem searchItem = new SearchItem();
+                searchItem.setUuid(UUID.randomUUID().toString().toUpperCase());
+                searchItem.setType(TypeEnum.DISCUZ.getName());
+                searchItem.setTitle(post.getSubject());
+                searchItem.setContent(StringUtils.delHtmlTags(post.getMessage()));
+                searchItem.setImage(getImgUrl(null));
+                searchItem.setUrl(TypeEnum.POSTS.getUrl() + "/thread-" + post.getTid() + "-1-1.html");
+                searchItem.setOriginalId(Long.valueOf(post.getTid()));
+                searchItem.setDate(new Date(post.getDateline()));
+                searchItemAll.add(searchItem);
+            }
+        }
+        // == Discuz <<<<
         return searchItemAll;
     }
 

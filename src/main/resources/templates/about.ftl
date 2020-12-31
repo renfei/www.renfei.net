@@ -45,21 +45,72 @@
                 <p>大学是 C#.NET 专业毕业，后自学 Java 进行技术转型。你现在看到的这个网站就是我从后端到前端完整的手写的。</p>
             </div>
             <div class="col-md-6">
-                E-mail: <a href="mailto:i@renfei.net">i@renfei.net</a> <br>
-                GitHub:<a href="https://github.com/renfei" target="_blank" rel="nofollow noopener">GitHub</a> <br>
-                GitHub:<a href="https://gitlab.com/renfei" target="_blank" rel="nofollow noopener">GitLab</a> <br>
-                Facebook:<a href="https://www.facebook.com/renfeii" target="_blank" rel="nofollow noopener">任霏</a> <br>
-                Twitter:<a href="https://twitter.com/renfeii" target="_blank" rel="nofollow noopener">@renfeii</a> <br>
-                Sina Weibo:<a href="https://weibo.com/5214619228" target="_blank" rel="nofollow noopener">任霏博客网</a> <br>
-                QQ Group：<a
-                        href="https://shang.qq.com/wpa/qunwpa?idkey=bfbde7e5dec79fd3cdb23c7cf590ca698e3da8b48a71369139ed6aa52f9a7513"
-                        target="_blank">130832168</a><br>
-                Telegram:<a href="https://t.me/neilren" target="_blank">NeilRen</a> <br>
-                Tel:+86 13082843041
+                <div class="row">
+                    <div class="col-sm-6">
+                        E-mail: <a href="mailto:i@renfei.net">i@renfei.net</a> <br>
+                        GitHub:<a href="https://github.com/renfei" target="_blank" rel="nofollow noopener">GitHub</a> <br>
+                        GitLab:<a href="https://gitlab.com/renfei" target="_blank" rel="nofollow noopener">GitLab</a> <br>
+                        Facebook:<a href="https://www.facebook.com/renfeii" target="_blank" rel="nofollow noopener">任霏</a> <br>
+                        Twitter:<a href="https://twitter.com/renfeii" target="_blank" rel="nofollow noopener">@renfeii</a>
+                    </div>
+                    <div class="col-sm-6">
+                        Sina Weibo:<a href="https://weibo.com/5214619228" target="_blank" rel="nofollow noopener">任霏博客网</a> <br>
+                        QQ：<a href="http://wpa.qq.com/msgrd?v=3&uin=16076276&site=qq&menu=yes" rel="nofollow noopener"
+                              target="_blank">16076276</a><br>
+                        Telegram:<a href="https://t.me/neilren" target="_blank">NeilRen</a>
+                    </div>
+                </div>
+
             </div>
         </div>
         <hr>
-        <h2 class="text-center">开源代码</h2>
+        <h2 id="shequn" class="text-center">社群交流</h2>
+        <div class="text-center">
+            <small class="text-muted">相互学习,资源共享</small>
+        </div>
+        <div class="row mt-5">
+            <div class="col-md-4">
+                <div class="card mb-2">
+                    <img src="https://cdn.renfei.net/qrcode/qqqun.png" class="card-img-top"
+                         alt="任霏的QQ群-开发者交流">
+                    <div class="card-body">
+                        <h5 class="card-title">QQ群-开发者交流</h5>
+                        <p class="card-text">
+                            里面全是软件开发工程师和站长们，欢迎讨论和分享软件IT类技术问题。谢绝广告，发广告立即踢</p>
+                        <a href="https://qm.qq.com/cgi-bin/qm/qr?k=DCoy8iL_ZoS-FP4LU7T0JlwcZrc2SUUq&jump_from=webapi"
+                           class="btn btn-primary stretched-link"
+                           target="_blank" rel="nofollow noopener">立即加入</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card mb-2">
+                    <img src="https://cdn.renfei.net/qrcode/wequn.png?code=${.now?string["HHmmssSSS"]}"
+                         class="card-img-top"
+                         alt="任霏的微信群-开发者交流">
+                    <div class="card-body">
+                        <h5 class="card-title">微信群-开发者交流</h5>
+                        <p class="card-text">
+                            里面全是软件开发工程师和站长们，欢迎讨论和分享软件IT类技术问题。谢绝广告，发广告立即踢</p>
+                        <a href="JavaScript:msg('请使用微信扫描二维码')" class="btn btn-primary stretched-link">扫码加入</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card mb-2">
+                    <img src="https://cdn.renfei.net/qrcode/wecom.png" class="card-img-top"
+                         alt="任霏的微信私聊">
+                    <div class="card-body">
+                        <h5 class="card-title">微信私聊</h5>
+                        <p class="card-text">
+                            如果您希望单独通过微信和我私聊，请扫描上方二维码添加我为好友，发起微信私聊。</p>
+                        <a href="JavaScript:msg('请使用微信扫描二维码')" class="btn btn-primary stretched-link">扫码添加</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <h2 id="open" class="text-center">开源代码</h2>
         <div class="text-center">
             <small class="text-muted">让编程更简单和有趣</small>
         </div>
@@ -147,6 +198,25 @@
         <div class="row mt-5">
             <div class="col-12">
                 <div class="timeline timeline-line-dotted">
+                    <span class="timeline-label">
+                        <span class="badge badge-pill badge-secondary px-2">2021</span>
+                    </span>
+                    <div class="timeline-item">
+                        <div class="timeline-point timeline-point-success">
+                            <i class="fab fa-money"></i>
+                        </div>
+                        <div class="timeline-event p-2">
+                            <div class="timeline-heading">
+                                <h4>上线账号系统</h4>
+                            </div>
+                            <div class="timeline-body">
+                                <p>从建站开始就想拥有自己的会员账号系统，但8年前无奈没有技术能力面对互联网上各种妖魔鬼怪保护自己会员的账号安全，一直没有提供账号注册功能，现在第9个年头它来了，密码加密交互加密存储、短信登陆、TOTP动态密码两步认证、与PHP的Discuz论坛同步登入登出、密码爆破主动冻结、Google提供的基于页面行为机器人判定</p>
+                            </div>
+                            <div class="timeline-footer">
+                                <p class="text-right">2021-01-1</p>
+                            </div>
+                        </div>
+                    </div>
                     <span class="timeline-label">
                         <span class="badge badge-pill badge-secondary px-2">2020</span>
                     </span>
@@ -529,7 +599,7 @@
             </div>
         </div>
         <hr>
-        <h2 class="text-center">开放信息</h2>
+        <h2 id="openInfo" class="text-center">开放信息</h2>
         <div class="text-center">
             <small class="text-muted">数字证书就是虚拟世界的身份证</small>
         </div>
