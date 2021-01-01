@@ -15,8 +15,8 @@
             <meta http-equiv="Content-Language" content="zh-CN"/>
             <meta name="renderer" content="webkit">
             <meta name="theme-color" content="#333333"/>
-            <meta name="_csrf" content="${_csrf.token}"/>
-            <meta name="_csrf_header" content="${_csrf.headerName}"/>
+            <meta name="_csrf" content="${(_csrf.token)!}"/>
+            <meta name="_csrf_header" content="${(_csrf.headerName)!}"/>
             <link rel="dns-prefetch" href="//www.renfei.net">
             <link rel="dns-prefetch" href="//hm.baidu.com">
             <link rel="dns-prefetch" href="//www.googletagmanager.com">

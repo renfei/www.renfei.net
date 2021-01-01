@@ -6,26 +6,26 @@
     <id column="position" jdbcType="INTEGER" property="position" />
     <result column="pid" jdbcType="INTEGER" property="pid" />
     <result column="fid" jdbcType="INTEGER" property="fid" />
-    <result column="first" jdbcType="BIT" property="first" />
+    <result column="first" jdbcType="TINYINT" property="first" />
     <result column="author" jdbcType="VARCHAR" property="author" />
     <result column="authorid" jdbcType="INTEGER" property="authorid" />
     <result column="subject" jdbcType="VARCHAR" property="subject" />
     <result column="dateline" jdbcType="INTEGER" property="dateline" />
     <result column="useip" jdbcType="VARCHAR" property="useip" />
     <result column="port" jdbcType="SMALLINT" property="port" />
-    <result column="invisible" jdbcType="BIT" property="invisible" />
-    <result column="anonymous" jdbcType="BIT" property="anonymous" />
-    <result column="usesig" jdbcType="BIT" property="usesig" />
-    <result column="htmlon" jdbcType="BIT" property="htmlon" />
-    <result column="bbcodeoff" jdbcType="BIT" property="bbcodeoff" />
-    <result column="smileyoff" jdbcType="BIT" property="smileyoff" />
-    <result column="parseurloff" jdbcType="BIT" property="parseurloff" />
-    <result column="attachment" jdbcType="BIT" property="attachment" />
+    <result column="invisible" jdbcType="TINYINT" property="invisible" />
+    <result column="anonymous" jdbcType="TINYINT" property="anonymous" />
+    <result column="usesig" jdbcType="TINYINT" property="usesig" />
+    <result column="htmlon" jdbcType="TINYINT" property="htmlon" />
+    <result column="bbcodeoff" jdbcType="TINYINT" property="bbcodeoff" />
+    <result column="smileyoff" jdbcType="TINYINT" property="smileyoff" />
+    <result column="parseurloff" jdbcType="TINYINT" property="parseurloff" />
+    <result column="attachment" jdbcType="TINYINT" property="attachment" />
     <result column="rate" jdbcType="SMALLINT" property="rate" />
     <result column="ratetimes" jdbcType="TINYINT" property="ratetimes" />
     <result column="status" jdbcType="INTEGER" property="status" />
     <result column="tags" jdbcType="VARCHAR" property="tags" />
-    <result column="comment" jdbcType="BIT" property="comment" />
+    <result column="comment" jdbcType="TINYINT" property="comment" />
     <result column="replycredit" jdbcType="INTEGER" property="replycredit" />
   </resultMap>
   <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="net.renfei.discuz.repository.entity.DiscuzForumPostDO">
@@ -149,23 +149,23 @@
   </delete>
   <insert id="insert" parameterType="net.renfei.discuz.repository.entity.DiscuzForumPostDO">
     insert into bbs_forum_post (tid, position, pid, 
-      fid, first, author, authorid, 
-      subject, dateline, useip, 
-      port, invisible, anonymous, 
-      usesig, htmlon, bbcodeoff, smileyoff, 
-      parseurloff, attachment, rate, 
-      ratetimes, status, tags, 
-      comment, replycredit, message
-      )
+      fid, first, author, 
+      authorid, subject, dateline, 
+      useip, port, invisible, 
+      anonymous, usesig, htmlon, 
+      bbcodeoff, smileyoff, parseurloff, 
+      attachment, rate, ratetimes, 
+      status, tags, comment, 
+      replycredit, message)
     values (#{tid,jdbcType=INTEGER}, #{position,jdbcType=INTEGER}, #{pid,jdbcType=INTEGER}, 
-      #{fid,jdbcType=INTEGER}, #{first,jdbcType=BIT}, #{author,jdbcType=VARCHAR}, #{authorid,jdbcType=INTEGER}, 
-      #{subject,jdbcType=VARCHAR}, #{dateline,jdbcType=INTEGER}, #{useip,jdbcType=VARCHAR}, 
-      #{port,jdbcType=SMALLINT}, #{invisible,jdbcType=BIT}, #{anonymous,jdbcType=BIT}, 
-      #{usesig,jdbcType=BIT}, #{htmlon,jdbcType=BIT}, #{bbcodeoff,jdbcType=BIT}, #{smileyoff,jdbcType=BIT}, 
-      #{parseurloff,jdbcType=BIT}, #{attachment,jdbcType=BIT}, #{rate,jdbcType=SMALLINT}, 
-      #{ratetimes,jdbcType=TINYINT}, #{status,jdbcType=INTEGER}, #{tags,jdbcType=VARCHAR}, 
-      #{comment,jdbcType=BIT}, #{replycredit,jdbcType=INTEGER}, #{message,jdbcType=LONGVARCHAR}
-      )
+      #{fid,jdbcType=INTEGER}, #{first,jdbcType=TINYINT}, #{author,jdbcType=VARCHAR}, 
+      #{authorid,jdbcType=INTEGER}, #{subject,jdbcType=VARCHAR}, #{dateline,jdbcType=INTEGER}, 
+      #{useip,jdbcType=VARCHAR}, #{port,jdbcType=SMALLINT}, #{invisible,jdbcType=TINYINT}, 
+      #{anonymous,jdbcType=TINYINT}, #{usesig,jdbcType=TINYINT}, #{htmlon,jdbcType=TINYINT}, 
+      #{bbcodeoff,jdbcType=TINYINT}, #{smileyoff,jdbcType=TINYINT}, #{parseurloff,jdbcType=TINYINT}, 
+      #{attachment,jdbcType=TINYINT}, #{rate,jdbcType=SMALLINT}, #{ratetimes,jdbcType=TINYINT}, 
+      #{status,jdbcType=INTEGER}, #{tags,jdbcType=VARCHAR}, #{comment,jdbcType=TINYINT}, 
+      #{replycredit,jdbcType=INTEGER}, #{message,jdbcType=LONGVARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="net.renfei.discuz.repository.entity.DiscuzForumPostDO">
     insert into bbs_forum_post
@@ -263,7 +263,7 @@
         #{fid,jdbcType=INTEGER},
       </if>
       <if test="first != null">
-        #{first,jdbcType=BIT},
+        #{first,jdbcType=TINYINT},
       </if>
       <if test="author != null">
         #{author,jdbcType=VARCHAR},
@@ -284,28 +284,28 @@
         #{port,jdbcType=SMALLINT},
       </if>
       <if test="invisible != null">
-        #{invisible,jdbcType=BIT},
+        #{invisible,jdbcType=TINYINT},
       </if>
       <if test="anonymous != null">
-        #{anonymous,jdbcType=BIT},
+        #{anonymous,jdbcType=TINYINT},
       </if>
       <if test="usesig != null">
-        #{usesig,jdbcType=BIT},
+        #{usesig,jdbcType=TINYINT},
       </if>
       <if test="htmlon != null">
-        #{htmlon,jdbcType=BIT},
+        #{htmlon,jdbcType=TINYINT},
       </if>
       <if test="bbcodeoff != null">
-        #{bbcodeoff,jdbcType=BIT},
+        #{bbcodeoff,jdbcType=TINYINT},
       </if>
       <if test="smileyoff != null">
-        #{smileyoff,jdbcType=BIT},
+        #{smileyoff,jdbcType=TINYINT},
       </if>
       <if test="parseurloff != null">
-        #{parseurloff,jdbcType=BIT},
+        #{parseurloff,jdbcType=TINYINT},
       </if>
       <if test="attachment != null">
-        #{attachment,jdbcType=BIT},
+        #{attachment,jdbcType=TINYINT},
       </if>
       <if test="rate != null">
         #{rate,jdbcType=SMALLINT},
@@ -320,7 +320,7 @@
         #{tags,jdbcType=VARCHAR},
       </if>
       <if test="comment != null">
-        #{comment,jdbcType=BIT},
+        #{comment,jdbcType=TINYINT},
       </if>
       <if test="replycredit != null">
         #{replycredit,jdbcType=INTEGER},
@@ -352,7 +352,7 @@
         fid = #{record.fid,jdbcType=INTEGER},
       </if>
       <if test="record.first != null">
-        first = #{record.first,jdbcType=BIT},
+        first = #{record.first,jdbcType=TINYINT},
       </if>
       <if test="record.author != null">
         author = #{record.author,jdbcType=VARCHAR},
@@ -373,28 +373,28 @@
         port = #{record.port,jdbcType=SMALLINT},
       </if>
       <if test="record.invisible != null">
-        invisible = #{record.invisible,jdbcType=BIT},
+        invisible = #{record.invisible,jdbcType=TINYINT},
       </if>
       <if test="record.anonymous != null">
-        anonymous = #{record.anonymous,jdbcType=BIT},
+        anonymous = #{record.anonymous,jdbcType=TINYINT},
       </if>
       <if test="record.usesig != null">
-        usesig = #{record.usesig,jdbcType=BIT},
+        usesig = #{record.usesig,jdbcType=TINYINT},
       </if>
       <if test="record.htmlon != null">
-        htmlon = #{record.htmlon,jdbcType=BIT},
+        htmlon = #{record.htmlon,jdbcType=TINYINT},
       </if>
       <if test="record.bbcodeoff != null">
-        bbcodeoff = #{record.bbcodeoff,jdbcType=BIT},
+        bbcodeoff = #{record.bbcodeoff,jdbcType=TINYINT},
       </if>
       <if test="record.smileyoff != null">
-        smileyoff = #{record.smileyoff,jdbcType=BIT},
+        smileyoff = #{record.smileyoff,jdbcType=TINYINT},
       </if>
       <if test="record.parseurloff != null">
-        parseurloff = #{record.parseurloff,jdbcType=BIT},
+        parseurloff = #{record.parseurloff,jdbcType=TINYINT},
       </if>
       <if test="record.attachment != null">
-        attachment = #{record.attachment,jdbcType=BIT},
+        attachment = #{record.attachment,jdbcType=TINYINT},
       </if>
       <if test="record.rate != null">
         rate = #{record.rate,jdbcType=SMALLINT},
@@ -409,7 +409,7 @@
         tags = #{record.tags,jdbcType=VARCHAR},
       </if>
       <if test="record.comment != null">
-        comment = #{record.comment,jdbcType=BIT},
+        comment = #{record.comment,jdbcType=TINYINT},
       </if>
       <if test="record.replycredit != null">
         replycredit = #{record.replycredit,jdbcType=INTEGER},
@@ -428,26 +428,26 @@
       position = #{record.position,jdbcType=INTEGER},
       pid = #{record.pid,jdbcType=INTEGER},
       fid = #{record.fid,jdbcType=INTEGER},
-      first = #{record.first,jdbcType=BIT},
+      first = #{record.first,jdbcType=TINYINT},
       author = #{record.author,jdbcType=VARCHAR},
       authorid = #{record.authorid,jdbcType=INTEGER},
       subject = #{record.subject,jdbcType=VARCHAR},
       dateline = #{record.dateline,jdbcType=INTEGER},
       useip = #{record.useip,jdbcType=VARCHAR},
       port = #{record.port,jdbcType=SMALLINT},
-      invisible = #{record.invisible,jdbcType=BIT},
-      anonymous = #{record.anonymous,jdbcType=BIT},
-      usesig = #{record.usesig,jdbcType=BIT},
-      htmlon = #{record.htmlon,jdbcType=BIT},
-      bbcodeoff = #{record.bbcodeoff,jdbcType=BIT},
-      smileyoff = #{record.smileyoff,jdbcType=BIT},
-      parseurloff = #{record.parseurloff,jdbcType=BIT},
-      attachment = #{record.attachment,jdbcType=BIT},
+      invisible = #{record.invisible,jdbcType=TINYINT},
+      anonymous = #{record.anonymous,jdbcType=TINYINT},
+      usesig = #{record.usesig,jdbcType=TINYINT},
+      htmlon = #{record.htmlon,jdbcType=TINYINT},
+      bbcodeoff = #{record.bbcodeoff,jdbcType=TINYINT},
+      smileyoff = #{record.smileyoff,jdbcType=TINYINT},
+      parseurloff = #{record.parseurloff,jdbcType=TINYINT},
+      attachment = #{record.attachment,jdbcType=TINYINT},
       rate = #{record.rate,jdbcType=SMALLINT},
       ratetimes = #{record.ratetimes,jdbcType=TINYINT},
       status = #{record.status,jdbcType=INTEGER},
       tags = #{record.tags,jdbcType=VARCHAR},
-      comment = #{record.comment,jdbcType=BIT},
+      comment = #{record.comment,jdbcType=TINYINT},
       replycredit = #{record.replycredit,jdbcType=INTEGER},
       message = #{record.message,jdbcType=LONGVARCHAR}
     <if test="_parameter != null">
@@ -460,26 +460,26 @@
       position = #{record.position,jdbcType=INTEGER},
       pid = #{record.pid,jdbcType=INTEGER},
       fid = #{record.fid,jdbcType=INTEGER},
-      first = #{record.first,jdbcType=BIT},
+      first = #{record.first,jdbcType=TINYINT},
       author = #{record.author,jdbcType=VARCHAR},
       authorid = #{record.authorid,jdbcType=INTEGER},
       subject = #{record.subject,jdbcType=VARCHAR},
       dateline = #{record.dateline,jdbcType=INTEGER},
       useip = #{record.useip,jdbcType=VARCHAR},
       port = #{record.port,jdbcType=SMALLINT},
-      invisible = #{record.invisible,jdbcType=BIT},
-      anonymous = #{record.anonymous,jdbcType=BIT},
-      usesig = #{record.usesig,jdbcType=BIT},
-      htmlon = #{record.htmlon,jdbcType=BIT},
-      bbcodeoff = #{record.bbcodeoff,jdbcType=BIT},
-      smileyoff = #{record.smileyoff,jdbcType=BIT},
-      parseurloff = #{record.parseurloff,jdbcType=BIT},
-      attachment = #{record.attachment,jdbcType=BIT},
+      invisible = #{record.invisible,jdbcType=TINYINT},
+      anonymous = #{record.anonymous,jdbcType=TINYINT},
+      usesig = #{record.usesig,jdbcType=TINYINT},
+      htmlon = #{record.htmlon,jdbcType=TINYINT},
+      bbcodeoff = #{record.bbcodeoff,jdbcType=TINYINT},
+      smileyoff = #{record.smileyoff,jdbcType=TINYINT},
+      parseurloff = #{record.parseurloff,jdbcType=TINYINT},
+      attachment = #{record.attachment,jdbcType=TINYINT},
       rate = #{record.rate,jdbcType=SMALLINT},
       ratetimes = #{record.ratetimes,jdbcType=TINYINT},
       status = #{record.status,jdbcType=INTEGER},
       tags = #{record.tags,jdbcType=VARCHAR},
-      comment = #{record.comment,jdbcType=BIT},
+      comment = #{record.comment,jdbcType=TINYINT},
       replycredit = #{record.replycredit,jdbcType=INTEGER}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -495,7 +495,7 @@
         fid = #{fid,jdbcType=INTEGER},
       </if>
       <if test="first != null">
-        first = #{first,jdbcType=BIT},
+        first = #{first,jdbcType=TINYINT},
       </if>
       <if test="author != null">
         author = #{author,jdbcType=VARCHAR},
@@ -516,28 +516,28 @@
         port = #{port,jdbcType=SMALLINT},
       </if>
       <if test="invisible != null">
-        invisible = #{invisible,jdbcType=BIT},
+        invisible = #{invisible,jdbcType=TINYINT},
       </if>
       <if test="anonymous != null">
-        anonymous = #{anonymous,jdbcType=BIT},
+        anonymous = #{anonymous,jdbcType=TINYINT},
       </if>
       <if test="usesig != null">
-        usesig = #{usesig,jdbcType=BIT},
+        usesig = #{usesig,jdbcType=TINYINT},
       </if>
       <if test="htmlon != null">
-        htmlon = #{htmlon,jdbcType=BIT},
+        htmlon = #{htmlon,jdbcType=TINYINT},
       </if>
       <if test="bbcodeoff != null">
-        bbcodeoff = #{bbcodeoff,jdbcType=BIT},
+        bbcodeoff = #{bbcodeoff,jdbcType=TINYINT},
       </if>
       <if test="smileyoff != null">
-        smileyoff = #{smileyoff,jdbcType=BIT},
+        smileyoff = #{smileyoff,jdbcType=TINYINT},
       </if>
       <if test="parseurloff != null">
-        parseurloff = #{parseurloff,jdbcType=BIT},
+        parseurloff = #{parseurloff,jdbcType=TINYINT},
       </if>
       <if test="attachment != null">
-        attachment = #{attachment,jdbcType=BIT},
+        attachment = #{attachment,jdbcType=TINYINT},
       </if>
       <if test="rate != null">
         rate = #{rate,jdbcType=SMALLINT},
@@ -552,7 +552,7 @@
         tags = #{tags,jdbcType=VARCHAR},
       </if>
       <if test="comment != null">
-        comment = #{comment,jdbcType=BIT},
+        comment = #{comment,jdbcType=TINYINT},
       </if>
       <if test="replycredit != null">
         replycredit = #{replycredit,jdbcType=INTEGER},
@@ -568,26 +568,26 @@
     update bbs_forum_post
     set pid = #{pid,jdbcType=INTEGER},
       fid = #{fid,jdbcType=INTEGER},
-      first = #{first,jdbcType=BIT},
+      first = #{first,jdbcType=TINYINT},
       author = #{author,jdbcType=VARCHAR},
       authorid = #{authorid,jdbcType=INTEGER},
       subject = #{subject,jdbcType=VARCHAR},
       dateline = #{dateline,jdbcType=INTEGER},
       useip = #{useip,jdbcType=VARCHAR},
       port = #{port,jdbcType=SMALLINT},
-      invisible = #{invisible,jdbcType=BIT},
-      anonymous = #{anonymous,jdbcType=BIT},
-      usesig = #{usesig,jdbcType=BIT},
-      htmlon = #{htmlon,jdbcType=BIT},
-      bbcodeoff = #{bbcodeoff,jdbcType=BIT},
-      smileyoff = #{smileyoff,jdbcType=BIT},
-      parseurloff = #{parseurloff,jdbcType=BIT},
-      attachment = #{attachment,jdbcType=BIT},
+      invisible = #{invisible,jdbcType=TINYINT},
+      anonymous = #{anonymous,jdbcType=TINYINT},
+      usesig = #{usesig,jdbcType=TINYINT},
+      htmlon = #{htmlon,jdbcType=TINYINT},
+      bbcodeoff = #{bbcodeoff,jdbcType=TINYINT},
+      smileyoff = #{smileyoff,jdbcType=TINYINT},
+      parseurloff = #{parseurloff,jdbcType=TINYINT},
+      attachment = #{attachment,jdbcType=TINYINT},
       rate = #{rate,jdbcType=SMALLINT},
       ratetimes = #{ratetimes,jdbcType=TINYINT},
       status = #{status,jdbcType=INTEGER},
       tags = #{tags,jdbcType=VARCHAR},
-      comment = #{comment,jdbcType=BIT},
+      comment = #{comment,jdbcType=TINYINT},
       replycredit = #{replycredit,jdbcType=INTEGER},
       message = #{message,jdbcType=LONGVARCHAR}
     where tid = #{tid,jdbcType=INTEGER}
@@ -597,26 +597,26 @@
     update bbs_forum_post
     set pid = #{pid,jdbcType=INTEGER},
       fid = #{fid,jdbcType=INTEGER},
-      first = #{first,jdbcType=BIT},
+      first = #{first,jdbcType=TINYINT},
       author = #{author,jdbcType=VARCHAR},
       authorid = #{authorid,jdbcType=INTEGER},
       subject = #{subject,jdbcType=VARCHAR},
       dateline = #{dateline,jdbcType=INTEGER},
       useip = #{useip,jdbcType=VARCHAR},
       port = #{port,jdbcType=SMALLINT},
-      invisible = #{invisible,jdbcType=BIT},
-      anonymous = #{anonymous,jdbcType=BIT},
-      usesig = #{usesig,jdbcType=BIT},
-      htmlon = #{htmlon,jdbcType=BIT},
-      bbcodeoff = #{bbcodeoff,jdbcType=BIT},
-      smileyoff = #{smileyoff,jdbcType=BIT},
-      parseurloff = #{parseurloff,jdbcType=BIT},
-      attachment = #{attachment,jdbcType=BIT},
+      invisible = #{invisible,jdbcType=TINYINT},
+      anonymous = #{anonymous,jdbcType=TINYINT},
+      usesig = #{usesig,jdbcType=TINYINT},
+      htmlon = #{htmlon,jdbcType=TINYINT},
+      bbcodeoff = #{bbcodeoff,jdbcType=TINYINT},
+      smileyoff = #{smileyoff,jdbcType=TINYINT},
+      parseurloff = #{parseurloff,jdbcType=TINYINT},
+      attachment = #{attachment,jdbcType=TINYINT},
       rate = #{rate,jdbcType=SMALLINT},
       ratetimes = #{ratetimes,jdbcType=TINYINT},
       status = #{status,jdbcType=INTEGER},
       tags = #{tags,jdbcType=VARCHAR},
-      comment = #{comment,jdbcType=BIT},
+      comment = #{comment,jdbcType=TINYINT},
       replycredit = #{replycredit,jdbcType=INTEGER}
     where tid = #{tid,jdbcType=INTEGER}
       and position = #{position,jdbcType=INTEGER}

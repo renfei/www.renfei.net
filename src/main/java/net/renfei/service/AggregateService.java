@@ -164,7 +164,7 @@ public class AggregateService {
                 searchItem.setTitle(post.getSubject());
                 searchItem.setContent(StringUtils.delHtmlTags(post.getMessage()));
                 searchItem.setImage(getImgUrl(null));
-                searchItem.setUrl(TypeEnum.POSTS.getUrl() + "/thread-" + post.getTid() + "-1-1.html");
+                searchItem.setUrl(TypeEnum.DISCUZ.getUrl() + "/thread-" + post.getTid() + "-1-1.html");
                 searchItem.setOriginalId(Long.valueOf(post.getTid()));
                 searchItem.setDate(new Date(post.getDateline()));
                 searchItemAll.add(searchItem);

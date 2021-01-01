@@ -79,12 +79,13 @@ public class DiscuzService extends BaseService {
     public List<DiscuzForumPostDO> getAllPost() {
         DiscuzForumPostDOExample example = new DiscuzForumPostDOExample();
         example.createCriteria()
-                .andFirstEqualTo(true)
-                .andInvisibleEqualTo(false)
+                .andFirstEqualTo(1)
+                .andInvisibleEqualTo(0)
                 .andStatusGreaterThanOrEqualTo(0);
         try {
             return discuzForumPostMapper.selectByExampleWithBLOBs(example);
         } catch (Exception exception) {
+            log.error(exception.getMessage(), exception);
             return null;
         }
     }

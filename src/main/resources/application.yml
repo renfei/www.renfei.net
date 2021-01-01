@@ -65,6 +65,7 @@ spring:
   ## Session 存储位置配置
   session:
     store-type: redis
+    timeout: P7D
   ## freemarker 配置
   freemarker:
     template-loader-path: classpath:/templates

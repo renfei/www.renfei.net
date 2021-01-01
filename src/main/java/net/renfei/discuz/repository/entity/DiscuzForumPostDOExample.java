@@ -354,52 +354,52 @@ public class DiscuzForumPostDOExample {
             return (Criteria) this;
         }
 
-        public Criteria andFirstEqualTo(Boolean value) {
+        public Criteria andFirstEqualTo(Integer value) {
             addCriterion("first =", value, "first");
             return (Criteria) this;
         }
 
-        public Criteria andFirstNotEqualTo(Boolean value) {
+        public Criteria andFirstNotEqualTo(Integer value) {
             addCriterion("first <>", value, "first");
             return (Criteria) this;
         }
 
-        public Criteria andFirstGreaterThan(Boolean value) {
+        public Criteria andFirstGreaterThan(Integer value) {
             addCriterion("first >", value, "first");
             return (Criteria) this;
         }
 
-        public Criteria andFirstGreaterThanOrEqualTo(Boolean value) {
+        public Criteria andFirstGreaterThanOrEqualTo(Integer value) {
             addCriterion("first >=", value, "first");
             return (Criteria) this;
         }
 
-        public Criteria andFirstLessThan(Boolean value) {
+        public Criteria andFirstLessThan(Integer value) {
             addCriterion("first <", value, "first");
             return (Criteria) this;
         }
 
-        public Criteria andFirstLessThanOrEqualTo(Boolean value) {
+        public Criteria andFirstLessThanOrEqualTo(Integer value) {
             addCriterion("first <=", value, "first");
             return (Criteria) this;
         }
 
-        public Criteria andFirstIn(List<Boolean> values) {
+        public Criteria andFirstIn(List<Integer> values) {
             addCriterion("first in", values, "first");
             return (Criteria) this;
         }
 
-        public Criteria andFirstNotIn(List<Boolean> values) {
+        public Criteria andFirstNotIn(List<Integer> values) {
             addCriterion("first not in", values, "first");
             return (Criteria) this;
         }
 
-        public Criteria andFirstBetween(Boolean value1, Boolean value2) {
+        public Criteria andFirstBetween(Integer value1, Integer value2) {
             addCriterion("first between", value1, value2, "first");
             return (Criteria) this;
         }
 
-        public Criteria andFirstNotBetween(Boolean value1, Boolean value2) {
+        public Criteria andFirstNotBetween(Integer value1, Integer value2) {
             addCriterion("first not between", value1, value2, "first");
             return (Criteria) this;
         }
@@ -744,52 +744,52 @@ public class DiscuzForumPostDOExample {
             return (Criteria) this;
         }
 
-        public Criteria andPortEqualTo(Short value) {
+        public Criteria andPortEqualTo(Integer value) {
             addCriterion("port =", value, "port");
             return (Criteria) this;
         }
 
-        public Criteria andPortNotEqualTo(Short value) {
+        public Criteria andPortNotEqualTo(Integer value) {
             addCriterion("port <>", value, "port");
             return (Criteria) this;
         }
 
-        public Criteria andPortGreaterThan(Short value) {
+        public Criteria andPortGreaterThan(Integer value) {
             addCriterion("port >", value, "port");
             return (Criteria) this;
         }
 
-        public Criteria andPortGreaterThanOrEqualTo(Short value) {
+        public Criteria andPortGreaterThanOrEqualTo(Integer value) {
             addCriterion("port >=", value, "port");
             return (Criteria) this;
         }
 
-        public Criteria andPortLessThan(Short value) {
+        public Criteria andPortLessThan(Integer value) {
             addCriterion("port <", value, "port");
             return (Criteria) this;
         }
 
-        public Criteria andPortLessThanOrEqualTo(Short value) {
+        public Criteria andPortLessThanOrEqualTo(Integer value) {
             addCriterion("port <=", value, "port");
             return (Criteria) this;
         }
 
-        public Criteria andPortIn(List<Short> values) {
+        public Criteria andPortIn(List<Integer> values) {
             addCriterion("port in", values, "port");
             return (Criteria) this;
         }
 
-        public Criteria andPortNotIn(List<Short> values) {
+        public Criteria andPortNotIn(List<Integer> values) {
             addCriterion("port not in", values, "port");
             return (Criteria) this;
         }
 
-        public Criteria andPortBetween(Short value1, Short value2) {
+        public Criteria andPortBetween(Integer value1, Integer value2) {
             addCriterion("port between", value1, value2, "port");
             return (Criteria) this;
         }
 
-        public Criteria andPortNotBetween(Short value1, Short value2) {
+        public Criteria andPortNotBetween(Integer value1, Integer value2) {
             addCriterion("port not between", value1, value2, "port");
             return (Criteria) this;
         }
@@ -804,52 +804,52 @@ public class DiscuzForumPostDOExample {
             return (Criteria) this;
         }
 
-        public Criteria andInvisibleEqualTo(Boolean value) {
+        public Criteria andInvisibleEqualTo(Integer value) {
             addCriterion("invisible =", value, "invisible");
             return (Criteria) this;
         }
 
-        public Criteria andInvisibleNotEqualTo(Boolean value) {
+        public Criteria andInvisibleNotEqualTo(Integer value) {
             addCriterion("invisible <>", value, "invisible");
             return (Criteria) this;
         }
 
-        public Criteria andInvisibleGreaterThan(Boolean value) {
+        public Criteria andInvisibleGreaterThan(Integer value) {
             addCriterion("invisible >", value, "invisible");
             return (Criteria) this;
         }
 
-        public Criteria andInvisibleGreaterThanOrEqualTo(Boolean value) {
+        public Criteria andInvisibleGreaterThanOrEqualTo(Integer value) {
             addCriterion("invisible >=", value, "invisible");
             return (Criteria) this;
         }
 
-        public Criteria andInvisibleLessThan(Boolean value) {
+        public Criteria andInvisibleLessThan(Integer value) {
             addCriterion("invisible <", value, "invisible");
             return (Criteria) this;
         }
 
-        public Criteria andInvisibleLessThanOrEqualTo(Boolean value) {
+        public Criteria andInvisibleLessThanOrEqualTo(Integer value) {
             addCriterion("invisible <=", value, "invisible");
             return (Criteria) this;
         }
 
-        public Criteria andInvisibleIn(List<Boolean> values) {
+        public Criteria andInvisibleIn(List<Integer> values) {
             addCriterion("invisible in", values, "invisible");
             return (Criteria) this;
         }
 
-        public Criteria andInvisibleNotIn(List<Boolean> values) {
+        public Criteria andInvisibleNotIn(List<Integer> values) {
             addCriterion("invisible not in", values, "invisible");
             return (Criteria) this;
         }
 
-        public Criteria andInvisibleBetween(Boolean value1, Boolean value2) {
+        public Criteria andInvisibleBetween(Integer value1, Integer value2) {
             addCriterion("invisible between", value1, value2, "invisible");
             return (Criteria) this;
         }
 
-        public Criteria andInvisibleNotBetween(Boolean value1, Boolean value2) {
+        public Criteria andInvisibleNotBetween(Integer value1, Integer value2) {
             addCriterion("invisible not between", value1, value2, "invisible");
             return (Criteria) this;
         }
@@ -864,52 +864,52 @@ public class DiscuzForumPostDOExample {
             return (Criteria) this;
         }
 
-        public Criteria andAnonymousEqualTo(Boolean value) {
+        public Criteria andAnonymousEqualTo(Integer value) {
             addCriterion("anonymous =", value, "anonymous");
             return (Criteria) this;
         }
 
-        public Criteria andAnonymousNotEqualTo(Boolean value) {
+        public Criteria andAnonymousNotEqualTo(Integer value) {
             addCriterion("anonymous <>", value, "anonymous");
             return (Criteria) this;
         }
 
-        public Criteria andAnonymousGreaterThan(Boolean value) {
+        public Criteria andAnonymousGreaterThan(Integer value) {
             addCriterion("anonymous >", value, "anonymous");
             return (Criteria) this;
         }
 
-        public Criteria andAnonymousGreaterThanOrEqualTo(Boolean value) {
+        public Criteria andAnonymousGreaterThanOrEqualTo(Integer value) {
             addCriterion("anonymous >=", value, "anonymous");
             return (Criteria) this;
         }
 
-        public Criteria andAnonymousLessThan(Boolean value) {
+        public Criteria andAnonymousLessThan(Integer value) {
             addCriterion("anonymous <", value, "anonymous");
             return (Criteria) this;
         }
 
-        public Criteria andAnonymousLessThanOrEqualTo(Boolean value) {
+        public Criteria andAnonymousLessThanOrEqualTo(Integer value) {
             addCriterion("anonymous <=", value, "anonymous");
             return (Criteria) this;
         }
 
-        public Criteria andAnonymousIn(List<Boolean> values) {
+        public Criteria andAnonymousIn(List<Integer> values) {
             addCriterion("anonymous in", values, "anonymous");
             return (Criteria) this;
         }
 
-        public Criteria andAnonymousNotIn(List<Boolean> values) {
+        public Criteria andAnonymousNotIn(List<Integer> values) {
             addCriterion("anonymous not in", values, "anonymous");
             return (Criteria) this;
         }
 
-        public Criteria andAnonymousBetween(Boolean value1, Boolean value2) {
+        public Criteria andAnonymousBetween(Integer value1, Integer value2) {
             addCriterion("anonymous between", value1, value2, "anonymous");
             return (Criteria) this;
         }
 
-        public Criteria andAnonymousNotBetween(Boolean value1, Boolean value2) {
+        public Criteria andAnonymousNotBetween(Integer value1, Integer value2) {
             addCriterion("anonymous not between", value1, value2, "anonymous");
             return (Criteria) this;
         }
@@ -924,52 +924,52 @@ public class DiscuzForumPostDOExample {
             return (Criteria) this;
         }
 
-        public Criteria andUsesigEqualTo(Boolean value) {
+        public Criteria andUsesigEqualTo(Integer value) {
             addCriterion("usesig =", value, "usesig");
             return (Criteria) this;
         }
 
-        public Criteria andUsesigNotEqualTo(Boolean value) {
+        public Criteria andUsesigNotEqualTo(Integer value) {
             addCriterion("usesig <>", value, "usesig");
             return (Criteria) this;
         }
 
-        public Criteria andUsesigGreaterThan(Boolean value) {
+        public Criteria andUsesigGreaterThan(Integer value) {
             addCriterion("usesig >", value, "usesig");
             return (Criteria) this;
         }
 
-        public Criteria andUsesigGreaterThanOrEqualTo(Boolean value) {
+        public Criteria andUsesigGreaterThanOrEqualTo(Integer value) {
             addCriterion("usesig >=", value, "usesig");
             return (Criteria) this;
         }
 
-        public Criteria andUsesigLessThan(Boolean value) {
+        public Criteria andUsesigLessThan(Integer value) {
             addCriterion("usesig <", value, "usesig");
             return (Criteria) this;
         }
 
-        public Criteria andUsesigLessThanOrEqualTo(Boolean value) {
+        public Criteria andUsesigLessThanOrEqualTo(Integer value) {
             addCriterion("usesig <=", value, "usesig");
             return (Criteria) this;
         }
 
-        public Criteria andUsesigIn(List<Boolean> values) {
+        public Criteria andUsesigIn(List<Integer> values) {
             addCriterion("usesig in", values, "usesig");
             return (Criteria) this;
         }
 
-        public Criteria andUsesigNotIn(List<Boolean> values) {
+        public Criteria andUsesigNotIn(List<Integer> values) {
             addCriterion("usesig not in", values, "usesig");
             return (Criteria) this;
         }
 
-        public Criteria andUsesigBetween(Boolean value1, Boolean value2) {
+        public Criteria andUsesigBetween(Integer value1, Integer value2) {
             addCriterion("usesig between", value1, value2, "usesig");
             return (Criteria) this;
         }
 
-        public Criteria andUsesigNotBetween(Boolean value1, Boolean value2) {
+        public Criteria andUsesigNotBetween(Integer value1, Integer value2) {
             addCriterion("usesig not between", value1, value2, "usesig");
             return (Criteria) this;
         }
@@ -984,52 +984,52 @@ public class DiscuzForumPostDOExample {
             return (Criteria) this;
         }
 
-        public Criteria andHtmlonEqualTo(Boolean value) {
+        public Criteria andHtmlonEqualTo(Integer value) {
             addCriterion("htmlon =", value, "htmlon");
             return (Criteria) this;
         }
 
-        public Criteria andHtmlonNotEqualTo(Boolean value) {
+        public Criteria andHtmlonNotEqualTo(Integer value) {
             addCriterion("htmlon <>", value, "htmlon");
             return (Criteria) this;
         }
 
-        public Criteria andHtmlonGreaterThan(Boolean value) {
+        public Criteria andHtmlonGreaterThan(Integer value) {
             addCriterion("htmlon >", value, "htmlon");
             return (Criteria) this;
         }
 
-        public Criteria andHtmlonGreaterThanOrEqualTo(Boolean value) {
+        public Criteria andHtmlonGreaterThanOrEqualTo(Integer value) {
             addCriterion("htmlon >=", value, "htmlon");
             return (Criteria) this;
         }
 
-        public Criteria andHtmlonLessThan(Boolean value) {
+        public Criteria andHtmlonLessThan(Integer value) {
             addCriterion("htmlon <", value, "htmlon");
             return (Criteria) this;
         }
 
-        public Criteria andHtmlonLessThanOrEqualTo(Boolean value) {
+        public Criteria andHtmlonLessThanOrEqualTo(Integer value) {
             addCriterion("htmlon <=", value, "htmlon");
             return (Criteria) this;
         }
 
-        public Criteria andHtmlonIn(List<Boolean> values) {
+        public Criteria andHtmlonIn(List<Integer> values) {
             addCriterion("htmlon in", values, "htmlon");
             return (Criteria) this;
         }
 
-        public Criteria andHtmlonNotIn(List<Boolean> values) {
+        public Criteria andHtmlonNotIn(List<Integer> values) {
             addCriterion("htmlon not in", values, "htmlon");
             return (Criteria) this;
         }
 
-        public Criteria andHtmlonBetween(Boolean value1, Boolean value2) {
+        public Criteria andHtmlonBetween(Integer value1, Integer value2) {
             addCriterion("htmlon between", value1, value2, "htmlon");
             return (Criteria) this;
         }
 
-        public Criteria andHtmlonNotBetween(Boolean value1, Boolean value2) {
+        public Criteria andHtmlonNotBetween(Integer value1, Integer value2) {
             addCriterion("htmlon not between", value1, value2, "htmlon");
             return (Criteria) this;
         }
@@ -1044,52 +1044,52 @@ public class DiscuzForumPostDOExample {
             return (Criteria) this;
         }
 
-        public Criteria andBbcodeoffEqualTo(Boolean value) {
+        public Criteria andBbcodeoffEqualTo(Integer value) {
             addCriterion("bbcodeoff =", value, "bbcodeoff");
             return (Criteria) this;
         }
 
-        public Criteria andBbcodeoffNotEqualTo(Boolean value) {
+        public Criteria andBbcodeoffNotEqualTo(Integer value) {
             addCriterion("bbcodeoff <>", value, "bbcodeoff");
             return (Criteria) this;
         }
 
-        public Criteria andBbcodeoffGreaterThan(Boolean value) {
+        public Criteria andBbcodeoffGreaterThan(Integer value) {
             addCriterion("bbcodeoff >", value, "bbcodeoff");
             return (Criteria) this;
         }
 
-        public Criteria andBbcodeoffGreaterThanOrEqualTo(Boolean value) {
+        public Criteria andBbcodeoffGreaterThanOrEqualTo(Integer value) {
             addCriterion("bbcodeoff >=", value, "bbcodeoff");
             return (Criteria) this;
         }
 
-        public Criteria andBbcodeoffLessThan(Boolean value) {
+        public Criteria andBbcodeoffLessThan(Integer value) {
             addCriterion("bbcodeoff <", value, "bbcodeoff");
             return (Criteria) this;
         }
 
-        public Criteria andBbcodeoffLessThanOrEqualTo(Boolean value) {
+        public Criteria andBbcodeoffLessThanOrEqualTo(Integer value) {
             addCriterion("bbcodeoff <=", value, "bbcodeoff");
             return (Criteria) this;
         }
 
-        public Criteria andBbcodeoffIn(List<Boolean> values) {
+        public Criteria andBbcodeoffIn(List<Integer> values) {
             addCriterion("bbcodeoff in", values, "bbcodeoff");
             return (Criteria) this;
         }
 
-        public Criteria andBbcodeoffNotIn(List<Boolean> values) {
+        public Criteria andBbcodeoffNotIn(List<Integer> values) {
             addCriterion("bbcodeoff not in", values, "bbcodeoff");
             return (Criteria) this;
         }
 
-        public Criteria andBbcodeoffBetween(Boolean value1, Boolean value2) {
+        public Criteria andBbcodeoffBetween(Integer value1, Integer value2) {
             addCriterion("bbcodeoff between", value1, value2, "bbcodeoff");
             return (Criteria) this;
         }
 
-        public Criteria andBbcodeoffNotBetween(Boolean value1, Boolean value2) {
+        public Criteria andBbcodeoffNotBetween(Integer value1, Integer value2) {
             addCriterion("bbcodeoff not between", value1, value2, "bbcodeoff");
             return (Criteria) this;
         }
@@ -1104,52 +1104,52 @@ public class DiscuzForumPostDOExample {
             return (Criteria) this;
         }
 
-        public Criteria andSmileyoffEqualTo(Boolean value) {
+        public Criteria andSmileyoffEqualTo(Integer value) {
             addCriterion("smileyoff =", value, "smileyoff");
             return (Criteria) this;
         }
 
-        public Criteria andSmileyoffNotEqualTo(Boolean value) {
+        public Criteria andSmileyoffNotEqualTo(Integer value) {
             addCriterion("smileyoff <>", value, "smileyoff");
             return (Criteria) this;
         }
 
-        public Criteria andSmileyoffGreaterThan(Boolean value) {
+        public Criteria andSmileyoffGreaterThan(Integer value) {
             addCriterion("smileyoff >", value, "smileyoff");
             return (Criteria) this;
         }
 
-        public Criteria andSmileyoffGreaterThanOrEqualTo(Boolean value) {
+        public Criteria andSmileyoffGreaterThanOrEqualTo(Integer value) {
             addCriterion("smileyoff >=", value, "smileyoff");
             return (Criteria) this;
         }
 
-        public Criteria andSmileyoffLessThan(Boolean value) {
+        public Criteria andSmileyoffLessThan(Integer value) {
             addCriterion("smileyoff <", value, "smileyoff");
             return (Criteria) this;
         }
 
-        public Criteria andSmileyoffLessThanOrEqualTo(Boolean value) {
+        public Criteria andSmileyoffLessThanOrEqualTo(Integer value) {
             addCriterion("smileyoff <=", value, "smileyoff");
             return (Criteria) this;
         }
 
-        public Criteria andSmileyoffIn(List<Boolean> values) {
+        public Criteria andSmileyoffIn(List<Integer> values) {
             addCriterion("smileyoff in", values, "smileyoff");
             return (Criteria) this;
         }
 
-        public Criteria andSmileyoffNotIn(List<Boolean> values) {
+        public Criteria andSmileyoffNotIn(List<Integer> values) {
             addCriterion("smileyoff not in", values, "smileyoff");
             return (Criteria) this;
         }
 
-        public Criteria andSmileyoffBetween(Boolean value1, Boolean value2) {
+        public Criteria andSmileyoffBetween(Integer value1, Integer value2) {
             addCriterion("smileyoff between", value1, value2, "smileyoff");
             return (Criteria) this;
         }
 
-        public Criteria andSmileyoffNotBetween(Boolean value1, Boolean value2) {
+        public Criteria andSmileyoffNotBetween(Integer value1, Integer value2) {
             addCriterion("smileyoff not between", value1, value2, "smileyoff");
             return (Criteria) this;
         }
@@ -1164,52 +1164,52 @@ public class DiscuzForumPostDOExample {
             return (Criteria) this;
         }
 
-        public Criteria andParseurloffEqualTo(Boolean value) {
+        public Criteria andParseurloffEqualTo(Integer value) {
             addCriterion("parseurloff =", value, "parseurloff");
             return (Criteria) this;
         }
 
-        public Criteria andParseurloffNotEqualTo(Boolean value) {
+        public Criteria andParseurloffNotEqualTo(Integer value) {
             addCriterion("parseurloff <>", value, "parseurloff");
             return (Criteria) this;
         }
 
-        public Criteria andParseurloffGreaterThan(Boolean value) {
+        public Criteria andParseurloffGreaterThan(Integer value) {
             addCriterion("parseurloff >", value, "parseurloff");
             return (Criteria) this;
         }
 
-        public Criteria andParseurloffGreaterThanOrEqualTo(Boolean value) {
+        public Criteria andParseurloffGreaterThanOrEqualTo(Integer value) {
             addCriterion("parseurloff >=", value, "parseurloff");
             return (Criteria) this;
         }
 
-        public Criteria andParseurloffLessThan(Boolean value) {
+        public Criteria andParseurloffLessThan(Integer value) {
             addCriterion("parseurloff <", value, "parseurloff");
             return (Criteria) this;
         }
 
-        public Criteria andParseurloffLessThanOrEqualTo(Boolean value) {
+        public Criteria andParseurloffLessThanOrEqualTo(Integer value) {
             addCriterion("parseurloff <=", value, "parseurloff");
             return (Criteria) this;
         }
 
-        public Criteria andParseurloffIn(List<Boolean> values) {
+        public Criteria andParseurloffIn(List<Integer> values) {
             addCriterion("parseurloff in", values, "parseurloff");
             return (Criteria) this;
         }
 
-        public Criteria andParseurloffNotIn(List<Boolean> values) {
+        public Criteria andParseurloffNotIn(List<Integer> values) {
             addCriterion("parseurloff not in", values, "parseurloff");
             return (Criteria) this;
         }
 
-        public Criteria andParseurloffBetween(Boolean value1, Boolean value2) {
+        public Criteria andParseurloffBetween(Integer value1, Integer value2) {
             addCriterion("parseurloff between", value1, value2, "parseurloff");
             return (Criteria) this;
         }
 
-        public Criteria andParseurloffNotBetween(Boolean value1, Boolean value2) {
+        public Criteria andParseurloffNotBetween(Integer value1, Integer value2) {
             addCriterion("parseurloff not between", value1, value2, "parseurloff");
             return (Criteria) this;
         }
@@ -1224,52 +1224,52 @@ public class DiscuzForumPostDOExample {
             return (Criteria) this;
         }
 
-        public Criteria andAttachmentEqualTo(Boolean value) {
+        public Criteria andAttachmentEqualTo(Integer value) {
             addCriterion("attachment =", value, "attachment");
             return (Criteria) this;
         }
 
-        public Criteria andAttachmentNotEqualTo(Boolean value) {
+        public Criteria andAttachmentNotEqualTo(Integer value) {
             addCriterion("attachment <>", value, "attachment");
             return (Criteria) this;
         }
 
-        public Criteria andAttachmentGreaterThan(Boolean value) {
+        public Criteria andAttachmentGreaterThan(Integer value) {
             addCriterion("attachment >", value, "attachment");
             return (Criteria) this;
         }
 
-        public Criteria andAttachmentGreaterThanOrEqualTo(Boolean value) {
+        public Criteria andAttachmentGreaterThanOrEqualTo(Integer value) {
             addCriterion("attachment >=", value, "attachment");
             return (Criteria) this;
         }
 
-        public Criteria andAttachmentLessThan(Boolean value) {
+        public Criteria andAttachmentLessThan(Integer value) {
             addCriterion("attachment <", value, "attachment");
             return (Criteria) this;
         }
 
-        public Criteria andAttachmentLessThanOrEqualTo(Boolean value) {
+        public Criteria andAttachmentLessThanOrEqualTo(Integer value) {
             addCriterion("attachment <=", value, "attachment");
             return (Criteria) this;
         }
 
-        public Criteria andAttachmentIn(List<Boolean> values) {
+        public Criteria andAttachmentIn(List<Integer> values) {
             addCriterion("attachment in", values, "attachment");
             return (Criteria) this;
         }
 
-        public Criteria andAttachmentNotIn(List<Boolean> values) {
+        public Criteria andAttachmentNotIn(List<Integer> values) {
             addCriterion("attachment not in", values, "attachment");
             return (Criteria) this;
         }
 
-        public Criteria andAttachmentBetween(Boolean value1, Boolean value2) {
+        public Criteria andAttachmentBetween(Integer value1, Integer value2) {
             addCriterion("attachment between", value1, value2, "attachment");
             return (Criteria) this;
         }
 
-        public Criteria andAttachmentNotBetween(Boolean value1, Boolean value2) {
+        public Criteria andAttachmentNotBetween(Integer value1, Integer value2) {
             addCriterion("attachment not between", value1, value2, "attachment");
             return (Criteria) this;
         }
@@ -1344,52 +1344,52 @@ public class DiscuzForumPostDOExample {
             return (Criteria) this;
         }
 
-        public Criteria andRatetimesEqualTo(Byte value) {
+        public Criteria andRatetimesEqualTo(Integer value) {
             addCriterion("ratetimes =", value, "ratetimes");
             return (Criteria) this;
         }
 
-        public Criteria andRatetimesNotEqualTo(Byte value) {
+        public Criteria andRatetimesNotEqualTo(Integer value) {
             addCriterion("ratetimes <>", value, "ratetimes");
             return (Criteria) this;
         }
 
-        public Criteria andRatetimesGreaterThan(Byte value) {
+        public Criteria andRatetimesGreaterThan(Integer value) {
             addCriterion("ratetimes >", value, "ratetimes");
             return (Criteria) this;
         }
 
-        public Criteria andRatetimesGreaterThanOrEqualTo(Byte value) {
+        public Criteria andRatetimesGreaterThanOrEqualTo(Integer value) {
             addCriterion("ratetimes >=", value, "ratetimes");
             return (Criteria) this;
         }
 
-        public Criteria andRatetimesLessThan(Byte value) {
+        public Criteria andRatetimesLessThan(Integer value) {
             addCriterion("ratetimes <", value, "ratetimes");
             return (Criteria) this;
         }
 
-        public Criteria andRatetimesLessThanOrEqualTo(Byte value) {
+        public Criteria andRatetimesLessThanOrEqualTo(Integer value) {
             addCriterion("ratetimes <=", value, "ratetimes");
             return (Criteria) this;
         }
 
-        public Criteria andRatetimesIn(List<Byte> values) {
+        public Criteria andRatetimesIn(List<Integer> values) {
             addCriterion("ratetimes in", values, "ratetimes");
             return (Criteria) this;
         }
 
-        public Criteria andRatetimesNotIn(List<Byte> values) {
+        public Criteria andRatetimesNotIn(List<Integer> values) {
             addCriterion("ratetimes not in", values, "ratetimes");
             return (Criteria) this;
         }
 
-        public Criteria andRatetimesBetween(Byte value1, Byte value2) {
+        public Criteria andRatetimesBetween(Integer value1, Integer value2) {
             addCriterion("ratetimes between", value1, value2, "ratetimes");
             return (Criteria) this;
         }
 
-        public Criteria andRatetimesNotBetween(Byte value1, Byte value2) {
+        public Criteria andRatetimesNotBetween(Integer value1, Integer value2) {
             addCriterion("ratetimes not between", value1, value2, "ratetimes");
             return (Criteria) this;
         }
@@ -1534,52 +1534,52 @@ public class DiscuzForumPostDOExample {
             return (Criteria) this;
         }
 
-        public Criteria andCommentEqualTo(Boolean value) {
+        public Criteria andCommentEqualTo(Integer value) {
             addCriterion("comment =", value, "comment");
             return (Criteria) this;
         }
 
-        public Criteria andCommentNotEqualTo(Boolean value) {
+        public Criteria andCommentNotEqualTo(Integer value) {
             addCriterion("comment <>", value, "comment");
             return (Criteria) this;
         }
 
-        public Criteria andCommentGreaterThan(Boolean value) {
+        public Criteria andCommentGreaterThan(Integer value) {
             addCriterion("comment >", value, "comment");
             return (Criteria) this;
         }
 
-        public Criteria andCommentGreaterThanOrEqualTo(Boolean value) {
+        public Criteria andCommentGreaterThanOrEqualTo(Integer value) {
             addCriterion("comment >=", value, "comment");
             return (Criteria) this;
         }
 
-        public Criteria andCommentLessThan(Boolean value) {
+        public Criteria andCommentLessThan(Integer value) {
             addCriterion("comment <", value, "comment");
             return (Criteria) this;
         }
 
-        public Criteria andCommentLessThanOrEqualTo(Boolean value) {
+        public Criteria andCommentLessThanOrEqualTo(Integer value) {
             addCriterion("comment <=", value, "comment");
             return (Criteria) this;
         }
 
-        public Criteria andCommentIn(List<Boolean> values) {
+        public Criteria andCommentIn(List<Integer> values) {
             addCriterion("comment in", values, "comment");
             return (Criteria) this;
         }
 
-        public Criteria andCommentNotIn(List<Boolean> values) {
+        public Criteria andCommentNotIn(List<Integer> values) {
             addCriterion("comment not in", values, "comment");
             return (Criteria) this;
         }
 
-        public Criteria andCommentBetween(Boolean value1, Boolean value2) {
+        public Criteria andCommentBetween(Integer value1, Integer value2) {
             addCriterion("comment between", value1, value2, "comment");
             return (Criteria) this;
         }
 
-        public Criteria andCommentNotBetween(Boolean value1, Boolean value2) {
+        public Criteria andCommentNotBetween(Integer value1, Integer value2) {
             addCriterion("comment not between", value1, value2, "comment");
             return (Criteria) this;
         }

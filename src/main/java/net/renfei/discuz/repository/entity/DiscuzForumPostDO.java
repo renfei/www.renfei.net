@@ -5,7 +5,7 @@ public class DiscuzForumPostDO extends DiscuzForumPostDOKey {
 
     private Integer fid;
 
-    private Boolean first;
+    private Integer first;
 
     private String author;
 
@@ -17,33 +17,33 @@ public class DiscuzForumPostDO extends DiscuzForumPostDOKey {
 
     private String useip;
 
-    private Short port;
+    private Integer port;
 
-    private Boolean invisible;
+    private Integer invisible;
 
-    private Boolean anonymous;
+    private Integer anonymous;
 
-    private Boolean usesig;
+    private Integer usesig;
 
-    private Boolean htmlon;
+    private Integer htmlon;
 
-    private Boolean bbcodeoff;
+    private Integer bbcodeoff;
 
-    private Boolean smileyoff;
+    private Integer smileyoff;
 
-    private Boolean parseurloff;
+    private Integer parseurloff;
 
-    private Boolean attachment;
+    private Integer attachment;
 
     private Short rate;
 
-    private Byte ratetimes;
+    private Integer ratetimes;
 
     private Integer status;
 
     private String tags;
 
-    private Boolean comment;
+    private Integer comment;
 
     private Integer replycredit;
 
@@ -65,11 +65,11 @@ public class DiscuzForumPostDO extends DiscuzForumPostDOKey {
         this.fid = fid;
     }
 
-    public Boolean getFirst() {
+    public Integer getFirst() {
         return first;
     }
 
-    public void setFirst(Boolean first) {
+    public void setFirst(Integer first) {
         this.first = first;
     }
 
@@ -113,75 +113,75 @@ public class DiscuzForumPostDO extends DiscuzForumPostDOKey {
         this.useip = useip == null ? null : useip.trim();
     }
 
-    public Short getPort() {
+    public Integer getPort() {
         return port;
     }
 
-    public void setPort(Short port) {
+    public void setPort(Integer port) {
         this.port = port;
     }
 
-    public Boolean getInvisible() {
+    public Integer getInvisible() {
         return invisible;
     }
 
-    public void setInvisible(Boolean invisible) {
+    public void setInvisible(Integer invisible) {
         this.invisible = invisible;
     }
 
-    public Boolean getAnonymous() {
+    public Integer getAnonymous() {
         return anonymous;
     }
 
-    public void setAnonymous(Boolean anonymous) {
+    public void setAnonymous(Integer anonymous) {
         this.anonymous = anonymous;
     }
 
-    public Boolean getUsesig() {
+    public Integer getUsesig() {
         return usesig;
     }
 
-    public void setUsesig(Boolean usesig) {
+    public void setUsesig(Integer usesig) {
         this.usesig = usesig;
     }
 
-    public Boolean getHtmlon() {
+    public Integer getHtmlon() {
         return htmlon;
     }
 
-    public void setHtmlon(Boolean htmlon) {
+    public void setHtmlon(Integer htmlon) {
         this.htmlon = htmlon;
     }
 
-    public Boolean getBbcodeoff() {
+    public Integer getBbcodeoff() {
         return bbcodeoff;
     }
 
-    public void setBbcodeoff(Boolean bbcodeoff) {
+    public void setBbcodeoff(Integer bbcodeoff) {
         this.bbcodeoff = bbcodeoff;
     }
 
-    public Boolean getSmileyoff() {
+    public Integer getSmileyoff() {
         return smileyoff;
     }
 
-    public void setSmileyoff(Boolean smileyoff) {
+    public void setSmileyoff(Integer smileyoff) {
         this.smileyoff = smileyoff;
     }
 
-    public Boolean getParseurloff() {
+    public Integer getParseurloff() {
         return parseurloff;
     }
 
-    public void setParseurloff(Boolean parseurloff) {
+    public void setParseurloff(Integer parseurloff) {
         this.parseurloff = parseurloff;
     }
 
-    public Boolean getAttachment() {
+    public Integer getAttachment() {
         return attachment;
     }
 
-    public void setAttachment(Boolean attachment) {
+    public void setAttachment(Integer attachment) {
         this.attachment = attachment;
     }
 
@@ -193,11 +193,11 @@ public class DiscuzForumPostDO extends DiscuzForumPostDOKey {
         this.rate = rate;
     }
 
-    public Byte getRatetimes() {
+    public Integer getRatetimes() {
         return ratetimes;
     }
 
-    public void setRatetimes(Byte ratetimes) {
+    public void setRatetimes(Integer ratetimes) {
         this.ratetimes = ratetimes;
     }
 
@@ -217,11 +217,11 @@ public class DiscuzForumPostDO extends DiscuzForumPostDOKey {
         this.tags = tags == null ? null : tags.trim();
     }
 
-    public Boolean getComment() {
+    public Integer getComment() {
         return comment;
     }
 
-    public void setComment(Boolean comment) {
+    public void setComment(Integer comment) {
         this.comment = comment;
     }
 
