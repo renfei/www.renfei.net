@@ -19,6 +19,13 @@
                 <div class="d-none d-sm-block mb-3">
                     <@adsense "6116570539" active></@adsense>
                 </div>
+                <#if enName??>
+                    <#if enName == 'share'>
+                        <div class="alert alert-info" role="alert">
+                            社区分享已经上线：<a href="https://bbs.renfei.net/forum-41-1.html" target="_blank">https://bbs.renfei.net/forum-41-1.html</a>
+                        </div>
+                    </#if>
+                </#if>
                 <#if lists?? && (lists?size>0)>
                     <#list lists as post>
                         <div class="card mb-3" style="margin-bottom: 1rem;">

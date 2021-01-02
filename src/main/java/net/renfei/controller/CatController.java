@@ -63,6 +63,7 @@ public class CatController extends BaseController {
                     mv.addObject("title", categoryDTO.getZhName() + " - 文档分类 - " + renFeiConfig.getSiteName());
                     mv.addObject("catTitle", categoryDTO.getZhName());
                     mv.addObject("lists", postsListDTO.getData());
+                    mv.addObject("enName", enName);
                     mv.addObject("PostSidebar", postService.getPostSidebar());
                     mv.setViewName("posts/list");
                     break;

@@ -46,6 +46,9 @@
                 </div>
             </div>
         </div>
+        <div class="alert alert-info" role="alert">
+            社区分享已经上线：<a href="https://bbs.renfei.net/forum-41-1.html" target="_blank">https://bbs.renfei.net/forum-41-1.html</a>
+        </div>
         <div class="card mb-3">
             <div class="card-header">
                 下载服务<small>Download Service</small>

@@ -240,6 +240,7 @@ public class AccountController extends BaseController {
                     .build();
         }
         accountDTO.setPhone(newPhone);
+        accountDTO.setStateCode(3);
         accountService.updateAccount(accountDTO);
         updateUser(accountDTO);
         return APIResult.success();
