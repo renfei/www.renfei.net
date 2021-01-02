@@ -8,6 +8,10 @@
 # Server ####################################
 server:
   port: 8099
+  servlet:
+    session:
+      cookie:
+        max-age: P7D
 
 # Spring ####################################
 spring:
