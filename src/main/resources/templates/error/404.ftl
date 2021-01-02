@@ -48,6 +48,7 @@
                                         style="border-top-right-radius: 0;border-bottom-right-radius: 0;">
                                     <option selected value="all">全部</option>
                                     <option value="post">文章</option>
+                                    <option value="bbs">论坛</option>
                                     <option value="weibo">微博</option>
                                     <option value="page">页面</option>
                                     <option value="photo">相册</option>

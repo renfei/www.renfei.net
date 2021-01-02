@@ -18,7 +18,7 @@
         <div class="container" style="height: 180px;">
             <div class="row">
                 <div class="col-12" style="padding-top: 40px;">
-                    <h1 style="color: #ffffff;font-size: 40px">renfei</h1>
+                    <h1 style="color: #ffffff;font-size: 40px">${user.userName?html}</h1>
                     <small class="text-muted"
                            style="color: #ffffff!important;font-size: 21px;">欢迎回来！您可以在这里管理您的账户</small>
                 </div>

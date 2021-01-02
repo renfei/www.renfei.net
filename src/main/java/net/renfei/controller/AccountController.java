@@ -63,7 +63,7 @@ public class AccountController extends BaseController {
         if (modelAndView != null) {
             return modelAndView;
         }
-        DiscuzInfo discuzInfo = discuzService.getDiscuzInfo("renfei");
+        DiscuzInfo discuzInfo = discuzService.getDiscuzInfo(getUser().getUserName());
         mv.addObject("user", getUser());
         mv.addObject("discuzInfo", discuzInfo);
         mv.addObject("title", "管理您的账户 - " + renFeiConfig.getSiteName());

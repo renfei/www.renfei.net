@@ -24,6 +24,7 @@
                                                 style="border-top-right-radius: 0;border-bottom-right-radius: 0;">
                                             <option ${(type=="all"!)?string('selected','')} value="all">全部</option>
                                             <option ${(type=="post"!)?string('selected','')} value="post">文章</option>
+                                            <option ${(type=="bbs"!)?string('selected','')} value="bbs">论坛</option>
                                             <option ${(type=="weibo"!)?string('selected','')} value="weibo">微博</option>
                                             <option ${(type=="page"!)?string('selected','')} value="page">页面</option>
                                             <option ${(type=="photo"!)?string('selected','')} value="photo">相册</option>
@@ -131,6 +132,7 @@
                                         style="border-top-right-radius: 0;border-bottom-right-radius: 0;">
                                     <option selected value="all">全部</option>
                                     <option value="post">文章</option>
+                                    <option value="bbs">论坛</option>
                                     <option value="weibo">微博</option>
                                     <option value="page">页面</option>
                                     <option value="photo">相册</option>

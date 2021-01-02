@@ -75,6 +75,9 @@ public class SearchController extends BaseController {
                 case "kitbox":
                     typeEnum = TypeEnum.KITBOX;
                     break;
+                case "bbs":
+                    typeEnum = TypeEnum.DISCUZ;
+                    break;
                 default:
                     type = "all";
                     break;
