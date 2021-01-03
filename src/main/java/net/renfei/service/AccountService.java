@@ -171,7 +171,7 @@ public class AccountService extends BaseService {
                         log.warn("strings.length != 3,script:{}", script);
                     }
                     // 将http转为https
-                    script = script2.replace("http://","https://");
+                    script = script2.replace("http://", "https://");
                 } else {
                     log.warn("根据UserName：{}，论坛登录脚本为空。", account.getUserName());
                 }
@@ -295,6 +295,7 @@ public class AccountService extends BaseService {
                 commonMemberDO.setGroupid((short) 10);
                 commonMemberDO.setRegdate(DateUtils.getUnixTimestamp());
                 commonMemberDO.setTimeoffset("9999");
+                commonMemberDO.setEmailstatus(1);
                 discuzCommonMemberDOMapper.insertSelective(commonMemberDO);
                 DiscuzCommonMemberCountDO commonMemberCountDO = new DiscuzCommonMemberCountDO();
                 commonMemberCountDO.setUid(discuzUcenterMembers.getUid());
@@ -302,12 +303,34 @@ public class AccountService extends BaseService {
                 DiscuzCommonMemberFieldForumDOWithBLOBs commonMemberFieldForumDO = new DiscuzCommonMemberFieldForumDOWithBLOBs();
                 commonMemberFieldForumDO.setUid(discuzUcenterMembers.getUid());
                 commonMemberFieldForumDO.setMedals("");
+                commonMemberFieldForumDO.setSightml("");
+                commonMemberFieldForumDO.setGroupterms("");
+                commonMemberFieldForumDO.setGroups("");
                 discuzCommonMemberFieldForumDOMapper.insertSelective(commonMemberFieldForumDO);
                 DiscuzCommonMemberFieldHomeDOWithBLOBs commonMemberFieldHomeDO = new DiscuzCommonMemberFieldHomeDOWithBLOBs();
                 commonMemberFieldHomeDO.setUid(discuzUcenterMembers.getUid());
+                commonMemberFieldHomeDO.setSpacecss("");
+                commonMemberFieldHomeDO.setBlockposition("");
+                commonMemberFieldHomeDO.setRecentnote("");
+                commonMemberFieldHomeDO.setSpacenote("");
+                commonMemberFieldHomeDO.setPrivacy("");
+                commonMemberFieldHomeDO.setFeedfriend("");
+                commonMemberFieldHomeDO.setAcceptemail("");
+                commonMemberFieldHomeDO.setMagicgift("");
+                commonMemberFieldHomeDO.setStickblogs("");
                 discuzCommonMemberFieldHomeDOMapper.insertSelective(commonMemberFieldHomeDO);
                 DiscuzCommonMemberProfileDOWithBLOBs commonMemberProfileDO = new DiscuzCommonMemberProfileDOWithBLOBs();
                 commonMemberProfileDO.setUid(discuzUcenterMembers.getUid());
+                commonMemberProfileDO.setBio("");
+                commonMemberProfileDO.setInterest("");
+                commonMemberProfileDO.setField1("");
+                commonMemberProfileDO.setField2("");
+                commonMemberProfileDO.setField3("");
+                commonMemberProfileDO.setField4("");
+                commonMemberProfileDO.setField5("");
+                commonMemberProfileDO.setField6("");
+                commonMemberProfileDO.setField7("");
+                commonMemberProfileDO.setField8("");
                 discuzCommonMemberProfileDOMapper.insertSelective(commonMemberProfileDO);
                 DiscuzCommonMemberStatusDO commonMemberStatusDO = new DiscuzCommonMemberStatusDO();
                 commonMemberStatusDO.setUid(discuzUcenterMembers.getUid());
@@ -315,6 +338,13 @@ public class AccountService extends BaseService {
                 commonMemberStatusDO.setLastip(IpUtils.getIpAddress(request));
                 commonMemberStatusDO.setLastvisit(DateUtils.getUnixTimestamp());
                 commonMemberStatusDO.setLastactivity(DateUtils.getUnixTimestamp());
+                commonMemberStatusDO.setLastsendmail(0);
+                commonMemberStatusDO.setInvisible(0);
+                commonMemberStatusDO.setBuyercredit((short) 0);
+                commonMemberStatusDO.setSellercredit((short) 0);
+                commonMemberStatusDO.setFavtimes(0);
+                commonMemberStatusDO.setSharetimes(0);
+                commonMemberStatusDO.setProfileprogress((byte) 0);
                 discuzCommonMemberStatusDOMapper.insertSelective(commonMemberStatusDO);
             }
         } catch (Exception exception) {

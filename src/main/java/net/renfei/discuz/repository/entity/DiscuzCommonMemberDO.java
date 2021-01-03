@@ -11,7 +11,7 @@ public class DiscuzCommonMemberDO {
 
     private Boolean status;
 
-    private Boolean emailstatus;
+    private Integer emailstatus;
 
     private Boolean avatarstatus;
 
@@ -87,11 +87,11 @@ public class DiscuzCommonMemberDO {
         this.status = status;
     }
 
-    public Boolean getEmailstatus() {
+    public Integer getEmailstatus() {
         return emailstatus;
     }
 
-    public void setEmailstatus(Boolean emailstatus) {
+    public void setEmailstatus(Integer emailstatus) {
         this.emailstatus = emailstatus;
     }
 

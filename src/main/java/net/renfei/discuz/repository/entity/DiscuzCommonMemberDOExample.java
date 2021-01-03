@@ -444,52 +444,52 @@ public class DiscuzCommonMemberDOExample {
             return (Criteria) this;
         }
 
-        public Criteria andEmailstatusEqualTo(Boolean value) {
+        public Criteria andEmailstatusEqualTo(Integer value) {
             addCriterion("emailstatus =", value, "emailstatus");
             return (Criteria) this;
         }
 
-        public Criteria andEmailstatusNotEqualTo(Boolean value) {
+        public Criteria andEmailstatusNotEqualTo(Integer value) {
             addCriterion("emailstatus <>", value, "emailstatus");
             return (Criteria) this;
         }
 
-        public Criteria andEmailstatusGreaterThan(Boolean value) {
+        public Criteria andEmailstatusGreaterThan(Integer value) {
             addCriterion("emailstatus >", value, "emailstatus");
             return (Criteria) this;
         }
 
-        public Criteria andEmailstatusGreaterThanOrEqualTo(Boolean value) {
+        public Criteria andEmailstatusGreaterThanOrEqualTo(Integer value) {
             addCriterion("emailstatus >=", value, "emailstatus");
             return (Criteria) this;
         }
 
-        public Criteria andEmailstatusLessThan(Boolean value) {
+        public Criteria andEmailstatusLessThan(Integer value) {
             addCriterion("emailstatus <", value, "emailstatus");
             return (Criteria) this;
         }
 
-        public Criteria andEmailstatusLessThanOrEqualTo(Boolean value) {
+        public Criteria andEmailstatusLessThanOrEqualTo(Integer value) {
             addCriterion("emailstatus <=", value, "emailstatus");
             return (Criteria) this;
         }
 
-        public Criteria andEmailstatusIn(List<Boolean> values) {
+        public Criteria andEmailstatusIn(List<Integer> values) {
             addCriterion("emailstatus in", values, "emailstatus");
             return (Criteria) this;
         }
 
-        public Criteria andEmailstatusNotIn(List<Boolean> values) {
+        public Criteria andEmailstatusNotIn(List<Integer> values) {
             addCriterion("emailstatus not in", values, "emailstatus");
             return (Criteria) this;
         }
 
-        public Criteria andEmailstatusBetween(Boolean value1, Boolean value2) {
+        public Criteria andEmailstatusBetween(Integer value1, Integer value2) {
             addCriterion("emailstatus between", value1, value2, "emailstatus");
             return (Criteria) this;
         }
 
-        public Criteria andEmailstatusNotBetween(Boolean value1, Boolean value2) {
+        public Criteria andEmailstatusNotBetween(Integer value1, Integer value2) {
             addCriterion("emailstatus not between", value1, value2, "emailstatus");
             return (Criteria) this;
         }

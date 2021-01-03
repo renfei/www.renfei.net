@@ -17,7 +17,7 @@ public class DiscuzCommonMemberStatusDO {
 
     private Integer lastsendmail;
 
-    private Boolean invisible;
+    private Integer invisible;
 
     private Short buyercredit;
 
@@ -93,11 +93,11 @@ public class DiscuzCommonMemberStatusDO {
         this.lastsendmail = lastsendmail;
     }
 
-    public Boolean getInvisible() {
+    public Integer getInvisible() {
         return invisible;
     }
 
-    public void setInvisible(Boolean invisible) {
+    public void setInvisible(Integer invisible) {
         this.invisible = invisible;
     }
 

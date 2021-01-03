@@ -64,13 +64,17 @@
 
         <!--Discu-->
 <!--        <table tableName="bbs_ucenter_members" domainObjectName="DiscuzUcenterMembersDO"></table>-->
-<!--        <table tableName="bbs_common_member" domainObjectName="DiscuzCommonMemberDO"></table>-->
+<!--        <table tableName="bbs_common_member" domainObjectName="DiscuzCommonMemberDO">-->
+<!--            <columnOverride column="emailstatus" javaType="java.lang.Integer"/>-->
+<!--        </table>-->
 <!--        <table tableName="bbs_common_member_count" domainObjectName="DiscuzCommonMemberCountDO"></table>-->
 <!--        <table tableName="bbs_common_usergroup" domainObjectName="DiscuzCommonUsergroupDO"></table>-->
 <!--        <table tableName="bbs_common_member_field_forum" domainObjectName="DiscuzCommonMemberFieldForumDO"></table>-->
 <!--        <table tableName="bbs_common_member_field_home" domainObjectName="DiscuzCommonMemberFieldHomeDO"></table>-->
 <!--        <table tableName="bbs_common_member_profile" domainObjectName="DiscuzCommonMemberProfileDO"></table>-->
-<!--        <table tableName="bbs_common_member_status" domainObjectName="DiscuzCommonMemberStatusDO"></table>-->
+<!--        <table tableName="bbs_common_member_status" domainObjectName="DiscuzCommonMemberStatusDO">-->
+<!--            <columnOverride column="invisible" javaType="java.lang.Integer"/>-->
+<!--        </table>-->
 <!--        <table tableName="bbs_forum_post" domainObjectName="DiscuzForumPostDO">-->
 <!--            <columnOverride column="first" javaType="java.lang.Integer"/>-->
 <!--            <columnOverride column="port" javaType="java.lang.Integer"/>-->

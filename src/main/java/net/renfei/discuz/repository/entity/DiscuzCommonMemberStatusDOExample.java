@@ -614,52 +614,52 @@ public class DiscuzCommonMemberStatusDOExample {
             return (Criteria) this;
         }
 
-        public Criteria andInvisibleEqualTo(Boolean value) {
+        public Criteria andInvisibleEqualTo(Integer value) {
             addCriterion("invisible =", value, "invisible");
             return (Criteria) this;
         }
 
-        public Criteria andInvisibleNotEqualTo(Boolean value) {
+        public Criteria andInvisibleNotEqualTo(Integer value) {
             addCriterion("invisible <>", value, "invisible");
             return (Criteria) this;
         }
 
-        public Criteria andInvisibleGreaterThan(Boolean value) {
+        public Criteria andInvisibleGreaterThan(Integer value) {
             addCriterion("invisible >", value, "invisible");
             return (Criteria) this;
         }
 
-        public Criteria andInvisibleGreaterThanOrEqualTo(Boolean value) {
+        public Criteria andInvisibleGreaterThanOrEqualTo(Integer value) {
             addCriterion("invisible >=", value, "invisible");
             return (Criteria) this;
         }
 
-        public Criteria andInvisibleLessThan(Boolean value) {
+        public Criteria andInvisibleLessThan(Integer value) {
             addCriterion("invisible <", value, "invisible");
             return (Criteria) this;
         }
 
-        public Criteria andInvisibleLessThanOrEqualTo(Boolean value) {
+        public Criteria andInvisibleLessThanOrEqualTo(Integer value) {
             addCriterion("invisible <=", value, "invisible");
             return (Criteria) this;
         }
 
-        public Criteria andInvisibleIn(List<Boolean> values) {
+        public Criteria andInvisibleIn(List<Integer> values) {
             addCriterion("invisible in", values, "invisible");
             return (Criteria) this;
         }
 
-        public Criteria andInvisibleNotIn(List<Boolean> values) {
+        public Criteria andInvisibleNotIn(List<Integer> values) {
             addCriterion("invisible not in", values, "invisible");
             return (Criteria) this;
         }
 
-        public Criteria andInvisibleBetween(Boolean value1, Boolean value2) {
+        public Criteria andInvisibleBetween(Integer value1, Integer value2) {
             addCriterion("invisible between", value1, value2, "invisible");
             return (Criteria) this;
         }
 
-        public Criteria andInvisibleNotBetween(Boolean value1, Boolean value2) {
+        public Criteria andInvisibleNotBetween(Integer value1, Integer value2) {
             addCriterion("invisible not between", value1, value2, "invisible");
             return (Criteria) this;
         }
