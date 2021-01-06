@@ -80,6 +80,16 @@ public class KitBoxController extends BaseController {
         return mv;
     }
 
+    @RequestMapping("dnsqps")
+    public ModelAndView getDnsQps(ModelAndView mv) {
+        setHead(mv, "域名解析QPS压力测试工具，仅限测试域名DNS抗压能力，请勿用于发动DNS攻击",
+                "域名,解析,QPS,压力,测试,工具,DNS");
+        mv.addObject("title", "域名QPS压力测试工具 - 开发者工具箱 - " + renFeiConfig.getSiteName());
+        mv.setViewName("kitbox/dnsqps");
+        setKitBoxMenus(mv, NETWORK_TOOL);
+        return mv;
+    }
+
     @RequestMapping("whois")
     public ModelAndView getWhois(ModelAndView mv) {
         setHead(mv, "域名Whois信息查询工具，查询域名是否已经被注册，以及注册域名的详细信息的数据库（如域名所有人、域名注册商、域名注册日期和过期日期等）。通过域名Whois服务器查询，可以查询域名归属者联系方式，以及注册和到期时间。",

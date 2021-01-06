@@ -57,6 +57,11 @@ public class KitBoxService extends BaseService {
                                 .with(LinkVO::setText, "域名解析Dig查询工具")
                                 .build());
                         this.add(Builder.of(LinkVO::new)
+                                .with(LinkVO::setHref, "/kitbox/dnsqps")
+                                .with(LinkVO::setRel, "域名解析QPS压力测试工具，仅限测试请勿用于发动攻击")
+                                .with(LinkVO::setText, "域名QPS压力测试工具")
+                                .build());
+                        this.add(Builder.of(LinkVO::new)
                                 .with(LinkVO::setHref, "/kitbox/whois")
                                 .with(LinkVO::setRel, "查询域名是否已经被注册，以及注册域名的详细信息")
                                 .with(LinkVO::setText, "域名Whois查询工具")
