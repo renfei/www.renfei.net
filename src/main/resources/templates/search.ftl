@@ -147,6 +147,24 @@
                             </div>
                         </div>
                     </form>
+                    <div class="card mt-6" style="margin-bottom: 1rem;">
+                        <div class="card-body">
+                            <h5 class="card-title" style="font-size: 18px;">搜索热榜</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">搜索词来自网友历史搜索自动产生，不代表本站立场。</h6>
+                            <div class="text-center">
+                                <ol class="text-left">
+                                    <#if hotSearchList?? && (hotSearchList?size > 0)>
+                                        <#list hotSearchList as list>
+                                            <li style="">
+                                                <a href="/search?type=all&w=${list.word?html}"
+                                                   title="${list.word?html}">${list.word?html}</a>
+                                            </li>
+                                        </#list>
+                                    </#if>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="col-md-2">
                 </div>

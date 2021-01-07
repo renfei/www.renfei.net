@@ -94,7 +94,6 @@ public class SearchController extends BaseController {
             DecimalFormat df = new DecimalFormat("######0.000000");
             mv.addObject("searchTime", df.format(timed));
             setPagination(mv, page, searchItemListData.getTotal(), "/search?type=" + type + "&w=" + query + "&p=");
-            mv.addObject("hotSearchList",searchService.getHotSearchList());
             ServletRequestAttributes servletRequestAttributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
             //设置子线程共享
             RequestContextHolder.setRequestAttributes(servletRequestAttributes, true);
@@ -102,6 +101,7 @@ public class SearchController extends BaseController {
             HttpServletRequest request = servletRequestAttributes.getRequest();
             logService.log(LogLevel.INFO, LogModule.SEARCH, LogType.GET, query, request);
         }
+        mv.addObject("hotSearchList",searchService.getHotSearchList());
         mv.setViewName("search");
         return mv;
     }
