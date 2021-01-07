@@ -49,7 +49,7 @@
                 <hr>
                 <div class="row">
                     <div class="col-12">
-                        <@comments commentsVO></@comments>
+                        <@comments commentsVO account!"null"></@comments>
                     </div>
                 </div>
             </div>

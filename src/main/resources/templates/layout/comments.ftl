@@ -1,4 +1,4 @@
-<#macro comments commentsVO>
+<#macro comments commentsVO account>
     <div class="row py-2">
         <div class="col-12">
             <div class="card" style="width: 100%;">
@@ -23,18 +23,24 @@
                                     <input type="hidden" id="replyId" value="">
                                 </div>
                             </div>
-                            <div class="form-group row">
-                                <label for="comment-nickname" class="col-sm-2 col-form-label">昵称*</label>
-                                <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="comment-nickname">
+                            <#if account!="null">
+                                <input type="hidden" class="form-control" id="comment-nickname"
+                                       value="${account.userName}">
+                                <input type="hidden" class="form-control" id="comment-email" value="${account.email}">
+                            <#else>
+                                <div class="form-group row">
+                                    <label for="comment-nickname" class="col-sm-2 col-form-label">昵称*</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" id="comment-nickname">
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="form-group row">
-                                <label for="comment-email" class="col-sm-2 col-form-label">电邮*</label>
-                                <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="comment-email">
+                                <div class="form-group row">
+                                    <label for="comment-email" class="col-sm-2 col-form-label">电邮*</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" id="comment-email">
+                                    </div>
                                 </div>
-                            </div>
+                            </#if>
                             <div class="form-group row">
                                 <label for="comment-link" class="col-sm-2 col-form-label">链接</label>
                                 <div class="col-sm-10">
@@ -42,7 +48,7 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="comment-content" class="col-sm-2 col-form-label">内容</label>
+                                <label for="comment-content" class="col-sm-2 col-form-label">内容*</label>
                                 <div class="col-sm-10">
                                     <textarea class="form-control" id="comment-content" rows="4"></textarea>
                                 </div>
@@ -50,7 +56,8 @@
                             <div class="form-group row">
                                 <div class="col-sm-2"></div>
                                 <div class="col-sm-10">
-                                    <button type="button" onclick="comment(${commentsTypeId?c},${commentsObjId?c})" class="btn btn-primary btn-lg btn-block">
+                                    <button type="button" onclick="comment(${commentsTypeId?c},${commentsObjId?c})"
+                                            class="btn btn-primary btn-lg btn-block">
                                         提 交
                                     </button>
                                     <p class="card-text mb-2 text-muted">

@@ -85,6 +85,7 @@ public abstract class BaseController {
         }
         mv.addObject(FOOTER_KEY, footerVO);
         mv.addObject(ACTIVE_KEY, renFeiConfig.getActive());
+        mv.addObject("account", getUser());
     }
 
     protected void setHead(ModelAndView mv, String description) {

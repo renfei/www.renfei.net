@@ -40,7 +40,7 @@
                             </div>
                         </div>
                     </div>
-                    <@comments commentsVO></@comments>
+                    <@comments commentsVO account!"null"></@comments>
                 </div>
             </div>
             <div class="clear"></div>
