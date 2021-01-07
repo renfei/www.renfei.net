@@ -180,8 +180,8 @@ public class GlobalService extends BaseService {
                 + "})();\n";
         jsText += "window.dataLayer = window.dataLayer || [];\n"
                 + "function gtag(){dataLayer.push(arguments);}\n"
-                + "gtag('js', new Date());\n\n"
-                + "gtag('config', '" + renFeiConfig.getGoogle().getAnalytics() + "');";
+                + "gtag('js', new Date());\n"
+                + "gtag('config', '" + renFeiConfig.getGoogle().getAnalytics() + "');\n";
         footerVO.setJsText(jsText);
         return footerVO;
     }
