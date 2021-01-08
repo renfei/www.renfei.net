@@ -83,6 +83,13 @@ public abstract class BaseController {
                     boxed().findFirst().map(i -> jss.remove((int) i));
 
         }
+        // 谷歌统计传递用户ID
+        if (getUser() != null) {
+            footerVO.setJsText(
+                    footerVO.getJsText()
+                            + "gtag('set', {'user_id': '" + getUser().getUserName() + "'});\n"
+            );
+        }
         mv.addObject(FOOTER_KEY, footerVO);
         mv.addObject(ACTIVE_KEY, renFeiConfig.getActive());
         mv.addObject("account", getUser());
