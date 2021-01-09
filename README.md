@@ -4,6 +4,7 @@
 [![Actions Status](https://github.com/renfei/www.renfei.net/workflows/CI/badge.svg)](https://github.com/renfei/www.renfei.net/actions)
 [![Actions Status](https://github.com/renfei/www.renfei.net/workflows/Release/badge.svg)](https://github.com/renfei/www.renfei.net/actions)
 [![Build Status](https://api.travis-ci.com/renfei/www.renfei.net.svg?branch=main)](https://travis-ci.com/renfei/www.renfei.net)
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Frenfei%2Fwww.renfei.net.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Frenfei%2Fwww.renfei.net?ref=badge_shield)
 
 此版本是2020年重写版本，代号```thunder```，这个版本有什么故事呢？
 
@@ -17,3 +18,6 @@
 - 重写前端页面，放弃别人的框架，完全自己手写，尽可能轻量，能不引的就不引
 - 移除广告拦截提示，用户体验过差，已经不在检测广告屏蔽插件
 - IP数据库从查询MySQL数据库改为检索BIN文件，速度提升明显
+
+## License
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Frenfei%2Fwww.renfei.net.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Frenfei%2Fwww.renfei.net?ref=badge_large)
