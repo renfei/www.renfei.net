@@ -50,7 +50,7 @@
                 </#if>
                 <#if postSidebar_index ==0 || postSidebar_index == 1>
                     <div class="d-none d-sm-block mb-2">
-                        <@adsense "4995060553" active></@adsense>
+                        <@adsense "4527572214" active></@adsense>
                     </div>
                 </#if>
             </#list>

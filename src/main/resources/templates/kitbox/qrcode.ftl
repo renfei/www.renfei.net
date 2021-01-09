@@ -44,6 +44,9 @@
                                 <footer>推荐内容控制在150字内，过多的内容可能会模糊不清。</footer>
                             </blockquote>
                         </div>
+                        <div class="d-none d-sm-block">
+                            <@adsense "9903187829" active></@adsense>
+                        </div>
                     </div>
                 </div>
             </div>

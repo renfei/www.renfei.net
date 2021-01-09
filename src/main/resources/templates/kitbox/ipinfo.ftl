@@ -195,7 +195,7 @@
                                     <footer>{ip} - 更换为需要查询的IP地址，使用 GET 请求。</footer>
                                 </blockquote>
                             </div>
-                            <@adsense "3646319863" active></@adsense>
+                            <@adsense "9903187829" active></@adsense>
                         </div>
                     </div>
                 </div>

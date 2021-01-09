@@ -922,7 +922,7 @@
                                 </table>
                             </div>
                             <div class="col-12 mb-3 d-none d-sm-block">
-                                <@adsense "3646319863" active></@adsense>
+                                <@adsense "9903187829" active></@adsense>
                             </div>
                             <div class="col-12 mb-3">
                                 <h6 id="port_49152">1024到49151号端口</h6>
@@ -2987,7 +2987,7 @@
                             </div>
                         </div>
                         <div class="d-none d-sm-block">
-                            <@adsense "3646319863" active></@adsense>
+                            <@adsense "9903187829" active></@adsense>
                         </div>
                     </div>
                 </div>

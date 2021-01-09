@@ -17,7 +17,7 @@
         <div class="row">
             <div class="col-xl-9 col-lg-9 col-md-8">
                 <div class="d-none d-sm-block mb-3">
-                    <@adsense "6116570539" active></@adsense>
+                    <@adsense "9200673760" active></@adsense>
                 </div>
                 <#if enName??>
                     <#if enName == 'share'>
@@ -60,7 +60,7 @@
                     </#list>
                 </#if>
                 <div class="d-none d-sm-block mb-3">
-                    <@adsense "3646319863" active></@adsense>
+                    <@adsense "7784290943" active></@adsense>
                 </div>
                 <@paginationLayout paginationList></@paginationLayout>
             </div>

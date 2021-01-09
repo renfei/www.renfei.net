@@ -368,8 +368,12 @@
 <#macro adsense slot active>
     <@compress single_line=true>
         <#if active=="prod">
-            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8859756463807757"
-                 data-ad-slot="${slot}" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-8859756463807757"
+                 data-ad-slot="${slot}"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
             <script>
                 (adsbygoogle = window.adsbygoogle || []).push({});
             </script>

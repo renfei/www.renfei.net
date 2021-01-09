@@ -71,7 +71,7 @@
                 </div>
             </div>
             <div class="d-none d-sm-block mb-2">
-                <@adsense "3646319863" active></@adsense>
+                <@adsense "1692884687" active></@adsense>
             </div>
             <div class="row py-2">
                 <div class="col-12">

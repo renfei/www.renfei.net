@@ -16,7 +16,7 @@
         </div>
     </div>
     <div class="d-none d-sm-block">
-        <@adsense "4995060553" active></@adsense>
+        <@adsense "4059015962" active></@adsense>
     </div>
     <#nested>
 </#macro>

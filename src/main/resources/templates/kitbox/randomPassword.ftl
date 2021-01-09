@@ -83,7 +83,7 @@
                                 </div>
                             </div>
                             <div class="d-none d-sm-block">
-                                <@adsense "3646319863" active></@adsense>
+                                <@adsense "9903187829" active></@adsense>
                             </div>
                         </div>
                     </div>

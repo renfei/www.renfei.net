@@ -30,7 +30,7 @@
             </#list>
         </#if>
         <div class="d-none d-sm-block mt-3">
-            <@adsense "4995060553" active></@adsense>
+            <@adsense "8357353621" active></@adsense>
         </div>
     </div>
 </#macro>

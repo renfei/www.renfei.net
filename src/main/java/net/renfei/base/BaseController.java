@@ -87,7 +87,20 @@ public abstract class BaseController {
         if (getUser() != null) {
             footerVO.setJsText(
                     footerVO.getJsText()
-                            + "gtag('set', {'user_id': '" + getUser().getUserName() + "'});\n"
+                            + "window.dataLayer = window.dataLayer || [];\n"
+                            + "function gtag(){dataLayer.push(arguments);}\n"
+                            + "gtag('js', new Date());\n"
+                            + "gtag('config', '" + renFeiConfig.getGoogle().getAnalytics() + "', {\n"
+                            + "    'user_id': '" + getUser().getUserName() + "'\n"
+                            + "});\n"
+            );
+        } else {
+            footerVO.setJsText(
+                    footerVO.getJsText()
+                            + "window.dataLayer = window.dataLayer || [];\n"
+                            + "function gtag(){dataLayer.push(arguments);}\n"
+                            + "gtag('js', new Date());\n"
+                            + "gtag('config', '" + renFeiConfig.getGoogle().getAnalytics() + "');\n"
             );
         }
         mv.addObject(FOOTER_KEY, footerVO);
