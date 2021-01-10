@@ -1,11 +1,7 @@
 package net.renfei.controller;
 
-import net.renfei.annotation.SystemLog;
 import net.renfei.base.BaseController;
 import net.renfei.config.RenFeiConfig;
-import net.renfei.entity.LogLevel;
-import net.renfei.entity.LogModule;
-import net.renfei.entity.LogType;
 import net.renfei.service.CommentsService;
 import net.renfei.service.GlobalService;
 import net.renfei.service.PaginationService;
@@ -31,7 +27,7 @@ public class RewriteController extends BaseController {
         super(renFeiConfig, globalService, commentsService, paginationService);
     }
 
-    @RequestMapping("/article/{path}")
+    @RequestMapping({"/article/{path}", "/Article/{path}"})
     public ModelAndView getOldArticle(@PathVariable("path") String path) {
         RedirectView red = new RedirectView("/posts/" + path, true);
         red.setStatusCode(HttpStatus.MOVED_PERMANENTLY);

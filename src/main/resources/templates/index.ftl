@@ -6,7 +6,7 @@
     <body>
     <@header headerVO></@header>
     <div style="background-color: #f5f5f7;">
-        <div class="container" style="padding-top: 30px;">
+        <div class="container d-none d-sm-block" style="padding-top: 30px;">
             <@adsense "1847785593" active></@adsense>
         </div>
         <div class="container" style="padding-top: 20px;">
