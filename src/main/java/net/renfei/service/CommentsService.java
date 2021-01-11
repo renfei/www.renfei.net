@@ -168,7 +168,7 @@ public class CommentsService extends BaseService {
                         .andParentIdEqualTo(commentDTO.getId());
                 List<CommentsDOWithBLOBs> commentsDOWithBLOBs = commentsDOMapper.selectByExampleWithBLOBs(commentsDOExample);
                 if (net.renfei.sdk.utils.BeanUtils.isEmpty(commentsDOWithBLOBs)) {
-                    return;
+                    continue;
                 }
                 List<CommentDTO> child = new ArrayList<>();
                 commentsDOWithBLOBs.forEach(commentsDO -> {
