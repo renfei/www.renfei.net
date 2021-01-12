@@ -288,6 +288,25 @@
                 <div class="row" style="height: 20px;"></div>
             </div>
         </div>
+        <div id="g-modal" class="modal fade" style="z-index: 999999999;background-color: rgba(0,0,1,.5);"
+             data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="g-modal-label"
+             aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="g-modal-label">Modal title</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        ...
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">关闭</button>
+                    </div>
+                </div>
+            </div>
         </div>
         <#list footerVO.jss! as js>
             <script src="${js}" type='text/javascript' charset="UTF-8"></script>

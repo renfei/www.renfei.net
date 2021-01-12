@@ -342,6 +342,17 @@ function loadJS(url, callback) {
 
 }
 
+function modal(title, content, remote) {
+    $("#g-modal #g-modal-label").html(title);
+    $("#g-modal .modal-body").html(content);
+    $("#g-modal").modal({
+        backdrop: false,
+        keyboard: false,
+        show: true,
+        remote: remote
+    });
+}
+
 $(function () {
     if ($(".copyUrlBtn").length) {
         let clipboard = new ClipboardJS('.copyUrlBtn', {
@@ -356,4 +367,9 @@ $(function () {
             msg("当前浏览器不支持此功能，请手动复制。", "error");
         });
     }
-})
+    if (document.getElementsByTagName("ins").length > 0) {
+        if (typeof (window.google_jobrunner) != 'object') {
+            modal("Adblock 广告屏蔽插件被启用提示", "您可能安装并启动了「Adblock」广告屏蔽插件。<br>原创内容与网站运营不易，我们恳请您关闭插件或将我们的网址加入白名单。<br>我们不会强制您关闭插件，您可以继续浏览我们的网页，但每次加载都会弹出这个提示。", "");
+        }
+    }
+});
