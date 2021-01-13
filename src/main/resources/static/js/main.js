@@ -353,6 +353,17 @@ function modal(title, content, remote) {
     });
 }
 
+function checkAdp() {
+    if (document.getElementsByTagName("ins").length > 0 &&
+        window.innerWidth > 575) {
+        if (typeof (window.google_jobrunner) != 'object') {
+            modal("Adblock 广告屏蔽插件被启用提示", "您可能安装并启动了「Adblock」广告屏蔽插件。<br>原创内容与网站运营不易，我们恳请您关闭插件或将我们的网址加入白名单。<br>我们不会强制您关闭插件，您可以继续浏览我们的网页，但每次加载都会弹出这个提示。", "");
+        }
+    }
+}
+
+setTimeout("checkAdp()", "5000");
+
 $(function () {
     if ($(".copyUrlBtn").length) {
         let clipboard = new ClipboardJS('.copyUrlBtn', {
@@ -366,10 +377,5 @@ $(function () {
         clipboard.on('error', function (e) {
             msg("当前浏览器不支持此功能，请手动复制。", "error");
         });
-    }
-    if (document.getElementsByTagName("ins").length > 0) {
-        if (typeof (window.google_jobrunner) != 'object') {
-            modal("Adblock 广告屏蔽插件被启用提示", "您可能安装并启动了「Adblock」广告屏蔽插件。<br>原创内容与网站运营不易，我们恳请您关闭插件或将我们的网址加入白名单。<br>我们不会强制您关闭插件，您可以继续浏览我们的网页，但每次加载都会弹出这个提示。", "");
-        }
     }
 });
