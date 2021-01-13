@@ -166,7 +166,7 @@ public class AggregateService {
                 searchItem.setImage(getImgUrl(null));
                 searchItem.setUrl(TypeEnum.DISCUZ.getUrl() + "/thread-" + post.getTid() + "-1-1.html");
                 searchItem.setOriginalId(Long.valueOf(post.getTid()));
-                searchItem.setDate(new Date(post.getDateline() * 1000));
+                searchItem.setDate(new Date((long) post.getDateline() * 1000));
                 searchItemAll.add(searchItem);
             }
         }
