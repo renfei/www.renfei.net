@@ -67,7 +67,8 @@
             <div class="container-xl">
                 <a class="navbar-brand site-logo-name" href="/">
                     <img class="align-middle" src="https://cdn.renfei.net/Logo/RF_white.svg" height="25" alt="任霏博客"/>
-                    <span class="align-middle">${headerVO.siteName!}</span>
+                    <h1 class="align-middle"
+                        style="font-size: 1.25rem;font-weight: 100;display: initial;">${headerVO.siteName!}</h1>
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample07XL"
                         aria-controls="navbarsExample07XL" aria-expanded="false" aria-label="Toggle navigation">
