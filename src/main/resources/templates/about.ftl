@@ -49,12 +49,14 @@
                     <div class="col-sm-6">
                         E-mail: <a href="mailto:i@renfei.net">i@renfei.net</a> <br>
                         GitHub:<a href="https://github.com/renfei" target="_blank" rel="nofollow noopener">GitHub</a> <br>
+                        Gitee:<a href="https://gitee.com/rnf" target="_blank" rel="nofollow noopener">Gitee</a> <br>
                         GitLab:<a href="https://gitlab.com/renfei" target="_blank" rel="nofollow noopener">GitLab</a> <br>
                         Facebook:<a href="https://www.facebook.com/renfeii" target="_blank" rel="nofollow noopener">任霏</a> <br>
-                        Twitter:<a href="https://twitter.com/renfeii" target="_blank" rel="nofollow noopener">@renfeii</a>
+
                     </div>
                     <div class="col-sm-6">
                         Sina Weibo:<a href="https://weibo.com/5214619228" target="_blank" rel="nofollow noopener">任霏博客网</a> <br>
+                        Twitter:<a href="https://twitter.com/renfeii" target="_blank" rel="nofollow noopener">@renfeii</a> <br>
                         QQ：<a href="http://wpa.qq.com/msgrd?v=3&uin=16076276&site=qq&menu=yes" rel="nofollow noopener"
                               target="_blank">16076276</a><br>
                         Telegram:<a href="https://t.me/neilren" target="_blank">NeilRen</a>
