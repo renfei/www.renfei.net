@@ -24,6 +24,7 @@ public class RenFeiConfig {
     private String ipv6DataPath;
     private String buildTime;
     private String totpSecret;
+    private String authMode;
     private Aliyun aliyun;
     private Baidu baidu;
     private Google google;
@@ -94,6 +95,8 @@ public class RenFeiConfig {
     @Data
     public static class Jwt {
         private String secret;
+        private String issuer;
+        private Long expiration;
     }
 
     @Data

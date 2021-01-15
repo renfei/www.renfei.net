@@ -9,6 +9,8 @@ import net.renfei.service.GlobalService;
 import net.renfei.service.PaginationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -161,9 +163,16 @@ public abstract class BaseController {
     }
 
     protected AccountDTO getUser() {
-        Object session = request.getSession().getAttribute(SESSION_KEY);
-        if (session instanceof AccountDTO) {
-            return (AccountDTO) session;
+        if ("SESSION".equals(renFeiConfig.getAuthMode())) {
+            Object session = request.getSession().getAttribute(SESSION_KEY);
+            if (session instanceof AccountDTO) {
+                return (AccountDTO) session;
+            }
+        } else {
+            Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+            if (authentication.getPrincipal() instanceof AccountDTO) {
+                return (AccountDTO) authentication.getPrincipal();
+            }
         }
         return null;
     }

@@ -61,6 +61,7 @@ renfei:
   ipv6DataPath: /opt/RenFeiNet/IPDATA.IPV6.BIN
   buildTime: @buildtimestamp@
   totpSecret: <totpSecret>
+  authMode: SESSION
   dataCahe:
     ## 设置缓存有效期 秒，2小时
     expireTime: 7200
@@ -92,7 +93,9 @@ renfei:
     token: <token>
     encodingAESKey: <encodingAESKey>
   jwt:
-    secret: <secret>
+    secret: zL4pC7mP4vH4nY2cK1kE6lC3bJ0yC5wI4kB0kZ2wK4tW3nQ9vP1hO6vZ5jA7wP7ulN6vY3mQ7uI5wU5sE6yP0hP6pK0tF5tT1oO0nO2mL4nO8uP3kJ3rV3iJ4aD5iB5h
+    issuer: RENFEI.NET
+    expiration: 28800000
   uCenter:
     api: https://bbs.renfei.net/uc_server
     key: <key>

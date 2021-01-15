@@ -15,6 +15,7 @@ import net.renfei.sdk.utils.BeanUtils;
 import net.renfei.sdk.utils.IpUtils;
 import net.renfei.sdk.utils.PasswordUtils;
 import net.renfei.service.*;
+import net.renfei.util.JwtUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -31,6 +32,7 @@ import java.util.Map;
 @Controller
 @RequestMapping("/auth")
 public class AuthController extends BaseController {
+    private final JwtUtils jwtUtils;
     private final AccountService accountService;
     private final ReCaptchaService reCaptchaService;
     private final SecretKeyService secretKeyService;
@@ -39,10 +41,11 @@ public class AuthController extends BaseController {
                              GlobalService globalService,
                              CommentsService commentsService,
                              PaginationService paginationService,
-                             AccountService accountService,
+                             JwtUtils jwtUtils, AccountService accountService,
                              ReCaptchaService reCaptchaService,
                              SecretKeyService secretKeyService) {
         super(renFeiConfig, globalService, commentsService, paginationService);
+        this.jwtUtils = jwtUtils;
         this.accountService = accountService;
         this.reCaptchaService = reCaptchaService;
         this.secretKeyService = secretKeyService;
@@ -110,8 +113,14 @@ public class AuthController extends BaseController {
             try {
                 signInVO.setPassword(secretKeyService.decrypt(signInVO.getPassword(), signInVO.getKeyUuid()));
                 AccountDTO accountDTO = accountService.signIn(signInVO, request);
-                request.getSession().setAttribute(SESSION_KEY, accountDTO);
-                return new APIResult<>(accountDTO.getUcScript());
+                if ("SESSION".equals(renFeiConfig.getAuthMode())) {
+                    request.getSession().setAttribute(SESSION_KEY, accountDTO);
+                    return new APIResult<>(accountDTO.getUcScript());
+                } else {
+                    // 签发TOKEN
+                    String token = jwtUtils.createJWT(accountDTO.getUuid(), "");
+                    return new APIResult<>(token);
+                }
             } catch (ServiceException serviceException) {
                 return APIResult.builder().code(serviceException.getStateCode()).message(serviceException.getMessage()).build();
             } catch (NeedU2FException needU2FException) {
