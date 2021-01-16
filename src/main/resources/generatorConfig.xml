@@ -61,6 +61,10 @@
 <!--        <table tableName="t_account" domainObjectName="AccountDO"></table>-->
 <!--        <table tableName="t_verification_code" domainObjectName="VerificationCodeDO"></table>-->
 <!--        <table tableName="t_account_keep_name" domainObjectName="AccountKeepNameDO"></table>-->
+<!--        <table tableName="t_role" domainObjectName="RoleDO"></table>-->
+<!--        <table tableName="t_permission" domainObjectName="PermissionDO"></table>-->
+<!--        <table tableName="t_role_permission" domainObjectName="RolePermissionDO"></table>-->
+<!--        <table tableName="t_account_role" domainObjectName="Account_RoleDO"></table>-->
 
         <!--Discu-->
 <!--        <table tableName="bbs_ucenter_members" domainObjectName="DiscuzUcenterMembersDO"></table>-->
