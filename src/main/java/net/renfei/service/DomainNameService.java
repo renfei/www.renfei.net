@@ -47,7 +47,7 @@ public class DomainNameService extends BaseService {
     public APIResult<String> execWhois(String domain) {
         if (StringUtils.isDomain(domain)) {
             try {
-                String result = execCmdService.execCmd("whois -I -H " + domain.trim());
+                String result = execCmdService.execCmd("whois -H " + domain.trim());
                 StringBuilder whoisInfo = new StringBuilder();
                 if (!BeanUtils.isEmpty(result)) {
                     String[] infos = result.split("\n");
