@@ -4,7 +4,9 @@ import java.util.List;
 import net.renfei.repository.entity.PermissionDO;
 import net.renfei.repository.entity.PermissionDOExample;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface PermissionDOMapper {
     long countByExample(PermissionDOExample example);
 

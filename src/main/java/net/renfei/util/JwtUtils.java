@@ -29,11 +29,13 @@ public class JwtUtils {
     /**
      * 签发 JWT
      *
-     * @param id
-     * @param subject 可以是 JSON 数据，尽可能少
+     * @param userId      用户UUID
+     * @param authorities 权限列表
+     * @param roles       角色列表
+     * @param subject     可以是 JSON 数据，尽可能少
      * @return
      */
-    public String createJWT(String id, String subject) {
+    public String createJWT(String userId, List<String> roles, List<String> authorities, String subject) {
         SignatureAlgorithm algorithm = SignatureAlgorithm.HS256;
         long nowMillis = System.currentTimeMillis();
         Date now = new Date(nowMillis);
@@ -56,8 +58,10 @@ public class JwtUtils {
                 .setIssuer(renFeiConfig.getJwt().getIssuer());
 
         // payload 中 放入自定义信息
-        Map<String, Object> selfMap = new HashMap<>(1);
-        selfMap.put("id", id);
+        Map<String, Object> selfMap = new HashMap<>(3);
+        selfMap.put("user_id", userId);
+        selfMap.put("roles", roles);
+        selfMap.put("authorities", authorities);
         claims.putAll(selfMap);
         // header
         JwtBuilder builder = Jwts.builder().setHeader(map)

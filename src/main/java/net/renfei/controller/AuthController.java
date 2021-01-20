@@ -113,12 +113,13 @@ public class AuthController extends BaseController {
             try {
                 signInVO.setPassword(secretKeyService.decrypt(signInVO.getPassword(), signInVO.getKeyUuid()));
                 AccountDTO accountDTO = accountService.signIn(signInVO, request);
+                accountDTO = accountService.fillRolePermissions(accountDTO);
                 if ("SESSION".equals(renFeiConfig.getAuthMode())) {
                     request.getSession().setAttribute(SESSION_KEY, accountDTO);
                     return new APIResult<>(accountDTO.getUcScript());
                 } else {
                     // 签发TOKEN
-                    String token = jwtUtils.createJWT(accountDTO.getUuid(), "");
+                    String token = jwtUtils.createJWT(accountDTO.getUuid(), accountDTO.getRoles(), accountDTO.getAuthorities(), accountDTO.getUuid());
                     return new APIResult<>(token);
                 }
             } catch (ServiceException serviceException) {

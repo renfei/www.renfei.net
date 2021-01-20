@@ -4,7 +4,9 @@ import java.util.List;
 import net.renfei.repository.entity.RolePermissionDO;
 import net.renfei.repository.entity.RolePermissionDOExample;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface RolePermissionDOMapper {
     long countByExample(RolePermissionDOExample example);
 

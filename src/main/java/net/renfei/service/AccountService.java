@@ -12,13 +12,13 @@ import net.renfei.entity.SignUpVO;
 import net.renfei.entity.UpdatePasswordVO;
 import net.renfei.exceptions.NeedU2FException;
 import net.renfei.exceptions.ServiceException;
-import net.renfei.repository.AccountDOMapper;
-import net.renfei.repository.AccountKeepNameDOMapper;
+import net.renfei.repository.*;
 import net.renfei.repository.entity.*;
 import net.renfei.sdk.utils.*;
 import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
@@ -34,7 +34,11 @@ import java.util.regex.Pattern;
 @Service
 public class AccountService extends BaseService {
     private final RenFeiConfig renFeiConfig;
+    private final RoleDOMapper roleDOMapper;
     private final AccountDOMapper accountMapper;
+    private final PermissionDOMapper permissionDOMapper;
+    private final AccountRoleDOMapper accountRoleDOMapper;
+    private final RolePermissionDOMapper rolePermissionDOMapper;
     private final AccountKeepNameDOMapper accountKeepNameMapper;
     private final VerificationCodeService verificationCodeService;
     private final DiscuzCommonMemberDOMapper discuzCommonMemberDOMapper;
@@ -47,7 +51,11 @@ public class AccountService extends BaseService {
     private final Pattern specialPattern = Pattern.compile("[ _`~!@#$%^&*()+=|{}':;',\\[\\].<>/?~！@#￥%……&*（）——+|{}【】‘；：”“’。，、？]|\n|\r|\t");
 
     public AccountService(RenFeiConfig renFeiConfig,
+                          RoleDOMapper roleDOMapper,
                           AccountDOMapper accountMapper,
+                          PermissionDOMapper permissionDOMapper,
+                          AccountRoleDOMapper accountRoleDOMapper,
+                          RolePermissionDOMapper rolePermissionDOMapper,
                           AccountKeepNameDOMapper accountKeepNameMapper,
                           VerificationCodeService verificationCodeService,
                           DiscuzCommonMemberDOMapper discuzCommonMemberDOMapper,
@@ -58,7 +66,11 @@ public class AccountService extends BaseService {
                           DiscuzCommonMemberFieldHomeDOMapper discuzCommonMemberFieldHomeDOMapper,
                           DiscuzCommonMemberFieldForumDOMapper discuzCommonMemberFieldForumDOMapper) {
         this.renFeiConfig = renFeiConfig;
+        this.roleDOMapper = roleDOMapper;
         this.accountMapper = accountMapper;
+        this.permissionDOMapper = permissionDOMapper;
+        this.accountRoleDOMapper = accountRoleDOMapper;
+        this.rolePermissionDOMapper = rolePermissionDOMapper;
         this.accountKeepNameMapper = accountKeepNameMapper;
         this.verificationCodeService = verificationCodeService;
         this.discuzCommonMemberDOMapper = discuzCommonMemberDOMapper;
@@ -183,6 +195,65 @@ public class AccountService extends BaseService {
             log.warn("根据UserName：{}，未找到论坛用户，所以没有论坛登录脚本。", account.getUserName());
         }
         return accountDTO;
+    }
+
+    /**
+     * 填充用户角色、权限
+     *
+     * @param accountDTO
+     * @return
+     */
+    public AccountDTO fillRolePermissions(AccountDTO accountDTO) {
+        if (accountDTO != null && !BeanUtils.isEmpty(accountDTO.getUuid())) {
+            AccountRoleDOExample accountRoleExample = new AccountRoleDOExample();
+            accountRoleExample.createCriteria().andAccountUuidEqualTo(accountDTO.getUuid());
+            List<AccountRoleDO> accountRoleList = accountRoleDOMapper.selectByExample(accountRoleExample);
+            if (!BeanUtils.isEmpty(accountRoleList)) {
+                List<String> roleUuidList = new ArrayList<>(accountRoleList.size());
+                accountRoleList.forEach(accountRoleDO -> roleUuidList.add(accountRoleDO.getRoleUuid()));
+                // 查询所属角色列表
+                RoleDOExample roleExample = new RoleDOExample();
+                roleExample.createCriteria().andUuidIn(roleUuidList);
+                List<RoleDO> roleList = roleDOMapper.selectByExample(roleExample);
+                if (!BeanUtils.isEmpty(roleList)) {
+                    List<String> roleEnNameList = new ArrayList<>(roleList.size());
+                    roleList.forEach(roleDO -> roleEnNameList.add(roleDO.getRoleNameEn()));
+                    accountDTO.setRoles(roleEnNameList);
+                }
+                // 查询角色对应的权限列表
+                RolePermissionDOExample rolePermissionExample = new RolePermissionDOExample();
+                rolePermissionExample.createCriteria().andRoleUuidIn(roleUuidList);
+                List<RolePermissionDO> rolePermissionList = rolePermissionDOMapper.selectByExample(rolePermissionExample);
+                if (!BeanUtils.isEmpty(rolePermissionList)) {
+                    List<String> permissionUuidList = new ArrayList<>(rolePermissionList.size());
+                    rolePermissionList.forEach(rolePermissionDO -> permissionUuidList.add(rolePermissionDO.getPermissionUuid()));
+                    PermissionDOExample permissionExample = new PermissionDOExample();
+                    permissionExample.createCriteria().andUuidIn(permissionUuidList);
+                    List<PermissionDO> permissionList = permissionDOMapper.selectByExample(permissionExample);
+                    if (!BeanUtils.isEmpty(permissionList)) {
+                        List<String> permissionExpressionList = new ArrayList<>(permissionList.size());
+                        permissionList.forEach(permissionDO -> permissionExpressionList.add(permissionDO.getExpression()));
+                        accountDTO.setAuthorities(permissionExpressionList);
+                    }
+                }
+            }
+        }
+        return accountDTO;
+    }
+
+    public AccountDTO getAccountDTOByUuid(String uuid) {
+        AccountDOExample example = new AccountDOExample();
+        example.createCriteria().andUuidEqualTo(uuid);
+        AccountDO account = ListUtils.getOne(accountMapper.selectByExample(example));
+        if (account == null) {
+            throw new ServiceException("用户未注册，请先注册");
+        }
+        if (account.getStateCode() < 0) {
+            throw new ServiceException("当前账户已被冻结，请联系我们解冻");
+        }
+        AccountDTO accountDTO = new AccountDTO();
+        org.springframework.beans.BeanUtils.copyProperties(account, accountDTO);
+        return fillRolePermissions(accountDTO);
     }
 
     /**

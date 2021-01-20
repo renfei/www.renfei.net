@@ -4,6 +4,7 @@ import lombok.Data;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 /**
  * <p>Title: AccountDTO</p>
@@ -13,6 +14,7 @@ import java.util.Date;
  */
 @Data
 public class AccountDTO implements Serializable {
+    private static final long serialVersionUID = -2119268183090348081L;
     private Long id;
     private String uuid;
     private String userName;
@@ -28,4 +30,6 @@ public class AccountDTO implements Serializable {
     private String lastName;
     private String firstName;
     private String ucScript;
+    private List<String> roles;
+    private List<String> authorities;
 }

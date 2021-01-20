@@ -5,6 +5,7 @@ import net.renfei.config.RenFeiConfig;
 import net.renfei.entity.AccountDTO;
 import net.renfei.exceptions.ServiceException;
 import net.renfei.sdk.comm.StateCode;
+import net.renfei.service.AccountService;
 import net.renfei.util.JwtUtils;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.authority.AuthorityUtils;
@@ -26,11 +27,14 @@ import java.io.IOException;
 public class HTTPBearerAuthorizeAttribute implements Filter {
     private final JwtUtils jwtUtils;
     private final RenFeiConfig renFeiConfig;
+    private final AccountService accountService;
 
     public HTTPBearerAuthorizeAttribute(JwtUtils jwtUtils,
-                                        RenFeiConfig renFeiConfig) {
+                                        RenFeiConfig renFeiConfig,
+                                        AccountService accountService) {
         this.jwtUtils = jwtUtils;
         this.renFeiConfig = renFeiConfig;
+        this.accountService = accountService;
     }
 
     @Override
@@ -51,13 +55,13 @@ public class HTTPBearerAuthorizeAttribute implements Filter {
             String auth = httpRequest.getHeader("Authorization");
             if (auth != null && auth.length() > 7) {
                 String headStr = auth.substring(0, 6).toLowerCase();
-                if (headStr.compareTo("bearer") == 0) {
+                if (headStr.compareTo("Bearer") == 0) {
                     auth = auth.substring(7);
                     Claims claims = jwtUtils.parseJWT(auth);
                     if (claims != null) {
-                        // TODO 查询用户信息和权限
-                        AccountDTO accountDTO = null;
-                        String[] authorities = null;
+                        // 查询用户信息
+                        AccountDTO accountDTO = accountService.getAccountDTOByUuid(claims.getSubject());
+                        String[] authorities = accountDTO.getAuthorities().toArray(new String[0]);
                         //将用户信息和权限填充 到用户身份token对象中
                         UsernamePasswordAuthenticationToken authenticationToken
                                 = new UsernamePasswordAuthenticationToken(accountDTO, null, AuthorityUtils.createAuthorityList(authorities));

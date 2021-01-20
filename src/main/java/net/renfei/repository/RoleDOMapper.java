@@ -4,7 +4,9 @@ import java.util.List;
 import net.renfei.repository.entity.RoleDO;
 import net.renfei.repository.entity.RoleDOExample;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface RoleDOMapper {
     long countByExample(RoleDOExample example);
 
