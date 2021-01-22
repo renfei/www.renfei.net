@@ -4,7 +4,7 @@
             <#if paginationList?? && (paginationList?size > 0)>
                 <#list paginationList as pagination>
                     <li class="page-item${pagination.active?string(" active","")}">
-                        <a class="page-link" href="${pagination.link}">${pagination.page!}</a>
+                        <a class="page-link" href="${pagination.link?html}">${pagination.page!}</a>
                     </li>
                 </#list>
             </#if>
