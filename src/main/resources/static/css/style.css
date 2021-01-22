@@ -650,3 +650,11 @@ body {
     color: rgb(101, 119, 134);
     font-weight: 400;
 }
+
+.blockquote{
+    font-size: 14px;
+    background-color: #f0f0f0f0;
+    padding: 10px 10px 10px 30px;
+    color: #3d3d3d;
+    border-left: 5px #c0c0c0 solid;
+}
