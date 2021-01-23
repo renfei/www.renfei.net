@@ -26,7 +26,7 @@
                 <div class="form-group">
                     <label for="username" style="font-size: 14px;">用户名</label>
                     <input type="text" class="form-control form-control-sm" id="username" tabindex="1"
-                           aria-describedby="usernameHelp">
+                           aria-describedby="usernameHelp" autocomplete="off">
                     <small id="usernameHelp" class="form-text text-muted">您可以使用用户名、邮箱地址、手机号码</small>
                 </div>
                 <div class="form-group" id="sendVerCodeBtn" style="display: none;">
@@ -38,14 +38,14 @@
                     <label for="password" style="width:100%;font-size: 14px;"><span id="pwdLable">密码</span><a href="#"
                                                                                                               class="float-right">忘记密码？</a></label>
                     <input type="password" class="form-control form-control-sm" id="password" tabindex="3"
-                           aria-describedby="passwordHelp">
+                           aria-describedby="passwordHelp" autocomplete="off">
                     <small id="passwordHelp" class="form-text text-muted">您可以使用您的<a
                                 href="JavaScript:usePwdSignIn()">密码</a>或者<a
                                 href="JavaScript:useVerCodeSignIn()">动态验证码</a>登录</small>
                 </div>
                 <div class="form-group" style="display: none;" id="u2fInput">
                     <label for="tOtp" style="font-size: 14px;">两步认证（U2F）</label>
-                    <input type="text" class="form-control form-control-sm" id="tOtp"
+                    <input type="text" class="form-control form-control-sm" id="tOtp" autocomplete="off"
                            onkeyup="this.value=this.value.replace(/\D/g,'')" tabindex="4">
                 </div>
                 <input id="signInBtn" type="button" name="commit" value="登 录" tabindex="5"

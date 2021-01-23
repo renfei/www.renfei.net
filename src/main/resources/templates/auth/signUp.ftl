@@ -25,20 +25,20 @@
             <div class="border rounded mt-3 p-4" style="background-color: #f6f8fa;">
                 <div class="form-group">
                     <label for="username" style="font-size: 14px;">用户名</label>
-                    <input type="text" class="form-control form-control-sm" id="username">
+                    <input type="text" class="form-control form-control-sm" id="username" autocomplete="off">
                 </div>
                 <div class="form-group">
                     <label for="email" style="width:100%;font-size: 14px;">电子邮箱</label>
-                    <input type="email" class="form-control form-control-sm" id="email" aria-describedby="emailHelp">
+                    <input type="email" class="form-control form-control-sm" id="email" aria-describedby="emailHelp" autocomplete="off">
                     <small id="emailHelp" class="form-text text-muted">请输入真实的电子邮箱，注册后需要您到电子邮箱内点击激活链接。</small>
                 </div>
                 <div class="form-group">
                     <label for="password" style="width:100%;font-size: 14px;">密码</label>
-                    <input type="password" class="form-control form-control-sm" id="password">
+                    <input type="password" class="form-control form-control-sm" id="password" autocomplete="off">
                 </div>
                 <div class="form-group">
                     <label for="password2" style="width:100%;font-size: 14px;">再次输入密码</label>
-                    <input type="password" class="form-control form-control-sm" id="password2">
+                    <input type="password" class="form-control form-control-sm" id="password2" autocomplete="off">
                 </div>
                 <input id="signUpBtn" type="button" name="commit" value="创 建" tabindex="3"
                        class="btn btn-primary btn-block"
