@@ -20,7 +20,7 @@ import org.springframework.web.servlet.ModelAndView;
  */
 @Controller
 @RequestMapping("/backstage")
-@PreAuthorize("isAuthenticated()")
+@PreAuthorize("hasRole('ROLE_backstage')")
 public class BackstageController extends BaseController {
     protected BackstageController(RenFeiConfig renFeiConfig,
                                   GlobalService globalService,
@@ -31,6 +31,7 @@ public class BackstageController extends BaseController {
 
     @GetMapping("")
     public ModelAndView index(ModelAndView mv) {
+        mv.addObject("title", "仪表板");
         mv.setViewName("backstage/index");
         return mv;
     }
