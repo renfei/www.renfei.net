@@ -18,6 +18,10 @@ spring:
   profiles:
     ## 运行环境配置
     active: @activatedProperties@
+  servlet:
+    multipart:
+      max-file-size: 32MB
+      max-request-size: 64MB
   ## 数据库配置
   datasource:
     ## druid 配置

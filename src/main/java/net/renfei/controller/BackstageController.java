@@ -4,10 +4,9 @@ import net.renfei.base.BaseController;
 import net.renfei.config.RenFeiConfig;
 import net.renfei.entity.NewPostVO;
 import net.renfei.entity.NewWeiboVO;
+import net.renfei.sdk.comm.StateCode;
 import net.renfei.sdk.entity.APIResult;
-import net.renfei.service.CommentsService;
-import net.renfei.service.GlobalService;
-import net.renfei.service.PaginationService;
+import net.renfei.service.*;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,11 +26,18 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping("/backstage")
 @PreAuthorize("hasRole('ROLE_backstage')")
 public class BackstageController extends BaseController {
+    private final PostService postService;
+    private final WeiboService weiboService;
+
     protected BackstageController(RenFeiConfig renFeiConfig,
                                   GlobalService globalService,
                                   CommentsService commentsService,
-                                  PaginationService paginationService) {
+                                  PaginationService paginationService,
+                                  PostService postService,
+                                  WeiboService weiboService) {
         super(renFeiConfig, globalService, commentsService, paginationService);
+        this.postService = postService;
+        this.weiboService = weiboService;
     }
 
     @GetMapping("")
@@ -53,7 +59,15 @@ public class BackstageController extends BaseController {
     @PostMapping("newPost")
     @PreAuthorize("hasAuthority('post:add')")
     public APIResult newPost(NewPostVO newPostVO) {
-        return null;
+        try {
+            postService.addPost(newPostVO);
+            return APIResult.success();
+        } catch (Exception exception) {
+            return APIResult.builder()
+                    .code(StateCode.Error)
+                    .message(exception.getMessage())
+                    .build();
+        }
     }
 
     @GetMapping("newWeibo")
@@ -68,6 +82,14 @@ public class BackstageController extends BaseController {
     @PostMapping("newWeibo")
     @PreAuthorize("hasAuthority('weibo:add')")
     public APIResult newWeibo(NewWeiboVO newWeiboVO) {
-        return null;
+        try {
+            weiboService.addWeibo(newWeiboVO);
+            return APIResult.success();
+        } catch (Exception exception) {
+            return APIResult.builder()
+                    .code(StateCode.Error)
+                    .message(exception.getMessage())
+                    .build();
+        }
     }
 }

@@ -12,8 +12,13 @@ import org.springframework.web.multipart.MultipartFile;
  */
 @Data
 public class NewPostVO {
+    private Long categoryId;
     private String title;
     private String keyword;
+    private String describes;
     private String content;
+    private String sourceName;
+    private String sourceUrl;
+    private Boolean isOriginal;
     private MultipartFile image;
 }

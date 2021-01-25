@@ -3,19 +3,24 @@ package net.renfei.service;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import net.renfei.base.BaseService;
+import net.renfei.entity.NewWeiboVO;
 import net.renfei.entity.WeiboDOS;
 import net.renfei.entity.WeiboDTO;
+import net.renfei.repository.PhotoImgDOMapper;
 import net.renfei.repository.WeiboDOMapper;
 import net.renfei.repository.entity.PhotoImgDO;
 import net.renfei.repository.entity.WeiboDO;
 import net.renfei.repository.entity.WeiboDOExample;
 import net.renfei.sdk.utils.BeanUtils;
+import net.renfei.sdk.utils.DateUtils;
 import net.renfei.sdk.utils.ListUtils;
 import net.renfei.sdk.utils.NumberUtils;
+import net.renfei.service.aliyun.AliyunOSS;
 import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -30,16 +35,44 @@ import java.util.List;
 @Service
 @CacheConfig(cacheNames = "WeiboService")
 public class WeiboService extends BaseService {
+    private final AliyunOSS aliyunOSS;
+    private final PhotoService photoService;
     private final WeiboDOMapper weiboDOMapper;
     private final CommentsService commentsService;
-    private final PhotoService photoService;
+    private final PhotoImgDOMapper photoImgDOMapper;
 
-    public WeiboService(WeiboDOMapper weiboDOMapper,
+    public WeiboService(AliyunOSS aliyunOSS,
+                        PhotoService photoService,
+                        WeiboDOMapper weiboDOMapper,
                         CommentsService commentsService,
-                        PhotoService photoService) {
+                        PhotoImgDOMapper photoImgDOMapper) {
+        this.aliyunOSS = aliyunOSS;
+        this.photoService = photoService;
         this.weiboDOMapper = weiboDOMapper;
         this.commentsService = commentsService;
-        this.photoService = photoService;
+        this.photoImgDOMapper = photoImgDOMapper;
+    }
+
+    @Transactional(rollbackFor = Exception.class)
+    public void addWeibo(NewWeiboVO newWeiboVO) throws Exception {
+        PhotoImgDO photoImgDO = null;
+        if (newWeiboVO.getImage() != null) {
+            String photoPath = aliyunOSS.upload("upload/" + DateUtils.getYear() + "/", newWeiboVO.getImage());
+            photoImgDO = new PhotoImgDO();
+            photoImgDO.setPhotoId(7L);
+            photoImgDO.setUri(photoPath);
+            photoImgDOMapper.insert(photoImgDO);
+        }
+        WeiboDO weiboDO = new WeiboDO();
+        weiboDO.setContent(newWeiboVO.getContent());
+        weiboDO.setReleaseTime(new Date());
+        weiboDO.setThumbsDown(0L);
+        weiboDO.setThumbsUp(0L);
+        weiboDO.setViews(0L);
+        if (photoImgDO != null) {
+            weiboDO.setImgId(photoImgDO.getId());
+        }
+        weiboDOMapper.insertSelective(weiboDO);
     }
 
     /**

@@ -120,13 +120,13 @@
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="net.renfei.repository.entity.PhotoImgDO">
+  <insert id="insert" parameterType="net.renfei.repository.entity.PhotoImgDO" useGeneratedKeys="true" keyProperty="id">
     insert into t_photo_img (id, photo_id, uri
       )
     values (#{id,jdbcType=BIGINT}, #{photoId,jdbcType=BIGINT}, #{uri,jdbcType=LONGVARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="net.renfei.repository.entity.PhotoImgDO">
+  <insert id="insertSelective" parameterType="net.renfei.repository.entity.PhotoImgDO" useGeneratedKeys="true" keyProperty="id">
     insert into t_photo_img
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">

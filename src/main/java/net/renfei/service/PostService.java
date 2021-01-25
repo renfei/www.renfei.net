@@ -5,20 +5,19 @@ import com.github.pagehelper.PageHelper;
 import lombok.extern.slf4j.Slf4j;
 import net.renfei.base.BaseService;
 import net.renfei.config.RenFeiConfig;
-import net.renfei.entity.IpInfoDTO;
-import net.renfei.entity.LinkVO;
-import net.renfei.entity.ListData;
-import net.renfei.entity.PostSidebarVO;
+import net.renfei.entity.*;
 import net.renfei.repository.CommentsDOMapper;
 import net.renfei.repository.PostsDOMapper;
 import net.renfei.repository.PostsExtraDOMapper;
 import net.renfei.repository.entity.*;
 import net.renfei.sdk.utils.*;
+import net.renfei.service.aliyun.AliyunOSS;
 import net.renfei.util.PageRankUtil;
 import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
@@ -40,6 +39,7 @@ public class PostService extends BaseService {
     private static final Double VIEW_WEIGHTED = 57.5D;
     private static final Double COMMENTHTED = 5D;
     private final IpService ipService;
+    private final AliyunOSS aliyunOSS;
     private final TagService tagService;
     private final RenFeiConfig renFeiConfig;
     private final PostsDOMapper postsDOMapper;
@@ -49,6 +49,7 @@ public class PostService extends BaseService {
     private final PostsExtraDOMapper postsExtraDOMapper;
 
     public PostService(IpService ipService,
+                       AliyunOSS aliyunOSS,
                        TagService tagService,
                        RenFeiConfig renFeiConfig,
                        PostsDOMapper postsDOMapper,
@@ -57,6 +58,7 @@ public class PostService extends BaseService {
                        CommentsDOMapper commentsDOMapper,
                        PostsExtraDOMapper postsExtraDOMapper) {
         this.ipService = ipService;
+        this.aliyunOSS = aliyunOSS;
         this.tagService = tagService;
         this.renFeiConfig = renFeiConfig;
         this.postsDOMapper = postsDOMapper;
@@ -66,6 +68,28 @@ public class PostService extends BaseService {
         this.postsExtraDOMapper = postsExtraDOMapper;
     }
 
+    @Transactional(rollbackFor = Exception.class)
+    public void addPost(NewPostVO newPostVO) throws Exception {
+        String photoPath = aliyunOSS.upload("upload/" + DateUtils.getYear() + "/", newPostVO.getImage());
+        PostsDOWithBLOBs posts = new PostsDOWithBLOBs();
+        posts.setCategoryId(newPostVO.getCategoryId());
+        posts.setFeaturedImage(photoPath);
+        posts.setTitle(newPostVO.getTitle());
+        posts.setContent(newPostVO.getContent());
+        posts.setIsOriginal(newPostVO.getIsOriginal());
+        posts.setSourceName(newPostVO.getSourceName());
+        posts.setSourceUrl(newPostVO.getSourceUrl());
+        posts.setViews(0L);
+        posts.setThumbsUp(0L);
+        posts.setThumbsDown(0L);
+        posts.setAddTime(new Date());
+        posts.setReleaseTime(new Date());
+        posts.setDescribes(newPostVO.getDescribes());
+        posts.setKeyword(newPostVO.getKeyword());
+        posts.setIsDelete(false);
+        posts.setIsComment(true);
+        postsDOMapper.insertSelective(posts);
+    }
 
     /**
      * 获取全部文章
