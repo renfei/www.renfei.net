@@ -22,8 +22,8 @@ public class SiteMapXml implements Serializable {
         }
         String str = "";
         try {
-            str = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZ").format(lastmod);
-            return str.substring(0, str.length() - 2) + ":00";
+            // https://www.sitemaps.org/protocol.html#lastmoddef
+            return new SimpleDateFormat("yyyy-MM-dd").format(lastmod);
         } catch (Exception e) {
             log.error(e.getMessage(), e);
         }
