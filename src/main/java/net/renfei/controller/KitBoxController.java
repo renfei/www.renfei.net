@@ -1,5 +1,6 @@
 package net.renfei.controller;
 
+import com.alibaba.fastjson.JSON;
 import lombok.extern.slf4j.Slf4j;
 import net.renfei.annotation.SystemLog;
 import net.renfei.base.BaseController;
@@ -14,6 +15,11 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+
+import javax.servlet.http.HttpServletResponse;
+import java.io.StringWriter;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 
 import static net.renfei.service.KitBoxService.*;
 
@@ -257,6 +263,26 @@ public class KitBoxController extends BaseController {
                 "短网址,Short,Url,生成,工具");
         mv.setViewName("kitbox/ShortURL");
         setKitBoxMenus(mv, OTHER_TOOL);
+        return mv;
+    }
+
+    @GetMapping("plist")
+    public ModelAndView plist(ModelAndView mv) {
+        mv.addObject("title", "苹果 iOS Plist 文件在线生成制作工具 - 开发者工具箱 - " + renFeiConfig.getSiteName());
+        setHead(mv, "苹果 iOS Plist 文件在线生成制作工具，在服务器上部署 Plist 文件，用户即可通过自己的服务器下载 IPA 安装文件",
+                "苹果,iOS,Plist,文件,在线,生成,制作,工具");
+        mv.setViewName("kitbox/plist");
+        setKitBoxMenus(mv, DEVELOPMENT_TOOL);
+        return mv;
+    }
+
+    @PostMapping("plist")
+    public ModelAndView plistDo(ModelAndView mv, HttpServletResponse response, PlistVO plistVO) throws UnsupportedEncodingException {
+        response.setHeader("content-type", "application/octet-stream;charset=UTF-8");
+        response.setHeader("content-disposition", "attachment; filename=" + URLEncoder.encode(plistVO.getAppname(), "UTF-8") + ".plist");
+        response.setContentType("application/octet-stream");
+        mv.addObject("plistVO", plistVO);
+        mv.setViewName("kitbox/plist-ftl");
         return mv;
     }
 

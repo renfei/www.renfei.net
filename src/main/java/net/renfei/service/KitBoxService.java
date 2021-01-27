@@ -114,6 +114,11 @@ public class KitBoxService extends BaseService {
                                 .with(LinkVO::setRel, "计算机 TCP/UDP 端口号注册列表大全")
                                 .with(LinkVO::setText, "端口号注册列表")
                                 .build());
+                        this.add(Builder.of(LinkVO::new)
+                                .with(LinkVO::setHref, "/kitbox/plist")
+                                .with(LinkVO::setRel, "苹果 iOS Plist 文件在线生成制作工具")
+                                .with(LinkVO::setText, "iOS Plist 在线生成")
+                                .build());
                     }
                 })
                 .build());

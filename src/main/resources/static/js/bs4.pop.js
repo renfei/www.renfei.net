@@ -370,7 +370,7 @@ let bs4pop = {};
 			position: 'topcenter', //topleft, topcenter, topright, bottomleft, bottomcenter, bottonright, center,
 			appendType: 'append', //append, prepend
 			closeBtn: false,
-			autoClose: 2000,
+			autoClose: 5000,
 			className: '',
 
 		}, opts);

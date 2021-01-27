@@ -26,7 +26,7 @@
                                 <label class="sr-only" for="iptext">IP</label>
                                 <div class="input-group mb-2 mr-sm-2">
                                     <input type="text" class="form-control" id="domain"
-                                           placeholder="Domain Name" value="renfei.net"/>
+                                           placeholder="Domain Name" value="google.com"/>
                                     <div class="input-group-prepend">
                                         <div class="btn btn-primary" onclick="query()">查询</div>
                                     </div>
