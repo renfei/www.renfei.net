@@ -27,7 +27,8 @@
                                     <label for="countryShort"
                                            class="col-sm-3 col-form-label col-form-label-sm">APP名称</label>
                                     <div class="col-sm-9">
-                                        <input type="text" class="form-control form-control-sm" name="appname" id="appname">
+                                        <input type="text" class="form-control form-control-sm" name="appname"
+                                               id="appname">
                                         <small class="form-text text-muted">例如：任霏博客</small>
                                     </div>
                                 </div>
@@ -35,7 +36,8 @@
                                     <label for="countryLong"
                                            class="col-sm-3 col-form-label col-form-label-sm">版本号</label>
                                     <div class="col-sm-9">
-                                        <input type="text" class="form-control form-control-sm" name="version" id="version">
+                                        <input type="text" class="form-control form-control-sm" name="version"
+                                               id="version">
                                         <small class="form-text text-muted">例如：1.0.2</small>
                                     </div>
                                 </div>
@@ -43,7 +45,8 @@
                                     <label for="countryLong"
                                            class="col-sm-3 col-form-label col-form-label-sm">包名（Bundle ID）</label>
                                     <div class="col-sm-9">
-                                        <input type="text" class="form-control form-control-sm" name="bundleid" id="bundleid">
+                                        <input type="text" class="form-control form-control-sm" name="bundleid"
+                                               id="bundleid">
                                         <small class="form-text text-muted">例如：net.renfei.app</small>
                                     </div>
                                 </div>
@@ -75,6 +78,8 @@
                                 <blockquote style="font-size: 14px;">
                                     <p>
                                         什么是Plist文件？通过Plist文件实现itms-services协议在线安装IPA，在iOS7以后，plist文件必须部署到HTTPS服务器上，才能下载IPA。</p>
+                                    <p>使用方式可以参考：<a href="https://www.renfei.net/posts/1003441" target="_blank">企业版 iOS
+                                            IPA 安装包分发与 plist 文件生成教程 通过 itms-services 协议在线安装 IPA</a></p>
                                 </blockquote>
                             </div>
                             <@adsense "9903187829" active></@adsense>
