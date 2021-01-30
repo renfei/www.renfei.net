@@ -46,12 +46,12 @@ public class AliyunCAS extends AliyunService {
             CreateUserCertificateResponse response = client.getAcsResponse(request);
             log.info(new Gson().toJson(response));
         } catch (ServerException e) {
-            e.printStackTrace();
+            log.error(e.getMessage(), e);
         } catch (ClientException e) {
             log.info("ErrCode:{}", e.getErrCode());
             log.info("ErrMsg:{}", e.getErrMsg());
             log.info("RequestId:{}", e.getRequestId());
-            log.error(e.getMessage());
+            log.error(e.getMessage(), e);
         }
     }
 }

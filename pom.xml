@@ -83,6 +83,8 @@
         <aliyun.oss.version>3.11.1</aliyun.oss.version>
         <aliyun.green.version>3.6.1</aliyun.green.version>
         <aliyun.cas.version>20180713_0114</aliyun.cas.version>
+        <aliyun.cdn.version>3.6.1</aliyun.cdn.version>
+        <aliyun.dcdn.version>2.1.2</aliyun.dcdn.version>
         <jjwt.version>0.11.2</jjwt.version>
         <acme4j.version>2.11</acme4j.version>
         <jcommander.version>1.78</jcommander.version>
@@ -248,6 +250,16 @@
             <groupId>com.aliyun</groupId>
             <artifactId>aliyun-java-sdk-cas</artifactId>
             <version>${aliyun.cas.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.aliyun</groupId>
+            <artifactId>aliyun-java-sdk-cdn</artifactId>
+            <version>${aliyun.cdn.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.aliyun</groupId>
+            <artifactId>aliyun-java-sdk-dcdn</artifactId>
+            <version>${aliyun.dcdn.version}</version>
         </dependency>
         <dependency>
             <groupId>eu.bitwalker</groupId>
