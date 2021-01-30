@@ -1,6 +1,5 @@
 package net.renfei.service.aliyun;
 
-import com.aliyun.oss.common.utils.DateUtil;
 import com.aliyuncs.CommonRequest;
 import com.aliyuncs.CommonResponse;
 import com.aliyuncs.DefaultAcsClient;
@@ -12,7 +11,6 @@ import com.aliyuncs.profile.DefaultProfile;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import lombok.extern.slf4j.Slf4j;
-import net.renfei.base.BaseService;
 import net.renfei.config.RenFeiConfig;
 import net.renfei.entity.Sms;
 import net.renfei.exceptions.ServiceException;
@@ -30,13 +28,13 @@ import org.springframework.stereotype.Service;
  */
 @Slf4j
 @Service
-public class AliyunSmsServiceImpl extends BaseService implements SmsService {
-    private final RenFeiConfig renFeiConfig;
+public class AliyunSmsServiceImpl extends AliyunService implements SmsService {
     private final VerificationCodeDOMapper verificationCodeMapper;
 
     public AliyunSmsServiceImpl(RenFeiConfig renFeiConfig,
                                 VerificationCodeDOMapper verificationCodeMapper) {
-        this.renFeiConfig = renFeiConfig;
+        super(renFeiConfig, DefaultProfile.getProfile(renFeiConfig.getAliyun().getSms().getRegionId(),
+                renFeiConfig.getAliyun().getAccessKeyId(), renFeiConfig.getAliyun().getAccessKeySecret()));
         this.verificationCodeMapper = verificationCodeMapper;
     }
 
@@ -73,9 +71,6 @@ public class AliyunSmsServiceImpl extends BaseService implements SmsService {
         if (page.getTotal() >= 2) {
             throw new ServiceException("发送请求太快了，请稍后再试");
         }
-        DefaultProfile profile = DefaultProfile.getProfile(renFeiConfig.getAliyun().getSms().getRegionId(),
-                renFeiConfig.getAliyun().getAccessKeyId(), renFeiConfig.getAliyun().getAccessKeySecret());
-        IAcsClient client = new DefaultAcsClient(profile);
         CommonRequest request = new CommonRequest();
         request.setSysMethod(MethodType.POST);
         request.setSysDomain("dysmsapi.aliyuncs.com");

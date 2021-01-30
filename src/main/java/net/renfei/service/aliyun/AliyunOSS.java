@@ -5,7 +5,6 @@ import com.aliyun.oss.OSS;
 import com.aliyun.oss.OSSClientBuilder;
 import com.aliyun.oss.model.GeneratePresignedUrlRequest;
 import lombok.extern.slf4j.Slf4j;
-import net.renfei.base.BaseService;
 import net.renfei.config.RenFeiConfig;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -17,11 +16,9 @@ import java.util.UUID;
 
 @Slf4j
 @Service
-public class AliyunOSS extends BaseService {
-    private final RenFeiConfig renFeiConfig;
-
+public class AliyunOSS extends AliyunService {
     public AliyunOSS(RenFeiConfig renFeiConfig) {
-        this.renFeiConfig = renFeiConfig;
+        super(renFeiConfig, null);
     }
 
     public String upload(String path, MultipartFile file) throws Exception {

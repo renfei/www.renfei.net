@@ -5,15 +5,12 @@ import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.aliyuncs.DefaultAcsClient;
 import com.aliyuncs.IAcsClient;
-import com.aliyuncs.exceptions.ClientException;
-import com.aliyuncs.exceptions.ServerException;
 import com.aliyuncs.green.model.v20180509.TextScanRequest;
 import com.aliyuncs.http.FormatType;
 import com.aliyuncs.http.HttpResponse;
 import com.aliyuncs.profile.DefaultProfile;
 import com.aliyuncs.profile.IClientProfile;
 import lombok.extern.slf4j.Slf4j;
-import net.renfei.base.BaseService;
 import net.renfei.config.RenFeiConfig;
 import org.springframework.stereotype.Service;
 
@@ -22,25 +19,17 @@ import java.util.*;
 
 @Slf4j
 @Service
-public class AliyunGreen extends BaseService {
-    private final RenFeiConfig renFeiConfig;
-    private IAcsClient client;
+public class AliyunGreen extends AliyunService {
 
     public AliyunGreen(RenFeiConfig renFeiConfig) {
-        this.renFeiConfig = renFeiConfig;
-    }
-
-    private void setConfig() {
-        IClientProfile profile = DefaultProfile.getProfile(renFeiConfig.getAliyun().getGreen().getRegionId(),
-                renFeiConfig.getAliyun().getAccessKeyId(), renFeiConfig.getAliyun().getAccessKeySecret());
-        client = new DefaultAcsClient(profile);
+        super(renFeiConfig, DefaultProfile.getProfile(renFeiConfig.getAliyun().getGreen().getRegionId(),
+                renFeiConfig.getAliyun().getAccessKeyId(), renFeiConfig.getAliyun().getAccessKeySecret()));
     }
 
     /**
      * @param text 待检测的文本，长度不超过10000个字符
      */
     public boolean textScan(String text) {
-        setConfig();
         TextScanRequest textScanRequest = new TextScanRequest();
         // 指定api返回格式
         textScanRequest.setSysAcceptFormat(FormatType.JSON);

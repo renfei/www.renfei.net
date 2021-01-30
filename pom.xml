@@ -79,9 +79,10 @@
         <mybatis.version>2.1.4</mybatis.version>
         <commons-io.version>2.8.0</commons-io.version>
         <zxing.version>3.4.1</zxing.version>
-        <aliyun.core.version>4.5.14</aliyun.core.version>
+        <aliyun.core.version>4.5.18</aliyun.core.version>
         <aliyun.oss.version>3.11.1</aliyun.oss.version>
         <aliyun.green.version>3.6.1</aliyun.green.version>
+        <aliyun.cas.version>20180713_0114</aliyun.cas.version>
         <jjwt.version>0.11.2</jjwt.version>
         <maven.build.timestamp.format>yyyyMMddHHmmss</maven.build.timestamp.format>
         <buildtimestamp>${maven.build.timestamp}</buildtimestamp>
@@ -240,6 +241,11 @@
             <groupId>com.aliyun.oss</groupId>
             <artifactId>aliyun-sdk-oss</artifactId>
             <version>${aliyun.oss.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.aliyun</groupId>
+            <artifactId>aliyun-java-sdk-cas</artifactId>
+            <version>${aliyun.cas.version}</version>
         </dependency>
         <dependency>
             <groupId>eu.bitwalker</groupId>
