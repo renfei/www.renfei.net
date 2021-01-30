@@ -63,9 +63,7 @@ public class OGprotocol {
     }
 
     public Date getReleaseDate() {
-        //此处要输出UTC标准时间
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        return localToUTC(sdf.format(releaseDate));
+        return this.releaseDate;
     }
 
     public void setReleaseDate(Date releaseDate) {

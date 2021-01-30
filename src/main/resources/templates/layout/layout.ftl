@@ -29,7 +29,7 @@
                 <meta property="og:image" content="${headVO.ogprotocol.image!}"/>
                 <meta property="og:url" content="${headVO.ogprotocol.url!}"/>
                 <meta property="og:release_date"
-                      content="${headVO.ogprotocol.releaseDate?string("yyyy-MM-dd")+'T'+headVO.ogprotocol.releaseDate?string("HH:mm:ss")+'Z'}"/>
+                      content="${headVO.ogprotocol.releaseDate?string("yyyy-MM-dd'T'HH:mm:ssZ")}"/>
                 <meta property="og:author" content="${headVO.ogprotocol.author!}"/>
                 <meta property="og:locale" content="${headVO.ogprotocol.locale!}"/>
                 <meta property="og:site_name" content="${headVO.ogprotocol.siteName!}"/>
