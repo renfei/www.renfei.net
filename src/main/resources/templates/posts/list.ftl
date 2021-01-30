@@ -40,17 +40,17 @@
                                         <a class="stretched-link" href="/posts/${post.id?c}" style="color: #000000;">
                                             <h5 class="card-title" style="font-size: 17px;">
                                                 <#if (post.title)?length lt 30>
-                                                    ${post.title!}
+                                                    ${post.title!?html}
                                                 <#else>
-                                                    ${(post.title)?substring(0,30)}...
+                                                    ${(post.title)?substring(0,30)?html}...
                                                 </#if>
                                             </h5>
                                         </a>
                                         <p class="card-text">
                                             <#if (post.describes!)?length lt 50>
-                                                ${post.describes!}
+                                                ${post.describes!?html}
                                             <#else>
-                                                ${(post.describes!)?substring(0,50)}...
+                                                ${(post.describes!)?substring(0,50)?html}...
                                             </#if>
                                         </p>
                                     </div>
