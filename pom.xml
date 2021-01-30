@@ -84,6 +84,8 @@
         <aliyun.green.version>3.6.1</aliyun.green.version>
         <aliyun.cas.version>20180713_0114</aliyun.cas.version>
         <jjwt.version>0.11.2</jjwt.version>
+        <acme4j.version>2.11</acme4j.version>
+        <jcommander.version>1.78</jcommander.version>
         <maven.build.timestamp.format>yyyyMMddHHmmss</maven.build.timestamp.format>
         <buildtimestamp>${maven.build.timestamp}</buildtimestamp>
     </properties>
@@ -273,6 +275,21 @@
             <artifactId>jjwt-jackson</artifactId>
             <version>${jjwt.version}</version>
             <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.shredzone.acme4j</groupId>
+            <artifactId>acme4j-client</artifactId>
+            <version>${acme4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.shredzone.acme4j</groupId>
+            <artifactId>acme4j-utils</artifactId>
+            <version>${acme4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.beust</groupId>
+            <artifactId>jcommander</artifactId>
+            <version>${jcommander.version}</version>
         </dependency>
     </dependencies>
 
