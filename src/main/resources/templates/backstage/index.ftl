@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="_csrf" content="${(_csrf.token)!}"/>
+    <meta name="_csrf_header" content="${(_csrf.headerName)!}"/>
     <link href="https://cdn.renfei.net/thunder/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
     <link rel="stylesheet" href="https://cdn.renfei.net/thunder/mui/css/mui.min.css">
     <style type="text/css">
@@ -37,7 +39,7 @@
                 </div>
                 <ul id="list" class="mui-table-view mui-table-view-chevron">
                     <li class="mui-table-view-cell">
-                        <a class="mui-navigate-right" href="JavaScript:goMenu('')">
+                        <a class="mui-navigate-right" href="JavaScript:goMenu('/backstage/sendEmail')">
                             发送邮件
                         </a>
                     </li>

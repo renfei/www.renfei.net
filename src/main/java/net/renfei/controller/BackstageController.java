@@ -1,18 +1,17 @@
 package net.renfei.controller;
 
+import lombok.extern.slf4j.Slf4j;
 import net.renfei.base.BaseController;
 import net.renfei.config.RenFeiConfig;
 import net.renfei.entity.NewPostVO;
 import net.renfei.entity.NewWeiboVO;
+import net.renfei.entity.SendEmailVO;
 import net.renfei.sdk.comm.StateCode;
 import net.renfei.sdk.entity.APIResult;
 import net.renfei.service.*;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
@@ -22,28 +21,31 @@ import org.springframework.web.servlet.ModelAndView;
  * @author RenFei(i @ renfei.net)
  * @date : 2021-01-09 22:25
  */
+@Slf4j
 @Controller
 @RequestMapping("/backstage")
 @PreAuthorize("hasRole('ROLE_backstage')")
 public class BackstageController extends BaseController {
-    private final PostService postService;
-    private final WeiboService weiboService;
 
     protected BackstageController(RenFeiConfig renFeiConfig,
                                   GlobalService globalService,
                                   CommentsService commentsService,
-                                  PaginationService paginationService,
-                                  PostService postService,
-                                  WeiboService weiboService) {
+                                  PaginationService paginationService) {
         super(renFeiConfig, globalService, commentsService, paginationService);
-        this.postService = postService;
-        this.weiboService = weiboService;
     }
 
     @GetMapping("")
     public ModelAndView index(ModelAndView mv) {
         mv.addObject("title", "仪表板");
         mv.setViewName("backstage/index");
+        return mv;
+    }
+
+    @GetMapping("sendEmail")
+    @PreAuthorize("hasAuthority('email:send')")
+    public ModelAndView sendEmail(ModelAndView mv) {
+        mv.addObject("title", "发送系统邮件");
+        mv.setViewName("backstage/sendEmail");
         return mv;
     }
 
@@ -55,41 +57,11 @@ public class BackstageController extends BaseController {
         return mv;
     }
 
-    @ResponseBody
-    @PostMapping("newPost")
-    @PreAuthorize("hasAuthority('post:add')")
-    public APIResult newPost(NewPostVO newPostVO) {
-        try {
-            postService.addPost(newPostVO);
-            return APIResult.success();
-        } catch (Exception exception) {
-            return APIResult.builder()
-                    .code(StateCode.Error)
-                    .message(exception.getMessage())
-                    .build();
-        }
-    }
-
     @GetMapping("newWeibo")
     @PreAuthorize("hasAuthority('weibo:add')")
     public ModelAndView newWeiboView(ModelAndView mv) {
         mv.addObject("title", "发布新微博");
         mv.setViewName("backstage/newWeibo");
         return mv;
-    }
-
-    @ResponseBody
-    @PostMapping("newWeibo")
-    @PreAuthorize("hasAuthority('weibo:add')")
-    public APIResult newWeibo(NewWeiboVO newWeiboVO) {
-        try {
-            weiboService.addWeibo(newWeiboVO);
-            return APIResult.success();
-        } catch (Exception exception) {
-            return APIResult.builder()
-                    .code(StateCode.Error)
-                    .message(exception.getMessage())
-                    .build();
-        }
     }
 }

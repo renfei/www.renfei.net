@@ -38,18 +38,15 @@ public class WeiboService extends BaseService {
     private final AliyunOSS aliyunOSS;
     private final PhotoService photoService;
     private final WeiboDOMapper weiboDOMapper;
-    private final CommentsService commentsService;
     private final PhotoImgDOMapper photoImgDOMapper;
 
     public WeiboService(AliyunOSS aliyunOSS,
                         PhotoService photoService,
                         WeiboDOMapper weiboDOMapper,
-                        CommentsService commentsService,
                         PhotoImgDOMapper photoImgDOMapper) {
         this.aliyunOSS = aliyunOSS;
         this.photoService = photoService;
         this.weiboDOMapper = weiboDOMapper;
-        this.commentsService = commentsService;
         this.photoImgDOMapper = photoImgDOMapper;
     }
 
@@ -57,7 +54,7 @@ public class WeiboService extends BaseService {
     public void addWeibo(NewWeiboVO newWeiboVO) throws Exception {
         PhotoImgDO photoImgDO = null;
         if (newWeiboVO.getImage() != null) {
-            String photoPath = aliyunOSS.upload("upload/" + DateUtils.getYear() + "/", newWeiboVO.getImage());
+            String photoPath = aliyunOSS.upload("upload/image/" + DateUtils.getYear() + "/", newWeiboVO.getImage());
             photoImgDO = new PhotoImgDO();
             photoImgDO.setPhotoId(7L);
             photoImgDO.setUri(photoPath);
