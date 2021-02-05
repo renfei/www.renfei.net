@@ -58,7 +58,7 @@
         sendEmailVO.subject = $("#subject").val();
         sendEmailVO.contents = UE.getEditor('editor').getContent();
         $.ajax({
-            url: '/private/api/backstage/sendEmail',
+            url: '/private/api/sendEmail',
             type: 'POST',
             async: false,
             data: JSON.stringify(sendEmailVO),
