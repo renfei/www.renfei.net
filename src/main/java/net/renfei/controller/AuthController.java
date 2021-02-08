@@ -16,6 +16,7 @@ import net.renfei.sdk.utils.IpUtils;
 import net.renfei.sdk.utils.PasswordUtils;
 import net.renfei.service.*;
 import net.renfei.util.JwtUtils;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -106,7 +107,11 @@ public class AuthController extends BaseController {
     @PostMapping("signIn")
     public APIResult<String> doSignIn(@RequestBody SignInVO signInVO) {
         if (getUser() != null) {
-            return new APIResult<>(StateCode.OK.getDescribe());
+            if ("SESSION".equals(renFeiConfig.getAuthMode())) {
+                return new APIResult<>(StateCode.OK.getDescribe());
+            }else {
+                SecurityContextHolder.clearContext();
+            }
         }
         if (!BeanUtils.isEmpty(signInVO.getReCAPTCHAToken())
                 && reCaptchaService.verifying(signInVO.getReCAPTCHAToken(), IpUtils.getIpAddress(request))) {
@@ -244,6 +249,7 @@ public class AuthController extends BaseController {
             script = accountService.signOut(accountDTO);
         }
         request.getSession().removeAttribute(SESSION_KEY);
+        SecurityContextHolder.clearContext();
         mv.addObject("script", script);
         String callBack = getCallBack(callback);
         if (BeanUtils.isEmpty(callBack)) {
