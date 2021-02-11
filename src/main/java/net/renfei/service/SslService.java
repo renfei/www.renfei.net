@@ -1,5 +1,6 @@
 package net.renfei.service;
 
+import com.aliyuncs.exceptions.ClientException;
 import lombok.extern.slf4j.Slf4j;
 import net.renfei.base.BaseService;
 import net.renfei.cloudflare.Cloudflare;
@@ -64,7 +65,7 @@ public class SslService extends BaseService {
     }
 
     @Transactional(rollbackFor = Exception.class)
-    public void checkSslCertificate() throws IOException {
+    public void checkSslCertificate() throws IOException, ClientException {
         // 检查证书
         LetsEncryptDOExample example = new LetsEncryptDOExample();
         example.setOrderByClause("end_date DESC");
@@ -137,7 +138,7 @@ public class SslService extends BaseService {
      *
      * @param applySslCertificate SSL证书
      */
-    public void deploymentCertificate(ApplySslCertificate applySslCertificate) {
+    public void deploymentCertificate(ApplySslCertificate applySslCertificate) throws ClientException {
         // 上传证书
         aliyunCAS.createUserCertificate(applySslCertificate.getName(), applySslCertificate.getCertificate(), applySslCertificate.getKey());
         aliyunCDN.setDomainServerCertificate("cdn.renfei.net", applySslCertificate.getName(), applySslCertificate.getKey());
