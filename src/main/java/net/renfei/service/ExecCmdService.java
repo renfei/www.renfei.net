@@ -27,4 +27,15 @@ public class ExecCmdService extends BaseService {
         }
         return sb.toString();
     }
+
+    public String execCmd(String[] cmd) throws IOException {
+        Process p = Runtime.getRuntime().exec(cmd);
+        BufferedReader br = new BufferedReader(new InputStreamReader(p.getInputStream()));
+        StringBuilder sb = new StringBuilder();
+        String line;
+        while ((line = br.readLine()) != null) {
+            sb.append(line).append("\n");
+        }
+        return sb.toString();
+    }
 }

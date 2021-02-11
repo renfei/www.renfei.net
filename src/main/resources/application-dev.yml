@@ -101,3 +101,8 @@ renfei:
     key: <key>
     appId: 3
     connect:
+  cloudflare:
+    apiToken: XQDf-8F4lEC0QRzELIv7cMFAiijnbF73V2eig2dD
+  letsEncrypt:
+    email: i@renfei.net
+    dirPath: /Users/renfei/Downloads/letsencrypt

@@ -31,6 +31,8 @@ public class RenFeiConfig {
     private WeChat weChat;
     private Jwt jwt;
     private UCenter uCenter;
+    private Cloudflare cloudflare;
+    private LetsEncrypt letsEncrypt;
 
     @Data
     public static class DataCahe {
@@ -105,5 +107,16 @@ public class RenFeiConfig {
         private String key;
         private String appId;
         private String connect;
+    }
+
+    @Data
+    public static class Cloudflare {
+        private String apiToken;
+    }
+
+    @Data
+    public static class LetsEncrypt {
+        private String email;
+        private String dirPath;
     }
 }
