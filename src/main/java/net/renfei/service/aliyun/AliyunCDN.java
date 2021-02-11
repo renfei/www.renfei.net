@@ -33,22 +33,13 @@ public class AliyunCDN extends AliyunService {
      * @param domainName 指定证书所属加速域名，需属于https加速类型
      * @param certName   证书名称
      */
-    public void setDomainServerCertificate(String domainName, String certName) {
+    public void setDomainServerCertificate(String domainName, String certName, String privateKey) throws ClientException {
         SetDomainServerCertificateRequest request = new SetDomainServerCertificateRequest();
         request.setDomainName(domainName);
         request.setCertName(certName);
         request.setCertType("cas");
         request.setServerCertificateStatus("on");
-        try {
-            SetDomainServerCertificateResponse response = client.getAcsResponse(request);
-            log.info(new Gson().toJson(response));
-        } catch (ServerException e) {
-            log.error(e.getMessage(), e);
-        } catch (ClientException e) {
-            log.info("ErrCode:{}", e.getErrCode());
-            log.info("ErrMsg:{}", e.getErrMsg());
-            log.info("RequestId:{}", e.getRequestId());
-            log.error(e.getMessage(), e);
-        }
+        request.setPrivateKey(privateKey);
+        client.getAcsResponse(request);
     }
 }

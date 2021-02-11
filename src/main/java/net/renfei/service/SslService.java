@@ -7,11 +7,21 @@ import net.renfei.cloudflare.entity.CreateDnsRecord;
 import net.renfei.cloudflare.entity.DnsRecords;
 import net.renfei.cloudflare.entity.Zone;
 import net.renfei.config.RenFeiConfig;
+import net.renfei.entity.ApplySslCertificate;
+import net.renfei.repository.LetsEncryptDOMapper;
+import net.renfei.repository.entity.LetsEncryptDOExample;
+import net.renfei.repository.entity.LetsEncryptDOWithBLOBs;
 import net.renfei.sdk.utils.DateUtils;
+import net.renfei.sdk.utils.ListUtils;
+import net.renfei.service.aliyun.AliyunCAS;
+import net.renfei.service.aliyun.AliyunCDN;
+import net.renfei.service.aliyun.AliyunDCDN;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -26,25 +36,66 @@ import java.util.Map;
 @Slf4j
 @Service
 public class SslService extends BaseService {
+    private final AliyunCAS aliyunCAS;
+    private final AliyunCDN aliyunCDN;
+    private final AliyunDCDN aliyunDCDN;
     private final Cloudflare cloudflare;
     private final RenFeiConfig renFeiConfig;
     private final ExecCmdService execCmdService;
     private final LetsEncryptService letsEncryptService;
+    private final LetsEncryptDOMapper letsEncryptMapper;
     private Zone zone;
 
-    public SslService(RenFeiConfig renFeiConfig,
+    public SslService(AliyunCAS aliyunCAS,
+                      AliyunCDN aliyunCDN,
+                      AliyunDCDN aliyunDCDN,
+                      RenFeiConfig renFeiConfig,
                       ExecCmdService execCmdService,
-                      LetsEncryptService letsEncryptService) {
+                      LetsEncryptService letsEncryptService,
+                      LetsEncryptDOMapper letsEncryptMapper) {
+        this.aliyunCAS = aliyunCAS;
+        this.aliyunCDN = aliyunCDN;
+        this.aliyunDCDN = aliyunDCDN;
         this.renFeiConfig = renFeiConfig;
         this.execCmdService = execCmdService;
         this.letsEncryptService = letsEncryptService;
         this.cloudflare = new Cloudflare(renFeiConfig.getCloudflare().getApiToken());
+        this.letsEncryptMapper = letsEncryptMapper;
+    }
+
+    @Transactional(rollbackFor = Exception.class)
+    public void checkSslCertificate() throws IOException {
+        // 检查证书
+        LetsEncryptDOExample example = new LetsEncryptDOExample();
+        example.setOrderByClause("end_date DESC");
+        example.createCriteria();
+        LetsEncryptDOWithBLOBs letsEncryptDO = ListUtils.getOne(letsEncryptMapper.selectByExampleWithBLOBs(example));
+        boolean update = false;
+        if (letsEncryptDO == null) {
+            update = true;
+        } else {
+            long day = DateUtils.getDaysBetween(new Date(), letsEncryptDO.getEndDate());
+            if (day <= 7) {
+                update = true;
+            }
+        }
+        if (update) {
+            ApplySslCertificate applySslCertificate = this.applySslCertificate();
+            letsEncryptDO = new LetsEncryptDOWithBLOBs();
+            letsEncryptDO.setApplyDate(new Date());
+            letsEncryptDO.setEndDate(DateUtils.nextMonth(3));
+            letsEncryptDO.setCertName(applySslCertificate.getName());
+            letsEncryptDO.setCertKey(applySslCertificate.getKey());
+            letsEncryptDO.setCert(applySslCertificate.getCertificate());
+            this.deploymentCertificate(applySslCertificate);
+            letsEncryptMapper.insert(letsEncryptDO);
+        }
     }
 
     /**
      * 申请新的SSL证书
      */
-    public String applySslCertificate() throws IOException {
+    public ApplySslCertificate applySslCertificate() throws IOException {
         // 注册CA用户帐户
         letsEncryptService.register();
         // 创建CSR证书请求文件，需要环境已经安装 openssl
@@ -73,17 +124,29 @@ public class SslService extends BaseService {
         // 清理WorkDir
         cmd = new String[]{"/bin/sh", "-c", "rm -rf " + renFeiConfig.getLetsEncrypt().getDirPath() + "/workdir/*"};
         execCmdService.execCmd(cmd);
+        ApplySslCertificate applySslCertificate = new ApplySslCertificate();
         // 读取证书
-        return reader(renFeiConfig.getLetsEncrypt().getDirPath() + "/certdir/fullchain.pem");
+        applySslCertificate.setCertificate(reader(renFeiConfig.getLetsEncrypt().getDirPath() + "/certdir/fullchain.pem"));
+        applySslCertificate.setName(csrFileName.replace(".csr", ""));
+        applySslCertificate.setKey(reader(renFeiConfig.getLetsEncrypt().getDirPath() + "/renfei.net.key"));
+        return applySslCertificate;
     }
 
     /**
      * 部署SSL证书
      *
-     * @param certificate SSL证书
+     * @param applySslCertificate SSL证书
      */
-    public void deploymentCertificate(String certificate) {
-
+    public void deploymentCertificate(ApplySslCertificate applySslCertificate) {
+        // 上传证书
+        aliyunCAS.createUserCertificate(applySslCertificate.getName(), applySslCertificate.getCertificate(), applySslCertificate.getKey());
+        aliyunCDN.setDomainServerCertificate("cdn.renfei.net", applySslCertificate.getName(), applySslCertificate.getKey());
+        aliyunCDN.setDomainServerCertificate("ip.renfei.net", applySslCertificate.getName(), applySslCertificate.getKey());
+        aliyunCDN.setDomainServerCertificate("download.renfei.net", applySslCertificate.getName(), applySslCertificate.getKey());
+        aliyunCDN.setDomainServerCertificate("nifidoc.renfei.net", applySslCertificate.getName(), applySslCertificate.getKey());
+        aliyunCDN.setDomainServerCertificate("video.cdn.renfei.net", applySslCertificate.getName(), applySslCertificate.getKey());
+        aliyunDCDN.setDcdnDomainCertificate("www.renfei.net", applySslCertificate.getName(), applySslCertificate.getKey());
+        aliyunDCDN.setDcdnDomainCertificate("git.renfei.net", applySslCertificate.getName(), applySslCertificate.getKey());
     }
 
     private String reader(String path) throws IOException {
@@ -92,7 +155,7 @@ public class SslService extends BaseService {
         StringBuilder digestContent = new StringBuilder();
         String tempStr = "";
         while ((tempStr = br.readLine()) != null) {
-            digestContent.append(tempStr);
+            digestContent.append(tempStr).append("\n");
         }
         if (digestContent.toString().endsWith("\n")) {
             return digestContent.toString().substring(0, digestContent.toString().length() - 1);

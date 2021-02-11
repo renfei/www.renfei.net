@@ -65,6 +65,7 @@
 <!--        <table tableName="t_permission" domainObjectName="PermissionDO"></table>-->
 <!--        <table tableName="t_role_permission" domainObjectName="RolePermissionDO"></table>-->
 <!--        <table tableName="t_account_role" domainObjectName="AccountRoleDO"></table>-->
+<!--        <table tableName="t_lets_encrypt" domainObjectName="LetsEncryptDO"></table>-->
 
         <!--Discu-->
 <!--        <table tableName="bbs_ucenter_members" domainObjectName="DiscuzUcenterMembersDO"></table>-->

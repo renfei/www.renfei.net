@@ -27,23 +27,13 @@ public class AliyunDCDN extends AliyunService {
                         renFeiConfig.getAliyun().getAccessKeySecret()));
     }
 
-    public void setDcdnDomainCertificate(String domainName, String certName) {
+    public void setDcdnDomainCertificate(String domainName, String certName, String privateKey) throws ClientException {
         SetDcdnDomainCertificateRequest request = new SetDcdnDomainCertificateRequest();
         request.setDomainName(domainName);
         request.setCertName(certName);
         request.setCertType("cas");
         request.setSSLProtocol("on");
-
-        try {
-            SetDcdnDomainCertificateResponse response = client.getAcsResponse(request);
-            log.info(new Gson().toJson(response));
-        } catch (ServerException e) {
-            log.error(e.getMessage(), e);
-        } catch (ClientException e) {
-            log.info("ErrCode:{}", e.getErrCode());
-            log.info("ErrMsg:{}", e.getErrMsg());
-            log.info("RequestId:{}", e.getRequestId());
-            log.error(e.getMessage(), e);
-        }
+        request.setSSLPri(privateKey);
+        client.getAcsResponse(request);
     }
 }

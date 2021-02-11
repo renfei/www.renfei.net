@@ -1,13 +1,10 @@
 package net.renfei.service.aliyun;
 
-import com.aliyuncs.DefaultAcsClient;
-import com.aliyuncs.IAcsClient;
 import com.aliyuncs.cas.model.v20180713.CreateUserCertificateRequest;
 import com.aliyuncs.cas.model.v20180713.CreateUserCertificateResponse;
 import com.aliyuncs.exceptions.ClientException;
 import com.aliyuncs.exceptions.ServerException;
 import com.aliyuncs.profile.DefaultProfile;
-import com.google.gson.Gson;
 import lombok.extern.slf4j.Slf4j;
 import net.renfei.config.RenFeiConfig;
 import org.springframework.stereotype.Service;
@@ -37,21 +34,11 @@ public class AliyunCAS extends AliyunService {
      * @param cert     指定PEM格式的证书内容:指定PEM格式的证书内容
      * @param certKey  指定PEM格式证书的私钥内容:指定PEM格式证书的私钥内容
      */
-    public void createUserCertificate(String certName, String cert, String certKey) {
+    public CreateUserCertificateResponse createUserCertificate(String certName, String cert, String certKey) throws ClientException {
         CreateUserCertificateRequest request = new CreateUserCertificateRequest();
         request.setName(certName);
         request.setCert(cert);
         request.setKey(certKey);
-        try {
-            CreateUserCertificateResponse response = client.getAcsResponse(request);
-            log.info(new Gson().toJson(response));
-        } catch (ServerException e) {
-            log.error(e.getMessage(), e);
-        } catch (ClientException e) {
-            log.info("ErrCode:{}", e.getErrCode());
-            log.info("ErrMsg:{}", e.getErrMsg());
-            log.info("RequestId:{}", e.getRequestId());
-            log.error(e.getMessage(), e);
-        }
+        return client.getAcsResponse(request);
     }
 }
