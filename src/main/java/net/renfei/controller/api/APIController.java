@@ -34,6 +34,7 @@ import java.util.UUID;
 @RequestMapping("/api")
 public class APIController extends BaseController {
     private final IpService ipService;
+    private final RegionService regionService;
     private final SearchService searchService;
     private final DomainNameService domainNameService;
 
@@ -42,9 +43,12 @@ public class APIController extends BaseController {
                             RenFeiConfig renFeiConfig,
                             CommentsService commentsService,
                             PaginationService paginationService,
-                            SearchService searchService, DomainNameService domainNameService) {
+                            RegionService regionService,
+                            SearchService searchService,
+                            DomainNameService domainNameService) {
         super(renFeiConfig, globalService, commentsService, paginationService);
         this.ipService = ipService;
+        this.regionService = regionService;
         this.searchService = searchService;
         this.domainNameService = domainNameService;
     }
@@ -177,5 +181,19 @@ public class APIController extends BaseController {
                     .build();
         }
 
+    }
+
+    @GetMapping("region")
+    @ApiOperation(value = "行政区划代码联动查询", notes = "行政区划代码联动查询，使用《中华人民共和国行政区划代码》国家标准(GB/T2260)", tags = "开放接口")
+    @SystemLog(logLevel = LogLevel.INFO, logModule = LogModule.OPENAPI, logType = LogType.GET, logDesc = "行政区划代码联动查询")
+    public APIResult<List<RegionVO>> getRegion() {
+        return new APIResult<>(regionService.getRegion(""));
+    }
+
+    @GetMapping("region/{regionCode}")
+    @ApiOperation(value = "行政区划代码联动查询", notes = "行政区划代码联动查询，使用《中华人民共和国行政区划代码》国家标准(GB/T2260)", tags = "开放接口")
+    @SystemLog(logLevel = LogLevel.INFO, logModule = LogModule.OPENAPI, logType = LogType.GET, logDesc = "行政区划代码联动查询")
+    public APIResult<List<RegionVO>> getRegion(@PathVariable(value = "regionCode", required = false) String regionCode) {
+        return new APIResult<>(regionService.getRegion(regionCode));
     }
 }
