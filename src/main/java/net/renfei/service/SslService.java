@@ -143,6 +143,7 @@ public class SslService extends BaseService {
         aliyunCAS.createUserCertificate(applySslCertificate.getName(), applySslCertificate.getCertificate(), applySslCertificate.getKey());
         aliyunCDN.setDomainServerCertificate("cdn.renfei.net", applySslCertificate.getName(), applySslCertificate.getKey());
         aliyunCDN.setDomainServerCertificate("ip.renfei.net", applySslCertificate.getName(), applySslCertificate.getKey());
+        aliyunCDN.setDomainServerCertificate("ipv4.renfei.net", applySslCertificate.getName(), applySslCertificate.getKey());
         aliyunCDN.setDomainServerCertificate("download.renfei.net", applySslCertificate.getName(), applySslCertificate.getKey());
         aliyunCDN.setDomainServerCertificate("nifidoc.renfei.net", applySslCertificate.getName(), applySslCertificate.getKey());
         aliyunCDN.setDomainServerCertificate("video.cdn.renfei.net", applySslCertificate.getName(), applySslCertificate.getKey());
