@@ -5,6 +5,7 @@
 [![Actions Status](https://github.com/renfei/www.renfei.net/workflows/Release/badge.svg)](https://github.com/renfei/www.renfei.net/actions)
 [![Build Status](https://api.travis-ci.com/renfei/www.renfei.net.svg?branch=main)](https://travis-ci.com/renfei/www.renfei.net)
 [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Frenfei%2Fwww.renfei.net.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Frenfei%2Fwww.renfei.net?ref=badge_shield)
+![Analytics](https://ga-beacon.appspot.com/UA-45593016-5/www.renfei.net?flat)
 
 此版本是2020年重写版本，代号```thunder```，这个版本有什么故事呢？
 
