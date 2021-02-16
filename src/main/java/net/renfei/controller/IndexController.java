@@ -132,4 +132,11 @@ public class IndexController extends BaseController {
         mv.setViewName("feed");
         return mv;
     }
+
+    @RequestMapping("/sponsors")
+    public ModelAndView sponsors(ModelAndView mv){
+        mv.addObject("title", "赞助 - Sponsors - 任霏博客");
+        mv.setViewName("sponsors");
+        return mv;
+    }
 }
