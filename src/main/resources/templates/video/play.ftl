@@ -6,7 +6,7 @@
     <!DOCTYPE html>
     <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" lang="zh-CN" dir="ltr" prefix="og: http://ogp.me/ns#">
     <@head headVO,title>
-        <link rel="stylesheet" type="text/css" href="https://cdn.renfei.net/plyr/plyr.css"/>
+        <link rel="stylesheet" type="text/css" href="https://cdn.renfei.net/thunder/plyr/plyr.css"/>
     </@head>
     <body>
     <@header headerVO>
@@ -68,7 +68,7 @@
         <!-- Sharing libary (https://shr.one) -->
         <script src="https://cdn.shr.one/2.0.0-beta.2/shr.js" crossorigin="anonymous"></script>
         <!-- Docs script -->
-        <script src="https://cdn.renfei.net/plyr/plyr.min.js" crossorigin="anonymous"></script>
+        <script src="https://cdn.renfei.net/thunder/plyr/plyr.min.js" crossorigin="anonymous"></script>
     </@footer>
     </body>
     </html>
