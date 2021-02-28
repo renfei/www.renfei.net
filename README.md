@@ -20,5 +20,11 @@
 - 移除广告拦截提示，用户体验过差，已经不在检测广告屏蔽插件
 - IP数据库从查询MySQL数据库改为检索BIN文件，速度提升明显
 
+## 代码仓库
+- [Main] Github:[https://github.com/renfei/www.renfei.net](https://github.com/renfei/www.renfei.net)
+- [Mirror] Gitlab:[https://gitlab.com/renfei/www.renfei.net](https://gitlab.com/renfei/www.renfei.net)
+- [Mirror] Gitee:[https://gitee.com/rnf/www.renfei.net](https://gitee.com/rnf/www.renfei.net)
+- [Mirror] Coding:[https://githubi.coding.net/public/renfei/www.renfei.net/git/files](https://githubi.coding.net/public/renfei/www.renfei.net/git/files)
+
 ## License
 [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Frenfei%2Fwww.renfei.net.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Frenfei%2Fwww.renfei.net?ref=badge_large)
