@@ -67,6 +67,7 @@
 <!--        <table tableName="t_account_role" domainObjectName="AccountRoleDO"></table>-->
 <!--        <table tableName="t_lets_encrypt" domainObjectName="LetsEncryptDO"></table>-->
 <!--        <table tableName="t_region" domainObjectName="RegionDO"></table>-->
+<!--        <table tableName="t_online_documents" domainObjectName="OnlineDocumentsDO"></table>-->
 
         <!--Discu-->
 <!--        <table tableName="bbs_ucenter_members" domainObjectName="DiscuzUcenterMembersDO"></table>-->
