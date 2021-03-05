@@ -598,6 +598,12 @@ body {
     background-size: contain;
     background-repeat: no-repeat;
 }
+.developer-toolkit-banner .online-document-banner-left{
+    background-image: url("https://cdn.renfei.net/thunder/img/online_document.png");
+    background-position: center center;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
 .sponsors-banner, .sponsors-banner .container,.sponsors-banner .container .row{
     min-height: 433px;
     background-image: linear-gradient(#a6c2fb, #ddd5f8);

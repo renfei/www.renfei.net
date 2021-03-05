@@ -12,7 +12,7 @@
     <div class="developer-toolkit-banner">
         <div class="container">
             <div class="row">
-                <div class="col-md-4 developer-toolkit-banner-left"></div>
+                <div class="col-md-4 online-document-banner-left"></div>
                 <div class="col-md-8 text-center align-self-center">
                     <h1>在线文档</h1>
                     <h3 style="color: #6c757d!important;">Online Documents</h3>
