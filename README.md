@@ -28,3 +28,7 @@
 
 ## License
 [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Frenfei%2Fwww.renfei.net.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Frenfei%2Fwww.renfei.net?ref=badge_large)
+
+## 求鼓励
+
+如果这个项目帮助到了你，是否能给我点个免费的星星 (Star) 给个鼓励呢。高星项目我将持续关注努力更新的。
