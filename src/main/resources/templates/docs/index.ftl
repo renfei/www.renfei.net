@@ -17,13 +17,13 @@
                     <h1>在线文档</h1>
                     <h3 style="color: #6c757d!important;">Online Documents</h3>
                     <p>提供在线开发文档与手册服务</p>
-                    <p>中文文档基于 <a href="https://cloud.google.com/translate" target="_blank" rel="nofollow">Google Translation</a> 机器翻译，请结合原版阅读</p>
+                    <p>中文文档基于机器翻译，请结合原版阅读</p>
                 </div>
             </div>
         </div>
     </div>
     <div class="container">
-        <small class="text-muted">注：中文文档基于 <a href="https://cloud.google.com/translate" target="_blank" rel="nofollow">Google Translation</a> 机器翻译，请结合原版阅读。由于文档数量庞大，即使是机器翻译工作量也十分缓慢，更多文档正在翻译中。如果没有你需要的文档可以联系我添加。</small>
+        <small class="text-muted">注：中文文档基于机器翻译，请结合原版阅读。由于文档数量庞大，即使是机器翻译工作量也十分缓慢，更多文档正在翻译中。如果没有你需要的文档可以联系我添加。</small>
     </div>
     <div class="container" style="padding-top: 50px;">
         <#if KitBoxMenus?? && (KitBoxMenus?size > 0)>

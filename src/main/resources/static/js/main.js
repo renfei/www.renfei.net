@@ -130,34 +130,36 @@ function getJiSuDownloadLink() {
 }
 
 function setClipboardText(event, link) {
-    event.preventDefault();
-    let node = document.createElement('div');
-    node.appendChild(window.getSelection().getRangeAt(0).cloneContents());
-    let htmlData = '<div>'
-        + node.innerHTML
-        + '<br /><br />------------<br />'
-        + '商业用途请联系作者获得授权。<br />'
-        + '版权声明：本文为原创文章，遵循 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="nofollow noopener">CC BY-NC-SA 4.0</a> 版权协议，转载请附上原文出处链接及本声明。<br />'
-        + '作者：任霏<br />'
-        + '来源：<a href="'
-        + link
-        + '">'
-        + link
-        + '</a><br />'
-        + '</div>';
-    let textData = window.getSelection().getRangeAt(0)
-        + '\n\n------------\n'
-        + '商业用途请联系作者获得授权\n'
-        + '版权声明：本文为原创文章，遵循 CC BY-NC-SA 4.0 版权协议，转载请附上原文出处链接及本声明。\n'
-        + '作者：任霏\n'
-        + '来源：'
-        + link
-        + '\n';
-    if (event.clipboardData) {
-        event.clipboardData.setData("text/html", htmlData);
-        event.clipboardData.setData("text/plain", textData);
-    } else if (window.clipboardData) {
-        return window.clipboardData.setData("text", textData);
+    if ((window.getSelection().getRangeAt(0) + "").length >= 64) {
+        event.preventDefault();
+        let node = document.createElement('div');
+        node.appendChild(window.getSelection().getRangeAt(0).cloneContents());
+        let htmlData = '<div>'
+            + node.innerHTML
+            + '<br /><br />------------<br />'
+            + '商业用途请联系作者获得授权。<br />'
+            + '版权声明：本文为原创文章，遵循 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="nofollow noopener">CC BY-NC-SA 4.0</a> 版权协议，转载请附上原文出处链接及本声明。<br />'
+            + '作者：任霏<br />'
+            + '来源：<a href="'
+            + link
+            + '">'
+            + link
+            + '</a><br />'
+            + '</div>';
+        let textData = window.getSelection().getRangeAt(0)
+            + '\n\n------------\n'
+            + '商业用途请联系作者获得授权\n'
+            + '版权声明：本文为原创文章，遵循 CC BY-NC-SA 4.0 版权协议，转载请附上原文出处链接及本声明。\n'
+            + '作者：任霏\n'
+            + '来源：'
+            + link
+            + '\n';
+        if (event.clipboardData) {
+            event.clipboardData.setData("text/html", htmlData);
+            event.clipboardData.setData("text/plain", textData);
+        } else if (window.clipboardData) {
+            return window.clipboardData.setData("text", textData);
+        }
     }
 }
 

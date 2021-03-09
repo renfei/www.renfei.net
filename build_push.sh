@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 #########################################
 ## Maven构建、Docker镜像制作、Docker仓库推送
 ## Author RenFei(i@renfei.net)
@@ -16,6 +16,9 @@ echo "#########################################"
 echo "# RENFEI.NET 编译构建生产环境Docker镜像文件"
 echo "# Build Version: $REPOSITORIES:$PROJECT_VERSION"
 echo "#########################################"
+if [ "$PASSWORD" == "" ]; then
+  read -p "请输入 Docker 仓库密码：" PASSWORD
+fi
 mvn clean package -Dmaven.test.skip=true -P prod
 echo "#########################################"
 echo "# Docker 构建开始 >>>>"
@@ -24,13 +27,9 @@ docker build -t $REPOSITORIES:"$PROJECT_VERSION" .
 IMAGEID=$(docker images -q --filter reference=$REPOSITORIES:"$PROJECT_VERSION")
 echo "构建完成 >>>> IMAGE ID:$IMAGEID"
 echo "#########################################"
-echo "# 请登陆 Docker 仓库 >>>>"
+echo "# 登陆 Docker 仓库 >>>>"
 echo "#########################################"
-if [ "$PASSWORD" != "" ]; then
-  docker login --username=i@renfei.net --password="$PASSWORD" $REGISTRY
-else
-  docker login --username=i@renfei.net $REGISTRY
-fi
+docker login --username=i@renfei.net --password="$PASSWORD" $REGISTRY
 docker tag "$IMAGEID" $REGISTRY/$NAMESPACES/$REPOSITORIES:"$PROJECT_VERSION"
 echo "#########################################"
 echo "# 开始推送 Docker 镜像到仓库 >>>>"
