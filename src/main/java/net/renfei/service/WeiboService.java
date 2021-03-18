@@ -17,6 +17,7 @@ import net.renfei.sdk.utils.ListUtils;
 import net.renfei.sdk.utils.NumberUtils;
 import net.renfei.service.aliyun.AliyunOSS;
 import org.springframework.cache.annotation.CacheConfig;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
@@ -53,7 +54,7 @@ public class WeiboService extends BaseService {
     @Transactional(rollbackFor = Exception.class)
     public void addWeibo(NewWeiboVO newWeiboVO) throws Exception {
         PhotoImgDO photoImgDO = null;
-        if (newWeiboVO.getImage() != null) {
+        if (newWeiboVO.getImage() != null && (!newWeiboVO.getImage().isEmpty())) {
             String photoPath = aliyunOSS.upload("upload/image/" + DateUtils.getYear() + "/", newWeiboVO.getImage());
             photoImgDO = new PhotoImgDO();
             photoImgDO.setPhotoId(7L);
@@ -101,6 +102,10 @@ public class WeiboService extends BaseService {
                 .createCriteria()
                 .andReleaseTimeLessThanOrEqualTo(new Date());
         return doSelect(weiboDOExample, intPage, intRows);
+    }
+
+    @CacheEvict(value = "WeiboService", allEntries = true)
+    public void cleanAll() {
     }
 
     public List<WeiboDO> getAllPostsNotCache() {

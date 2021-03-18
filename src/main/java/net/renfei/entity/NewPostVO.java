@@ -19,6 +19,7 @@ public class NewPostVO {
     private String content;
     private String sourceName;
     private String sourceUrl;
+    private String tags;
     private Boolean isOriginal;
     private MultipartFile image;
 }

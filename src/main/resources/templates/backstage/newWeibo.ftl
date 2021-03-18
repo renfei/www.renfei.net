@@ -38,7 +38,7 @@
         var oData = new FormData(document.forms.namedItem("weiboinfo"));
         var oReq = new XMLHttpRequest();
         try {
-            oReq.open("post", "/private/api/newWeibo", true);
+            oReq.open("post", "/private/api/weibo", false);
             oReq.setRequestHeader($("meta[name='_csrf_header']").attr("content"), $("meta[name='_csrf']").attr("content"));
             oReq.send(oData);
             alert("完成");

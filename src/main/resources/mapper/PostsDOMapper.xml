@@ -157,7 +157,7 @@
       #{sourceName,jdbcType=LONGVARCHAR}, #{describes,jdbcType=LONGVARCHAR}, #{keyword,jdbcType=LONGVARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="net.renfei.repository.entity.PostsDOWithBLOBs">
+  <insert id="insertSelective" parameterType="net.renfei.repository.entity.PostsDOWithBLOBs" useGeneratedKeys="true" keyColumn="id" keyProperty="id">
     insert into t_posts
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">

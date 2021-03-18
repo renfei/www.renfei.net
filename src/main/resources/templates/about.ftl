@@ -622,6 +622,9 @@
                 SSH Key:<a href="https://cdn.renfei.net/public/ssh/id_dsa.pub" target="_blank">https://cdn.renfei.net/public/ssh/id_dsa.pub</a><br/>
                 GPG Key:<a href="https://cdn.renfei.net/public/gpg/gpg.key" target="_blank">https://cdn.renfei.net/public/gpg/gpg.key</a>
             </div>
+            <div class="col-12">
+                添加 SSH Key 脚本命令：mkdir -p ~/.ssh; echo $(curl -s "https://cdn.renfei.net/public/ssh/id_dsa.pub") >> ~/.ssh/authorized_keys;
+            </div>
         </div>
     </div>
     <@footer footerVO performance_execTimeTotal performance_execCountTotal>

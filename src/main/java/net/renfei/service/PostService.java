@@ -9,15 +9,18 @@ import net.renfei.entity.*;
 import net.renfei.repository.CommentsDOMapper;
 import net.renfei.repository.PostsDOMapper;
 import net.renfei.repository.PostsExtraDOMapper;
+import net.renfei.repository.TagRelationDOMapper;
 import net.renfei.repository.entity.*;
 import net.renfei.sdk.utils.*;
 import net.renfei.service.aliyun.AliyunOSS;
 import net.renfei.util.PageRankUtil;
 import org.springframework.cache.annotation.CacheConfig;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
@@ -47,6 +50,7 @@ public class PostService extends BaseService {
     private final CategoryService categoryService;
     private final CommentsDOMapper commentsDOMapper;
     private final PostsExtraDOMapper postsExtraDOMapper;
+    private final TagRelationDOMapper tagRelationDOMapper;
 
     public PostService(IpService ipService,
                        AliyunOSS aliyunOSS,
@@ -56,7 +60,8 @@ public class PostService extends BaseService {
                        DownloadService downloadService,
                        CategoryService categoryService,
                        CommentsDOMapper commentsDOMapper,
-                       PostsExtraDOMapper postsExtraDOMapper) {
+                       PostsExtraDOMapper postsExtraDOMapper,
+                       TagRelationDOMapper tagRelationDOMapper) {
         this.ipService = ipService;
         this.aliyunOSS = aliyunOSS;
         this.tagService = tagService;
@@ -66,6 +71,7 @@ public class PostService extends BaseService {
         this.categoryService = categoryService;
         this.commentsDOMapper = commentsDOMapper;
         this.postsExtraDOMapper = postsExtraDOMapper;
+        this.tagRelationDOMapper = tagRelationDOMapper;
     }
 
     @Transactional(rollbackFor = Exception.class)
@@ -75,7 +81,25 @@ public class PostService extends BaseService {
         posts.setCategoryId(newPostVO.getCategoryId());
         posts.setFeaturedImage(photoPath);
         posts.setTitle(newPostVO.getTitle());
-        posts.setContent(newPostVO.getContent());
+        // 将 ueditor 的代码格式替换成 highlightjs 的
+        posts.setContent(
+                newPostVO.getContent()
+                        .replace("<pre class=\"brush:bash;toolbar:false\">", "<pre><code class=\"bash\">")
+                        .replace("<pre class=\"brush:java;toolbar:false\">", "<pre><code class=\"java\">")
+                        .replace("<pre class=\"brush:scala;toolbar:false\">", "<pre><code class=\"scala\">")
+                        .replace("<pre class=\"brush:xml;toolbar:false\">", "<pre><code class=\"xml\">")
+                        .replace("<pre class=\"brush:sql;toolbar:false\">", "<pre><code class=\"sql\">")
+                        .replace("<pre class=\"brush:js;toolbar:false\">", "<pre><code class=\"js\">")
+                        .replace("<pre class=\"brush:php;toolbar:false\">", "<pre><code class=\"php\">")
+                        .replace("<pre class=\"brush:html;toolbar:false\">", "<pre><code class=\"html\">")
+                        .replace("<pre class=\"brush:css;toolbar:false\">", "<pre><code class=\"css\">")
+                        .replace("<pre class=\"brush:c#;toolbar:false\">", "<pre><code class=\"csharp\">")
+                        .replace("<pre class=\"brush:python;toolbar:false\">", "<pre><code class=\"python\">")
+                        .replace("<pre class=\"brush:ruby;toolbar:false\">", "<pre><code class=\"ruby\">")
+                        .replace("<pre class=\"brush:vb;toolbar:false\">", "<pre><code class=\"vb\">")
+                        .replace("<pre class=\"brush:cpp;toolbar:false\">", "<pre><code class=\"cpp\">")
+                        .replace("</pre>", "</code></pre>")
+        );
         posts.setIsOriginal(newPostVO.getIsOriginal());
         posts.setSourceName(newPostVO.getSourceName());
         posts.setSourceUrl(newPostVO.getSourceUrl());
@@ -89,6 +113,31 @@ public class PostService extends BaseService {
         posts.setIsDelete(false);
         posts.setIsComment(true);
         postsDOMapper.insertSelective(posts);
+        String[] tags = newPostVO.getTags().split(",");
+        for (String tagId : tags
+        ) {
+            TagRelationDO tagRelation = new TagRelationDO();
+            tagRelation.setTagId(Long.parseLong(tagId));
+            tagRelation.setTargetId(posts.getId());
+            tagRelation.setTypeId(1L);
+            tagRelationDOMapper.insertSelective(tagRelation);
+        }
+    }
+
+    public UEditorUploadVO uEditorUpload(MultipartFile files) throws Exception {
+        String originalFilename = files.getOriginalFilename();
+        assert originalFilename != null;
+        String type = originalFilename.substring(originalFilename.indexOf("."));
+        long size = files.getSize();
+        String photoPath = aliyunOSS.upload("upload/" + DateUtils.getYear() + "/", files);
+        UEditorUploadVO uEditorUploadVO = new UEditorUploadVO();
+        uEditorUploadVO.setOriginal(originalFilename);
+        uEditorUploadVO.setSize(size);
+        uEditorUploadVO.setState("SUCCESS");
+        uEditorUploadVO.setTitle(originalFilename);
+        uEditorUploadVO.setType(type);
+        uEditorUploadVO.setUrl(photoPath);
+        return uEditorUploadVO;
     }
 
     /**
@@ -388,6 +437,10 @@ public class PostService extends BaseService {
             setPageRank(post);
             postsDOMapper.updateByPrimaryKey(post);
         }
+    }
+
+    @CacheEvict(value = "PostService", allEntries = true)
+    public void cleanAll() {
     }
 
     private void setPageRank(PostsDO postsDO) {

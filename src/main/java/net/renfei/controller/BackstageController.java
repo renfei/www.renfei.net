@@ -3,11 +3,6 @@ package net.renfei.controller;
 import lombok.extern.slf4j.Slf4j;
 import net.renfei.base.BaseController;
 import net.renfei.config.RenFeiConfig;
-import net.renfei.entity.NewPostVO;
-import net.renfei.entity.NewWeiboVO;
-import net.renfei.entity.SendEmailVO;
-import net.renfei.sdk.comm.StateCode;
-import net.renfei.sdk.entity.APIResult;
 import net.renfei.service.*;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
@@ -26,12 +21,18 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping("/backstage")
 @PreAuthorize("hasRole('ROLE_backstage')")
 public class BackstageController extends BaseController {
+    private final TagService tagService;
+    private final CategoryService categoryService;
 
     protected BackstageController(RenFeiConfig renFeiConfig,
                                   GlobalService globalService,
                                   CommentsService commentsService,
-                                  PaginationService paginationService) {
+                                  PaginationService paginationService,
+                                  TagService tagService,
+                                  CategoryService categoryService) {
         super(renFeiConfig, globalService, commentsService, paginationService);
+        this.tagService = tagService;
+        this.categoryService = categoryService;
     }
 
     @GetMapping("")
@@ -53,6 +54,8 @@ public class BackstageController extends BaseController {
     @PreAuthorize("hasAuthority('post:add')")
     public ModelAndView newPostView(ModelAndView mv) {
         mv.addObject("title", "发布新文章");
+        mv.addObject("category", categoryService.getAllCategoryByType(1L));
+        mv.addObject("tags", tagService.getAllTag());
         mv.setViewName("backstage/newPost");
         return mv;
     }
