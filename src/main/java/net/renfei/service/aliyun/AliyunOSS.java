@@ -26,17 +26,18 @@ public class AliyunOSS extends AliyunService {
             throw new RuntimeException("文件为空!");
         }
         String fileName = file.getOriginalFilename();  // 文件名
+        assert fileName != null;
         String suffixName = fileName.substring(fileName.lastIndexOf("."));  // 后缀名
         fileName = UUID.randomUUID().toString().replace("-", "") + suffixName; // 新文件名
         uploadFile(file.getInputStream(), path + fileName);
-        return "//" + renFeiConfig.getStaticDomain() + "/" + path + fileName;
+        return renFeiConfig.getStaticDomain() + "/" + path + fileName;
     }
 
     /**
      * 获取签名URL进行临时授权，默认有效期24小时
      *
      * @param objectName 对象地址
-     * @return
+     * @return 签名URL
      */
     public String getPresignedUrl(String objectName) {
         // 设置URL过期时间为24小时。1天(d)=86400000毫秒(ms)
@@ -49,7 +50,7 @@ public class AliyunOSS extends AliyunService {
      *
      * @param objectName 对象地址
      * @param expiration 授权过期时间
-     * @return
+     * @return 签名URL
      */
     public String getPresignedUrl(String objectName, Date expiration) {
         return getPresignedUrl(renFeiConfig.getAliyun().getOss().getDownloadBucketName(), objectName, expiration);
@@ -61,7 +62,7 @@ public class AliyunOSS extends AliyunService {
      * @param bucketName 储存桶
      * @param objectName 对象地址
      * @param expiration 授权过期时间
-     * @return
+     * @return 签名URL
      */
     public String getPresignedUrl(String bucketName, String objectName, Date expiration) {
         // 创建OSSClient实例。
@@ -81,7 +82,7 @@ public class AliyunOSS extends AliyunService {
      * @param objectName 对象地址
      * @param expiration 授权过期时间
      * @param speed      限速（单位KB/s）
-     * @return
+     * @return 签名URL
      */
     public String getTrafficLimitUrl(String bucketName, String objectName, Date expiration, int speed) {
         // 限速 （X） KB/s。

@@ -56,7 +56,7 @@ renfei:
   version: @project.version@
   siteName: 任霏博客
   domain: http://localhost:8099
-  staticDomain: cdn.renfei.net
+  staticDomain: https://cdn.renfei.net
   ipv4DataPath: /opt/RenFeiNet/IPDATA.BIN
   ipv6DataPath: /opt/RenFeiNet/IPDATA.IPV6.BIN
   buildTime: @buildtimestamp@

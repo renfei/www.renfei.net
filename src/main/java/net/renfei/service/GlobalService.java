@@ -11,8 +11,8 @@ import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
-import java.text.SimpleDateFormat;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * <p>Title: GlobalService</p>
@@ -44,10 +44,10 @@ public class GlobalService extends BaseService {
         HeadVO headVO = new HeadVO();
         headVO.setCss(new ArrayList<String>() {
             {
-                this.add("https://" + renFeiConfig.getStaticDomain() + "/thunder/bootstrap/css/bootstrap.min.css");
-                this.add("https://" + renFeiConfig.getStaticDomain() + "/thunder/fontawesome/css/all.min.css");
-                this.add("https://" + renFeiConfig.getStaticDomain() + "/thunder/css/bs4.pop.css?ver=" + renFeiConfig.getBuildTime());
-                this.add("https://" + renFeiConfig.getStaticDomain() + "/thunder/css/style.css?ver=" + renFeiConfig.getBuildTime());
+                this.add(renFeiConfig.getStaticDomain() + "/thunder/bootstrap/css/bootstrap.min.css");
+                this.add(renFeiConfig.getStaticDomain() + "/thunder/fontawesome/css/all.min.css");
+                this.add(renFeiConfig.getStaticDomain() + "/thunder/css/bs4.pop.css?ver=" + renFeiConfig.getBuildTime());
+                this.add(renFeiConfig.getStaticDomain() + "/thunder/css/style.css?ver=" + renFeiConfig.getBuildTime());
             }
         });
         return headVO;
@@ -97,15 +97,15 @@ public class GlobalService extends BaseService {
         footerVO.setShowFriendlyLink(null);
         footerVO.setJss(new ArrayList<String>() {
             {
-                this.add("https://" + renFeiConfig.getStaticDomain() + "/thunder/js/jquery-3.5.1.min.js");
-                this.add("https://" + renFeiConfig.getStaticDomain() + "/thunder/js/popper.min.js");
-                this.add("https://" + renFeiConfig.getStaticDomain() + "/thunder/bootstrap/js/bootstrap.min.js");
-                this.add("https://" + renFeiConfig.getStaticDomain() + "/thunder/js/clipboard.min.js");
-                this.add("https://" + renFeiConfig.getStaticDomain() + "/thunder/js/bs4.pop.js?ver=" + renFeiConfig.getBuildTime());
+                this.add(renFeiConfig.getStaticDomain() + "/thunder/js/jquery-3.5.1.min.js");
+                this.add(renFeiConfig.getStaticDomain() + "/thunder/js/popper.min.js");
+                this.add(renFeiConfig.getStaticDomain() + "/thunder/bootstrap/js/bootstrap.min.js");
+                this.add(renFeiConfig.getStaticDomain() + "/thunder/js/clipboard.min.js");
+                this.add(renFeiConfig.getStaticDomain() + "/thunder/js/bs4.pop.js?ver=" + renFeiConfig.getBuildTime());
                 if ("dev".equals(renFeiConfig.getActive())) {
                     this.add("/js/main.js?ver=" + renFeiConfig.getBuildTime());
                 } else {
-                    this.add("https://" + renFeiConfig.getStaticDomain() + "/thunder/js/main.js?ver=" + renFeiConfig.getBuildTime());
+                    this.add(renFeiConfig.getStaticDomain() + "/thunder/js/main.js?ver=" + renFeiConfig.getBuildTime());
                 }
                 this.add("https://www.googletagmanager.com/gtag/js?id=" + renFeiConfig.getGoogle().getAnalytics());
                 this.add("https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js");
