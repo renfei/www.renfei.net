@@ -380,4 +380,16 @@ $(function () {
             msg("当前浏览器不支持此功能，请手动复制。", "error");
         });
     }
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function () {
+        if (document.hidden) {
+            document.title = '快回来！我想你了！he~tui~';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '哈!终于把你喊回来了!';
+            titleTime = setTimeout(function () {
+                document.title = OriginTitile;
+            }, 1000);
+        }
+    });
 });
