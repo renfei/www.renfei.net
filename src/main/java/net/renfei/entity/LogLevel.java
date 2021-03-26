@@ -7,5 +7,5 @@ package net.renfei.entity;
  * @author RenFei
  */
 public enum LogLevel {
-    FATAL, ERROR, WARN, INFO, DEBUG;
+    FATAL, ERROR, WARN, INFO, DEBUG
 }

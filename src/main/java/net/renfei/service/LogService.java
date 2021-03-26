@@ -4,6 +4,8 @@ import com.alibaba.fastjson.JSON;
 import lombok.extern.slf4j.Slf4j;
 import net.renfei.annotation.SystemLog;
 import net.renfei.base.BaseService;
+import net.renfei.config.RenFeiConfig;
+import net.renfei.entity.AccountDTO;
 import net.renfei.entity.LogLevel;
 import net.renfei.entity.LogModule;
 import net.renfei.entity.LogType;
@@ -11,12 +13,16 @@ import net.renfei.repository.SystemLogMapper;
 import net.renfei.repository.entity.SystemLogWithBLOBs;
 import net.renfei.sdk.utils.IpUtils;
 import org.springframework.scheduling.annotation.Async;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+
+import static net.renfei.base.BaseController.SESSION_KEY;
 
 /**
  * <p>Title: LogService</p>
@@ -28,9 +34,12 @@ import java.util.Map;
 @Slf4j
 @Service
 public class LogService extends BaseService {
+    private final RenFeiConfig renFeiConfig;
     private final SystemLogMapper systemLogMapper;
 
-    public LogService(SystemLogMapper systemLogMapper) {
+    public LogService(RenFeiConfig renFeiConfig,
+                      SystemLogMapper systemLogMapper) {
+        this.renFeiConfig = renFeiConfig;
         this.systemLogMapper = systemLogMapper;
     }
 
@@ -42,6 +51,22 @@ public class LogService extends BaseService {
         systemLog.setLogType(type.toString());
         systemLog.setLogDesc(desc);
         if (request != null) {
+            AccountDTO accountDTO = null;
+            if ("SESSION".equals(renFeiConfig.getAuthMode())) {
+                Object session = request.getSession().getAttribute(SESSION_KEY);
+                if (session instanceof AccountDTO) {
+                    accountDTO = (AccountDTO) session;
+                }
+            } else {
+                Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+                if (authentication.getPrincipal() instanceof AccountDTO) {
+                    accountDTO = (AccountDTO) authentication.getPrincipal();
+                }
+            }
+            if (accountDTO != null) {
+                systemLog.setUserUuid(accountDTO.getUuid());
+                systemLog.setUserName(systemLog.getUserName());
+            }
             // 请求的参数
             try {
                 Map<String, String> rtnMap = converMap(request.getParameterMap());

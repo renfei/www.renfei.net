@@ -1,6 +1,5 @@
 package net.renfei.base;
 
-import eu.bitwalker.useragentutils.*;
 import net.renfei.config.RenFeiConfig;
 import net.renfei.entity.*;
 import net.renfei.sdk.utils.BeanUtils;
@@ -25,8 +24,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.IntStream;
 
-import static eu.bitwalker.useragentutils.DeviceType.COMPUTER;
-
 /**
  * <p>Title: BaseController</p>
  * <p>Description: 控制层基础类</p>
@@ -38,7 +35,7 @@ public abstract class BaseController {
     protected static final String HEADER_KEY = "headerVO";
     protected static final String FOOTER_KEY = "footerVO";
     protected static final String ACTIVE_KEY = "active";
-    protected static final String SESSION_KEY = "accountSession";
+    public static final String SESSION_KEY = "accountSession";
     protected final RenFeiConfig renFeiConfig;
     protected final GlobalService globalService;
     protected final CommentsService commentsService;
@@ -183,7 +180,7 @@ public abstract class BaseController {
 
     protected ModelAndView checkSigned() {
         if (getUser() == null) {
-            return new ModelAndView("redirect:/auth/signIn?callback=" + String.valueOf(request.getRequestURL()));
+            return new ModelAndView("redirect:/auth/signIn?callback=" + request.getRequestURL());
         }
         return null;
     }

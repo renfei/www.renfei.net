@@ -235,10 +235,18 @@
                                 $("#signInBtn").attr('disabled', false);
                                 return false;
                             } else {
-                                errorMsg(data.message);
-                                $("#signInBtn").val('登 录');
-                                $("#signInBtn").attr('disabled', false);
-                                return false;
+                                if ("AESKeyId不存在" === data.message) {
+                                    removeStore("ClientPublicKey");
+                                    removeStore("ClientPrivateKey");
+                                    removeStore("aesKey");
+                                    removeStore("aesKeyId");
+                                    return signIn();
+                                } else {
+                                    errorMsg(data.message);
+                                    $("#signInBtn").val('登 录');
+                                    $("#signInBtn").attr('disabled', false);
+                                    return false;
+                                }
                             }
                         },
                         error: function (xhr, textStatus) {

@@ -7,5 +7,5 @@ package net.renfei.entity;
  * @author RenFei(i @ renfei.net)
  */
 public enum LogModule {
-    CMS,WECHAT,API,OPENAPI,SEARCH
+    CMS, WECHAT, API, OPENAPI, SEARCH, ACCOUNT
 }

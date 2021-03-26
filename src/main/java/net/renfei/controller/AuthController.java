@@ -3,12 +3,10 @@ package net.renfei.controller;
 import lombok.extern.slf4j.Slf4j;
 import net.renfei.base.BaseController;
 import net.renfei.config.RenFeiConfig;
-import net.renfei.entity.AccountDTO;
-import net.renfei.entity.ReportPublicKeyVO;
-import net.renfei.entity.SignInVO;
-import net.renfei.entity.SignUpVO;
+import net.renfei.entity.*;
 import net.renfei.exceptions.NeedU2FException;
 import net.renfei.exceptions.ServiceException;
+import net.renfei.repository.entity.SystemLogWithBLOBs;
 import net.renfei.sdk.comm.StateCode;
 import net.renfei.sdk.entity.APIResult;
 import net.renfei.sdk.utils.BeanUtils;
@@ -21,6 +19,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.Date;
 import java.util.Map;
 
 /**
@@ -34,6 +33,7 @@ import java.util.Map;
 @RequestMapping("/auth")
 public class AuthController extends BaseController {
     private final JwtUtils jwtUtils;
+    private final LogService logService;
     private final AccountService accountService;
     private final ReCaptchaService reCaptchaService;
     private final SecretKeyService secretKeyService;
@@ -42,11 +42,14 @@ public class AuthController extends BaseController {
                              GlobalService globalService,
                              CommentsService commentsService,
                              PaginationService paginationService,
-                             JwtUtils jwtUtils, AccountService accountService,
+                             JwtUtils jwtUtils,
+                             LogService logService,
+                             AccountService accountService,
                              ReCaptchaService reCaptchaService,
                              SecretKeyService secretKeyService) {
         super(renFeiConfig, globalService, commentsService, paginationService);
         this.jwtUtils = jwtUtils;
+        this.logService = logService;
         this.accountService = accountService;
         this.reCaptchaService = reCaptchaService;
         this.secretKeyService = secretKeyService;
@@ -109,10 +112,19 @@ public class AuthController extends BaseController {
         if (getUser() != null) {
             if ("SESSION".equals(renFeiConfig.getAuthMode())) {
                 return new APIResult<>(StateCode.OK.getDescribe());
-            }else {
+            } else {
                 SecurityContextHolder.clearContext();
             }
         }
+        SystemLogWithBLOBs systemLog = new SystemLogWithBLOBs();
+        systemLog.setLogLevel(LogLevel.INFO.toString());
+        systemLog.setLogModel(LogModule.ACCOUNT.toString());
+        systemLog.setLogTime(new Date());
+        systemLog.setLogType(LogType.SIGN_IN.toString());
+        systemLog.setRequIp(IpUtils.getIpAddress(request));
+        systemLog.setRequAgent(request.getHeader("User-Agent"));
+        systemLog.setRequMethod("net.renfei.controller.AuthController.doSignIn");
+        systemLog.setRequUri(request.getRequestURI());
         if (!BeanUtils.isEmpty(signInVO.getReCAPTCHAToken())
                 && reCaptchaService.verifying(signInVO.getReCAPTCHAToken(), IpUtils.getIpAddress(request))) {
             try {
@@ -121,21 +133,46 @@ public class AuthController extends BaseController {
                 accountDTO = accountService.fillRolePermissions(accountDTO);
                 if ("SESSION".equals(renFeiConfig.getAuthMode())) {
                     request.getSession().setAttribute(SESSION_KEY, accountDTO);
+                    request.getSession().setAttribute(SESSION_KEY, accountDTO);
+                    systemLog.setUserUuid(accountDTO.getUuid());
+                    systemLog.setUserName(accountDTO.getUserName());
+                    systemLog.setLogDesc("登入系统成功。");
+                    logService.insert(systemLog);
                     return new APIResult<>(accountDTO.getUcScript());
                 } else {
                     // 签发TOKEN
                     String token = jwtUtils.createJWT(accountDTO.getUuid(), accountDTO.getRoles(), accountDTO.getAuthorities(), accountDTO.getUuid());
+                    systemLog.setUserUuid(accountDTO.getUuid());
+                    systemLog.setUserName(accountDTO.getUserName());
+                    systemLog.setLogDesc("登入系统成功。");
+                    logService.insert(systemLog);
                     return new APIResult<>(token);
                 }
             } catch (ServiceException serviceException) {
+                systemLog.setUserName(signInVO.getUserName());
+                systemLog.setLogDesc(serviceException.getMessage());
+                systemLog.setLogLevel(LogLevel.WARN.toString());
+                logService.insert(systemLog);
                 return APIResult.builder().code(serviceException.getStateCode()).message(serviceException.getMessage()).build();
             } catch (NeedU2FException needU2FException) {
+                systemLog.setUserName(signInVO.getUserName());
+                systemLog.setLogDesc(needU2FException.getMessage());
+                systemLog.setLogLevel(LogLevel.WARN.toString());
+                logService.insert(systemLog);
                 return APIResult.builder().code(needU2FException.getStateCode()).message(needU2FException.getMessage()).build();
             } catch (Exception exception) {
                 log.error(exception.getMessage(), exception);
+                systemLog.setUserName(signInVO.getUserName());
+                systemLog.setLogDesc(exception.getMessage());
+                systemLog.setLogLevel(LogLevel.ERROR.toString());
+                logService.insert(systemLog);
                 return APIResult.builder().code(StateCode.Error).message("内部服务器错误，请联系管理员").build();
             }
         } else {
+            systemLog.setUserName(signInVO.getUserName());
+            systemLog.setLogDesc("ReCAPTCHA拦截！");
+            systemLog.setLogLevel(LogLevel.ERROR.toString());
+            logService.insert(systemLog);
             return APIResult.builder().code(StateCode.Failure).message("我们的服务器好像对你很感兴趣，想知道你是人类还是同类？刷新一下再试试").build();
         }
     }
