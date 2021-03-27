@@ -59,7 +59,7 @@ public class LogService extends BaseService {
                 }
             } else {
                 Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-                if (authentication.getPrincipal() instanceof AccountDTO) {
+                if (authentication != null && authentication.getPrincipal() instanceof AccountDTO) {
                     accountDTO = (AccountDTO) authentication.getPrincipal();
                 }
             }
