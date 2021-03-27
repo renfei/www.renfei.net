@@ -100,6 +100,22 @@ public class LogService extends BaseService {
         methodName = className + "." + methodName;
         // 请求方法
         systemLog.setRequMethod(methodName);
+        AccountDTO accountDTO = null;
+        if ("SESSION".equals(renFeiConfig.getAuthMode())) {
+            Object session = request.getSession().getAttribute(SESSION_KEY);
+            if (session instanceof AccountDTO) {
+                accountDTO = (AccountDTO) session;
+            }
+        } else {
+            Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+            if (authentication.getPrincipal() instanceof AccountDTO) {
+                accountDTO = (AccountDTO) authentication.getPrincipal();
+            }
+        }
+        if (accountDTO != null) {
+            systemLog.setUserUuid(accountDTO.getUuid());
+            systemLog.setUserName(systemLog.getUserName());
+        }
         // 请求的参数
         if (request != null) {
             Map<String, String> rtnMap = converMap(request.getParameterMap());
