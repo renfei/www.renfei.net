@@ -65,7 +65,8 @@
                                     style="font-size: 12px;color: #86868b;line-height: 1.33337;font-weight: 400;">
                             商业用途请联系作者获得授权。<br>
                             版权声明：本文转载自「${post.sourceName!}」，版权归原所有者。<br>
-                            原文链接：<a href="${post.sourceUrl!}" rel="nofollow noopener">${post.sourceUrl!}</a>
+                            原文链接：<a href="${post.sourceUrl!}" rel="nofollow noopener"
+                                    target="_blank">${post.sourceUrl!}</a>
                         </blockquote>
                     </#if>
                 </div>
