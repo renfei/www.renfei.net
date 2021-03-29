@@ -12,7 +12,6 @@ import net.renfei.entity.LogType;
 import net.renfei.repository.SystemLogMapper;
 import net.renfei.repository.entity.SystemLogWithBLOBs;
 import net.renfei.sdk.utils.IpUtils;
-import org.springframework.scheduling.annotation.Async;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
@@ -43,7 +42,6 @@ public class LogService extends BaseService {
         this.systemLogMapper = systemLogMapper;
     }
 
-    @Async
     public void log(LogLevel level, LogModule module, LogType type, String desc, HttpServletRequest request) {
         SystemLogWithBLOBs systemLog = new SystemLogWithBLOBs();
         systemLog.setLogLevel(level.toString());
@@ -84,7 +82,6 @@ public class LogService extends BaseService {
         this.insert(systemLog);
     }
 
-    @Async
     public void insert(String className, String methodName, SystemLog logAnnotation, Object keys, HttpServletRequest request) {
         SystemLogWithBLOBs systemLog = new SystemLogWithBLOBs();
         if (logAnnotation != null) {
@@ -133,7 +130,6 @@ public class LogService extends BaseService {
         this.insert(systemLog);
     }
 
-    @Async
     public void insert(SystemLogWithBLOBs systemLog) {
         systemLogMapper.insertSelective(systemLog);
     }
