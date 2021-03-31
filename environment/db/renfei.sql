@@ -422,14 +422,38 @@ CREATE TABLE `t_wechat_keyword` (
 -- ----------------------------
 DROP TABLE IF EXISTS `t_weibo`;
 CREATE TABLE `t_weibo` (
-  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
-  `content` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '内容',
-  `img_id` bigint(20) unsigned DEFAULT NULL COMMENT '引用图片ID',
-  `release_time` datetime NOT NULL COMMENT '发布时间',
-  `views` bigint(20) unsigned NOT NULL DEFAULT 0 COMMENT '浏览量',
-  `thumbs_up` bigint(20) unsigned NOT NULL DEFAULT 0 COMMENT '点赞量',
-  `thumbs_down` bigint(20) unsigned NOT NULL DEFAULT 0 COMMENT '点踩量',
-  PRIMARY KEY (`id`) USING BTREE
+                           `id`           bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+                           `content`      varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '内容',
+                           `img_id`       bigint(20) unsigned DEFAULT NULL COMMENT '引用图片ID',
+                           `release_time` datetime                                NOT NULL COMMENT '发布时间',
+                           `views`        bigint(20) unsigned NOT NULL DEFAULT 0 COMMENT '浏览量',
+                           `thumbs_up`    bigint(20) unsigned NOT NULL DEFAULT 0 COMMENT '点赞量',
+                           `thumbs_down`  bigint(20) unsigned NOT NULL DEFAULT 0 COMMENT '点踩量',
+                           PRIMARY KEY (`id`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-SET FOREIGN_KEY_CHECKS = 1;
+-- ----------------------------
+-- Table structure for t_holiday
+-- ----------------------------
+DROP TABLE IF EXISTS `t_holiday`;
+CREATE TABLE `t_holiday`
+(
+    `id`         bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+    `name`       varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+    `start_date` datetime                                NOT NULL,
+    `end_date`   datetime                                NOT NULL,
+    `style_code` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+    PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='节假日彩页';
+
+-- ----------------------------
+-- Records of t_holiday
+-- ----------------------------
+BEGIN;
+INSERT INTO `t_holiday`
+VALUES (1, '清明节', '2021-04-03 00:00:00', '2021-04-05 23:59:59',
+        'body{background: url(https://cdn.renfei.net/thunder/shijie/qingming.gif);background-repeat: repeat-x;background-position: top center;}');
+COMMIT;
+
+SET
+FOREIGN_KEY_CHECKS = 1;

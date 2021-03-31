@@ -2,6 +2,7 @@ package net.renfei.base;
 
 import net.renfei.config.RenFeiConfig;
 import net.renfei.entity.*;
+import net.renfei.repository.entity.HolidayDO;
 import net.renfei.sdk.utils.BeanUtils;
 import net.renfei.service.CommentsService;
 import net.renfei.service.GlobalService;
@@ -120,6 +121,15 @@ public abstract class BaseController {
         pageHeadVO.setDescription(description);
         pageHeadVO.setKeywords(keywords);
         pageHeadVO.setOgprotocol(opg);
+        // 节假日彩页
+        HolidayDO holidayDO = globalService.getHoliday();
+        if (holidayDO != null) {
+            if (BeanUtils.isEmpty(pageHeadVO.getCssText())) {
+                pageHeadVO.setCssText(holidayDO.getStyleCode());
+            } else {
+                pageHeadVO.setCssText(pageHeadVO.getCssText() + holidayDO.getStyleCode());
+            }
+        }
         mv.addObject(HEAD_KEY, pageHeadVO);
     }
 

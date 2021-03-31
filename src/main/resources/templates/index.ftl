@@ -5,7 +5,7 @@
     <@head headVO,title></@head>
     <body>
     <@header headerVO></@header>
-    <div style="background-color: #f5f5f7;">
+    <div class="index-container">
         <div class="container d-none d-sm-block" style="padding-top: 30px;">
             <@adsense "1847785593" active></@adsense>
         </div>
@@ -128,7 +128,7 @@
             </div>
         </div>
     </div>
-    <div style="background-color: #FFFFFF;">
+    <div class="index-container2">
         <div class="container more" style="padding-top: 50px;">
             <h3>更多文档</h3>
             <hr>

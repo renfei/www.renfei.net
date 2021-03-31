@@ -4,6 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import net.renfei.base.BaseService;
 import net.renfei.config.RenFeiConfig;
 import net.renfei.entity.*;
+import net.renfei.repository.entity.HolidayDO;
 import net.renfei.repository.entity.LinkDOWithBLOBs;
 import net.renfei.repository.entity.MenuDOWithBLOBs;
 import net.renfei.sdk.utils.BeanUtils;
@@ -28,15 +29,18 @@ public class GlobalService extends BaseService {
     protected final LinkService linkService;
     protected final MenuService menuService;
     protected final SettingService settingService;
+    protected final HolidayService holidayService;
 
     GlobalService(RenFeiConfig renFeiConfig,
                   LinkService linkService,
                   MenuService menuService,
-                  SettingService settingService) {
+                  SettingService settingService,
+                  HolidayService holidayService) {
         this.renFeiConfig = renFeiConfig;
         this.linkService = linkService;
         this.menuService = menuService;
         this.settingService = settingService;
+        this.holidayService = holidayService;
     }
 
     @Cacheable
@@ -180,6 +184,10 @@ public class GlobalService extends BaseService {
                 + "})();\n";
         footerVO.setJsText(jsText);
         return footerVO;
+    }
+
+    public HolidayDO getHoliday() {
+        return holidayService.getHoliday();
     }
 
     public String getGlobalNotice() {
