@@ -1,13 +1,12 @@
 package net.renfei.controller;
 
 import lombok.extern.slf4j.Slf4j;
-import net.renfei.annotation.SystemLog;
 import net.renfei.base.BaseController;
 import net.renfei.config.RenFeiConfig;
-import net.renfei.entity.*;
+import net.renfei.entity.FooterVO;
+import net.renfei.entity.OGprotocol;
+import net.renfei.entity.SiteMapXml;
 import net.renfei.service.*;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -50,7 +49,7 @@ public class IndexController extends BaseController {
     @RequestMapping("/")
     public ModelAndView index(ModelAndView mv) {
         mv.addObject("posts", postService.getAllPost("1", "15").getData());
-        mv.addObject("title", "任霏博客 - The RenFei Blog");
+        mv.addObject("title", renFeiConfig.getSiteName());
         Map<String, Object> models = mv.getModel();
         FooterVO footerVO = (FooterVO) models.get(FOOTER_KEY);
         footerVO.setShowFriendlyLink(true);
@@ -63,7 +62,7 @@ public class IndexController extends BaseController {
         opg.setLocale("zh-CN");
         opg.setReleaseDate(new Date());
         opg.setSiteName("RenFei.Net");
-        opg.setTitle("任霏博客 - The RenFei Blog");
+        opg.setTitle(renFeiConfig.getSiteName());
         opg.setUrl("https://www.renfei.net");
         setHead(mv,
                 "任霏博客是任霏的个人网站与博客，一个程序员自己写的网站，不仅仅是文章内容，还包括网站程序的代码。 对新鲜事物都十分感兴趣，利用这个站点向大家分享自己的所见所得，同时这个站点也是我的实验室。",
@@ -134,8 +133,8 @@ public class IndexController extends BaseController {
     }
 
     @RequestMapping("/sponsors")
-    public ModelAndView sponsors(ModelAndView mv){
-        mv.addObject("title", "赞助 - Sponsors - 任霏博客");
+    public ModelAndView sponsors(ModelAndView mv) {
+        mv.addObject("title", "赞助 - Sponsors - " + renFeiConfig.getSiteName());
         mv.setViewName("sponsors");
         return mv;
     }

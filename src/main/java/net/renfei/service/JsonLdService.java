@@ -72,7 +72,7 @@ public class JsonLdService extends BaseService {
         sb.append("},");
         sb.append("\"publisher\":{");
         sb.append("\"@type\": \"Organization\",");
-        sb.append("\"name\": \"任霏博客\",");
+        sb.append("\"name\": \"" + renFeiConfig.getSiteName() + "\",");
         sb.append("\"logo\": {");
         sb.append("\"@type\": \"ImageObject\",");
         sb.append("\"url\": \"https://cdn.renfei.net/Logo/logo_112.png\"");
@@ -95,46 +95,6 @@ public class JsonLdService extends BaseService {
         sb.append("}");
         return sb.toString();
     }
-
-//    @Cacheable
-//    public String getJsonld(WeiboDOS weiboDOS) {
-//        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'+08:00'");
-//        StringBuilder sb = new StringBuilder();
-//        sb.append(getCommonTop());
-//        sb.append("\"@type\": \"NewsArticle\",");
-//        sb.append("\"dateModified\":\"" + sdf.format(weiboDOS.getReleaseTime()) + "\",");
-//        sb.append("\"datePublished\":\"" + sdf.format(weiboDOS.getReleaseTime()) + "\",");
-//        sb.append("\"headline\":\"" + getTitle(weiboDOS.getContent()) + "\",");
-//        sb.append("\"image\":\"" + (weiboDOS.getImg() == null ? "https://cdn.renfei.net/Logo/ogimage.png" : weiboDOS.getImg()) + "\",");
-//        sb.append("\"author\":{");
-//        sb.append("\"@type\": \"Person\",");
-//        sb.append("\"name\": \"任霏\"");
-//        sb.append("},");
-//        sb.append("\"publisher\":{");
-//        sb.append("\"@type\": \"Organization\",");
-//        sb.append("\"name\": \"任霏博客\",");
-//        sb.append("\"logo\": {");
-//        sb.append("\"@type\": \"ImageObject\",");
-//        sb.append("\"url\": \"https://cdn.renfei.net/Logo/logo_112.png\"");
-//        sb.append("}");
-//        sb.append("},");
-//        sb.append("\"description\": \"" + weiboDOS.getContent() + "\",");
-//        sb.append("\"mainEntityOfPage\": {");
-//        sb.append("\"@type\":\"WebPage\",");
-//        sb.append("\"@id\":\"" + globalService.getDomain() + "/weibo/" + weiboDOS.getId() + "\"");
-//        sb.append("},");
-//        sb.append("\"speakable\": {");
-//        sb.append("\"@type\": \"SpeakableSpecification\",");
-//        sb.append("\"xpath\": [");
-//        sb.append("\"/html/head/title\",");
-//        sb.append("\"/html/head/meta[@name='description']/@content\"");
-//        sb.append("]");
-//        sb.append("}");
-//        sb.append("}");
-//        sb.append("]");
-//        sb.append("}");
-//        return sb.toString();
-//    }
 
     private String getTitle(String content) {
         if (content.length() < 100) {

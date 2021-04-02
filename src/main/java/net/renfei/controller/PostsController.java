@@ -1,10 +1,11 @@
 package net.renfei.controller;
 
 import lombok.extern.slf4j.Slf4j;
-import net.renfei.annotation.SystemLog;
 import net.renfei.base.BaseController;
 import net.renfei.config.RenFeiConfig;
-import net.renfei.entity.*;
+import net.renfei.entity.ListData;
+import net.renfei.entity.OGprotocol;
+import net.renfei.entity.ShareVO;
 import net.renfei.repository.entity.PostsDOWithBLOBs;
 import net.renfei.repository.entity.TagDO;
 import net.renfei.repository.entity.TagRelationDO;
@@ -16,7 +17,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.NoHandlerFoundException;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -52,7 +52,7 @@ public class PostsController extends BaseController {
     public ModelAndView getPostList(ModelAndView mv,
                                     @RequestParam(value = "page", required = false) String page) {
         ListData<PostsDOWithBLOBs> postsDOWithBLOBsListData = postService.getAllPost(page, "15");
-        mv.addObject("title", "任霏博客 - " + renFeiConfig.getSiteName());
+        mv.addObject("title", "任霏的博客文章 - " + renFeiConfig.getSiteName());
         mv.addObject("catTitle", "全部文档");
         mv.addObject("lists", postsDOWithBLOBsListData.getData());
         mv.addObject("PostSidebar", postService.getPostSidebar());

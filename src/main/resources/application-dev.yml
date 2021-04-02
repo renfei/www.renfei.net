@@ -54,7 +54,7 @@ spring:
 renfei:
   active: dev
   version: @project.version@
-  siteName: 任霏博客
+  siteName: 任霏的博客
   domain: http://localhost:8099
   staticDomain: https://cdn.renfei.net
   ipv4DataPath: /opt/RenFeiNet/IPDATA.BIN
