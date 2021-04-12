@@ -66,25 +66,27 @@
 <!--        <table tableName="t_secret_key" domainObjectName="SecretKeyDO"></table>-->
 <!--        <table tableName="t_account" domainObjectName="AccountDO"></table>-->
 <!--        <table tableName="t_verification_code" domainObjectName="VerificationCodeDO"></table>-->
-<!--        <table tableName="t_account_keep_name" domainObjectName="AccountKeepNameDO"></table>-->
-<!--        <table tableName="t_role" domainObjectName="RoleDO"></table>-->
-<!--        <table tableName="t_permission" domainObjectName="PermissionDO"></table>-->
-<!--        <table tableName="t_role_permission" domainObjectName="RolePermissionDO"></table>-->
-<!--        <table tableName="t_account_role" domainObjectName="AccountRoleDO"></table>-->
-<!--        <table tableName="t_lets_encrypt" domainObjectName="LetsEncryptDO"></table>-->
-<!--        <table tableName="t_region" domainObjectName="RegionDO"></table>-->
-<!--        <table tableName="t_online_documents" domainObjectName="OnlineDocumentsDO"></table>-->
-<!--        <table tableName="t_holiday" domainObjectName="HolidayDO"></table>-->
+        <!--        <table tableName="t_account_keep_name" domainObjectName="AccountKeepNameDO"></table>-->
+        <!--        <table tableName="t_role" domainObjectName="RoleDO"></table>-->
+        <!--        <table tableName="t_permission" domainObjectName="PermissionDO"></table>-->
+        <!--        <table tableName="t_role_permission" domainObjectName="RolePermissionDO"></table>-->
+        <!--        <table tableName="t_account_role" domainObjectName="AccountRoleDO"></table>-->
+        <!--        <table tableName="t_lets_encrypt" domainObjectName="LetsEncryptDO"></table>-->
+        <!--        <table tableName="t_region" domainObjectName="RegionDO"></table>-->
+        <!--        <table tableName="t_online_documents" domainObjectName="OnlineDocumentsDO"></table>-->
+        <!--        <table tableName="t_holiday" domainObjectName="HolidayDO"></table>-->
+        <!--        <table tableName="t_go_map" domainObjectName="GoMapDO"></table>-->
+        <!--        <table tableName="t_advertisement" domainObjectName="AdvertisementDO"></table>-->
 
         <!--Discu-->
-<!--        <table tableName="bbs_ucenter_members" domainObjectName="DiscuzUcenterMembersDO"></table>-->
-<!--        <table tableName="bbs_common_member" domainObjectName="DiscuzCommonMemberDO">-->
-<!--            <columnOverride column="emailstatus" javaType="java.lang.Integer"/>-->
-<!--        </table>-->
-<!--        <table tableName="bbs_common_member_count" domainObjectName="DiscuzCommonMemberCountDO"></table>-->
-<!--        <table tableName="bbs_common_usergroup" domainObjectName="DiscuzCommonUsergroupDO"></table>-->
-<!--        <table tableName="bbs_common_member_field_forum" domainObjectName="DiscuzCommonMemberFieldForumDO"></table>-->
-<!--        <table tableName="bbs_common_member_field_home" domainObjectName="DiscuzCommonMemberFieldHomeDO"></table>-->
+        <!--        <table tableName="bbs_ucenter_members" domainObjectName="DiscuzUcenterMembersDO"></table>-->
+        <!--        <table tableName="bbs_common_member" domainObjectName="DiscuzCommonMemberDO">-->
+        <!--            <columnOverride column="emailstatus" javaType="java.lang.Integer"/>-->
+        <!--        </table>-->
+        <!--        <table tableName="bbs_common_member_count" domainObjectName="DiscuzCommonMemberCountDO"></table>-->
+        <!--        <table tableName="bbs_common_usergroup" domainObjectName="DiscuzCommonUsergroupDO"></table>-->
+        <!--        <table tableName="bbs_common_member_field_forum" domainObjectName="DiscuzCommonMemberFieldForumDO"></table>-->
+        <!--        <table tableName="bbs_common_member_field_home" domainObjectName="DiscuzCommonMemberFieldHomeDO"></table>-->
 <!--        <table tableName="bbs_common_member_profile" domainObjectName="DiscuzCommonMemberProfileDO"></table>-->
 <!--        <table tableName="bbs_common_member_status" domainObjectName="DiscuzCommonMemberStatusDO">-->
 <!--            <columnOverride column="invisible" javaType="java.lang.Integer"/>-->
