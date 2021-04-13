@@ -175,6 +175,11 @@ public class KitBoxService extends BaseService {
                                 .with(LinkVO::setRel, "免费的短网址在线生成服务，缩短网址")
                                 .with(LinkVO::setText, "短网址生成工具")
                                 .build());
+                        this.add(Builder.of(LinkVO::new)
+                                .with(LinkVO::setHref, "/kitbox/indexing")
+                                .with(LinkVO::setRel, "百度/必应/谷歌-站长推送工具")
+                                .with(LinkVO::setText, "站长推送工具")
+                                .build());
                     }
                 })
                 .build());

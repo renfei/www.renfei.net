@@ -1,6 +1,5 @@
 package net.renfei.controller;
 
-import com.alibaba.fastjson.JSON;
 import lombok.extern.slf4j.Slf4j;
 import net.renfei.annotation.SystemLog;
 import net.renfei.base.BaseController;
@@ -17,7 +16,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletResponse;
-import java.io.StringWriter;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 
@@ -273,6 +271,16 @@ public class KitBoxController extends BaseController {
                 "苹果,iOS,Plist,文件,在线,生成,制作,工具");
         mv.setViewName("kitbox/plist");
         setKitBoxMenus(mv, DEVELOPMENT_TOOL);
+        return mv;
+    }
+
+    @RequestMapping({"indexing", "Indexing"})
+    public ModelAndView indexing(ModelAndView mv) {
+        mv.addObject("title", "二维码在线生成工具 - 开发者工具箱 - " + renFeiConfig.getSiteName());
+        setHead(mv, "Indexing - 百度/必应/谷歌-站长推送工具",
+                "二维码,qrcode,在线,生成,工具");
+        mv.setViewName("kitbox/indexing");
+        setKitBoxMenus(mv, OTHER_TOOL);
         return mv;
     }
 
