@@ -276,9 +276,9 @@ public class KitBoxController extends BaseController {
 
     @RequestMapping({"indexing", "Indexing"})
     public ModelAndView indexing(ModelAndView mv) {
-        mv.addObject("title", "二维码在线生成工具 - 开发者工具箱 - " + renFeiConfig.getSiteName());
+        mv.addObject("title", "Indexing - 站长推送工具 - 开发者工具箱 - " + renFeiConfig.getSiteName());
         setHead(mv, "Indexing - 百度/必应/谷歌-站长推送工具",
-                "二维码,qrcode,在线,生成,工具");
+                "百度必应,bing,谷歌,google,推送,工具,站长");
         mv.setViewName("kitbox/indexing");
         setKitBoxMenus(mv, OTHER_TOOL);
         return mv;
