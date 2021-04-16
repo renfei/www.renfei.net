@@ -172,23 +172,11 @@
             <div class="col-md-4">
                 <div class="card mb-2">
                     <div class="card-body">
-                        <h5 class="card-title">Google Indexing</h5>
+                        <h5 class="card-title">站长推送工具</h5>
                         <p class="card-text">
-                            该项目是对 Google API
-                            的实现，可以将网站新页面提交给Google搜索引擎，类似国内的百度站长工具提交功能，由于Google的API比较复杂，不能直接简单的POST提交，所以我将代码共享出来，方便需要的站长直接使用或者参考。</p>
-                        <a href="https://github.com/renfei/GoogleIndexing" class="btn btn-primary stretched-link"
-                           target="_blank" rel="nofollow noopener">查看代码</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card mb-2">
-                    <div class="card-body">
-                        <h5 class="card-title">gitignore</h5>
-                        <p class="card-text">
-                            我们每个Git项目中都需要一个“.gitignore”文件，这个文件的作用就是告诉Git哪些文件不需要添加到版本管理中。比如Java工程项目中的target文件夹是编译后的文件，并不是源代码文件，所以我们需要让Git忽略这个文件夹。这个仓库中维护的就是常见的忽略策略配置。</p>
-                        <a href="https://github.com/renfei/gitignore" class="btn btn-primary stretched-link"
-                           target="_blank" rel="nofollow noopener">查看代码</a>
+                            利用「百度-必应-谷歌」站长工具或开放平台接口即时推送网站更新给搜索引擎，加快蜘蛛程序爬取与更新。使用Java Swing开发，支持Windows、Linux、macOS系统。</p>
+                        <a href="https://www.renfei.net/kitbox/indexing" class="btn btn-primary stretched-link"
+                           target="_blank">查看代码</a>
                     </div>
                 </div>
             </div>
@@ -197,8 +185,22 @@
                     <div class="card-body">
                         <h5 class="card-title">discuz-ucenter-api-for-java</h5>
                         <p class="card-text">
-                            最完美的Discuz UCenter的JAVA API接口，简单易用，完全免费！可实现Java程序与PHP程序Discuz!论坛的UCenter打通，实现用户同步登录登出，将旧项目代码改为现代Maven构建的SpringBoot兼容版本。</p>
-                        <a href="https://github.com/renfei/discuz-ucenter-api-for-java" class="btn btn-primary stretched-link"
+                            最完美的Discuz UCenter的JAVA
+                            API接口，简单易用，完全免费！可实现Java程序与PHP程序Discuz!论坛的UCenter打通，实现用户同步登录登出，将旧项目代码改为现代Maven构建的SpringBoot兼容版本。</p>
+                        <a href="https://github.com/renfei/discuz-ucenter-api-for-java"
+                           class="btn btn-primary stretched-link"
+                           target="_blank" rel="nofollow noopener">查看代码</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card mb-2">
+                    <div class="card-body">
+                        <h5 class="card-title">Google Indexing</h5>
+                        <p class="card-text">
+                            该项目是对 Google API
+                            的实现，可以将网站新页面提交给Google搜索引擎，类似国内的百度站长工具提交功能，由于Google的API比较复杂，不能直接简单的POST提交，所以我将代码共享出来，方便需要的站长直接使用或者参考。</p>
+                        <a href="https://github.com/renfei/GoogleIndexing" class="btn btn-primary stretched-link"
                            target="_blank" rel="nofollow noopener">查看代码</a>
                     </div>
                 </div>
@@ -221,10 +223,27 @@
                         </div>
                         <div class="timeline-event p-2">
                             <div class="timeline-heading">
+                                <h4>日访问量破400IP</h4>
+                            </div>
+                            <div class="timeline-body">
+                                <p>自2012年博客建立以来，自然流量日访问IP创新高突破400，月访问量达1.2万IP。不含其他子站与接口流量。</p>
+                            </div>
+                            <div class="timeline-footer">
+                                <p class="text-right">2021-03-31</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-point timeline-point-success">
+                            <i class="fab fa-money"></i>
+                        </div>
+                        <div class="timeline-event p-2">
+                            <div class="timeline-heading">
                                 <h4>上线账号系统</h4>
                             </div>
                             <div class="timeline-body">
-                                <p>从建站开始就想拥有自己的会员账号系统，但8年前无奈没有技术能力面对互联网上各种妖魔鬼怪保护自己会员的账号安全，一直没有提供账号注册功能，现在第9个年头它来了，密码加密交互加密存储、短信登陆、TOTP动态密码两步认证、与PHP的Discuz论坛同步登入登出、密码爆破主动冻结、Google提供的基于页面行为机器人判定</p>
+                                <p>
+                                    从建站开始就想拥有自己的会员账号系统，但8年前无奈没有技术能力面对互联网上各种妖魔鬼怪保护自己会员的账号安全，一直没有提供账号注册功能，现在第9个年头它来了，密码加密交互加密存储、短信登陆、TOTP动态密码两步认证、与PHP的Discuz论坛同步登入登出、密码爆破主动冻结、Google提供的基于页面行为机器人判定</p>
                             </div>
                             <div class="timeline-footer">
                                 <p class="text-right">2021-01-1</p>
@@ -234,6 +253,22 @@
                     <span class="timeline-label">
                         <span class="badge badge-pill badge-secondary px-2">2020</span>
                     </span>
+                    <div class="timeline-item">
+                        <div class="timeline-point timeline-point-success">
+                            <i class="fab fa-money"></i>
+                        </div>
+                        <div class="timeline-event p-2">
+                            <div class="timeline-heading">
+                                <h4>微信公众号关注破千</h4>
+                            </div>
+                            <div class="timeline-body">
+                                <p>微信公众号粉丝关注量破1000。</p>
+                            </div>
+                            <div class="timeline-footer">
+                                <p class="text-right">2020-06-11</p>
+                            </div>
+                        </div>
+                    </div>
                     <div class="timeline-item">
                         <div class="timeline-point timeline-point-success">
                             <i class="fab fa-money"></i>
@@ -265,6 +300,22 @@
                             </div>
                             <div class="timeline-footer">
                                 <p class="text-right">2020-10-28</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-point timeline-point-success">
+                            <i class="fab fa-money"></i>
+                        </div>
+                        <div class="timeline-event p-2">
+                            <div class="timeline-heading">
+                                <h4>日访问量破200IP</h4>
+                            </div>
+                            <div class="timeline-body">
+                                <p>自2012年博客建立以来，自然流量日访问IP创新高突破200。不含其他子站与接口流量。</p>
+                            </div>
+                            <div class="timeline-footer">
+                                <p class="text-right">2020-06-11</p>
                             </div>
                         </div>
                     </div>
