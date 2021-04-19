@@ -2,7 +2,10 @@ package net.renfei.service;
 
 import net.renfei.config.RenFeiConfig;
 import net.renfei.discuz.repository.entity.DiscuzForumPostDO;
-import net.renfei.entity.*;
+import net.renfei.entity.KitBoxMenus;
+import net.renfei.entity.LinkVO;
+import net.renfei.entity.SearchItem;
+import net.renfei.entity.TypeEnum;
 import net.renfei.repository.entity.*;
 import net.renfei.sdk.utils.BeanUtils;
 import net.renfei.sdk.utils.StringUtils;
@@ -44,7 +47,7 @@ public class AggregateService {
         this.discuzService = discuzService;
     }
 
-    public List<SearchItem> getAllDataBySearchItem() {
+    public List<SearchItem> getAllDataBySearchItemSite() {
         List<SearchItem> searchItemAll = new ArrayList<>();
         // == Post >>>>
         List<PostsDOWithBLOBs> postsAll = postService.getAllPostNotCache();
@@ -153,7 +156,16 @@ public class AggregateService {
                 }
             }
         }
-        // == KitBox <<<< Discuz >>>>
+        // == KitBox <<<<
+        return searchItemAll;
+    }
+
+    public List<SearchItem> getAllDataBySearchItem() {
+        List<SearchItem> searchItemAll = getAllDataBySearchItemSite();
+        if (searchItemAll == null) {
+            searchItemAll = new ArrayList<>();
+        }
+        // == Discuz >>>>
         List<DiscuzForumPostDO> discuzForumPostList = discuzService.getAllPost();
         if (!BeanUtils.isEmpty(discuzForumPostList)) {
             for (DiscuzForumPostDO post : discuzForumPostList
