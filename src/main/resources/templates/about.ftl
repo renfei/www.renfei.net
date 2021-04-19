@@ -223,6 +223,22 @@
                         </div>
                         <div class="timeline-event p-2">
                             <div class="timeline-heading">
+                                <h4>迎来第100位注册用户</h4>
+                            </div>
+                            <div class="timeline-body">
+                                <p>自2021年上线账号系统以来，在 2021-04-05 20:52:59 我们迎来了第100位注册用户，来自：中国浙江杭州江干区北苑大厦。</p>
+                            </div>
+                            <div class="timeline-footer">
+                                <p class="text-right">2021-04-05</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-point timeline-point-success">
+                            <i class="fab fa-money"></i>
+                        </div>
+                        <div class="timeline-event p-2">
+                            <div class="timeline-heading">
                                 <h4>日访问量破400IP</h4>
                             </div>
                             <div class="timeline-body">
@@ -583,7 +599,7 @@
                                 <h4>注册neil.ren域名</h4>
                             </div>
                             <div class="timeline-body">
-                                <p>注册neil.ren域名/p></p>
+                                <p>注册neil.ren域名</p>
                             </div>
                             <div class="timeline-footer">
                                 <p class="text-right">2015-1-5</p>
