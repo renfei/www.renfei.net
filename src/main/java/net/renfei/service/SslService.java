@@ -85,7 +85,7 @@ public class SslService extends BaseService {
             letsEncryptDO = new LetsEncryptDOWithBLOBs();
             letsEncryptDO.setApplyDate(new Date());
             letsEncryptDO.setEndDate(DateUtils.nextMonth(3));
-            letsEncryptDO.setCertName(applySslCertificate.getName());
+            letsEncryptDO.setCertName("renfei_net_" + DateUtils.getDate("yyyyMMddHHmmss"));
             letsEncryptDO.setCertKey(applySslCertificate.getKey());
             letsEncryptDO.setCert(applySslCertificate.getCertificate());
             this.deploymentCertificate(applySslCertificate);
@@ -160,7 +160,7 @@ public class SslService extends BaseService {
             digestContent.append(tempStr).append("\n");
         }
         if (digestContent.toString().endsWith("\n")) {
-            return digestContent.toString().substring(0, digestContent.toString().length() - 1);
+            return digestContent.substring(0, digestContent.toString().length() - 1);
         }
         return digestContent.toString();
     }
