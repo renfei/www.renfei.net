@@ -18,7 +18,6 @@ import net.renfei.service.aliyun.AliyunCAS;
 import net.renfei.service.aliyun.AliyunCDN;
 import net.renfei.service.aliyun.AliyunDCDN;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;
@@ -64,7 +63,6 @@ public class SslService extends BaseService {
         this.letsEncryptMapper = letsEncryptMapper;
     }
 
-    @Transactional(rollbackFor = Exception.class)
     public void checkSslCertificate() throws IOException, ClientException {
         // 检查证书
         LetsEncryptDOExample example = new LetsEncryptDOExample();
@@ -88,8 +86,9 @@ public class SslService extends BaseService {
             letsEncryptDO.setCertName("renfei_net_" + DateUtils.getDate("yyyyMMddHHmmss"));
             letsEncryptDO.setCertKey(applySslCertificate.getKey());
             letsEncryptDO.setCert(applySslCertificate.getCertificate());
-            this.deploymentCertificate(applySslCertificate);
             letsEncryptMapper.insert(letsEncryptDO);
+            applySslCertificate.setName(letsEncryptDO.getCertName());
+            this.deploymentCertificate(applySslCertificate);
         }
     }
 
