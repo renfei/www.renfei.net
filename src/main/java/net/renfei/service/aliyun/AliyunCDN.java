@@ -1,11 +1,8 @@
 package net.renfei.service.aliyun;
 
 import com.aliyuncs.cdn.model.v20180510.SetDomainServerCertificateRequest;
-import com.aliyuncs.cdn.model.v20180510.SetDomainServerCertificateResponse;
 import com.aliyuncs.exceptions.ClientException;
-import com.aliyuncs.exceptions.ServerException;
 import com.aliyuncs.profile.DefaultProfile;
-import com.google.gson.Gson;
 import lombok.extern.slf4j.Slf4j;
 import net.renfei.config.RenFeiConfig;
 import org.springframework.stereotype.Service;
@@ -39,7 +36,7 @@ public class AliyunCDN extends AliyunService {
         request.setCertName(certName);
         request.setCertType("cas");
         request.setServerCertificateStatus("on");
-        request.setPrivateKey(privateKey);
+        request.setForceSet("1");
         client.getAcsResponse(request);
     }
 }

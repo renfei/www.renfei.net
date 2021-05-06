@@ -82,7 +82,7 @@ public class SslService extends BaseService {
             ApplySslCertificate applySslCertificate = this.applySslCertificate();
             letsEncryptDO = new LetsEncryptDOWithBLOBs();
             letsEncryptDO.setApplyDate(new Date());
-            letsEncryptDO.setEndDate(DateUtils.nextMonth(3));
+            letsEncryptDO.setEndDate(DateUtils.nextDay(90));
             letsEncryptDO.setCertName("renfei_net_" + DateUtils.getDate("yyyyMMddHHmmss"));
             letsEncryptDO.setCertKey(applySslCertificate.getKey());
             letsEncryptDO.setCert(applySslCertificate.getCertificate());
