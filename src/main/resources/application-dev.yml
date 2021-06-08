@@ -10,12 +10,12 @@ spring:
   ## 数据库配置
   datasource:
     primary:
-      jdbc-url: jdbc:mysql://127.0.0.1/renfei?useUnicode=true&characterEncoding=utf8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=Asia/Shanghai&useSSL=false
+      url: jdbc:mysql://127.0.0.1/renfei?useUnicode=true&characterEncoding=utf8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=Asia/Shanghai&useSSL=false
       driver-class-name: com.mysql.cj.jdbc.Driver
       username: root
       password: root
     discuz:
-      jdbc-url: jdbc:mysql://127.0.0.1/discuz?useUnicode=true&characterEncoding=utf8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=Asia/Shanghai&useSSL=false
+      url: jdbc:mysql://127.0.0.1/discuz?useUnicode=true&characterEncoding=utf8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=Asia/Shanghai&useSSL=false
       driver-class-name: com.mysql.cj.jdbc.Driver
       username: root
       password: root
