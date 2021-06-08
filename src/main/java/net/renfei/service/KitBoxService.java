@@ -95,6 +95,11 @@ public class KitBoxService extends BaseService {
                                 .with(LinkVO::setText, "下划线驼峰命名互转工具")
                                 .build());
                         this.add(Builder.of(LinkVO::new)
+                                .with(LinkVO::setHref, "/kitbox/github")
+                                .with(LinkVO::setRel, "GitHub 文件下载代理加速工具")
+                                .with(LinkVO::setText, "Github在线代理加速工具")
+                                .build());
+                        this.add(Builder.of(LinkVO::new)
                                 .with(LinkVO::setHref, "/kitbox/byteUnitConversion")
                                 .with(LinkVO::setRel, "计算机字节(Byte)单位之间的转换换算工具")
                                 .with(LinkVO::setText, "字节(Byte)单位转换工具")

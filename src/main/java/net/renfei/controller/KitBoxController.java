@@ -144,6 +144,16 @@ public class KitBoxController extends BaseController {
         return mv;
     }
 
+    @RequestMapping("github")
+    public ModelAndView github(ModelAndView mv) {
+        setHead(mv, "GitHub 文件 , Releases , archive , gist , raw.githubusercontent.com 文件代理加速下载服务。",
+                "github,proxy,代理,下载,加速,在线,工具");
+        mv.addObject("title", "GitHub 文件在线下载代理加速工具 - 开发者工具箱 - " + renFeiConfig.getSiteName());
+        setKitBoxMenus(mv, DEVELOPMENT_TOOL);
+        mv.setViewName("kitbox/github");
+        return mv;
+    }
+
     @RequestMapping("byteUnitConversion")
     public ModelAndView byteUnitConversion(ModelAndView mv) {
         setHead(mv, "计算机字节(Byte)单位之间的转换换算工具：bit、Byte、KB、MB、GB、TB、PB、EB之间的转换计算工具",
