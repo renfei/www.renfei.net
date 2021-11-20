@@ -1,6 +1,11 @@
+# 停止更新维护
+
+此仓库为 v1.x.x 版本，已经停止更新维护，将由新版本替代：[https://github.com/renfei/renfeid](https://github.com/renfei/renfeid)
+
 ![RenFei.Net Social Banner](https://cdn.renfei.net/thunder/renfei.net.jpg)
 
 ## RENFEI.NET ```thunder```
+
 [![Actions Status](https://github.com/renfei/www.renfei.net/workflows/CI/badge.svg)](https://github.com/renfei/www.renfei.net/actions)
 [![Actions Status](https://github.com/renfei/www.renfei.net/workflows/Release/badge.svg)](https://github.com/renfei/www.renfei.net/actions)
 [![Build Status](https://api.travis-ci.com/renfei/www.renfei.net.svg?branch=main)](https://travis-ci.com/renfei/www.renfei.net)
