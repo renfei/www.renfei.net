@@ -78,7 +78,7 @@ public class CronJobs {
     /**
      * 每天凌晨4点半执行更新SSL证书
      */
-    @Scheduled(cron = "0 30 4 * * ? ")
+//    @Scheduled(cron = "0 30 4 * * ? ")
     public void executeCheckSslCertificate() {
         log.info("== CheckSslCertificateJob >>>>");
         try {

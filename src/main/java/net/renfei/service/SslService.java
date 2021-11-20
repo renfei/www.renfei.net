@@ -74,7 +74,8 @@ public class SslService extends BaseService {
             update = true;
         } else {
             long day = DateUtils.getDaysBetween(new Date(), letsEncryptDO.getEndDate());
-            if (day <= 7) {
+            if (day <= 30) {
+                // 剩余不足25天的时候更新证书，30以内就可以签发新证书了
                 update = true;
             }
         }
@@ -146,7 +147,7 @@ public class SslService extends BaseService {
         aliyunCDN.setDomainServerCertificate("download.renfei.net", applySslCertificate.getName(), applySslCertificate.getKey());
         aliyunCDN.setDomainServerCertificate("nifidoc.renfei.net", applySslCertificate.getName(), applySslCertificate.getKey());
         aliyunCDN.setDomainServerCertificate("start.renfei.net", applySslCertificate.getName(), applySslCertificate.getKey());
-        aliyunDCDN.setDcdnDomainCertificate("www.renfei.net", applySslCertificate.getName(), applySslCertificate.getKey());
+//        aliyunDCDN.setDcdnDomainCertificate("www.renfei.net", applySslCertificate.getName(), applySslCertificate.getKey());
         aliyunDCDN.setDcdnDomainCertificate("bbs.renfei.net", applySslCertificate.getName(), applySslCertificate.getKey());
     }
 

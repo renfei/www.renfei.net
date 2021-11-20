@@ -71,7 +71,7 @@ renfei:
     oss:
       endpoint: http://oss-cn-hangzhou.aliyuncs.com
       bucketName: renfei
-      downloadBucketName: down-renfei
+      downloadBucketName: download-renfei
       downloadHost: https://download.renfei.net
     green:
       regionId: cn-beijing
@@ -105,4 +105,4 @@ renfei:
     apiToken: XQDf-8F4lEC0QRzELIv7cMFAiijnbF73V2eig2dD
   letsEncrypt:
     email: i@renfei.net
-    dirPath: /Users/renfei/Downloads/letsencrypt
+    dirPath: /Users/renfei/WorkSpace/config.renfei.net/letsencrypt
