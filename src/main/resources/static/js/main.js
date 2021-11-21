@@ -364,8 +364,6 @@ function checkAdp() {
     }
 }
 
-setTimeout("checkAdp()", "5000");
-
 $(function () {
     if ($(".copyUrlBtn").length) {
         let clipboard = new ClipboardJS('.copyUrlBtn', {
